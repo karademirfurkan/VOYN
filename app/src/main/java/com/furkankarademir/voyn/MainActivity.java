@@ -3,6 +3,8 @@ package com.furkankarademir.voyn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,4 +13,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+
+
+    public void Furkan(View view){
+        TextView text = findViewById(R.id.textView);
+        text.setText("Bismillah");
+
+    }
+
 }
