@@ -6,38 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="309dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="Mail"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="304dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="316dp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="154dp"
-        android:onClick="Furkan"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:text="Sign in"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="385dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="219dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="91dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/allinol" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:text="Login"
+        android:textSize="100sp"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="61dp" />
 
+    <Button
+        android:id="@+id/forgotpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonbackground"
+        android:text="Forgot Password"
+        android:textColor="#002ED5"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="556dp" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonbackground"
+        android:text="Sign Up!!"
+        android:textColor="#002ED5"
+        tools:layout_editor_absoluteX="271dp"
+        tools:layout_editor_absoluteY="556dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

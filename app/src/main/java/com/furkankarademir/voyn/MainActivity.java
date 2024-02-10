@@ -14,12 +14,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
-
-    public void Furkan(View view){
-        TextView text = findViewById(R.id.textView);
-        text.setText("Bismillah");
-
-    }
-
 }
