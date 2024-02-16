@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void signInButtonClicked(View view)
     {
-
+        System.out.println("heeeyy");
     }
 
     public void signUpButtonClicked(View view)
