@@ -6,60 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="309dp"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:hint="Mail"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="250dp" />
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="421dp"
+        android:layout_height="354dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="304dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="316dp" />
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="309dp"
+            android:layout_height="44dp"
+            android:ems="10"
+            android:hint="Mail"
+            android:inputType="text"
+            android:layout_marginBottom="30dp"/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign in"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="385dp" />
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="304dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="text"
+            android:layout_marginBottom="30dp"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
-        android:text="Login"
-        android:textSize="100sp"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="61dp" />
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="30dp">
 
-    <Button
-        android:id="@+id/forgotpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttonbackground"
-        android:text="Forgot Password"
-        android:textColor="#002ED5"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="556dp" />
+            <Button
+                android:id="@+id/forgotpassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/buttonbackground"
+                android:text="Forgot Password"
+                android:textColor="#002ED5" />
 
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttonbackground"
-        android:text="Sign Up!!"
-        android:textColor="#002ED5"
-        tools:layout_editor_absoluteX="271dp"
-        tools:layout_editor_absoluteY="556dp" />
+            <Button
+                android:id="@+id/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbackground"
+                android:onClick="signUpButtonClicked"
+                android:text="Sign Up!!"
+                android:textColor="#002ED5" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="278dp"
+            android:layout_height="45dp"
+            android:onClick="signInButtonClicked"
+            android:text="Sign in"
+            tools:layout_editor_absoluteX="13dp"
+            tools:layout_editor_absoluteY="442dp" />
+
+    </LinearLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
