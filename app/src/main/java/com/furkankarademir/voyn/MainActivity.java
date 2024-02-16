@@ -20,12 +20,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
     }
 
-    public void signInButtonClicked()
+    public void signInButtonClicked(View view)
     {
 
     }
 
-    public void signUpButtonClicked()
+    public void signUpButtonClicked(View view)
     {
         Intent intent = new Intent(MainActivity.this, SignUpPage.class);
         startActivity(intent);

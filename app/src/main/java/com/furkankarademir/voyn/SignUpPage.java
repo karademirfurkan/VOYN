@@ -34,7 +34,7 @@ public class SignUpPage extends AppCompatActivity {
         fireStore = FirebaseFirestore.getInstance();
     }
 
-    public void signUpButtonClicked()
+    public void signUpButtonClicked(View view)
     {
         String name = binding.name.getText().toString();
         String surname = binding.surname.getText().toString();
