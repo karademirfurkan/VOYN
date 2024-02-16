@@ -16,9 +16,6 @@
             android:name=".MenuPage"
             android:exported="false" />
         <activity
-            android:name=".Classes.classGozuksunDiyeBosActitivity"
-            android:exported="false" />
-        <activity
             android:name=".SignUpPage"
             android:exported="false" />
         <activity
