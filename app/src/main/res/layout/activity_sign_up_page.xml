@@ -62,9 +62,10 @@
             android:layout_marginBottom="50dp"/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/signUps"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:onClick="signUpButtonClicked"
             android:text="Sign Up" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

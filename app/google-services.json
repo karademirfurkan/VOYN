@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "31994883594",
+    "project_id": "voyn-e7bbe",
+    "storage_bucket": "voyn-e7bbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31994883594:android:4311efee700b70f771b9f3",
+        "android_client_info": {
+          "package_name": "com.furkankarademir.voyn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPeK_2qMl0X8jEjbZEtzUQ66UHVWJkc2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
