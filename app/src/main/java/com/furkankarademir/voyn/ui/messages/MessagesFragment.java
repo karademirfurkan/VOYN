@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.furkankarademir.voyn.databinding.FragmentHomeBinding;
+import com.furkankarademir.voyn.databinding.FragmentMessagesBinding;
 
 public class MessagesFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentMessagesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         MessagesViewModel messagesViewModel =
                 new ViewModelProvider(this).get(MessagesViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentMessagesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
