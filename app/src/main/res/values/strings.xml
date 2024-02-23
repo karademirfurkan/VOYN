@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VOYN</string>
+    <string name="title_activity_menu_page_bottom_view">MenuPageBottomView</string>
+    <string name="title_messages">Messages</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
 </resources>

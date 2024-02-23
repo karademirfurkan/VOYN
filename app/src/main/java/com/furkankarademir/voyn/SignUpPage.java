@@ -59,7 +59,7 @@ public class SignUpPage extends AppCompatActivity {
                         fireStore.collection("Users").add(newUser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
-                                Intent intent = new Intent(SignUpPage.this, MenuPage.class);
+                                Intent intent = new Intent(SignUpPage.this, MenuPageBottomView.class);
                                 startActivity(intent);
                                 finish();
                             }
