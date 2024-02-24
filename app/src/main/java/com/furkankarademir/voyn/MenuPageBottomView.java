@@ -20,7 +20,7 @@ public class MenuPageBottomView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         binding = ActivityMenuPageBottomViewBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
