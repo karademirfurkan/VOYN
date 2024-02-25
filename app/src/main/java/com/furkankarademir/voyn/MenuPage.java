@@ -23,6 +23,11 @@ public class MenuPage extends AppCompatActivity {
 
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint_layout);
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.constraint_layout, new MessagesFragment());
+        fragmentTransaction.commit();
+
         bottomNavigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
