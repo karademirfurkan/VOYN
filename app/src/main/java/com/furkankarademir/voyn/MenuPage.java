@@ -1,58 +1,78 @@
 package com.furkankarademir.voyn;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.view.View;
-import android.widget.FrameLayout;
+
+import android.view.MenuItem;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.os.Bundle;
 
-import com.furkankarademir.voyn.databinding.ActivityMainBinding;
-
 
 public class MenuPage extends AppCompatActivity {
-
-    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_menu_page);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.altbar);
 
+        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint_layout);
 
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+        bottomNavigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemid = item.getItemId();
 
-            switch (item.getItemid())
-            {
-                case R.id.home:
-                    replaceFragment(new HomeFragment());
-                    break;
-                case R.id.profile:
-                    replaceFragment(new ProfileFragment());
-                    break;
-                case R.id.messages:
-                    replaceFragment(new MessagesFragment());
-                    break;
+                if (itemid == R.id.home)
+                {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.constraint_layout, new HomeFragment());
+                    fragmentTransaction.commit();
+                }
+                else if (itemid == R.id.messages)
+                {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.constraint_layout, new MessagesFragment());
+                    fragmentTransaction.commit();
+                }
+                else if (itemid == R.id.profile)
+                {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.constraint_layout, new ProfileFragment());
+                    fragmentTransaction.commit();
+                }
+                return  true;
             }
-
-
-
-
-            return true;
         });
 
 
-        private void replaceFragment(Fragment fragment)
+
+
+
+        /*private void loadFragment(Fragment fragment, boolean isAppInitialized) // calismiyor :C
         {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.constraint_layout, fragment);
+
+            if(isAppInitialized)
+            {
+                fragmentTransaction.add(R.id.constraint_layout, fragment);
+            }
+            else
+            {
+                fragmentTransaction.replace(R.id.constraint_layout, fragment);
+            }
+
             fragmentTransaction.commit();
 
-        }
+        }*/
     }
 }
