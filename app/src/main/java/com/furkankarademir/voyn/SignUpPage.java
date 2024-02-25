@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.furkankarademir.voyn.Classes.User;
@@ -32,6 +33,8 @@ public class SignUpPage extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         fireStore = FirebaseFirestore.getInstance();
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
     }
 
     public void signUpButtonClicked(View view)
