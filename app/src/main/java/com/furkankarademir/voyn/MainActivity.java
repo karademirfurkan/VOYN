@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser user = auth.getCurrentUser();
 
+        /*
         if (user != null)
         {
             Intent intent = new Intent(MainActivity.this, MenuPage.class);
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             Toast.makeText(MainActivity.this, "No problem, you are already signed in :)", Toast.LENGTH_LONG).show();
         }
+         */
     }
 
     public void signInButtonClicked(View view)
