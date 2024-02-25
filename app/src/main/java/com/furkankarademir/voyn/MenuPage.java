@@ -23,6 +23,7 @@ public class MenuPage extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemid())
