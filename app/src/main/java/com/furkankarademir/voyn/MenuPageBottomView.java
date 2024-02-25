@@ -1,7 +1,6 @@
 package com.furkankarademir.voyn;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,8 +21,7 @@ public class MenuPageBottomView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMenuPageBottomViewBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

@@ -2,15 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MenuPage">
-        <State />
-      </entry>
-      <entry key="MenuPageBottomView">
-        <State />
-      </entry>
-      <entry key="SignUpPage">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
