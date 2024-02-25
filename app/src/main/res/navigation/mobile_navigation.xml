@@ -9,17 +9,39 @@
         android:id="@+id/navigation_messages"
         android:name="com.furkankarademir.voyn.ui.messages.MessagesFragment"
         android:label="messages"
-        tools:layout="@layout/fragment_messages"/>
+        tools:layout="@layout/fragment_messages">
+        <action
+            android:id="@+id/action_navigation_messages_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_messages_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.furkankarademir.voyn.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_messages"
+            app:destination="@id/navigation_messages" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.furkankarademir.voyn.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_messages"
+            app:destination="@id/navigation_messages"
+            app:launchSingleTop="false" />
+    </fragment>
 </navigation>
