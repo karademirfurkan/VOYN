@@ -74,4 +74,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void forgetPasswordButtonClicked(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, ForgetPasswordPage.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
