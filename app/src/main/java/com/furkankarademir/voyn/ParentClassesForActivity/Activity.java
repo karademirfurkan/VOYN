@@ -13,10 +13,13 @@ public class Activity  {
 
     private Time time;
 
-    public Activity(Date date, Profile profile, Time time) {
+    private String extraNote;
+
+    public Activity(Date date, Profile profile, Time time, String extraNote) {
         this.date = date;
         this.profile = profile;
         this.time = time;
+        this.extraNote = extraNote;
     }
 
 }

@@ -4,14 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransportationActivity">
+    tools:context=".Transportation.TransportationActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="545dp"
-        android:layout_marginTop="45dp"
+        android:layout_width="410dp"
+        android:layout_height="547dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="75dp"
+        android:layout_height="57dp"
+        android:text="+"
+        tools:layout_editor_absoluteX="320dp"
+        tools:layout_editor_absoluteY="595dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

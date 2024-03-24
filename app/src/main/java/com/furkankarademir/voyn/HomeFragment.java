@@ -12,7 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.furkankarademir.voyn.ProfileClasses.Profile;
+import com.furkankarademir.voyn.Transportation.TransportationActivity;
+
 public class HomeFragment extends Fragment {
+
+    private Profile thisUsersProfile;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -21,6 +26,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            thisUsersProfile = (Profile) getArguments().getSerializable("thisUsersProfile");
+        }
 
     }
 

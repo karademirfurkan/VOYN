@@ -6,15 +6,26 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.os.Bundle;
+
+import com.google.android.gms.tasks.Task;
+import com.furkankarademir.voyn.ProfileClasses.Profile;
 
 
 public class MenuPage extends AppCompatActivity {
 
+    private static final String TAG = "MenuPage";
+    private String userEmail = getIntent().getStringExtra("userEmail");;
+
+    private Profile thisUsersProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +34,16 @@ public class MenuPage extends AppCompatActivity {
 
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint_layout);
 
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.constraint_layout, new MessagesFragment());
         fragmentTransaction.commit();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("thisUsersProfile", thisUsersProfile);
 
         bottomNavigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -35,9 +52,12 @@ public class MenuPage extends AppCompatActivity {
 
                 if (itemid == R.id.home)
                 {
+                    HomeFragment homeFragment = new HomeFragment();
+                    homeFragment.setArguments(bundle);
+
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.constraint_layout, new HomeFragment());
+                    fragmentTransaction.replace(R.id.constraint_layout, homeFragment);
                     fragmentTransaction.commit();
                 }
                 else if (itemid == R.id.messages)
@@ -57,6 +77,26 @@ public class MenuPage extends AppCompatActivity {
                 return  true;
             }
         });
+
+        db.collection("Profiles").document(userEmail).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        // Convert the DocumentSnapshot to a Profile object
+                         thisUsersProfile = document.toObject(Profile.class);
+                        // Now you can use the profile object
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
+
 
 
 
@@ -79,5 +119,10 @@ public class MenuPage extends AppCompatActivity {
             fragmentTransaction.commit();
 
         }*/
+    }
+
+    public Profile getThisUsersProfile()
+    {
+        return thisUsersProfile;
     }
 }

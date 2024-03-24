@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(AuthResult authResult) {
                     Intent intent = new Intent(MainActivity.this, MenuPage.class);
+                    intent.putExtra("userEmail", eMail);
                     startActivity(intent);
                     finish();
                 }

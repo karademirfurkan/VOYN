@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.databinding.ActivityMainBinding;
 import com.furkankarademir.voyn.databinding.ActivitySignUpPageBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -62,7 +63,13 @@ public class SignUpPage extends AppCompatActivity {
                         fireStore.collection("Users").add(newUser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
+                                Profile newProfile = new Profile(name, surname, eMail,"department"); // replace "department" with the actual department
+
+                                // Add the Profile object to the "Profiles" collection in Firestore
+                                fireStore.collection("Profiles").document(eMail).set(newProfile);
+
                                 Intent intent = new Intent(SignUpPage.this, MenuPage.class);
+                                intent.putExtra("userEmail", eMail);
                                 startActivity(intent);
                                 finish();
                             }
