@@ -4,10 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
-public class Activity  {
+public abstract class Activity implements Serializable {
     private Date date;
     private Profile profile;
 
@@ -20,6 +21,24 @@ public class Activity  {
         this.profile = profile;
         this.time = time;
         this.extraNote = extraNote;
+    }
+
+    public abstract void addActivityToDatabase();
+
+    public String getExtraNote() {
+        return extraNote;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public Profile getProfile() {
+        return profile;
     }
 
 }
