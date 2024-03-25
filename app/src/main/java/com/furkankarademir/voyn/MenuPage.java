@@ -23,13 +23,16 @@ import com.furkankarademir.voyn.ProfileClasses.Profile;
 public class MenuPage extends AppCompatActivity {
 
     private static final String TAG = "MenuPage";
-    private String userEmail = getIntent().getStringExtra("userEmail");;
+    private String userEmail;
 
     private Profile thisUsersProfile;
+
+    private HomeFragment homeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
+        userEmail = getIntent().getStringExtra("userEmail");
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.altbar);
 
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint_layout);
@@ -42,8 +45,7 @@ public class MenuPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("thisUsersProfile", thisUsersProfile);
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -52,12 +54,14 @@ public class MenuPage extends AppCompatActivity {
 
                 if (itemid == R.id.home)
                 {
-                    HomeFragment homeFragment = new HomeFragment();
-                    homeFragment.setArguments(bundle);
-
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.constraint_layout, homeFragment);
+                    if (homeFragment != null) {
+                        fragmentTransaction.replace(R.id.constraint_layout, homeFragment);
+                    }
+                    else {
+                        fragmentTransaction.replace(R.id.constraint_layout, new HomeFragment());
+                    }
                     fragmentTransaction.commit();
                 }
                 else if (itemid == R.id.messages)
@@ -87,6 +91,11 @@ public class MenuPage extends AppCompatActivity {
                         // Convert the DocumentSnapshot to a Profile object
                          thisUsersProfile = document.toObject(Profile.class);
                         // Now you can use the profile object
+
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("thisUsersProfile", thisUsersProfile);
+                        homeFragment = new HomeFragment();
+                        homeFragment.setArguments(bundle);
                     } else {
                         Log.d(TAG, "No such document");
                     }

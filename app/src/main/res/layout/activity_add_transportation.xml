@@ -20,12 +20,12 @@
         android:id="@+id/departureEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="72dp"
         android:ems="10"
         android:hint="Enter the Departure Point"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,25 +40,31 @@
         app:layout_constraintBottom_toTopOf="@+id/dateEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/departureEdit" />
 
     <EditText
         android:id="@+id/dateEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
         android:ems="10"
         android:hint="Enter The Date "
         android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/timeEdit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="261dp" />
+        app:layout_constraintTop_toBottomOf="@+id/departureEdit"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="addTransportationActivityButtonClicked"
         android:text="Add Activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -67,39 +73,47 @@
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add "
+        android:layout_marginBottom="16dp"
+        android:onClick="cancelTransportationActivityButtonClicked"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.701"
+        app:layout_constraintHorizontal_bias="0.706"
         app:layout_constraintStart_toEndOf="@+id/button5" />
 
     <EditText
         android:id="@+id/timeEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
         android:ems="10"
         android:hint="Enter the Time"
         android:inputType="text"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="338dp" />
+        app:layout_constraintBottom_toTopOf="@+id/seatsEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/departureEdit" />
 
     <EditText
         android:id="@+id/seatsEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:ems="10"
         android:hint="Enter Number of Available Seats"
         android:inputType="text"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="416dp" />
+        app:layout_constraintBottom_toTopOf="@+id/notesEdit"
+        tools:layout_editor_absoluteX="98dp" />
 
     <EditText
         android:id="@+id/notesEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Extra Notes"
         android:inputType="text"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="496dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

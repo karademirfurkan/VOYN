@@ -44,7 +44,13 @@ public class AddTransportationActivity extends AppCompatActivity {
             Time time = new Time(Integer.parseInt(timeString.substring(0, 2)), Integer.parseInt(timeString.substring(3, 5)), 0);
             Transportation transportation = new Transportation(date, creatorProfile, time, binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(), Integer.parseInt(binding.seatsEdit.getText().toString()), binding.notesEdit.getText().toString());
             transportation.addActivityToDatabase();
+            finish();
+
 
         }
+    }
+
+    public void cancelTransportationActivityButtonClicked(View view) {
+        finish();
     }
 }
