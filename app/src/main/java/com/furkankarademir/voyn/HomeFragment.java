@@ -12,12 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
 
+import java.io.Serializable;
+
 public class HomeFragment extends Fragment {
 
-    private Profile thisUsersProfile;
+    private User thisUser;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -27,7 +30,7 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            thisUsersProfile = (Profile) getArguments().getSerializable("thisUsersProfile");
+            thisUser = (User) getArguments().getSerializable("thisUser");
         }
 
     }
@@ -48,6 +51,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), TransportationActivity.class);
+                intent.putExtra("thisUser", (Serializable) thisUser);
                 startActivity(intent);
                 //burda normalde finish yazıyorduk ama finish tanımıyor
 

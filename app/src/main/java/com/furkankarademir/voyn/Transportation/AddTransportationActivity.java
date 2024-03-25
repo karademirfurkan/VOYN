@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityAddTransportationBinding;
@@ -17,6 +18,8 @@ import java.util.Date;
 public class AddTransportationActivity extends AppCompatActivity {
 
     private ActivityAddTransportationBinding binding;
+
+    private User thisUser;
 
     public  AddTransportationActivity() {
 
@@ -39,7 +42,8 @@ public class AddTransportationActivity extends AppCompatActivity {
         {
             // Add transportation activity to database
             Date date = new Date(binding.dateEdit.getText().toString());
-            Profile creatorProfile = (Profile) getIntent().getSerializableExtra("creatorProfile");
+            thisUser = (User) getIntent().getSerializableExtra("thisUser");
+            Profile creatorProfile = thisUser.getProfile();
             String timeString = binding.timeEdit.getText().toString();
             Time time = new Time(Integer.parseInt(timeString.substring(0, 2)), Integer.parseInt(timeString.substring(3, 5)), 0);
             Transportation transportation = new Transportation(date, creatorProfile, time, binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(), Integer.parseInt(binding.seatsEdit.getText().toString()), binding.notesEdit.getText().toString());
