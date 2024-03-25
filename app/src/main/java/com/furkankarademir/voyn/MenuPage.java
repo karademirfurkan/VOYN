@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.furkankarademir.voyn.Classes.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -18,6 +19,8 @@ import android.os.Bundle;
 
 import com.google.android.gms.tasks.Task;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class MenuPage extends AppCompatActivity {
@@ -26,6 +29,8 @@ public class MenuPage extends AppCompatActivity {
     private String userEmail;
 
     private Profile thisUsersProfile;
+
+    private User thisUser;
 
     private HomeFragment homeFragment;
     @Override
@@ -82,28 +87,41 @@ public class MenuPage extends AppCompatActivity {
             }
         });
 
-        db.collection("Profiles").document(userEmail).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        // Convert the DocumentSnapshot to a Profile object
-                         thisUsersProfile = document.toObject(Profile.class);
-                        // Now you can use the profile object
+       db.collection("Users").whereEqualTo("mail", userEmail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+    @Override
+    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+        if (task.isSuccessful()) {
+            for (QueryDocumentSnapshot document : task.getResult()) {
+                thisUser = document.toObject(User.class);
+                // Now you have the user object, you can get the profile
+                db.collection("Profiles").document(userEmail).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                // Convert the DocumentSnapshot to a Profile object
+                                thisUsersProfile = document.toObject(Profile.class);
+                                // Now you can use the profile object
 
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("thisUsersProfile", thisUsersProfile);
-                        homeFragment = new HomeFragment();
-                        homeFragment.setArguments(bundle);
-                    } else {
-                        Log.d(TAG, "No such document");
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("thisUsersProfile", thisUsersProfile);
+                                homeFragment = new HomeFragment();
+                                homeFragment.setArguments(bundle);
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
                     }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
+                });
             }
-        });
+        } else {
+            Log.d(TAG, "Error getting documents: ", task.getException());
+        }
+    }
+});
 
 
 
