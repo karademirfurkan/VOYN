@@ -58,17 +58,9 @@ public class MainActivity extends AppCompatActivity {
             auth.signInWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
-                    FirebaseUser user = auth.getCurrentUser();
-                    if (user != null) {
-                        String uid = user.getUid();
-                        Intent intent = new Intent(MainActivity.this, MenuPage.class);
-                        intent.putExtra("userID", uid);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        // Handle the case where the user is null
-                        System.out.println("User is null");
-                    }
+                    Intent intent = new Intent(MainActivity.this, MenuPage.class);
+                    startActivity(intent);
+                    finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

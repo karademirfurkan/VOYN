@@ -36,6 +36,8 @@ public class AddTransportationActivity extends AppCompatActivity {
 
     private  Profile creatorProfile;
 
+    private FirebaseAuth auth;
+
     public  AddTransportationActivity() {
 
     }
@@ -46,14 +48,17 @@ public class AddTransportationActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        auth = FirebaseAuth.getInstance();
+
         db = FirebaseFirestore.getInstance();
-        userID = getIntent().getStringExtra("userID");
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         getUserFromFirebase();
     }
     private void getUserFromFirebase() {
         if (userID == null) {
             thisUser = new User("Emir", "Momoli");
         }
+
         DocumentReference docRef = db.collection("Users").document(userID);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

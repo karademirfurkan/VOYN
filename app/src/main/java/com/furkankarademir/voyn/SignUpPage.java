@@ -69,8 +69,6 @@ public class SignUpPage extends AppCompatActivity {
                                 //fireStore.collection("Profiles").document(eMail).set(newProfile);
 
                                 Intent intent = new Intent(SignUpPage.this, MenuPage.class);
-                                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                intent.putExtra("userId", userId);
                                 startActivity(intent);
                                 finish();
                             }
