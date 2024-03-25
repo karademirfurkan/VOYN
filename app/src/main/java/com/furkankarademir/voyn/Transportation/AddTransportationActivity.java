@@ -14,6 +14,7 @@ import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityAddTransportationBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -50,6 +51,9 @@ public class AddTransportationActivity extends AppCompatActivity {
         getUserFromFirebase();
     }
     private void getUserFromFirebase() {
+        if (userID == null) {
+            thisUser = new User("Emir", "Momoli");
+        }
         DocumentReference docRef = db.collection("Users").document(userID);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -78,8 +82,11 @@ public class AddTransportationActivity extends AppCompatActivity {
         {
             // Add transportation activity to database
             Date date = new Date(binding.dateEdit.getText().toString());
-            userID = (String) getIntent().getSerializableExtra("userID");
             creatorProfile = thisUser.getProfile();
+            if(creatorProfile == null)
+            {
+                creatorProfile = new Profile(thisUser.getName(), thisUser.getSurname(), thisUser.getMail(), "Department");
+            }
             String timeString = binding.timeEdit.getText().toString();
             Time time = new Time(Integer.parseInt(timeString.substring(0, 2)), Integer.parseInt(timeString.substring(3, 5)), 0);
             Transportation transportation = new Transportation(date, creatorProfile, time, binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(), Integer.parseInt(binding.seatsEdit.getText().toString()), binding.notesEdit.getText().toString());
