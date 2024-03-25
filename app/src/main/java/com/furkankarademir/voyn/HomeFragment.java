@@ -20,7 +20,7 @@ import java.io.Serializable;
 
 public class HomeFragment extends Fragment {
 
-    private User thisUser;
+    private String userID;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            thisUser = (User) getArguments().getSerializable("thisUser");
+            userID = (String) getArguments().getSerializable("UserID");
         }
 
     }
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), TransportationActivity.class);
-                intent.putExtra("thisUser", (Serializable) thisUser);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
                 //burda normalde finish yazıyorduk ama finish tanımıyor
 

@@ -4,7 +4,7 @@ import com.furkankarademir.voyn.ProfileClasses.Profile;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
+public class User {
     private String name;
     private String surname;
     private String mail;

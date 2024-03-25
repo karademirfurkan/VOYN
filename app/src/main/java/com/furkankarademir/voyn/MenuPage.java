@@ -89,7 +89,7 @@ public class MenuPage extends AppCompatActivity {
                         // Now you have the user object, you can get the profile
 
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("thisUser", (Serializable) thisUser);
+                        bundle.putSerializable("userID", userID);
                         homeFragment = new HomeFragment();
                         homeFragment.setArguments(bundle);
                     }

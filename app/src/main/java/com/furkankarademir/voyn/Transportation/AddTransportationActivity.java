@@ -1,8 +1,10 @@
 package com.furkankarademir.voyn.Transportation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -10,16 +12,28 @@ import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityAddTransportationBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.SplittableRandom;
 
 public class AddTransportationActivity extends AppCompatActivity {
 
     private ActivityAddTransportationBinding binding;
 
     private User thisUser;
+
+    private String userID;
+
+    private FirebaseFirestore db;
+
+    private  Profile creatorProfile;
 
     public  AddTransportationActivity() {
 
@@ -30,6 +44,28 @@ public class AddTransportationActivity extends AppCompatActivity {
         binding = ActivityAddTransportationBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        db = FirebaseFirestore.getInstance();
+        userID = getIntent().getStringExtra("userID");
+        getUserFromFirebase();
+    }
+    private void getUserFromFirebase() {
+        DocumentReference docRef = db.collection("Users").document(userID);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        thisUser = document.toObject(User.class);
+                    } else {
+                        Log.d("DocumentSnapshot", "No such document");
+                    }
+                } else {
+                    Log.d("DocumentSnapshot", "get failed with ", task.getException());
+                }
+            }
+        });
     }
 
     public void addTransportationActivityButtonClicked(View view) {
@@ -42,8 +78,8 @@ public class AddTransportationActivity extends AppCompatActivity {
         {
             // Add transportation activity to database
             Date date = new Date(binding.dateEdit.getText().toString());
-            thisUser = (User) getIntent().getSerializableExtra("thisUser");
-            Profile creatorProfile = thisUser.getProfile();
+            userID = (String) getIntent().getSerializableExtra("userID");
+            creatorProfile = thisUser.getProfile();
             String timeString = binding.timeEdit.getText().toString();
             Time time = new Time(Integer.parseInt(timeString.substring(0, 2)), Integer.parseInt(timeString.substring(3, 5)), 0);
             Transportation transportation = new Transportation(date, creatorProfile, time, binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(), Integer.parseInt(binding.seatsEdit.getText().toString()), binding.notesEdit.getText().toString());

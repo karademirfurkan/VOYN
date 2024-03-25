@@ -14,17 +14,17 @@ import java.io.Serializable;
 
 public class TransportationActivity extends AppCompatActivity {
 
-    private User thisUser;
+    private String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transportation);
-        thisUser = (User) getIntent().getSerializableExtra("thisUser");
+        userID = (String) getIntent().getSerializableExtra("userID");
     }
 
     public void addTransportationButton(View view) {
         Intent intent = new Intent(this, AddTransportationActivity.class);
-        intent.putExtra("thisUser", (Serializable) thisUser);
+        intent.putExtra("userID", userID);
         startActivity(intent);
     }
 }
