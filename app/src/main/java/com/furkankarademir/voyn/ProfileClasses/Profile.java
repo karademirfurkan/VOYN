@@ -1,7 +1,5 @@
 package com.furkankarademir.voyn.ProfileClasses;
 
-import java.io.Serializable;
-
 public class Profile {
     private String name;
     private String surname;

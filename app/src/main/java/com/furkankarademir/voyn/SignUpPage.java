@@ -63,11 +63,6 @@ public class SignUpPage extends AppCompatActivity {
                         fireStore.collection("Users").add(newUser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
-
-
-                                // Add the Profile object to the "Profiles" collection in Firestore
-                                //fireStore.collection("Profiles").document(eMail).set(newProfile);
-
                                 Intent intent = new Intent(SignUpPage.this, MenuPage.class);
                                 startActivity(intent);
                                 finish();
