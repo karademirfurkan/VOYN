@@ -3,6 +3,7 @@ package com.furkankarademir.voyn.Transportation;
 import static android.content.ContentValues.TAG;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -25,11 +26,8 @@ public class Transportation extends Activity {
     private int seats;
 
 
-    public Transportation(Date date, Profile profile, Time time, String departure, String destination, int seats, String extraNote) {
-        super(date, profile, time, extraNote);
-        this.departure = departure;
-        this.destination = destination;
-        this.seats = seats;
+    public Transportation(String extraNote) {
+        super(extraNote);
     }
 
     public void addActivityToDatabase() {
@@ -50,12 +48,14 @@ public class Transportation extends Activity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
+                        System.out.println("noldu");
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        System.out.println("nolmadı");
                         Log.w(TAG, "Error adding document", e);
                     }
                 });

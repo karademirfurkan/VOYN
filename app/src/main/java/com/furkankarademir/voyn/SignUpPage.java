@@ -60,9 +60,9 @@ public class SignUpPage extends AppCompatActivity {
                         User newUser = new User(name, surname);
                         newUser.setMail(eMail);
                         newUser.setPassword(password);
-                        fireStore.collection("Users").add(newUser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        fireStore.collection("Users").document(auth.getUid()).set(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
+                            public void onSuccess(Void unused) {
                                 Intent intent = new Intent(SignUpPage.this, MenuPage.class);
                                 startActivity(intent);
                                 finish();
@@ -70,7 +70,7 @@ public class SignUpPage extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SignUpPage.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(SignUpPage.this, e.getLocalizedMessage(), Toast.LENGTH_LONG);
                             }
                         });
                     }

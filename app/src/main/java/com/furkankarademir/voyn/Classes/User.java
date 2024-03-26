@@ -12,6 +12,7 @@ public class User {
 
     private Profile userProfile;
 
+
     public User  (String name, String surname)
     {
         this.name = name;
