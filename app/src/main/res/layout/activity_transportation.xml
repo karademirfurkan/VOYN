@@ -80,14 +80,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="412dp"
+        android:layout_width="wrap_content"
         android:layout_height="101dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="1dp"
-        android:layout_marginBottom="5dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
         app:layout_constraintTop_toBottomOf="@+id/textView34">
 
         <LinearLayout
@@ -99,7 +96,7 @@
                 android:id="@+id/textView38"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="1"
                 android:fontFamily="@font/jockey_one"
                 android:paddingLeft="5dp"
                 android:text="Opened Activities"
