@@ -74,7 +74,7 @@ public class TransportationActivity extends AppCompatActivity {
                     String date1 = (String) o1.get("date");
                     String date2 = (String) o2.get("date");
 
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
 
                     try {
                         Date dateObj1 = format.parse(date1);
