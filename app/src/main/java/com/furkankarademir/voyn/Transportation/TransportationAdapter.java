@@ -1,0 +1,67 @@
+package com.furkankarademir.voyn.Transportation;
+
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.furkankarademir.voyn.databinding.RecyclerTransportationRowBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class TransportationAdapter extends RecyclerView.Adapter<TransportationAdapter.TransportationHolder> {
+
+    private ArrayList<HashMap<String, Object>> transportationActivities;
+    public  TransportationAdapter(ArrayList<HashMap<String, Object>> transportationActivities)
+    {
+        this.transportationActivities = transportationActivities;
+    }
+
+
+    public class TransportationHolder extends RecyclerView.ViewHolder
+    {
+        private RecyclerTransportationRowBinding binding;
+        public TransportationHolder(RecyclerTransportationRowBinding binding)
+        {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+    }
+    public TransportationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        RecyclerTransportationRowBinding transportationRowBinding = RecyclerTransportationRowBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new TransportationHolder(transportationRowBinding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull TransportationHolder holder, int position)
+    {
+        //String time = (String) transportationActivities.get(position).get("time");
+        String departure = (String) transportationActivities.get(position).get("departure");
+        System.out.println(departure);
+
+        String destination = (String) transportationActivities.get(position).get("destination");
+        String personLimit = (String) transportationActivities.get(position).get("seats");
+
+        //holder.binding.time.setText(time);
+        //holder.binding.date.setText();
+        holder.binding.whereFrom.setText(departure);
+
+        holder.binding.whereTo.setText(destination);
+
+        holder.binding.personLimit.setText("36/" + personLimit);
+    }
+
+    @Override
+    public int getItemCount() {
+        return transportationActivities.size();
+    }
+}
