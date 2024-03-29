@@ -22,7 +22,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class TransportationActivity extends AppCompatActivity {
@@ -59,11 +62,30 @@ public class TransportationActivity extends AppCompatActivity {
                     transportationActivities.add(transportation);
                 }
                 System.out.println(transportationActivities);
+
+                transportationActivities.sort((o1, o2) -> {
+                    if(o1.get("date") == null || o2.get("date") == null)
+                        return 0;
+                    String date1 = (String) o1.get("date");
+                    String date2 = (String) o2.get("date");
+
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+
+                    try {
+                        Date dateObj1 = format.parse(date1);
+                        Date dateObj2 = format.parse(date2);
+                        return dateObj1.compareTo(dateObj2);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        return 0;
+                    }
+                });
                 transportationAdapter.notifyDataSetChanged();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                System.out.println("Olmadı beeee");
             }
         });
     }
@@ -72,4 +94,5 @@ public class TransportationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddTransportationActivity.class);
         startActivity(intent);
     }
+
 }

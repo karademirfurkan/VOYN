@@ -15,11 +15,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Transportation extends Activity {
+public class Transportation extends Activity{
     private String departure;
     private String destination;
 
@@ -31,6 +33,8 @@ public class Transportation extends Activity {
                           int seats, String extraNote, String creatorUserID) {
         super(name,surname, mail,date, time, extraNote, creatorUserID);
     }
+
+
 
     public void addActivityToDatabase() {
         // Add transportation to database
