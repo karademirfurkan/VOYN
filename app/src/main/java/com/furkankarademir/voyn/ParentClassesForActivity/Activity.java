@@ -9,14 +9,19 @@ import java.sql.Time;
 import java.util.Date;
 
 public abstract class Activity implements Serializable {
-    private Date date;
-    private Profile profile;
+    private String  date;
 
-    private Time time;
+    private String time;
 
+    private String name;
+    private String surname;
+    private String mail;
+    private int creatorUserID;
     private String extraNote;
 
-    public Activity(String extraNote) {
+    public Activity(String name,String surname, String mail,String date,String time,String extraNote, String creatorUserID) {
+        this.date = date;
+        this.time = time;
         this.extraNote = extraNote;
     }
 
@@ -26,16 +31,25 @@ public abstract class Activity implements Serializable {
         return extraNote;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public String getName() {
+        return name;
+    }
+    public String getSurname() {
+        return surname;
+    }
+    public String getMail() {
+        return mail;
+    }
+    public int getCreatorUserID() {
+        return creatorUserID;
     }
 
 }

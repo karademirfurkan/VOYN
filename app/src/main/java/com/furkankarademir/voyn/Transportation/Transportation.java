@@ -15,11 +15,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Transportation extends Activity {
+public class Transportation extends Activity{
     private String departure;
     private String destination;
 
@@ -27,9 +29,16 @@ public class Transportation extends Activity {
     private int seats;
 
 
-    public Transportation(String extraNote) {
-        super(extraNote);
+    public Transportation(String name, String surname, String mail, String date, String time,String departure, String destination,
+                          int seats, String extraNote, String creatorUserID)
+    {
+        super(name,surname, mail, date, time, extraNote, creatorUserID);
+        this.departure = departure;
+        this.destination = destination;
+        this.seats = seats;
     }
+
+
 
     public void addActivityToDatabase() {
         // Add transportation to database
@@ -37,7 +46,10 @@ public class Transportation extends Activity {
 
         Map<String, Object> transportation = new HashMap<>();
         transportation.put("date", getDate());
-        transportation.put("profile", getProfile());
+        transportation.put("name", getName());
+        transportation.put("surname", getSurname());
+        transportation.put("mail", getMail());
+        transportation.put("creatorUserID", getCreatorUserID());
         transportation.put("time", getTime());
         transportation.put("departure", departure);
         transportation.put("destination", destination);
@@ -49,14 +61,14 @@ public class Transportation extends Activity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        System.out.println("noldu");
+                        System.out.println("her şey ejkendi");
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        System.out.println("nolmadı");
+                        System.out.println("olmadı beee");
                         Log.w(TAG, "Error adding document", e);
                     }
                 });

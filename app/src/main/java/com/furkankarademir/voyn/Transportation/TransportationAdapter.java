@@ -44,20 +44,19 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
     @Override
     public void onBindViewHolder(@NonNull TransportationHolder holder, int position)
     {
-        //String time = (String) transportationActivities.get(position).get("time");
+        String time = (String) transportationActivities.get(position).get("time");
         String departure = (String) transportationActivities.get(position).get("departure");
-        System.out.println(departure);
+        String date = (String) transportationActivities.get(position).get("date");
+        String destination = (String) transportationActivities.get(position).get("destination");
+        String personLimit = transportationActivities.get(position).get("seats").toString();
 
-        //String destination = (String) transportationActivities.get(position).get("destination");
-        //String personLimit = (String) transportationActivities.get(position).get("seats");
+        holder.binding.time.setText(time);
+        holder.binding.date.setText(date);
+        holder.binding.whereFrom.setText(departure);
+        holder.binding.whereTo.setText(destination);
+        holder.binding.personLimit.setText(personLimit);
 
-        //holder.binding.time.setText(time);
-        //holder.binding.date.setText();
-        //holder.binding.whereFrom.setText(departure);
 
-        //holder.binding.whereTo.setText(destination);
-
-        //holder.binding.personLimit.setText("36/" + personLimit);
     }
 
     @Override
