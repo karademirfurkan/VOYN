@@ -63,6 +63,11 @@ public class TransportationActivity extends AppCompatActivity {
                 }
                 System.out.println(transportationActivities);
 
+                transportationActivities.removeIf(transportation -> transportation.get("date") == null ||
+                        transportation.get("time") == null || transportation.get("departure") == null ||
+                        transportation.get("destination") == null);
+
+
                 transportationActivities.sort((o1, o2) -> {
                     if(o1.get("date") == null || o2.get("date") == null)
                         return 0;
