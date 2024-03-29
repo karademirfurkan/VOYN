@@ -25,13 +25,53 @@
         tools:layout_editor_absoluteY="727dp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="379dp"
+        android:layout_height="302dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/departureEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Departure Point"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/destinationEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Destination "
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/dateEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter the Date in the form Year/Month/Day"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/timeEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter the Time"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/seatsNumberEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter the Number of Available Seats"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/notesEdit"
@@ -41,12 +81,14 @@
             android:hint="Extra Notes"
             android:inputType="text" />
 
-        <TextView
-            android:id="@+id/textView31"
-            android:layout_width="336dp"
-            android:layout_height="24dp"
-            android:text="Opening a Transportation Activity" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="336dp"
+        android:layout_height="24dp"
+        android:text="Opening a Transportation Activity"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

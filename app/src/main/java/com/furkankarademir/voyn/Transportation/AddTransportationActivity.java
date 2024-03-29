@@ -86,7 +86,7 @@ public class AddTransportationActivity extends AppCompatActivity {
     }
 
     public void addTransportationActivityButtonClicked(View view) {
-        if("a".equals("b"))
+        if(binding.notesEdit.getText().toString().equals(""))
         {
             // Show a toast message to user
             Toast.makeText(AddTransportationActivity.this, "Please enter all the blanks", Toast.LENGTH_LONG).show();
@@ -95,7 +95,10 @@ public class AddTransportationActivity extends AppCompatActivity {
         {
             // Add transportation activity to database
 
-            Transportation transportation = new Transportation(binding.notesEdit.getText().toString());
+            Transportation transportation = new Transportation(name, surname, mail, binding.dateEdit.getText().toString(),
+                    binding.timeEdit.getText().toString(), binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(),
+                    Integer.parseInt(binding.seatsNumberEdit.getText().toString()), binding.notesEdit.getText().toString(), userID);
+                  //  ,binding.notesEdit.getText().toString());
 
             transportation.addActivityToDatabase();
             finish();

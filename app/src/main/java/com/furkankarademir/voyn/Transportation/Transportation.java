@@ -27,8 +27,9 @@ public class Transportation extends Activity {
     private int seats;
 
 
-    public Transportation(String extraNote) {
-        super(extraNote);
+    public Transportation(String name, String surname, String mail,String departure, String destination,String date, String time,
+                          int seats, String extraNote, String creatorUserID) {
+        super(name,surname, mail,date, time, extraNote, creatorUserID);
     }
 
     public void addActivityToDatabase() {
@@ -37,7 +38,10 @@ public class Transportation extends Activity {
 
         Map<String, Object> transportation = new HashMap<>();
         transportation.put("date", getDate());
-        transportation.put("profile", getProfile());
+        transportation.put("name", getName());
+        transportation.put("surname", getSurname());
+        transportation.put("mail", getMail());
+        transportation.put("creatorUserID", getCreatorUserID());
         transportation.put("time", getTime());
         transportation.put("departure", departure);
         transportation.put("destination", destination);
@@ -49,14 +53,14 @@ public class Transportation extends Activity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        System.out.println("noldu");
+                        System.out.println("her şey ejkendi");
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        System.out.println("nolmadı");
+                        System.out.println("olmadı beee");
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
