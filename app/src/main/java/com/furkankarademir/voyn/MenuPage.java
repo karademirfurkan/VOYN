@@ -43,16 +43,17 @@ public class MenuPage extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.constraint_layout, new MessagesFragment());
+        fragmentTransaction.add(R.id.constraint_layout, new HomeFragment());
         fragmentTransaction.commit();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemid = item.getItemId();
-
                 if (itemid == R.id.home) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
