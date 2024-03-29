@@ -95,18 +95,10 @@ public class AddTransportationActivity extends AppCompatActivity {
         {
             // Add transportation activity to database
 
-            System.out.println("tammam");
-
-            System.out.println("okeyy");
-
-
-
             Transportation transportation = new Transportation(binding.notesEdit.getText().toString());
-            System.out.println("transportation zıkkımı");
+
             transportation.addActivityToDatabase();
             finish();
-
-
         }
     }
 

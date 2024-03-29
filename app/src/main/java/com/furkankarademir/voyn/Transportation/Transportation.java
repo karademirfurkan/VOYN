@@ -20,9 +20,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Transportation extends Activity {
-
     private String departure;
     private String destination;
+
+
     private int seats;
 
 
@@ -59,5 +60,31 @@ public class Transportation extends Activity {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+    }
+
+
+    //getter and setters
+    public String getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 }
