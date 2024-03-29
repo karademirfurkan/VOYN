@@ -99,6 +99,8 @@ public class AddTransportationActivity extends AppCompatActivity {
 
             transportation.addActivityToDatabase();
             finish();
+
+
         }
     }
 

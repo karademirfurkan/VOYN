@@ -48,16 +48,16 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         String departure = (String) transportationActivities.get(position).get("departure");
         System.out.println(departure);
 
-        String destination = (String) transportationActivities.get(position).get("destination");
-        String personLimit = (String) transportationActivities.get(position).get("seats");
+        //String destination = (String) transportationActivities.get(position).get("destination");
+        //String personLimit = (String) transportationActivities.get(position).get("seats");
 
         //holder.binding.time.setText(time);
         //holder.binding.date.setText();
-        holder.binding.whereFrom.setText(departure);
+        //holder.binding.whereFrom.setText(departure);
 
-        holder.binding.whereTo.setText(destination);
+        //holder.binding.whereTo.setText(destination);
 
-        holder.binding.personLimit.setText("36/" + personLimit);
+        //holder.binding.personLimit.setText("36/" + personLimit);
     }
 
     @Override

@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.HomeFragment;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivitySignUpPageBinding;
@@ -37,6 +39,7 @@ public class TransportationActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         transportationActivities = new ArrayList<>();
+
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(TransportationActivity.this));
         transportationAdapter= new TransportationAdapter(transportationActivities);

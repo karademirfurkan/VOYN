@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bigLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_margin="5dp"
     android:background="@drawable/transportation_activity_list_row_view"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -137,9 +137,9 @@
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            app:srcCompat="@drawable/arrow_icon"
-            android:layout_gravity="center_vertical"/>
+            app:srcCompat="@drawable/arrow_icon" />
 
         <LinearLayout
             android:layout_width="wrap_content"
