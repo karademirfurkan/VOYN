@@ -25,8 +25,10 @@ public class HomeFragment extends Fragment {
     private String userID;
 
     private ImageView imageView;
+    private ImageView imageView2;
     private int currentImageIndex = 0;
     private int[] images = {R.drawable.advitisement_1, R.drawable.advertisement_2, R.drawable.advertisement_3};
+    private int[] images2 = {R.drawable.first_order_icon, R.drawable.second_order_icon, R.drawable.third_order_icon};
     private Handler handler;
     private Runnable runnable;
 
@@ -61,7 +63,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        imageView = view.findViewById(R.id.imageView); // Initialize imageView
+        imageView = view.findViewById(R.id.imageView);
+        imageView2 = view.findViewById(R.id.orderImage);
         return view;
     }
 
@@ -77,11 +80,7 @@ public class HomeFragment extends Fragment {
                 intent.putExtra("userID", userID);
                 startActivity(intent);
                 //burda normalde finish yazıyorduk ama finish tanımıyor
-
             }
-
-
-
         });
 
 
@@ -103,9 +102,28 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        Button myActivities = view.findViewById(R.id.button8);
+        sports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(view.getContext(), myActivitiesList.class);
+                //startActivity(intent);
+            }
+        });
+
+        Button incomingInvitations = view.findViewById(R.id.button9);
+        sports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(view.getContext(), inComingInvitationsList.class);
+                //startActivity(intent);
+            }
+        });
+
 
         //for animation
         imageView.setImageResource(images[0]);
+        imageView2.setImageResource(images2[0]);
 
         handler = new Handler();
 
@@ -113,11 +131,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void run() {
                 imageView.setImageResource(images[currentImageIndex % 3]);
+                imageView2.setImageResource(images2[currentImageIndex % 3]);
 
                 currentImageIndex++;
 
                 handler.postDelayed(this, 4000);
-
             }
         };
 
