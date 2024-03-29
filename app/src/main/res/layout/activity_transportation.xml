@@ -10,21 +10,141 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
         app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintEnd_toStartOf="@+id/textView33"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.003"
+        android:layout_marginTop="7dp"/>
 
     <Button
         android:id="@+id/button4"
+        style="@style/Add_Button_View"
         android:layout_width="75dp"
-        android:layout_height="57dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="52dp"
         android:onClick="addTransportationButton"
         android:text="+"
+        android:textAlignment="gravity"
+        android:textSize="43sp"
+        app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="18dp"
+        android:layout_height="400dp"
+        android:background="#2058A8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="18dp"
+        android:layout_height="400dp"
+        android:background="#2058A8"
+        app:layout_constraintBottom_toTopOf="@+id/textView35"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#2058A8"
+        android:fontFamily="@font/jockey_one"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Transportation" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#2058A8"
+        android:fontFamily="@font/jacques_francois"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="412dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="1dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView34"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="412dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jockey_one"
+                android:text="Opened Activities"
+                android:textSize="24sp"
+                android:paddingLeft="5dp"
+                android:layout_weight="5"/>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/filter_icon"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="#C93335"
+                android:layout_gravity="center_vertical"
+                />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jockey_one"
+                android:text="Insufficient star"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/seperator_icon" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

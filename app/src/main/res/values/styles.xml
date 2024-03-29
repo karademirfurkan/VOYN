@@ -25,5 +25,12 @@
         <item name="strokeColor">@color/black</item>
     </style>
 
+    <style name="Add_Button_View">
+        <item name="backgroundTint">#1C53BD</item>
+        <item name="cornerRadius">30dp</item>
+        <item name="strokeWidth">3dp</item>
+        <item name="strokeColor">#FFFFFF</item>
+    </style>
+
 
 </resources>

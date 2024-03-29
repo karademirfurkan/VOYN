@@ -131,39 +131,39 @@
             <Button
                 android:id="@+id/button2"
                 style="@style/Activities_Page_Buttons_View"
-                android:layout_width="280dp"
+                android:layout_width="310dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="11dp"
+                android:drawableLeft="@drawable/car_icon"
                 android:fontFamily="@font/jockey_one"
                 android:text="TRANSPORTATION"
                 android:textColor="#000000"
-                android:textSize="23sp"
-                android:drawableLeft="@drawable/car_icon"/>
+                android:textSize="23sp" />
 
             <Button
                 android:id="@+id/button5"
                 style="@style/Activities_Page_Buttons_View"
-                android:layout_width="280dp"
+                android:layout_width="310dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="11dp"
+                android:drawableLeft="@drawable/home_icon"
                 android:fontFamily="@font/jockey_one"
                 android:text="HOME AND DORM"
                 android:textColor="#000000"
-                android:textSize="23sp"
-                android:drawableLeft="@drawable/home_icon"/>
+                android:textSize="23sp" />
 
 
             <Button
                 android:id="@+id/button7"
                 style="@style/Activities_Page_Buttons_View"
-                android:layout_width="280dp"
+                android:layout_width="310dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="25dp"
+                android:drawableLeft="@drawable/ball_icon"
                 android:fontFamily="@font/jockey_one"
                 android:text="SPORTS"
                 android:textColor="#000000"
-                android:textSize="23sp"
-                android:drawableLeft="@drawable/ball_icon"/>
+                android:textSize="23sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

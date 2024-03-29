@@ -135,7 +135,7 @@ public class HomeFragment extends Fragment {
 
                 currentImageIndex++;
 
-                handler.postDelayed(this, 4000);
+                handler.postDelayed(this, 2500);
             }
         };
 
