@@ -22,26 +22,24 @@ import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
+
 
 public class MenuPage extends AppCompatActivity {
 
     private static final String TAG = "MenuPage";
-    private String userEmail;
-
-    private Profile thisUsersProfile;
 
     private User thisUser;
-
+    private int userID;
     private HomeFragment homeFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
-        userEmail = getIntent().getStringExtra("userEmail");
+        userID = getIntent().getIntExtra("userID", 0);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.altbar);
-
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint_layout);
-
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -50,15 +48,12 @@ public class MenuPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
-
         bottomNavigationView.setOnNavigationItemSelectedListener( new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemid = item.getItemId();
 
-                if (itemid == R.id.home)
-                {
+                if (itemid == R.id.home) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     if (homeFragment != null) {
@@ -69,15 +64,13 @@ public class MenuPage extends AppCompatActivity {
                     }
                     fragmentTransaction.commit();
                 }
-                else if (itemid == R.id.messages)
-                {
+                else if (itemid == R.id.messages) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.constraint_layout, new MessagesFragment());
                     fragmentTransaction.commit();
                 }
-                else if (itemid == R.id.profile)
-                {
+                else if (itemid == R.id.profile) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.constraint_layout, new ProfileFragment());
@@ -87,69 +80,24 @@ public class MenuPage extends AppCompatActivity {
             }
         });
 
-       db.collection("Users").whereEqualTo("mail", userEmail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-    @Override
-    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-        if (task.isSuccessful()) {
-            for (QueryDocumentSnapshot document : task.getResult()) {
-                thisUser = document.toObject(User.class);
-                // Now you have the user object, you can get the profile
-                db.collection("Profiles").document(userEmail).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                // Convert the DocumentSnapshot to a Profile object
-                                thisUsersProfile = document.toObject(Profile.class);
-                                // Now you can use the profile object
+        db.collection("Users").whereEqualTo("userId", userID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        thisUser = document.toObject(User.class);
+                        // Now you have the user object, you can get the profile
 
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("thisUsersProfile", thisUsersProfile);
-                                homeFragment = new HomeFragment();
-                                homeFragment.setArguments(bundle);
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("userID", userID);
+                        homeFragment = new HomeFragment();
+                        homeFragment.setArguments(bundle);
                     }
-                });
+                }
+                else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
             }
-        } else {
-            Log.d(TAG, "Error getting documents: ", task.getException());
-        }
-    }
-});
-
-
-
-
-
-
-
-        /*private void loadFragment(Fragment fragment, boolean isAppInitialized) // calismiyor :C
-        {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            if(isAppInitialized)
-            {
-                fragmentTransaction.add(R.id.constraint_layout, fragment);
-            }
-            else
-            {
-                fragmentTransaction.replace(R.id.constraint_layout, fragment);
-            }
-
-            fragmentTransaction.commit();
-
-        }*/
-    }
-
-    public Profile getThisUsersProfile()
-    {
-        return thisUsersProfile;
+        });
     }
 }

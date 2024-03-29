@@ -6,114 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".Transportation.AddTransportationActivity">
 
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="336dp"
-        android:layout_height="24dp"
-        android:text="Opening a Transportation Activity"
-        app:layout_constraintBottom_toTopOf="@+id/departureEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/departureEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:ems="10"
-        android:hint="Enter the Departure Point"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/destinationEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:ems="10"
-        android:hint="Enter the Destination"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/dateEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/departureEdit" />
-
-    <EditText
-        android:id="@+id/dateEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
-        android:ems="10"
-        android:hint="Enter The Date "
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/timeEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/departureEdit"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/addActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="16dp"
         android:onClick="addTransportationActivityButtonClicked"
         android:text="Add Activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="727dp" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:onClick="cancelTransportationActivityButtonClicked"
         android:text="Cancel"
+        tools:layout_editor_absoluteX="340dp"
+        tools:layout_editor_absoluteY="727dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.706"
-        app:layout_constraintStart_toEndOf="@+id/button5" />
-
-    <EditText
-        android:id="@+id/timeEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:ems="10"
-        android:hint="Enter the Time"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/seatsEdit"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/departureEdit" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/seatsEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:ems="10"
-        android:hint="Enter Number of Available Seats"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/notesEdit"
-        tools:layout_editor_absoluteX="98dp" />
+        <EditText
+            android:id="@+id/notesEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Extra Notes"
+            android:inputType="text" />
 
-    <EditText
-        android:id="@+id/notesEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="Extra Notes"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="336dp"
+            android:layout_height="24dp"
+            android:text="Opening a Transportation Activity" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

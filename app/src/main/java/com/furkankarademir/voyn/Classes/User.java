@@ -2,6 +2,8 @@ package com.furkankarademir.voyn.Classes;
 
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 
+import java.io.Serializable;
+
 public class User {
     private String name;
     private String surname;
@@ -9,6 +11,7 @@ public class User {
     private String password;
 
     private Profile userProfile;
+
 
     public User  (String name, String surname)
     {

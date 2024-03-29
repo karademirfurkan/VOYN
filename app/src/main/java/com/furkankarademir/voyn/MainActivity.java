@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        /*
         if (user != null)
         {
             Intent intent = new Intent(MainActivity.this, MenuPage.class);
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             Toast.makeText(MainActivity.this, "No problem, you are already signed in :)", Toast.LENGTH_LONG).show();
         }
-         */
+
     }
 
     public void signInButtonClicked(View view)
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(AuthResult authResult) {
                     Intent intent = new Intent(MainActivity.this, MenuPage.class);
-                    intent.putExtra("userEmail", eMail);
                     startActivity(intent);
                     finish();
                 }

@@ -60,24 +60,17 @@ public class SignUpPage extends AppCompatActivity {
                         User newUser = new User(name, surname);
                         newUser.setMail(eMail);
                         newUser.setPassword(password);
-                        fireStore.collection("Users").add(newUser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        fireStore.collection("Users").document(auth.getUid()).set(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
-
-
-                                // Add the Profile object to the "Profiles" collection in Firestore
-                                //fireStore.collection("Profiles").document(eMail).set(newProfile);
-
+                            public void onSuccess(Void unused) {
                                 Intent intent = new Intent(SignUpPage.this, MenuPage.class);
-                                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                intent.putExtra("userId", userId);
                                 startActivity(intent);
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SignUpPage.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(SignUpPage.this, e.getLocalizedMessage(), Toast.LENGTH_LONG);
                             }
                         });
                     }

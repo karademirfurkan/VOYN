@@ -16,10 +16,7 @@ public abstract class Activity implements Serializable {
 
     private String extraNote;
 
-    public Activity(Date date, Profile profile, Time time, String extraNote) {
-        this.date = date;
-        this.profile = profile;
-        this.time = time;
+    public Activity(String extraNote) {
         this.extraNote = extraNote;
     }
 
