@@ -68,6 +68,7 @@ public class AddTransportationActivity extends AppCompatActivity {
                 if(documentSnapshot.exists())
                 {
                     name = documentSnapshot.getString("name");
+                    System.out.println(name);
                     surname = documentSnapshot.getString("surname");
                     mail = documentSnapshot.getString("mail");
                 }
