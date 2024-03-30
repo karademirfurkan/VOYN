@@ -1,6 +1,8 @@
 package com.furkankarademir.voyn.Transportation;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -55,6 +57,15 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         holder.binding.whereFrom.setText(departure);
         holder.binding.whereTo.setText(destination);
         holder.binding.personLimit.setText(personLimit);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), TransportationDetailActivity.class);
+                intent.putExtra("transportation", transportationActivities.get(position));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
 
 
     }
