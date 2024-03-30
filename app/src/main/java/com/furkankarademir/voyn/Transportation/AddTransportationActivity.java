@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -67,8 +68,9 @@ public class AddTransportationActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists())
                 {
+                    Toast.makeText(AddTransportationActivity.this, "oldu", Toast.LENGTH_LONG).show();
                     name = documentSnapshot.getString("name");
-                    System.out.println(name);
+                    System.out.println("bunun ismi" + name);
                     surname = documentSnapshot.getString("surname");
                     mail = documentSnapshot.getString("mail");
                 }
@@ -84,6 +86,28 @@ public class AddTransportationActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*private void getUserFromFirebase() {
+        FirebaseFirestore.getInstance().collection("Users").document(userID)
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                name = document.getString("name");
+                                surname = document.getString("surname");
+                                mail = document.getString("mail");
+                                Toast.makeText(AddTransportationActivity.this, "User retrieved successfully", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(AddTransportationActivity.this, "No such document", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(AddTransportationActivity.this, "Error getting document: " + task.getException(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }*/
 
     public void addTransportationActivityButtonClicked(View view) {
         if(binding.notesEdit.getText().toString().equals(""))
