@@ -16,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import android.os.Bundle;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.Task;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
@@ -37,6 +38,10 @@ public class MenuPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         userID = getIntent().getIntExtra("userID", 0);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.altbar);
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraint_layout);
