@@ -2,24 +2,119 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Transportation.TransportationDetailActivity">
 
     <TextView
-        android:layout_width="88dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="16dp"
+        android:id="@+id/textView32"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="131dp"
         android:text="Name:"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nameInfo"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/nameInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView32"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView32"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="102dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="80dp"
+        android:text="Surname:"
+        app:layout_constraintEnd_toStartOf="@+id/surnameInfo"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/surnameInfo"
+        android:layout_width="126dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameInfo" />
+
+    <TextView
+        android:id="@+id/mailInfo"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/surnameInfo" />
+
+    <TextView
+        android:id="@+id/departureInfo"
+        android:layout_width="118dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mailInfo" />
+
+    <TextView
+        android:id="@+id/destinationInfo"
+        android:layout_width="118dp"
+        android:layout_height="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/departureInfo" />
+
+    <TextView
+        android:id="@+id/dateInfo"
+        android:layout_width="115dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/destinationInfo" />
+
+    <TextView
+        android:id="@+id/timeInfo"
+        android:layout_width="114dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateInfo" />
+
+    <TextView
+        android:id="@+id/seatsInfo"
+        android:layout_width="115dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeInfo" />
+
+    <Button
+        android:id="@+id/sendMessage"
+        android:layout_width="254dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:text="Send Message to Talk Details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seatsInfo" />
+
+    <Button
+        android:id="@+id/sendInvitation"
+        android:layout_width="251dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:onClick="sendInvitaionButtonClicked"
+        android:text="Send Invitation to Join"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sendMessage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

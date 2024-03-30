@@ -24,11 +24,19 @@ public class TransportationDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         HashMap<String, Object> transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
 
-        System.out.println(transportationMap);
         String name = (String) transportationMap.get("name");
-        System.out.println(name);
         binding.nameInfo.setText(name);
+        binding.surnameInfo.setText((String) transportationMap.get("surname"));
+        binding.mailInfo.setText((String) transportationMap.get("mail"));
+        binding.departureInfo.setText((String) transportationMap.get("departure"));
+        binding.destinationInfo.setText((String) transportationMap.get("destination"));
+        binding.dateInfo.setText((String) transportationMap.get("date"));
+        binding.timeInfo.setText((String) transportationMap.get("time"));
+        binding.seatsInfo.setText(transportationMap.get("seats").toString());
+    }
 
+    public void sendInvitaionButtonClicked(View view)
+    {
 
     }
 }
