@@ -3,6 +3,7 @@ package com.furkankarademir.voyn.ParentClassesForActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.furkankarademir.voyn.ProfileClasses.Profile;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.Serializable;
 import java.sql.Time;
@@ -23,6 +24,9 @@ public abstract class Activity implements Serializable {
         this.date = date;
         this.time = time;
         this.extraNote = extraNote;
+        this.name = name;
+        this.mail = mail;
+        this.surname = surname;
     }
 
     public abstract void addActivityToDatabase();

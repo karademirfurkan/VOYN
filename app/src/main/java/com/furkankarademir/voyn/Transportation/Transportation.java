@@ -11,6 +11,7 @@ import com.furkankarademir.voyn.ParentClassesForActivity.Activity;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,7 +25,6 @@ import java.util.Map;
 public class Transportation extends Activity{
     private String departure;
     private String destination;
-
 
     private int seats;
 
@@ -45,8 +45,11 @@ public class Transportation extends Activity{
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> transportation = new HashMap<>();
-        transportation.put("date", getDate());
-        transportation.put("name", getName());
+        transportation.put("date", this.getDate());
+        transportation.put("name", this.getName());
+
+        System.out.println(transportation.get("name"));
+
         transportation.put("surname", getSurname());
         transportation.put("mail", getMail());
         transportation.put("creatorUserID", getCreatorUserID());

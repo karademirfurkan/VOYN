@@ -76,6 +76,7 @@ public class AddTransportationActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    System.out.println("olmadı");
                     Toast.makeText(AddTransportationActivity.this, "olmadı", Toast.LENGTH_LONG).show();
                 }
             }
