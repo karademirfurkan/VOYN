@@ -111,7 +111,7 @@
         android:layout_width="251dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:onClick="sendInvitaionButtonClicked"
+        android:onClick="sendInvitationButtonClicked"
         android:text="Send Invitation to Join"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

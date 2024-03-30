@@ -35,7 +35,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
         binding.seatsInfo.setText(transportationMap.get("seats").toString());
     }
 
-    public void sendInvitaionButtonClicked(View view)
+    public void sendInvitationButtonClicked(View view)
     {
 
     }
