@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class Activity implements Serializable {
@@ -17,8 +18,12 @@ public abstract class Activity implements Serializable {
     private String name;
     private String surname;
     private String mail;
-    private int creatorUserID;
+    private String creatorUserID;
     private String extraNote;
+
+    private ArrayList<String> participantsId;
+
+    private ArrayList<String> invitedId;
 
     public Activity(String name,String surname, String mail,String date,String time,String extraNote, String creatorUserID) {
         this.date = date;
@@ -27,9 +32,12 @@ public abstract class Activity implements Serializable {
         this.name = name;
         this.mail = mail;
         this.surname = surname;
+        this.participantsId = new ArrayList<>();
+        this.invitedId = new ArrayList<>();
+        this.creatorUserID = creatorUserID;
     }
 
-    public abstract void addActivityToDatabase();
+    public abstract String addActivityToDatabase();
 
     public String getExtraNote() {
         return extraNote;
@@ -52,8 +60,17 @@ public abstract class Activity implements Serializable {
     public String getMail() {
         return mail;
     }
-    public int getCreatorUserID() {
+    public String getCreatorUserID() {
         return creatorUserID;
     }
 
+    public void addParticipant(String participantId)
+    {
+        participantsId.add(participantId);
+    }
+
+    public void addInvited(String invitedId)
+    {
+        this.invitedId.add(invitedId);
+    }
 }

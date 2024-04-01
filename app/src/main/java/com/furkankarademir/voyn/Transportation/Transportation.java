@@ -40,10 +40,10 @@ public class Transportation extends Activity{
 
 
 
-    public void addActivityToDatabase() {
+    public String addActivityToDatabase() {
         // Add transportation to database
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+        final String[] thisActivityID = new String[1];
         Map<String, Object> transportation = new HashMap<>();
         transportation.put("date", this.getDate());
         transportation.put("name", this.getName());
@@ -66,6 +66,8 @@ public class Transportation extends Activity{
                     public void onSuccess(DocumentReference documentReference) {
                         System.out.println("her şey ejkendi");
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        thisActivityID[0] = documentReference.getId();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -75,6 +77,7 @@ public class Transportation extends Activity{
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+        return thisActivityID[0];
     }
 
 

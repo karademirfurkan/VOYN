@@ -15,11 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.furkankarademir.voyn.Accomodation.AccomodationActivity;
-import com.furkankarademir.voyn.Classes.User;
-import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
-
-import java.io.Serializable;
 
 public class HomeFragment extends Fragment {
 
@@ -104,11 +100,11 @@ public class HomeFragment extends Fragment {
         });
 
         Button myActivities = view.findViewById(R.id.button8);
-        sports.setOnClickListener(new View.OnClickListener() {
+        myActivities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(view.getContext(), myActivitiesList.class);
-                //startActivity(intent);
+                Intent intent = new Intent(view.getContext(), com.furkankarademir.voyn.myactivitiesclasses.myActivities.class);
+                startActivity(intent);
             }
         });
 

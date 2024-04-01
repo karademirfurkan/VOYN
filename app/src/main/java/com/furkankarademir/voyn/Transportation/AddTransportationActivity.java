@@ -125,7 +125,32 @@ public class AddTransportationActivity extends AppCompatActivity {
                     Integer.parseInt(binding.seatsNumberEdit.getText().toString()), binding.notesEdit.getText().toString(), userID);
                   //  ,binding.notesEdit.getText().toString());
 
-            transportation.addActivityToDatabase();
+            String thisActivityId = transportation.addActivityToDatabase();
+            DocumentReference docRef = db.collection("Users").document(userID);
+            docRef.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if(documentSnapshot.exists())
+                    {
+                        Toast.makeText(AddTransportationActivity.this, "oldu", Toast.LENGTH_LONG).show();
+                        User user = documentSnapshot.toObject(User.class);
+                        if (user != null) {
+                            user.addActivity(thisActivityId);
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("olmadı");
+                        Toast.makeText(AddTransportationActivity.this, "olmadı", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }).addOnFailureListener(this, new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(AddTransportationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+
             finish();
 
 

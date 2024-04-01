@@ -34,10 +34,10 @@ public class Accomodation extends Activity
     }
     
     @Override
-    public void addActivityToDatabase()
+    public String addActivityToDatabase()
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+        final String[] thisActivityID = new String[1];
         Map<String, Object> accomodation = new HashMap<>();
         accomodation.put("name", getName());
         accomodation.put("surname", getSurname());
@@ -59,7 +59,7 @@ public class Accomodation extends Activity
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
+                        thisActivityID[0] = documentReference.getId();                    }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -67,6 +67,7 @@ public class Accomodation extends Activity
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+        return thisActivityID[0];
     }
 
     public String getType() {
