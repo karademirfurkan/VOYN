@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.furkankarademir.voyn.Accomodation.AccomodationActivity;
 import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
@@ -88,8 +89,8 @@ public class HomeFragment extends Fragment {
         homeAndDorm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(view.getContext(), HomeAndDorm.class);
-                //startActivity(intent);
+                Intent intent = new Intent(view.getContext(), AccomodationActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -85,7 +85,7 @@ public class AccomodationActivity extends AppCompatActivity {
     }
 
     public void addAccomodationButton(View view) {
-        Intent intent = new Intent(this, AddTransportationActivity.class);
+        Intent intent = new Intent(this, AddAccomodationActivity.class);
         startActivity(intent);
     }
 }
