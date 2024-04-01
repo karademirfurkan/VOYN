@@ -40,6 +40,8 @@ public class ChatUserListAdapter extends RecyclerView.Adapter<ChatUserListAdapte
     {
         holder.binding.name.setText(users.get(position).getName());
         holder.binding.surname.setText(users.get(position).getSurname());
+
+        //we cannot read mail and password!!!!!!!!!!! Whyyyyyy????
         holder.binding.mail.setText(users.get(position).getMail());
         holder.binding.password.setText(users.get(position).getPassword());
 
