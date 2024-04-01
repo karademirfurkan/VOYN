@@ -13,4 +13,14 @@ public class AddAccomodationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_accomodation);
     }
+
+    public void openActivityButtonClicked()
+    {
+
+    }
+
+    public void cancelButtonClicked()
+    {
+        
+    }
 }

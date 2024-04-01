@@ -13,6 +13,9 @@
         android:theme="@style/Theme.VOYN"
         tools:targetApi="31">
         <activity
+            android:name=".Accomodation.AddAccomodationActivity"
+            android:exported="false" />
+        <activity
             android:name=".Chat.ChatInBetweenPage"
             android:exported="false" />
         <activity
@@ -20,9 +23,6 @@
             android:exported="false" />
         <activity
             android:name=".Accomodation.AccomodationDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Accomodation.AddAccomodationActivity"
             android:exported="false" />
         <activity
             android:name=".Accomodation.AccomodationActivity"
