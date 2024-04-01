@@ -75,7 +75,7 @@ public class AddAccomodationActivity extends AppCompatActivity {
         });
     }
 
-    public void openActivityButtonClicked()
+    public void openActivityButtonClicked(View view)
     {
         if(!binding.type.getText().toString().equals(""))
         {
@@ -89,12 +89,15 @@ public class AddAccomodationActivity extends AppCompatActivity {
                         {
                             if(!binding.extraNotes.getText().toString().equals(""))
                             {
+                                System.out.println("oldu");
                                 Accomodation accomodation = new Accomodation(name, surname, mail, binding.date.getText().toString(),
                                         "boş", binding.extraNotes.getText().toString(), auth.getUid().toString(),
                                         binding.type.getText().toString(), binding.place.getText().toString(), binding.gender.getText().toString(),
                                         Integer.parseInt(binding.numberOfInhabitants.getText().toString()));
 
+                                System.out.println("oldu2");
                                 accomodation.addActivityToDatabase();
+                                System.out.println("oldu3");
                                 finish();
                             }
                             else
@@ -128,7 +131,7 @@ public class AddAccomodationActivity extends AppCompatActivity {
         }
     }
 
-    public void cancelButtonClicked()
+    public void cancelButtonClicked(View view)
     {
         Intent intent = new Intent(AddAccomodationActivity.this, AccomodationActivity.class);
         startActivity(intent);

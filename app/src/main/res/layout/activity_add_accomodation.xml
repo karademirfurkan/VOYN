@@ -74,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="openActivityButtonClicked"
                 android:text="open activity" />
 
             <Button
@@ -82,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="cancelButtonClicked"
-                android:text="Button" />
+                android:text="cancel" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

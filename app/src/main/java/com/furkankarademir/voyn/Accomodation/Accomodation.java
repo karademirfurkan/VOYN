@@ -1,6 +1,19 @@
 package com.furkankarademir.voyn.Accomodation;
 
+import static android.content.ContentValues.TAG;
+
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.furkankarademir.voyn.ParentClassesForActivity.Activity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Accomodation extends Activity
 {
@@ -21,8 +34,39 @@ public class Accomodation extends Activity
     }
     
     @Override
-    public void addActivityToDatabase() {
+    public void addActivityToDatabase()
+    {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        Map<String, Object> accomodation = new HashMap<>();
+        accomodation.put("name", getName());
+        accomodation.put("surname", getSurname());
+        accomodation.put("mail", getMail());
+        accomodation.put("date", getDate());
+        accomodation.put("time", getTime());
+        accomodation.put("extraNote", getExtraNote());
+        accomodation.put("creatorUserID", getCreatorUserID());
+
+        accomodation.put("type", type);
+        accomodation.put("place", place);
+        accomodation.put("gender", gender);
+        accomodation.put("numberOfInhabitants", numberOfInhabitants);
+
+
+        db.collection("accomodation")
+                .add(accomodation)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
     }
 
     public String getType() {
