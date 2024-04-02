@@ -73,4 +73,20 @@ public abstract class Activity implements Serializable {
     {
         this.invitedId.add(invitedId);
     }
+
+    public ArrayList<String> getParticipantsId() {
+        return participantsId;
+    }
+
+    public ArrayList<String> getInvitedId() {
+        return invitedId;
+    }
+
+    public void setParticipantsId(ArrayList<String> participantsId) {
+        this.participantsId = participantsId;
+    }
+
+    public void setInvitedId(ArrayList<String> invitedId) {
+        this.invitedId = invitedId;
+    }
 }
