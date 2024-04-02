@@ -60,6 +60,7 @@ public class SignUpPage extends AppCompatActivity {
                         User newUser = new User(name, surname);
                         newUser.setMail(eMail);
                         newUser.setPassword(password);
+                        newUser.setId(auth.getUid().toString());
                         fireStore.collection("Users").document(auth.getUid()).set(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {

@@ -24,17 +24,26 @@ public class User {
     private String mail;
     private String password;
 
+    private String id;
+
     private Profile userProfile;
 
     private ArrayList<String> myActivities;
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public User  (String name, String surname)
     {
         this.name = name;
         this.surname = surname;
         myActivities = new ArrayList<String>();
-
     }
 
     public String getName() {
