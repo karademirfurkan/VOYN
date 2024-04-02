@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.furkankarademir.voyn.Chat.Chat;
+import com.furkankarademir.voyn.Chat.ChatInBetweenPage;
 import com.furkankarademir.voyn.Chat.Message;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityTransportationDetailBinding;
@@ -65,11 +67,9 @@ public class TransportationDetailActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            // Chat already exists
-
-                        } else {
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots)
+                    {
+                        if (queryDocumentSnapshots.isEmpty()) {
                             // Chat doesn't exist, create a new chat
                             ArrayList<Message> messagesInBetween = new ArrayList<>();
                             Chat newChat = new Chat(auth.getUid().toString(),"abc",messagesInBetween);
@@ -77,6 +77,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    Toast.makeText(TransportationDetailActivity.this, "new chat added", Toast.LENGTH_LONG).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -85,6 +86,13 @@ public class TransportationDetailActivity extends AppCompatActivity {
                                 }
                             });
                         }
+                        else
+                        {
+                            Toast.makeText(TransportationDetailActivity.this, "same chat", Toast.LENGTH_LONG).show();
+                        }
+
+                        Intent intent = new Intent(TransportationDetailActivity.this, ChatInBetweenPage.class);
+                        startActivity(intent);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
