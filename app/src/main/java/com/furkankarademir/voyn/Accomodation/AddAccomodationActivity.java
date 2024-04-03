@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.ParentClassesForActivity.FireStoreCallback;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
@@ -29,12 +30,16 @@ public class AddAccomodationActivity extends AppCompatActivity {
     private String surname;
     private String mail;
 
-    private Profile creatorProfile;
-    private User thisUser;
-
+    private String userID;
 
     private FirebaseFirestore db;
+
+    private  Profile creatorProfile;
+
     private FirebaseAuth auth;
+
+    private User thisUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +50,37 @@ public class AddAccomodationActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         getUserFromFirebase();
     }
 
     public void getUserFromFirebase()
     {
-        db.collection("Users").document(auth.getUid())
+        DocumentReference docRef = db.collection("Users").document(userID);
+        docRef.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    Toast.makeText(AddAccomodationActivity.this, "oldu", Toast.LENGTH_LONG).show();
+                    name = documentSnapshot.getString("name");
+                    System.out.println("bunun ismi" + name);
+                    surname = documentSnapshot.getString("surname");
+                    mail = documentSnapshot.getString("mail");
+                }
+                else
+                {
+                    System.out.println("olmadı");
+                    Toast.makeText(AddAccomodationActivity.this, "olmadı", Toast.LENGTH_LONG).show();
+                }
+            }
+        }).addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddAccomodationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+        /*db.collection("Users").document(auth.getUid())
             .get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -72,7 +102,7 @@ public class AddAccomodationActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(AddAccomodationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
     }
 
     public void openActivityButtonClicked(View view)
@@ -93,7 +123,17 @@ public class AddAccomodationActivity extends AppCompatActivity {
                                         "boş", binding.extraNotes.getText().toString(), auth.getUid().toString(),
                                         binding.type.getText().toString(), binding.place.getText().toString(), binding.gender.getText().toString(),
                                         Integer.parseInt(binding.numberOfInhabitants.getText().toString()));
-                                accomodation.addActivityToDatabase();
+
+                                DocumentReference docRef = db.collection("Users").document(userID);
+                                accomodation.addActivityToDatabase(new FireStoreCallback() {
+                                    @Override
+                                    public void onCallback(String id) {
+                                        if(thisUser != null) {
+                                            thisUser.addActivity(id);
+                                            docRef.set(thisUser);
+                                        }
+                                    }
+                                });
 
                                 Toast.makeText(AddAccomodationActivity.this, "oldu", Toast.LENGTH_LONG).show();
                                 finish();

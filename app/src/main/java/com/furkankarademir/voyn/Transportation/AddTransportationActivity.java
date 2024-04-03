@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.ParentClassesForActivity.FireStoreCallback;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityAddTransportationBinding;
@@ -73,6 +74,8 @@ public class AddTransportationActivity extends AppCompatActivity {
                     System.out.println("bunun ismi" + name);
                     surname = documentSnapshot.getString("surname");
                     mail = documentSnapshot.getString("mail");
+
+                    thisUser = documentSnapshot.toObject(User.class);
                 }
                 else
                 {
@@ -111,36 +114,34 @@ public class AddTransportationActivity extends AppCompatActivity {
     }*/
 
     public void addTransportationActivityButtonClicked(View view) {
-        if(binding.notesEdit.getText().toString().equals(""))
-        {
-            // Show a toast message to user
+        if(binding.notesEdit.getText().toString().equals("")) {
             Toast.makeText(AddTransportationActivity.this, "Please enter all the blanks", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            // Add transportation activity to database
-
+        } else {
             Transportation transportation = new Transportation(name, surname, mail, binding.dateEdit.getText().toString(),
                     binding.timeEdit.getText().toString(), binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(),
                     Integer.parseInt(binding.seatsNumberEdit.getText().toString()), binding.notesEdit.getText().toString(), userID);
-                  //  ,binding.notesEdit.getText().toString());
-
-            String thisActivityId = transportation.addActivityToDatabase();
             DocumentReference docRef = db.collection("Users").document(userID);
-            docRef.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+
+            transportation.addActivityToDatabase(new FireStoreCallback() {
+                @Override
+                public void onCallback(String id) {
+                    if(thisUser != null) {
+                        thisUser.addActivity(id);
+                        docRef.set(thisUser);
+                    }
+                }
+            });
+            /*docRef.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if(documentSnapshot.exists())
-                    {
-                        Toast.makeText(AddTransportationActivity.this, "oldu", Toast.LENGTH_LONG).show();
+                    if(documentSnapshot.exists()) {
+                        Toast.makeText(AddTransportationActivity.this, "user bulundu", Toast.LENGTH_LONG).show();
                         User user = documentSnapshot.toObject(User.class);
                         if (user != null) {
                             user.addActivity(thisActivityId);
+                            docRef.set(user); // Update the user document in Firebase
                         }
-                    }
-                    else
-                    {
-                        System.out.println("olmadı");
+                    } else {
                         Toast.makeText(AddTransportationActivity.this, "olmadı", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -149,11 +150,9 @@ public class AddTransportationActivity extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(AddTransportationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 }
-            });
+            });*/
 
             finish();
-
-
         }
     }
 

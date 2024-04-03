@@ -37,7 +37,7 @@ public abstract class Activity implements Serializable {
         this.creatorUserID = creatorUserID;
     }
 
-    public abstract String addActivityToDatabase();
+    public abstract void addActivityToDatabase(FireStoreCallback callback);
 
     public String getExtraNote() {
         return extraNote;
@@ -72,5 +72,21 @@ public abstract class Activity implements Serializable {
     public void addInvited(String invitedId)
     {
         this.invitedId.add(invitedId);
+    }
+
+    public ArrayList<String> getParticipantsId() {
+        return participantsId;
+    }
+
+    public ArrayList<String> getInvitedId() {
+        return invitedId;
+    }
+
+    public void setParticipantsId(ArrayList<String> participantsId) {
+        this.participantsId = participantsId;
+    }
+
+    public void setInvitedId(ArrayList<String> invitedId) {
+        this.invitedId = invitedId;
     }
 }

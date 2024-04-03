@@ -30,6 +30,11 @@ public class User {
 
     private ArrayList<String> myActivities;
 
+    public User()
+    {
+
+    }
+
 
     public String getId() {
         return id;
