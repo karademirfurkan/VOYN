@@ -28,6 +28,11 @@ public class User {
 
     private ArrayList<String> myActivities;
 
+    public User()
+    {
+
+    }
+
 
     public User  (String name, String surname)
     {

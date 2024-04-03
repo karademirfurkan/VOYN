@@ -74,6 +74,8 @@ public class AddTransportationActivity extends AppCompatActivity {
                     System.out.println("bunun ismi" + name);
                     surname = documentSnapshot.getString("surname");
                     mail = documentSnapshot.getString("mail");
+
+                    thisUser = documentSnapshot.toObject(User.class);
                 }
                 else
                 {
