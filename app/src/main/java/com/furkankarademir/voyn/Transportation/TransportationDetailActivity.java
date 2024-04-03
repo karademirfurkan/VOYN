@@ -97,6 +97,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
                         }
 
                         Intent intent = new Intent(TransportationDetailActivity.this, ChatInBetweenPage.class);
+                        intent.putExtra("transportation", transportation);
                         startActivity(intent);
                     }
                 })

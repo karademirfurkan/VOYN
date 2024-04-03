@@ -8,18 +8,33 @@ public class Message
     private String senderSurname;
     private boolean isMine;
 
-    public Message(String messageText, String senderId, String senderName,
-                   String senderSurname, boolean isMine)
+    private String receiverId;
+
+
+    public Message() {
+
+    }
+
+    public Message(String messageText, String senderId)
     {
         this.messageText = messageText;
         this.senderId = senderId;
-        this.senderName = senderName;
-        this.senderSurname = senderSurname;
-        this.isMine = isMine;
+        //this.senderName = senderName;
+        //this.senderSurname = senderSurname;
+        //this.isMine = isMine;
+        //this.receiverId = receiverId;
     }
 
     public String getMessageText() {
         return messageText;
+    }
+
+    public String getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
     }
 
     public void setMessageText(String messageText) {

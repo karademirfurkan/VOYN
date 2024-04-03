@@ -8,11 +8,20 @@ public class Chat
     private String secondUserId;
     private ArrayList<Message> messagesInBetween;
 
+    public Chat() {
+
+    }
+
     public Chat(String firstUserId, String secondUserId, ArrayList<Message> messagesInBetween)
     {
         this.firstUserId = firstUserId;
         this.secondUserId = secondUserId;
         this.messagesInBetween = messagesInBetween;
+    }
+
+    public void addMessageToArrayList(Message message)
+    {
+        messagesInBetween.add(message);
     }
 
     public String getFirstUserId() {
