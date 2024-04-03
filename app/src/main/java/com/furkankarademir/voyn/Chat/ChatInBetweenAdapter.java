@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdapter.ChatInBetweenHolder>
 {
-    ArrayList<Message> messages;
+    private ArrayList<Message> messages;
     public ChatInBetweenAdapter(ArrayList<Message> messages)
     {
-        messages = new ArrayList<>();
+        this.messages = messages;
     }
     @NonNull
     @Override

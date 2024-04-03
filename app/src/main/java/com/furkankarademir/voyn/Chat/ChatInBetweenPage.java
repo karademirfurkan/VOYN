@@ -2,12 +2,15 @@ package com.furkankarademir.voyn.Chat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.furkankarademir.voyn.R;
+import com.furkankarademir.voyn.Transportation.TransportationActivity;
+import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.furkankarademir.voyn.databinding.ActivityChatInBetweenPageBinding;
 import com.furkankarademir.voyn.databinding.ActivityTransportationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -18,12 +21,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChatInBetweenPage extends AppCompatActivity {
     private ActivityChatInBetweenPageBinding binding;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
+
+    private ArrayList<Message> messages;
+    private HashMap<String, Object> transportationMap;
+
+    private ChatInBetweenAdapter chatInBetweenAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +41,54 @@ public class ChatInBetweenPage extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        Intent intent = getIntent();
+        transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
+
+
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+        makeArrayList();
     }
+
+
+    public void makeArrayList()
+    {
+        db.collection("Chat")
+                .whereEqualTo("firstUserId", auth.getUid())
+                .whereEqualTo("secondUserId", transportationMap.get("creatorUserID").toString()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        if (!queryDocumentSnapshots.isEmpty())
+                        {
+                            for (QueryDocumentSnapshot document : queryDocumentSnapshots)
+                            {
+                                Chat chat = document.toObject(Chat.class);
+                                messages = chat.getMessagesInBetween();
+
+                                binding.chatRv.setLayoutManager(new LinearLayoutManager(ChatInBetweenPage.this));
+                                chatInBetweenAdapter = new ChatInBetweenAdapter(messages);
+                                binding.chatRv.setAdapter(chatInBetweenAdapter);
+
+                                chatInBetweenAdapter = new ChatInBetweenAdapter(messages);
+                                binding.chatRv.setAdapter(chatInBetweenAdapter);
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("chat message arraylisti yapılamadı");
+                    }
+                });
+    }
+
+
 
     public void sendMessageButtonClicked(View view)
     {
-        Intent intent = getIntent();
-        HashMap<String, Object> transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
 
         db.collection("Chat")
                 .whereEqualTo("firstUserId", auth.getUid())

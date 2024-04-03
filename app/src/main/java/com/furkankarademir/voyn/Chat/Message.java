@@ -21,7 +21,7 @@ public class Message
         this.senderId = senderId;
         //this.senderName = senderName;
         //this.senderSurname = senderSurname;
-        //this.isMine = isMine;
+        //isMine = true;
         this.receiverId = receiverId;
     }
 
