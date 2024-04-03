@@ -33,6 +33,8 @@ public class TransportationDetailActivity extends AppCompatActivity {
 
     private ActivityTransportationDetailBinding binding;
 
+    private HashMap<String, Object> transportation;
+
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     @Override
@@ -47,6 +49,9 @@ public class TransportationDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         HashMap<String, Object> transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
+        transportation = transportationMap;
+
+        System.out.println(transportation.get("creatorUserID"));
 
         String name = (String) transportationMap.get("name");
         binding.nameInfo.setText(name);
@@ -63,7 +68,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
     {
         db.collection("Chat")
                 .whereEqualTo("firstUserId", auth.getUid())
-                .whereEqualTo("secondUserId", "abc")
+                .whereEqualTo("secondUserId", transportation.get("creatorUserID").toString())
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -72,7 +77,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
                         if (queryDocumentSnapshots.isEmpty()) {
                             // Chat doesn't exist, create a new chat
                             ArrayList<Message> messagesInBetween = new ArrayList<>();
-                            Chat newChat = new Chat(auth.getUid().toString(),"abc",messagesInBetween);
+                            Chat newChat = new Chat(auth.getUid().toString(),transportation.get("creatorUserID").toString(),messagesInBetween);
                             db.collection("Chat").add(newChat).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
