@@ -55,7 +55,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
                                 String chatId = document.getId();
 
                                 Chat chat = document.toObject(Chat.class);
-                                Message newMessage = new Message(binding.messageText.getText().toString(), auth.getUid());
+                                Message newMessage = new Message(binding.messageText.getText().toString(), auth.getUid(), transportationMap.get("creatorUserID").toString());
 
 
                                 chat.addMessageToArrayList(newMessage);

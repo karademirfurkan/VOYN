@@ -15,14 +15,14 @@ public class Message
 
     }
 
-    public Message(String messageText, String senderId)
+    public Message(String messageText, String senderId, String receiverId)
     {
         this.messageText = messageText;
         this.senderId = senderId;
         //this.senderName = senderName;
         //this.senderSurname = senderSurname;
         //this.isMine = isMine;
-        //this.receiverId = receiverId;
+        this.receiverId = receiverId;
     }
 
     public String getMessageText() {
