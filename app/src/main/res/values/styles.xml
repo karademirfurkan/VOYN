@@ -32,5 +32,19 @@
         <item name="strokeColor">#FFFFFF</item>
     </style>
 
+    <style name="Transportation_Page_Buttons_View">
+        <item name="backgroundTint">#00FFFFFF</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
+    </style>
+
+    <style name="Transportation_Page_Buttons_View2">
+        <item name="backgroundTint">#00FFFFFF</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">#FF2121</item>
+    </style>
+
 
 </resources>
