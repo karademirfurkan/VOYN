@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.ParentClassesForActivity.FireStoreCallback;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityAddTransportationBinding;
@@ -117,10 +118,18 @@ public class AddTransportationActivity extends AppCompatActivity {
             Transportation transportation = new Transportation(name, surname, mail, binding.dateEdit.getText().toString(),
                     binding.timeEdit.getText().toString(), binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(),
                     Integer.parseInt(binding.seatsNumberEdit.getText().toString()), binding.notesEdit.getText().toString(), userID);
-
-            String thisActivityId = transportation.addActivityToDatabase();
             DocumentReference docRef = db.collection("Users").document(userID);
-            docRef.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+
+            transportation.addActivityToDatabase(new FireStoreCallback() {
+                @Override
+                public void onCallback(String id) {
+                    if(thisUser != null) {
+                        thisUser.addActivity(id);
+                        docRef.set(thisUser);
+                    }
+                }
+            });
+            /*docRef.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if(documentSnapshot.exists()) {
@@ -139,7 +148,7 @@ public class AddTransportationActivity extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(AddTransportationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 }
-            });
+            });*/
 
             finish();
         }

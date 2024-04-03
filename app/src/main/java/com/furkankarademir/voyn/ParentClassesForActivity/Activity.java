@@ -37,7 +37,7 @@ public abstract class Activity implements Serializable {
         this.creatorUserID = creatorUserID;
     }
 
-    public abstract String addActivityToDatabase();
+    public abstract void addActivityToDatabase(FireStoreCallback callback);
 
     public String getExtraNote() {
         return extraNote;

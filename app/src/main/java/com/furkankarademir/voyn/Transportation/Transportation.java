@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.furkankarademir.voyn.ParentClassesForActivity.Activity;
+import com.furkankarademir.voyn.ParentClassesForActivity.FireStoreCallback;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,10 +44,9 @@ public class Transportation extends Activity{
 
 
 
-    public String addActivityToDatabase() {
+    public void addActivityToDatabase(FireStoreCallback callback) {
         // Add transportation to database
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        final String[] thisActivityID = new String[1];
         Map<String, Object> transportation = new HashMap<>();
         transportation.put("date", this.getDate());
         transportation.put("name", this.getName());
@@ -72,8 +72,7 @@ public class Transportation extends Activity{
                     public void onSuccess(DocumentReference documentReference) {
                         System.out.println("her sey eklendi");
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        thisActivityID[0] = documentReference.getId();
-                        System.out.println("bu da id" + thisActivityID[0]);
+                        callback.onCallback(documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -83,8 +82,6 @@ public class Transportation extends Activity{
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
-        System.out.println("bu da id 2.deneme" + thisActivityID[0]);
-        return thisActivityID[0];
     }
 
 
