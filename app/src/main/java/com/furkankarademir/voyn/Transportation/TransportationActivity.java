@@ -17,6 +17,7 @@ import com.furkankarademir.voyn.databinding.ActivitySignUpPageBinding;
 import com.furkankarademir.voyn.databinding.ActivityTransportationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -29,6 +30,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class TransportationActivity extends AppCompatActivity {
+    private FirebaseAuth auth;
     private FirebaseFirestore db;
     private ArrayList<HashMap<String, Object>> transportationActivities;
     private TransportationAdapter transportationAdapter;
@@ -40,6 +42,7 @@ public class TransportationActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         transportationActivities = new ArrayList<>();
 
@@ -59,7 +62,9 @@ public class TransportationActivity extends AppCompatActivity {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots)
                 {
                     HashMap<String, Object> transportation = (HashMap<String, Object>) documentSnapshot.getData();
-                    transportationActivities.add(transportation);
+
+                    if(!auth.getUid().equals(transportation.get("creatorUserID")))
+                        transportationActivities.add(transportation);
                 }
                 System.out.println(transportationActivities);
 
