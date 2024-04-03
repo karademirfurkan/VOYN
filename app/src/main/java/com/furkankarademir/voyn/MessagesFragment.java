@@ -88,10 +88,6 @@ public class MessagesFragment extends Fragment {
         });
     }
 
-    public void userSelected(View view)
-    {
-        Intent intent = new Intent(getContext(), MenuPage.class);
-        startActivity(intent);
-    }
+
 
 }

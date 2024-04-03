@@ -108,6 +108,8 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
                                 chat.addMessageToArrayList(newMessage);
 
+                                chatInBetweenAdapter.notifyDataSetChanged();
+
 
 
                                 db.collection("Chat").document(chatId).set(chat).addOnSuccessListener(new OnSuccessListener<Void>() {

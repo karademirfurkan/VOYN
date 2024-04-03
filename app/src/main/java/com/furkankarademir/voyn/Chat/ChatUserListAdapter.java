@@ -51,7 +51,7 @@ public class ChatUserListAdapter extends RecyclerView.Adapter<ChatUserListAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), ChatInBetweenPage.class);
+                Intent intent = new Intent(holder.itemView.getContext(), MenuPage.class);
                 holder.itemView.getContext().startActivity(intent);
             }
         });
