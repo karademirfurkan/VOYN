@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.furkankarademir.voyn.databinding.RecyclerTransportationRowBinding;
+import com.furkankarademir.voyn.myactivitiesclasses.myTransportationActivityDetails;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,9 +23,12 @@ import java.util.HashMap;
 public class TransportationAdapter extends RecyclerView.Adapter<TransportationAdapter.TransportationHolder> {
 
     private ArrayList<HashMap<String, Object>> transportationActivities;
-    public  TransportationAdapter(ArrayList<HashMap<String, Object>> transportationActivities)
+
+    private int transportationAdapterOption;
+    public  TransportationAdapter(ArrayList<HashMap<String, Object>> transportationActivities, int i)
     {
         this.transportationActivities = transportationActivities;
+        transportationAdapterOption = i;
     }
 
 
@@ -58,16 +62,29 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         holder.binding.whereTo.setText(destination);
         holder.binding.personLimit.setText(personLimit);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), TransportationDetailActivity.class);
-                intent.putExtra("transportation", transportationActivities.get(position));
-                holder.itemView.getContext().startActivity(intent);
-            }
-        });
 
-
+        if(transportationAdapterOption == 0)
+        {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(holder.itemView.getContext(), TransportationDetailActivity.class);
+                    intent.putExtra("transportation", transportationActivities.get(position));
+                    holder.itemView.getContext().startActivity(intent);
+                }
+            });
+        }
+        else
+        {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(holder.itemView.getContext(), myTransportationActivityDetails.class);
+                    intent.putExtra("transportation", transportationActivities.get(position));
+                    holder.itemView.getContext().startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override

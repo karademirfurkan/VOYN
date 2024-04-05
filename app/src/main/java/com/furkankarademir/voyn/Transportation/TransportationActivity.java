@@ -48,7 +48,7 @@ public class TransportationActivity extends AppCompatActivity {
 
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(TransportationActivity.this));
-        transportationAdapter= new TransportationAdapter(transportationActivities);
+        transportationAdapter= new TransportationAdapter(transportationActivities, 0);
         binding.recyclerView.setAdapter(transportationAdapter);
 
         makeArrayList();
