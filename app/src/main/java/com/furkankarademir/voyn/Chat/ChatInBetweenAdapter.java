@@ -11,14 +11,17 @@ import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.furkankarademir.voyn.databinding.ChatInBetweenRowBinding;
 import com.furkankarademir.voyn.databinding.ChattedUsersListRowBinding;
 import com.furkankarademir.voyn.databinding.RecyclerTransportationRowBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdapter.ChatInBetweenHolder>
 {
     private ArrayList<Message> messages;
+    private FirebaseAuth auth;
     public ChatInBetweenAdapter(ArrayList<Message> messages)
     {
+        auth = FirebaseAuth.getInstance();
         this.messages = messages;
     }
     @NonNull
@@ -31,7 +34,7 @@ public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdap
     @Override
     public void onBindViewHolder(@NonNull ChatInBetweenAdapter.ChatInBetweenHolder holder, int position)
     {
-        if(messages.get(position).isMine())
+        if(messages.get(position).getSenderId() != auth.getUid())
         {
             holder.binding.otherMessage.setVisibility(View.INVISIBLE);
             holder.binding.myMessage.setText(messages.get(position).getMessageText());
