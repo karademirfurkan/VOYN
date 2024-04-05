@@ -35,7 +35,7 @@ public class WaitingIncomingInvitations extends AppCompatActivity {
 
         binding.recyclerView4.setLayoutManager(new LinearLayoutManager(WaitingIncomingInvitations.this));
         ArrayList<String> incomingInvitations = (ArrayList<String>) transportation.get("invited");
-        IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations);
+        IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, transportation.get("documentId").toString());
         binding.recyclerView4.setAdapter(incomingInvitationsAdapter);
 
     }

@@ -17,10 +17,10 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button12"
+                android:id="@+id/acceptButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="ADD" />
+                android:text="Accept" />
         </LinearLayout>
 
         <LinearLayout
@@ -61,10 +61,10 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button13"
+                android:id="@+id/declineButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Delete " />
+                android:text="Decline" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
