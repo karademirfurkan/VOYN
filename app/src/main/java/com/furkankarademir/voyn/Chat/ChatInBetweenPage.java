@@ -168,35 +168,28 @@ public class ChatInBetweenPage extends AppCompatActivity {
     }
 
 
-    public void sendMessageButtonClicked(View view)
-    {
-
+    public void sendMessageButtonClicked(View view) {
         db.collection("Chat")
                 .whereEqualTo("firstUserId", auth.getUid())
                 .whereEqualTo("secondUserId", transportationMap.get("creatorUserID").toString()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                        if (!queryDocumentSnapshots.isEmpty())
-                        {
-                            for (QueryDocumentSnapshot document : queryDocumentSnapshots)
-                            {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                                 String chatId = document.getId();
 
                                 Chat chat = document.toObject(Chat.class);
                                 Message newMessage = new Message(binding.messageText.getText().toString(), auth.getUid(), transportationMap.get("creatorUserID").toString());
 
-
                                 chat.addMessageToArrayList(newMessage);
-
-                                chatInBetweenAdapter.notifyDataSetChanged();
-
-
 
                                 db.collection("Chat").document(chatId).set(chat).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         // Document updated successfully
+                                        // Update the adapter after the new message has been added to Firestore
+                                        chatInBetweenAdapter.setMessages(chat.getMessagesInBetween());
+                                        chatInBetweenAdapter.notifyDataSetChanged();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -204,11 +197,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
                                         // Handle failure
                                     }
                                 });
-
-
                             }
-
-
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
