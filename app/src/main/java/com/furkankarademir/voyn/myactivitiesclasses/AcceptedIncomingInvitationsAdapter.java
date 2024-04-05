@@ -19,12 +19,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class AcceptedIncomingInvitationsAdapter extends RecyclerView.Adapter<AcceptedIncomingInvitationsAdapter.AcceptedIncomingInvitationsHolder> {
-    private ArrayList<String> acceptedInvitations;
+    private ArrayList<User> acceptedInvitations;
     private FirebaseFirestore db;
     private FirebaseAuth auth;
-    
 
-    public AcceptedIncomingInvitationsAdapter(ArrayList<String> acceptedInvitations)
+
+    public AcceptedIncomingInvitationsAdapter(ArrayList<User> acceptedInvitations)
     {
         this.acceptedInvitations = acceptedInvitations;
         db = FirebaseFirestore.getInstance();
@@ -39,7 +39,7 @@ public class AcceptedIncomingInvitationsAdapter extends RecyclerView.Adapter<Acc
 
     @Override
     public void onBindViewHolder(@NonNull AcceptedIncomingInvitationsHolder holder, int position) {
-        String userId = acceptedInvitations.get(position);
+        String userId = acceptedInvitations.get(position).getId();
 
         DocumentReference docRef = db.collection("Users").document(userId);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
