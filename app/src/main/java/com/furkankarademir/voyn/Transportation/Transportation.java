@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -32,6 +34,9 @@ public class Transportation extends Activity{
 
     private int seats;
 
+    private static int count = 0;
+
+    private int ID = count++;
 
     public Transportation(String name, String surname, String mail, String date, String time,String departure, String destination,
                           int seats, String extraNote, String creatorUserID)
@@ -40,6 +45,7 @@ public class Transportation extends Activity{
         this.departure = departure;
         this.destination = destination;
         this.seats = seats;
+
     }
 
 
@@ -63,23 +69,24 @@ public class Transportation extends Activity{
         transportation.put("extraNote", getExtraNote());
         transportation.put("participantsId", getParticipantsId());
         transportation.put("invitedId", getInvitedId());
+        transportation.put("id", ID);
 
 
-        db.collection("transportations")
-                .add(transportation)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("transportations").document(String.valueOf(ID))
+                .set(transportation)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onSuccess(Void aVoid) {
                         System.out.println("her sey eklendi");
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        callback.onCallback(documentReference.getId());
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                        callback.onCallback(String.valueOf(ID));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         System.out.println("olmadı beee");
-                        Log.w(TAG, "Error adding document", e);
+                        Log.w(TAG, "Error writing document", e);
                     }
                 });
     }
