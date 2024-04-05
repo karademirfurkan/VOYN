@@ -113,6 +113,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
 
     public void sendInvitationButtonClicked(View view)
     {
+        binding.sendInvitation.setVisibility(View.INVISIBLE);
         ArrayList<String> invited = (ArrayList<String>) transportation.get("invited");
         if (invited == null) {
             invited = new ArrayList<>();
