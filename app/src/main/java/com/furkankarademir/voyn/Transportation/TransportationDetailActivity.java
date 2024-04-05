@@ -58,6 +58,10 @@ public class TransportationDetailActivity extends AppCompatActivity {
         binding.dateInfo.setText((String) transportationMap.get("date"));
         binding.timeInfo.setText((String) transportationMap.get("time"));
         binding.seatsInfo.setText(transportationMap.get("seats").toString());
+        ArrayList<String> invited = (ArrayList<String>) transportationMap.get("invited");
+        if (invited != null) {
+            binding.deneme.setText(invited.toString());
+        }
     }
 
     public void sendMessageButtonClicked(View view)
@@ -109,6 +113,31 @@ public class TransportationDetailActivity extends AppCompatActivity {
 
     public void sendInvitationButtonClicked(View view)
     {
+        ArrayList<String> invited = (ArrayList<String>) transportation.get("invited");
+        if (invited == null) {
+            invited = new ArrayList<>();
+        }
 
+        // Add the current user's ID to the invited ArrayList
+        invited.add(auth.getUid());
+
+        // Put the updated invited ArrayList back into the transportation HashMap
+        transportation.put("invited", invited);
+
+        // Update the Firestore document with the updated transportation HashMap
+        db.collection("transportations").document(transportation.get("documentId").toString())
+                .set(transportation)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
+                    }
+                });
     }
 }

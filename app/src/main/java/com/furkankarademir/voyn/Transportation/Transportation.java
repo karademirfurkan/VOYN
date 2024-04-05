@@ -70,6 +70,9 @@ public class Transportation extends Activity{
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
+                        String documentId = documentReference.getId();
+                        transportation.put("documentId", documentId);
+                        db.collection("transportations").document(documentId).set(transportation);
                         System.out.println("her sey eklendi");
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                         callback.onCallback(documentReference.getId());
