@@ -28,11 +28,13 @@ public class myTransportationActivityDetails extends AppCompatActivity {
     private ActivityMyTransportationDetailsBinding binding;
 
 
-    private ArrayList<User> acceptedUserList;
+    private ArrayList<String> acceptedUserList;
 
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private FirebaseUser currentUser;
+
+    private HashMap<String, Object> transportationMap;
 
     private AcceptedIncomingInvitationsAdapter acceptedIncomingInvitationsAdapter;
 
@@ -43,7 +45,7 @@ public class myTransportationActivityDetails extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        HashMap<String, Object> transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
+        transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
         transportation = transportationMap;
 
         acceptedUserList = new ArrayList<>();
@@ -51,16 +53,11 @@ public class myTransportationActivityDetails extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
 
+        acceptedUserList = (ArrayList<String>) transportationMap.get("participantsId");
+
         binding.recyclerView3.setLayoutManager(new LinearLayoutManager(myTransportationActivityDetails.this));
         acceptedIncomingInvitationsAdapter = new AcceptedIncomingInvitationsAdapter(acceptedUserList);
         binding.recyclerView3.setAdapter(acceptedIncomingInvitationsAdapter);
-
-        makeAcceptedUserList();
-    }
-
-    public void makeAcceptedUserList()
-    {
-        //db.collection("Users")
     }
 
     public void incomingInvitationButtonClicked(View view) {

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/transportation_activity_list_row_view">
 
     <TextView
         android:id="@+id/name"
