@@ -1,6 +1,9 @@
 package com.furkankarademir.voyn.Chat;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -20,11 +23,13 @@ import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.HashMap;
 
 public class ChatInBetweenPage extends AppCompatActivity {
@@ -52,6 +57,32 @@ public class ChatInBetweenPage extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        messages = new ArrayList<>();
+        binding.chatRv.setLayoutManager(new LinearLayoutManager(ChatInBetweenPage.this));
+        chatInBetweenAdapter = new ChatInBetweenAdapter(messages);
+        binding.chatRv.setAdapter(chatInBetweenAdapter);
+
+        db.collection("Chat")
+                .whereEqualTo("firstUserId", auth.getUid())
+                .whereEqualTo("secondUserId", transportationMap.get("creatorUserID").toString())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                                String chatId = document.getId();
+                                setUpMessageListener(chatId);
+                            }
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("chat message arraylisti yapılamadı");
+                    }
+                });
         makeArrayList();
 
     }
@@ -92,7 +123,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
                 });
     }
 
-    public void setUpMessageListener(String chatId) {
+    /*public void setUpMessageListener(String chatId) {
         db.collection("Chat")
                 .document(chatId)
                 .collection("messages")
@@ -112,8 +143,29 @@ public class ChatInBetweenPage extends AppCompatActivity {
                     chatInBetweenAdapter.setMessages(messages);
                     chatInBetweenAdapter.notifyDataSetChanged();
                 });
-    }
+    }*/
+    public void setUpMessageListener(String chatId) {
+        db.collection("Chat")
+                .document(chatId)
+                .addSnapshotListener((documentSnapshot, e) -> {
+                    if (e != null) {
+                        System.out.println("Listen failed.");
+                        Log.w("Listen failed.", e.getMessage());
+                        return;
+                    }
 
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        Chat chat = documentSnapshot.toObject(Chat.class);
+                        messages = chat.getMessagesInBetween();
+
+                        chatInBetweenAdapter.setMessages(messages);
+                        chatInBetweenAdapter.notifyDataSetChanged();
+                        binding.chatRv.scrollToPosition(messages.size() - 1);
+                    } else {
+                        System.out.println("No documents found in messagesInBetween field.");
+                    }
+                });
+    }
 
 
     public void sendMessageButtonClicked(View view)
