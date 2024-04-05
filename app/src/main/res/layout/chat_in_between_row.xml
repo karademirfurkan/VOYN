@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/otherMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="otherMessage" />
+        android:text="otherMessage"
+        android:background="@drawable/transportation_activity_list_row_view"/>
 
     <TextView
         android:id="@+id/myMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="200dp"
-        android:text="meMessage" />
+        android:text="meMessage"
+        android:background="@drawable/transportation_activity_list_row_view"/>
 </LinearLayout>

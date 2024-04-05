@@ -60,7 +60,7 @@ public class myTransportationActivityDetails extends AppCompatActivity {
 
     public void makeAcceptedUserList()
     {
-        
+        //db.collection("Users")
     }
 
     public void incomingInvitationButtonClicked(View view) {
