@@ -53,6 +53,10 @@ public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdap
         return messages.size();
     }
 
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
+    }
+
     public class ChatInBetweenHolder extends RecyclerView.ViewHolder
     {
         private ChatInBetweenRowBinding binding;
