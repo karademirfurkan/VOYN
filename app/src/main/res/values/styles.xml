@@ -46,5 +46,26 @@
         <item name="strokeColor">#FF2121</item>
     </style>
 
+    <style name="Transportation_Activity_Detail_View">
+        <item name="backgroundTint">#76DE99</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
+    </style>
+
+    <style name="BACK">
+        <item name="backgroundTint">#2058A8</item>
+        <item name="cornerRadius">30dp</item>
+        <item name="strokeWidth">20dp</item>
+        <item name="strokeColor">#2058A8</item>
+    </style>
+
+    <style name="BACKGROUND">
+        <item name="backgroundTint">#599CDE</item>
+        <item name="cornerRadius">50dp</item>
+        <item name="strokeWidth">20dp</item>
+        <item name="strokeColor">#2058A8</item>
+    </style>
+
 
 </resources>

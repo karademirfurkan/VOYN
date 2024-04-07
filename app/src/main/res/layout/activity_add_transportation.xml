@@ -272,13 +272,13 @@
                 android:layout_width="159dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="3dp"
+                android:layout_marginRight="50dp"
                 android:drawableRight="@drawable/t_three"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="addTransportationActivityButtonClicked"
                 android:text="OPEN ACTIVITY"
                 android:textColor="#000000"
                 android:textSize="14sp"
-                android:layout_marginRight="50dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
