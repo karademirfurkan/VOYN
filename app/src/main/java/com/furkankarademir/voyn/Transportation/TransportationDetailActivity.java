@@ -52,7 +52,6 @@ public class TransportationDetailActivity extends AppCompatActivity {
         String name = (String) transportationMap.get("name");
         binding.nameInfo.setText(name);
         binding.surnameInfo.setText((String) transportationMap.get("surname"));
-        binding.mailInfo.setText((String) transportationMap.get("mail"));
         binding.departureInfo.setText((String) transportationMap.get("departure"));
         binding.destinationInfo.setText((String) transportationMap.get("destination"));
         binding.dateInfo.setText((String) transportationMap.get("date"));
