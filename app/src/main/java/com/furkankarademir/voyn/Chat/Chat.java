@@ -44,6 +44,8 @@ public class Chat
         return messagesInBetween;
     }
 
+    public int getMessageNumber() {return messagesInBetween.size();}
+
     public void setMessagesInBetween(ArrayList<Message> messagesInBetween) {
         this.messagesInBetween = messagesInBetween;
     }

@@ -62,29 +62,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
         chatInBetweenAdapter = new ChatInBetweenAdapter(messages);
         binding.chatRv.setAdapter(chatInBetweenAdapter);
 
-        db.collection("Chat")
-                .whereEqualTo("firstUserId", auth.getUid())
-                .whereEqualTo("secondUserId", transportationMap.get("creatorUserID").toString())
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                                String chatId = document.getId();
-                                setUpMessageListener(chatId);
-                            }
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println("chat message arraylisti yapılamadı");
-                    }
-                });
         makeArrayList();
-
     }
 
 
@@ -110,8 +88,6 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
                                 String chatId = document.getId();
 
-                                // Set up Firestore listener for real-time updates using this chatId
-                                setUpMessageListener(chatId);
                             }
                         }
                     }
@@ -119,50 +95,6 @@ public class ChatInBetweenPage extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         System.out.println("chat message arraylisti yapılamadı");
-                    }
-                });
-    }
-
-    /*public void setUpMessageListener(String chatId) {
-        db.collection("Chat")
-                .document(chatId)
-                .collection("messages")
-                .orderBy("timestamp", Query.Direction.ASCENDING)
-                .addSnapshotListener((querySnapshot, error) -> {
-                    if (error != null) {
-                        Log.e("ChatInBetweenPage", "Error listening for messages", error);
-                        return;
-                    }
-
-                    for (DocumentSnapshot document : querySnapshot) {
-                        Message message = document.toObject(Message.class);
-                        messages.add(message);
-                    }
-
-                    // Update the RecyclerView adapter with the new messages
-                    chatInBetweenAdapter.setMessages(messages);
-                    chatInBetweenAdapter.notifyDataSetChanged();
-                });
-    }*/
-    public void setUpMessageListener(String chatId) {
-        db.collection("Chat")
-                .document(chatId)
-                .addSnapshotListener((documentSnapshot, e) -> {
-                    if (e != null) {
-                        System.out.println("Listen failed.");
-                        Log.w("Listen failed.", e.getMessage());
-                        return;
-                    }
-
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                        Chat chat = documentSnapshot.toObject(Chat.class);
-                        messages = chat.getMessagesInBetween();
-
-                        chatInBetweenAdapter.setMessages(messages);
-                        chatInBetweenAdapter.notifyDataSetChanged();
-                        binding.chatRv.scrollToPosition(messages.size() - 1);
-                    } else {
-                        System.out.println("No documents found in messagesInBetween field.");
                     }
                 });
     }
@@ -189,7 +121,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
                                         // Document updated successfully
                                         // Update the adapter after the new message has been added to Firestore
                                         chatInBetweenAdapter.setMessages(chat.getMessagesInBetween());
-                                        chatInBetweenAdapter.notifyDataSetChanged();
+                                        chatInBetweenAdapter.notifyItemRangeChanged(chat.getMessageNumber(), chat.getMessageNumber());
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -207,7 +139,4 @@ public class ChatInBetweenPage extends AppCompatActivity {
                     }
                 });
     }
-
-
-
 }

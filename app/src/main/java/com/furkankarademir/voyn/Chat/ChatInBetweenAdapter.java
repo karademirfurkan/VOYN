@@ -34,15 +34,31 @@ public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdap
     @Override
     public void onBindViewHolder(@NonNull ChatInBetweenAdapter.ChatInBetweenHolder holder, int position)
     {
-        if(messages.get(position).getSenderId() != auth.getUid())
-        {
-            holder.binding.otherMessage.setVisibility(View.INVISIBLE);
-            holder.binding.myMessage.setText(messages.get(position).getMessageText());
+        if (position != 0) {
+            if (messages.get(position - 1).getSenderId() != auth.getUid()) {
+                holder.binding.leftChatLayout.setVisibility(View.GONE);
+                holder.binding.rightChatLayout.setVisibility(View.VISIBLE);
+
+                holder.binding.myMessage.setText(messages.get(position).getMessageText());
+            } else {
+                holder.binding.rightChatLayout.setVisibility(View.GONE);
+                holder.binding.leftChatLayout.setVisibility(View.VISIBLE);
+                holder.binding.otherMessage.setText(messages.get(position).getMessageText());
+            }
         }
         else
         {
-            holder.binding.myMessage.setVisibility(View.INVISIBLE);
-            holder.binding.otherMessage.setText(messages.get(position).getMessageText());
+            if (messages.get(0).getSenderId() != auth.getUid()) {
+                holder.binding.rightChatLayout.setVisibility(View.GONE);
+                holder.binding.leftChatLayout.setVisibility(View.VISIBLE);
+                holder.binding.otherMessage.setText(messages.get(position).getMessageText());
+
+            } else {
+
+                holder.binding.leftChatLayout.setVisibility(View.GONE);
+                holder.binding.rightChatLayout.setVisibility(View.VISIBLE);
+                holder.binding.myMessage.setText(messages.get(position).getMessageText());
+            }
         }
 
 
