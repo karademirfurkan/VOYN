@@ -85,6 +85,8 @@ public class ChatInBetweenPage extends AppCompatActivity {
                                 chatInBetweenAdapter = new ChatInBetweenAdapter(messages);
                                 binding.chatRv.setAdapter(chatInBetweenAdapter);
 
+                                binding.chatRv.scrollToPosition(chatInBetweenAdapter.getItemCount() - 1);
+
 
                                 String chatId = document.getId();
 
@@ -122,6 +124,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
                                         // Update the adapter after the new message has been added to Firestore
                                         chatInBetweenAdapter.setMessages(chat.getMessagesInBetween());
                                         chatInBetweenAdapter.notifyItemRangeChanged(chat.getMessageNumber(), chat.getMessageNumber());
+                                        binding.chatRv.scrollToPosition(chatInBetweenAdapter.getItemCount() - 1);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override

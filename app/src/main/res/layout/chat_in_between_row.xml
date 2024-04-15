@@ -29,6 +29,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/transportation_activity_list_row_view"
                 android:padding="10dp"
+                android:fontFamily="@font/jockey_one"
                 android:shadowRadius="30"
                 android:text="My name is Furkan. My department is computer engineering. I am doing my best to make this project perfect"
                 android:textSize="11sp" />
@@ -63,6 +64,7 @@
                 android:background="@drawable/transportation_activity_list_row_view"
                 android:padding="10dp"
                 android:shadowRadius="30"
+                android:fontFamily="@font/jockey_one"
                 android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>
