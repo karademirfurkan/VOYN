@@ -243,7 +243,7 @@
 
             <TextView
                 android:id="@+id/nameInfo"
-                android:layout_width="75dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="62dp"
@@ -252,7 +252,7 @@
             <TextView
                 android:id="@+id/surnameInfo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="137dp"
                 tools:layout_editor_absoluteY="331dp" />
