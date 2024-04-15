@@ -63,7 +63,9 @@ public class ChatInBetweenPage extends AppCompatActivity {
         Intent intent = getIntent();
         User otherUser = (User) intent.getSerializableExtra("selectedUser");
         if (otherUser != null) {
-            otherUserId = otherUser.getId().toString();
+            System.out.println("chatInbetw1");
+            otherUserId = otherUser.getId();
+            System.out.println("chatInbetw2");
         } else {
             Intent intent2 = getIntent();
             transportationMap = (HashMap<String, Object>) intent2.getSerializableExtra("transportation");
