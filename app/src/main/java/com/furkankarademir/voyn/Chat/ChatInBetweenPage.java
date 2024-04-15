@@ -128,6 +128,8 @@ public class ChatInBetweenPage extends AppCompatActivity {
                                         chatInBetweenAdapter.setMessages(chat.getMessagesInBetween());
                                         chatInBetweenAdapter.notifyItemRangeChanged(chat.getMessageNumber(), chat.getMessageNumber());
                                         binding.chatRv.scrollToPosition(chatInBetweenAdapter.getItemCount() - 1);
+
+                                        binding.messageText.setText("");
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
