@@ -73,8 +73,9 @@ public class MessagesFragment extends Fragment {
                 {
                     String name = snapshot.getString("name");
                     String surname = snapshot.getString("surname");
+                    String id = snapshot.getString("id");
 
-                    User user = new User(name, surname);
+                    User user = new User(name, surname, id);
                     users.add(user);
                 }
 

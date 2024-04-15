@@ -46,10 +46,11 @@ public class User implements Serializable{
         this.id = id;
     }
 
-    public User  (String name, String surname)
+    public User  (String name, String surname, String id)
     {
         this.name = name;
         this.surname = surname;
+        this.id = id;
         myActivities = new ArrayList<String>();
     }
 

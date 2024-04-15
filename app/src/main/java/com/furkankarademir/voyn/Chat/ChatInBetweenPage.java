@@ -66,6 +66,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
         if (otherUser != null) {
             System.out.println("chatInbetw1");
             otherUserId = otherUser.getId();
+            System.out.println(otherUserId);
             System.out.println("chatInbetw2");
         } else {
             Intent intent2 = getIntent();
@@ -78,6 +79,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
 
         getChatId();
+        System.out.println("getChatId");
     }
 
 
@@ -145,7 +147,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
         String messageText = binding.messageText.getText().toString().trim();
 
         if (!TextUtils.isEmpty(messageText)) {
-            Message newMessage = new Message(messageText, auth.getUid(), transportationMap.get("creatorUserID").toString());
+            Message newMessage = new Message(messageText, auth.getUid(), otherUserId);
 
             chatDocumentRef.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {

@@ -42,6 +42,7 @@ public class ChatUserListAdapter extends RecyclerView.Adapter<ChatUserListAdapte
         holder.binding.name.setText(users.get(position).getName());
         System.out.println("sanırım bu user " + users.get(position).getName());
         final User o = users.get(position);
+        System.out.println(o.getId() + "jkenfljdnl");
 
         System.out.println(o);
 
@@ -60,7 +61,7 @@ public class ChatUserListAdapter extends RecyclerView.Adapter<ChatUserListAdapte
                 System.out.println("oldu2 " + o.getId());
 
                 Intent intent = new Intent(v.getContext(), ChatInBetweenPage.class);
-                intent.putExtra("selectedUser", 0);
+                intent.putExtra("selectedUser", o);
                 v.getContext().startActivity(intent);
             }
         });
