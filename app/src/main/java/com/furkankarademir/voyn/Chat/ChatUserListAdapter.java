@@ -1,5 +1,6 @@
 package com.furkankarademir.voyn.Chat;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,11 @@ public class ChatUserListAdapter extends RecyclerView.Adapter<ChatUserListAdapte
     public void onBindViewHolder(@NonNull ChatUserListHolder holder, int position)
     {
         holder.binding.name.setText(users.get(position).getName());
+        System.out.println("sanırım bu user " + users.get(position).getName());
+        final User o = users.get(position);
+
+        System.out.println(o);
+
         holder.binding.surname.setText(users.get(position).getSurname());
 
         //we cannot read mail and password!!!!!!!!!!! Whyyyyyy????
@@ -46,15 +52,15 @@ public class ChatUserListAdapter extends RecyclerView.Adapter<ChatUserListAdapte
         holder.binding.password.setText(users.get(position).getPassword());
 
 
-
         //should be updated
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User selectedUser = users.get(holder.getAdapterPosition());
+
+                System.out.println("oldu2 " + o.getId());
 
                 Intent intent = new Intent(v.getContext(), ChatInBetweenPage.class);
-                intent.putExtra("selectedUser", selectedUser);
+                intent.putExtra("selectedUser", 0);
                 v.getContext().startActivity(intent);
             }
         });

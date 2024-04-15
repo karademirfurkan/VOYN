@@ -33,6 +33,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +70,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
         } else {
             Intent intent2 = getIntent();
             transportationMap = (HashMap<String, Object>) intent2.getSerializableExtra("transportation");
-            otherUserId = transportationMap.get("creatorUserID").toString();
+            otherUserId = (String) transportationMap.get("creatorUserID");
         }
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -83,9 +84,10 @@ public class ChatInBetweenPage extends AppCompatActivity {
     public void getChatId()
     {
         db.collection("Chat")
-                .whereEqualTo("firstUserId", auth.getUid())
-                .whereEqualTo("secondUserId", otherUserId).get().addOnSuccessListener(queryDocumentSnapshots -> {
+                .whereIn ("firstUserId", Arrays.asList(auth.getUid().toString(), otherUserId))
+                .whereIn ("secondUserId", Arrays.asList(auth.getUid().toString(), otherUserId)).get().addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
+                        System.out.println("getChatdshkds");
                         DocumentSnapshot document = queryDocumentSnapshots.getDocuments().get(0);
                         String chatId = document.getId();
 
@@ -100,6 +102,11 @@ public class ChatInBetweenPage extends AppCompatActivity {
                             chatInBetweenAdapter = new ChatInBetweenAdapter(messages);
                             binding.chatRv.setAdapter(chatInBetweenAdapter);
                         }
+                    }
+                    else
+                    {
+                        System.out.println(otherUserId);
+                        System.out.println("123456789");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

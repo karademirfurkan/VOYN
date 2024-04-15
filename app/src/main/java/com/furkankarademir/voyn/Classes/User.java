@@ -2,6 +2,8 @@ package com.furkankarademir.voyn.Classes;
 
 import static android.content.ContentValues.TAG;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -126,4 +128,5 @@ public class User implements Serializable{
     public void setMyActivities(ArrayList<String> myActivities) {
         this.myActivities = myActivities;
     }
+
 }
