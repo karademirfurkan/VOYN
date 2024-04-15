@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
@@ -48,6 +49,8 @@ public class ChatInBetweenPage extends AppCompatActivity {
         binding = ActivityChatInBetweenPageBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         Intent intent = getIntent();
         transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");

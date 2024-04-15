@@ -35,7 +35,8 @@
             android:exported="false" />
         <activity
             android:name=".Chat.ChatInBetweenPage"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Chat.ChattedUsersListPage"
             android:exported="false" />
