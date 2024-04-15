@@ -34,32 +34,18 @@ public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdap
     @Override
     public void onBindViewHolder(@NonNull ChatInBetweenAdapter.ChatInBetweenHolder holder, int position)
     {
-        if (position != 0) {
-            if (messages.get(position - 1).getSenderId() != auth.getUid()) {
-                holder.binding.leftChatLayout.setVisibility(View.GONE);
-                holder.binding.rightChatLayout.setVisibility(View.VISIBLE);
 
-                holder.binding.myMessage.setText(messages.get(position).getMessageText());
-            } else {
-                holder.binding.rightChatLayout.setVisibility(View.GONE);
-                holder.binding.leftChatLayout.setVisibility(View.VISIBLE);
-                holder.binding.otherMessage.setText(messages.get(position).getMessageText());
-            }
+        if (messages.get(position).getSenderId() != auth.getUid()) {
+            holder.binding.leftChatLayout.setVisibility(View.GONE);
+            holder.binding.rightChatLayout.setVisibility(View.VISIBLE);
+
+            holder.binding.myMessage.setText(messages.get(position).getMessageText());
+        } else {
+            holder.binding.rightChatLayout.setVisibility(View.GONE);
+            holder.binding.leftChatLayout.setVisibility(View.VISIBLE);
+            holder.binding.otherMessage.setText(messages.get(position).getMessageText());
         }
-        else
-        {
-            if (messages.get(0).getSenderId() != auth.getUid()) {
-                holder.binding.rightChatLayout.setVisibility(View.GONE);
-                holder.binding.leftChatLayout.setVisibility(View.VISIBLE);
-                holder.binding.otherMessage.setText(messages.get(position).getMessageText());
 
-            } else {
-
-                holder.binding.leftChatLayout.setVisibility(View.GONE);
-                holder.binding.rightChatLayout.setVisibility(View.VISIBLE);
-                holder.binding.myMessage.setText(messages.get(position).getMessageText());
-            }
-        }
 
 
     }

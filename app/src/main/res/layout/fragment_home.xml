@@ -117,8 +117,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="375dp"
-                android:layout_height="200dp"
+                android:layout_width="300dp"
+                android:layout_height="210dp"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
