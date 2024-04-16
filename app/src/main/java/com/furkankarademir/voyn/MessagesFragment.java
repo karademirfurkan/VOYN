@@ -13,16 +13,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.furkankarademir.voyn.Chat.ChatInBetweenAdapter;
+import com.furkankarademir.voyn.Chat.ChatInBetweenPage;
 import com.furkankarademir.voyn.Chat.ChatUserListAdapter;
 import com.furkankarademir.voyn.Classes.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MessagesFragment extends Fragment {
     private FirebaseAuth auth;
@@ -41,8 +45,9 @@ public class MessagesFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         makeArrayList();
-    }
 
+        System.out.println("jksndkjas   " + users);
+    }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
@@ -54,8 +59,6 @@ public class MessagesFragment extends Fragment {
         rcv.setAdapter(chatUserListAdapter);
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,12 +76,27 @@ public class MessagesFragment extends Fragment {
                 {
                     String name = snapshot.getString("name");
                     String surname = snapshot.getString("surname");
+                    String id = snapshot.getString("id");
 
-                    User user = new User(name, surname);
-                    users.add(user);
+                    User user = new User(name, surname, id);
+
+                    db.collection("Chat")
+                            .whereIn ("firstUserId", Arrays.asList(auth.getUid().toString(), user.getId()))
+                            .whereIn ("secondUserId", Arrays.asList(auth.getUid().toString(), user.getId())).get().addOnSuccessListener(queryDocumentSnapshots2 -> {
+                                if (!queryDocumentSnapshots2.isEmpty()) {
+                                    users.add(user);
+                                    chatUserListAdapter.updateData(users);
+                                    System.out.println(users);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
                 }
-
-                chatUserListAdapter.updateData(users);
+                System.out.println("jksndkjasdvdfvv   " + users);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

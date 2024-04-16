@@ -34,16 +34,19 @@ public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdap
     @Override
     public void onBindViewHolder(@NonNull ChatInBetweenAdapter.ChatInBetweenHolder holder, int position)
     {
-        if(messages.get(position).getSenderId() != auth.getUid())
-        {
-            holder.binding.otherMessage.setVisibility(View.INVISIBLE);
+
+        if (messages.get(position).getSenderId().equals(auth.getUid())) {
+            holder.binding.leftChatLayout.setVisibility(View.GONE);
+            holder.binding.rightChatLayout.setVisibility(View.VISIBLE);
             holder.binding.myMessage.setText(messages.get(position).getMessageText());
-        }
-        else
-        {
-            holder.binding.myMessage.setVisibility(View.INVISIBLE);
+            System.out.println("ben");
+        } else {
+            System.out.println("sen");
+            holder.binding.rightChatLayout.setVisibility(View.GONE);
+            holder.binding.leftChatLayout.setVisibility(View.VISIBLE);
             holder.binding.otherMessage.setText(messages.get(position).getMessageText());
         }
+
 
 
     }

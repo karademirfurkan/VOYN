@@ -51,7 +51,8 @@ public class TransportationDetailActivity extends AppCompatActivity {
 
         String name = (String) transportationMap.get("name");
         binding.nameInfo.setText(name);
-        binding.surnameInfo.setText((String) transportationMap.get("surname"));
+        //binding.surnameInfo.setText((String) transportationMap.get("surname"));
+        //binding.mailInfo.setText((String) transportationMap.get("mail"));
         binding.departureInfo.setText((String) transportationMap.get("departure"));
         binding.destinationInfo.setText((String) transportationMap.get("destination"));
         binding.dateInfo.setText((String) transportationMap.get("date"));
@@ -59,7 +60,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
         binding.seatsInfo.setText(transportationMap.get("seats").toString());
         ArrayList<String> invited = (ArrayList<String>) transportationMap.get("invited");
         if (invited != null) {
-            binding.deneme.setText(invited.toString());
+            //binding.deneme.setText(invited.toString());
         }
     }
 

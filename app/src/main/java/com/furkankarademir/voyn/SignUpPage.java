@@ -57,7 +57,7 @@ public class SignUpPage extends AppCompatActivity {
                 auth.createUserWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        User newUser = new User(name, surname);
+                        User newUser = new User(name, surname, null);
                         newUser.setMail(eMail);
                         newUser.setPassword(password);
                         newUser.setId(auth.getUid().toString());

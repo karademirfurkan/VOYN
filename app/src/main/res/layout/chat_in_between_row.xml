@@ -1,20 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="5dp">
 
-    <TextView
-        android:id="@+id/otherMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="otherMessage"
-        android:background="@drawable/transportation_activity_list_row_view"/>
 
-    <TextView
-        android:id="@+id/myMessage"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/left_chat_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
-        android:text="meMessage"
-        android:background="@drawable/transportation_activity_list_row_view"/>
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
+        />
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/otherMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/transportation_activity_list_row_view"
+                android:padding="10dp"
+                android:fontFamily="@font/jockey_one"
+                android:shadowRadius="30"
+                android:text="My name is Furkan. My department is computer engineering. I am doing my best to make this project perfect"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginLeft="175dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="490dp">
+
+            <TextView
+                android:id="@+id/myMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/transportation_activity_list_row_view"
+                android:padding="10dp"
+                android:shadowRadius="30"
+                android:fontFamily="@font/jockey_one"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

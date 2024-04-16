@@ -2,6 +2,8 @@ package com.furkankarademir.voyn.Classes;
 
 import static android.content.ContentValues.TAG;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -18,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User {
+public class User implements Serializable{
     private String name;
     private String surname;
     private String mail;
@@ -44,10 +46,11 @@ public class User {
         this.id = id;
     }
 
-    public User  (String name, String surname)
+    public User  (String name, String surname, String id)
     {
         this.name = name;
         this.surname = surname;
+        this.id = id;
         myActivities = new ArrayList<String>();
     }
 
@@ -126,4 +129,5 @@ public class User {
     public void setMyActivities(ArrayList<String> myActivities) {
         this.myActivities = myActivities;
     }
+
 }
