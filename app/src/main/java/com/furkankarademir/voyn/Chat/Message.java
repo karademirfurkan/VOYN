@@ -10,6 +10,8 @@ public class Message
 
     private String receiverId;
 
+    private String time;
+
 
     public Message() {
 
@@ -25,6 +27,8 @@ public class Message
         this.receiverId = receiverId;
     }
 
+    public void setTime(String time){this.time = time;}
+    public String getTime(){return this.time;}
     public String getMessageText() {
         return messageText;
     }
