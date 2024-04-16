@@ -59,7 +59,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
         binding.seatsInfo.setText(transportationMap.get("seats").toString());
         ArrayList<String> invited = (ArrayList<String>) transportationMap.get("invited");
         if (invited != null) {
-            binding.deneme.setText(invited.toString());
+            //binding.deneme.setText(invited.toString());
         }
     }
 

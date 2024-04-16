@@ -2,6 +2,7 @@ package com.furkankarademir.voyn.Accomodation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
+import com.furkankarademir.voyn.Transportation.TransportationActivity;
+import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.furkankarademir.voyn.databinding.ActivityAccomodationBinding;
 import com.furkankarademir.voyn.databinding.ActivityAddAccomodationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,6 +33,8 @@ public class AccomodationActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private ArrayList<HashMap<String, Object>> accomodationActivities;
 
+    private AccomodationAdapter accomodationAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,9 @@ public class AccomodationActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         accomodationActivities = new ArrayList<>();
 
+        binding.recyclerView5.setLayoutManager(new LinearLayoutManager(AccomodationActivity.this));
+        accomodationAdapter = new AccomodationAdapter(accomodationActivities, 0);
+        binding.recyclerView5.setAdapter(accomodationAdapter);
 
         makeArrayList();
 
