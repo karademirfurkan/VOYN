@@ -60,7 +60,7 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         holder.binding.date.setText(date);
         holder.binding.whereFrom.setText(departure);
         holder.binding.whereTo.setText(destination);
-        holder.binding.personLimit.setText(personLimit);
+        holder.binding.availableSeats.setText(personLimit);
 
 
         if(transportationAdapterOption == 0)

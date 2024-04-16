@@ -1,6 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/accommodationLinearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="100dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/transportation_activity_list_row_view"
+    android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/jockey_one"
+            android:gravity="center_horizontal"
+            android:text="Date"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/AccomodationDateID"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/jockey_one"
+            android:gravity="center_horizontal"
+            android:text="01.01.2024"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView62"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/jockey_one"
+                android:gravity="center_horizontal"
+                android:textSize="15sp"
+                android:text="Gender:" />
+
+            <TextView
+                android:id="@+id/genderID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/jockey_one"
+                android:gravity="center_horizontal"
+                android:textSize="15sp"
+                android:text="Male" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView64"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/jockey_one"
+            android:gravity="center_horizontal"
+            android:text="Place"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/placeID"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/jockey_one"
+            android:gravity="center_horizontal"
+            android:text="Bilkent"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView66"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/jockey_one"
+            android:gravity="center_horizontal"
+            android:text="Person Limit"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/personLimitID"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:fontFamily="@font/jockey_one"
+            android:gravity="center_horizontal"
+            android:text="1/5"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+</LinearLayout>
