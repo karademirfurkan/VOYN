@@ -33,7 +33,7 @@ public class Transportation extends Activity{
     private int seats;
 
 
-    public Transportation(String name, String surname, String mail, String date, String time,String departure, String destination,
+    public Transportation(String name, String surname, String mail, String date, String time, String departure, String destination,
                           int seats, String extraNote, String creatorUserID)
     {
         super(name,surname, mail, date, time, extraNote, creatorUserID);

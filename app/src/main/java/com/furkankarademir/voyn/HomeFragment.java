@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.furkankarademir.voyn.Accomodation.AccomodationActivity;
+import com.furkankarademir.voyn.Sport.SportActivity;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
 
 public class HomeFragment extends Fragment {
@@ -94,8 +95,9 @@ public class HomeFragment extends Fragment {
         sports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(view.getContext(), Sports.class);
-                //startActivity(intent);
+                Intent intent = new Intent(view.getContext(), SportActivity.class);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
             }
         });
 
