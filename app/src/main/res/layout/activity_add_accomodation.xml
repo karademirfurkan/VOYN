@@ -8,61 +8,253 @@
     tools:context=".Accomodation.AddAccomodationActivity">
 
     <LinearLayout
-        android:layout_width="391dp"
-        android:layout_height="711dp"
+        android:id="@+id/addAccomodationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/textView105"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jockey_one"
+            android:text="OPENING A ACCOMMODATION ACTIVITY"
+            android:textAlignment="center"
+            android:textSize="23sp" />
+
+        <ImageView
+            android:id="@+id/imageView108"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="13dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="TYPE"
+                android:textSize="19sp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/t_one" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/type"
             android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/transportation_edittext_shape"
+            android:hint="Enter the type..."
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="type"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2349"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="13dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="PLACE"
+                android:textSize="19sp" />
+
+            <ImageView
+                android:id="@+id/imageView38403"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/t_seven" />
+
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/place"
             android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/transportation_edittext_shape"
+            android:hint="Enter the place..."
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="place"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView09284"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="13dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="DATE"
+                android:textSize="19sp" />
+
+            <ImageView
+                android:id="@+id/imageView83248"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/t_six" />
+
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/date"
             android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/transportation_edittext_shape"
+            android:hint="Enter the date in the form Year/Month/Day"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:layout_marginRight="7dp"
+            android:layout_marginLeft="3dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="date"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView320984"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="13dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="GENDER"
+                android:textSize="19sp" />
+
+            <ImageView
+                android:id="@+id/imageView3i4329"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/t_five" />
+
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/gender"
             android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/transportation_edittext_shape"
+            android:hint="Enter the gender you want to live together..."
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="gender"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView474434"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="NUMBER OF INHABITANTS"
+                android:textSize="19sp" />
+
+
+        </LinearLayout>
+
 
         <EditText
             android:id="@+id/numberOfInhabitants"
             android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/transportation_edittext_shape"
+            android:hint="Enter the number of inhabitants..."
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="number of inhabitants"
-            android:inputType="text" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView484398"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="13dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="EXTRA NOTES"
+                android:textSize="19sp" />
+
+            <ImageView
+                android:id="@+id/imageView10409"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/t_four" />
+
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/extraNotes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="extra notes"
-            android:inputType="text" />
+            android:layout_height="40dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/transportation_edittext_shape"
+            android:hint="You can add extra notes..."
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,19 +263,33 @@
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/Transportation_Page_Buttons_View"
+                android:layout_width="159dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="50dp"
+                android:drawableRight="@drawable/t_three"
+                android:fontFamily="@font/jockey_one"
                 android:onClick="openActivityButtonClicked"
-                android:text="open activity" />
+                android:text="OPEN ACTIVITY"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
             <Button
                 android:id="@+id/button10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                style="@style/Transportation_Page_Buttons_View2"
+                android:layout_width="159dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:drawableRight="@drawable/t_two"
+                android:fontFamily="@font/jockey_one"
                 android:onClick="cancelButtonClicked"
-                android:text="cancel" />
+                android:text="CANCEL"
+                android:textColor="#FF2121"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@
             android:name=".Accomodation.AccomodationDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Accomodation.AccomodationActivity"
+            android:name=".Accomodation.AccommodationActivity"
             android:exported="false" />
         <activity
             android:name=".Transportation.TransportationDetailActivity"

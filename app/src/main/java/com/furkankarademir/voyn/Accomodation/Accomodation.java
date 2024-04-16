@@ -18,8 +18,6 @@ import java.util.Map;
 
 public class Accomodation extends Activity
 {
-
-
     private String type;
     private String place;
     private String gender;
@@ -48,6 +46,8 @@ public class Accomodation extends Activity
         accomodation.put("time", getTime());
         accomodation.put("extraNote", getExtraNote());
         accomodation.put("creatorUserID", getCreatorUserID());
+        accomodation.put("participantsId", getParticipantsId());
+        accomodation.put("invitedId", getInvitedId());
 
         accomodation.put("type", type);
         accomodation.put("place", place);
@@ -60,6 +60,10 @@ public class Accomodation extends Activity
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
+                        String documentId = documentReference.getId();
+                        accomodation.put("documentId", documentId);
+                        db.collection("accommodations").document(documentId).set(accomodation);
+                        System.out.println("her sey eklendi");
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                         callback.onCallback(documentReference.getId());
                     }

@@ -11,11 +11,7 @@ import android.widget.Toast;
 import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.ParentClassesForActivity.FireStoreCallback;
 import com.furkankarademir.voyn.ProfileClasses.Profile;
-import com.furkankarademir.voyn.R;
-import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
-import com.furkankarademir.voyn.Transportation.Transportation;
 import com.furkankarademir.voyn.databinding.ActivityAddAccomodationBinding;
-import com.furkankarademir.voyn.databinding.ActivityAddTransportationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -67,6 +63,7 @@ public class AddAccomodationActivity extends AppCompatActivity {
                     System.out.println("bunun ismi" + name);
                     surname = documentSnapshot.getString("surname");
                     mail = documentSnapshot.getString("mail");
+                    thisUser = documentSnapshot.toObject(User.class);
                 }
                 else
                 {
@@ -171,7 +168,7 @@ public class AddAccomodationActivity extends AppCompatActivity {
 
     public void cancelButtonClicked(View view)
     {
-        Intent intent = new Intent(AddAccomodationActivity.this, AccomodationActivity.class);
+        Intent intent = new Intent(AddAccomodationActivity.this, AccommodationActivity.class);
         startActivity(intent);
         finish();
     }

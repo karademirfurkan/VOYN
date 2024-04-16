@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.furkankarademir.voyn.databinding.RecyclerAccomodationRowBinding;
+import com.furkankarademir.voyn.myactivitiesclasses.myAccommodationActivityDetails;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull com.furkankarademir.voyn.Accomodation.AccomodationAdapter.AccomodationHolder holder, @SuppressLint("RecyclerView") int position)
+    public void onBindViewHolder(@NonNull AccomodationHolder holder, int position)
     {
         String gender = (String) accomodationActivities.get(position).get("gender");
         String type = (String) accomodationActivities.get(position).get("type");
@@ -75,7 +76,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
+                    Intent intent = new Intent(holder.itemView.getContext(), myAccommodationActivityDetails.class);
                     intent.putExtra("accommodation", accomodationActivities.get(position));
                     holder.itemView.getContext().startActivity(intent);
                 }

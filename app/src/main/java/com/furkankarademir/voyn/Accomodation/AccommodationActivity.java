@@ -9,14 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.furkankarademir.voyn.R;
-import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
-import com.furkankarademir.voyn.Transportation.TransportationActivity;
-import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.furkankarademir.voyn.databinding.ActivityAccomodationBinding;
-import com.furkankarademir.voyn.databinding.ActivityAddAccomodationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,11 +23,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class AccomodationActivity extends AppCompatActivity {
+public class AccommodationActivity extends AppCompatActivity {
     private ActivityAccomodationBinding binding;
 
+    private FirebaseAuth auth;
+
     private FirebaseFirestore db;
-    private ArrayList<HashMap<String, Object>> accomodationActivities;
+    private ArrayList<HashMap<String, Object>> accommodationActivities;
 
     private AccomodationAdapter accomodationAdapter;
 
@@ -42,31 +40,33 @@ public class AccomodationActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        accomodationActivities = new ArrayList<>();
+        accommodationActivities = new ArrayList<>();
 
-        binding.recyclerView5.setLayoutManager(new LinearLayoutManager(AccomodationActivity.this));
-        accomodationAdapter = new AccomodationAdapter(accomodationActivities, 0);
+        binding.recyclerView5.setLayoutManager(new LinearLayoutManager(AccommodationActivity.this));
+        accomodationAdapter = new AccomodationAdapter(accommodationActivities, 0);
         binding.recyclerView5.setAdapter(accomodationAdapter);
 
         makeArrayList();
-
 
     }
 
     public void makeArrayList()
     {
-        db.collection("accomodations").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("accommodations").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots)
                 {
                     HashMap<String, Object> accomodation = (HashMap<String, Object>) documentSnapshot.getData();
-                    accomodationActivities.add(accomodation);
+                    if(!auth.getUid().equals(accomodation.get("creatorUserID"))) {
+                        accommodationActivities.add(accomodation);
+                    }
                 }
 
 
-                accomodationActivities.sort((o1, o2) -> {
+                accommodationActivities.sort((o1, o2) -> {
                     if(o1.get("date") == null || o2.get("date") == null)
                         return 0;
                     String date1 = (String) o1.get("date");
@@ -87,7 +87,7 @@ public class AccomodationActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AccomodationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(AccommodationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
