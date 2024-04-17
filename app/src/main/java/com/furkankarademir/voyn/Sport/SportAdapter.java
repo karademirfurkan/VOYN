@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.furkankarademir.voyn.Sport.SportAdapter;
-import com.furkankarademir.voyn.Sport.SportDetailActivity;
 import com.furkankarademir.voyn.databinding.RecyclerSportRowBinding;
 import com.furkankarademir.voyn.myactivitiesclasses.mySportsActivityDetails;
 
@@ -59,7 +57,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportHolder>
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(holder.itemView.getContext(), SportDetailActivity.class);
+                    Intent intent = new Intent(holder.itemView.getContext(), SportsDetailActivity.class);
                     intent.putExtra("sport", sportActivities.get(position));
                     holder.itemView.getContext().startActivity(intent);
                 }

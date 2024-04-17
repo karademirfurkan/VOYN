@@ -14,9 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.furkankarademir.voyn.Chat.Chat;
 import com.furkankarademir.voyn.Chat.ChatInBetweenPage;
 import com.furkankarademir.voyn.Chat.Message;
-import com.furkankarademir.voyn.ParentClassesForActivity.Activity;
-import com.furkankarademir.voyn.Sport.SportDetailActivity;
-import com.furkankarademir.voyn.databinding.ActivitySportDetailBinding;
+import com.furkankarademir.voyn.databinding.ActivitySportsDetailBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,8 +25,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SportDetailActivity extends AppCompatActivity {
-    private ActivitySportDetailBinding binding;
+public class SportsDetailActivity extends AppCompatActivity {
+    private ActivitySportsDetailBinding binding;
 
     private HashMap<String, Object> sport;
 
@@ -37,7 +35,7 @@ public class SportDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySportDetailBinding.inflate(getLayoutInflater());
+        binding = ActivitySportsDetailBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -59,7 +57,7 @@ public class SportDetailActivity extends AppCompatActivity {
         binding.numberOfPlayersInfo.setText(sportMap.get("seats").toString());
         ArrayList<String> invited = (ArrayList<String>) sportMap.get("invited");
         if (invited != null) {
-           // binding.deneme.setText(invited.toString());
+            // binding.deneme.setText(invited.toString());
         }
     }
     public void sendMessageButtonClicked(View view)
@@ -80,7 +78,7 @@ public class SportDetailActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                    Toast.makeText(SportDetailActivity.this, "new chat added", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(SportsDetailActivity.this, "new chat added", Toast.LENGTH_LONG).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -91,10 +89,10 @@ public class SportDetailActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(SportDetailActivity.this, "same chat", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SportsDetailActivity.this, "same chat", Toast.LENGTH_LONG).show();
                         }
 
-                        Intent intent = new Intent(SportDetailActivity.this, ChatInBetweenPage.class);
+                        Intent intent = new Intent(SportsDetailActivity.this, ChatInBetweenPage.class);
                         intent.putExtra("sport", sport);
                         startActivity(intent);
                     }
