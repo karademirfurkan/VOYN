@@ -13,6 +13,15 @@
         android:theme="@style/Theme.VOYN"
         tools:targetApi="31">
         <activity
+            android:name=".Sport.SportsDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Sport.SportsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Sport.AddSportsActivity"
+            android:exported="false" />
+        <activity
             android:name=".myactivitiesclasses.profilePageForOtherUsers"
             android:exported="false" />
         <activity
@@ -36,7 +45,7 @@
         <activity
             android:name=".Chat.ChatInBetweenPage"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Chat.ChattedUsersListPage"
             android:exported="false" />

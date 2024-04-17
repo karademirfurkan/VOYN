@@ -8,10 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.furkankarademir.voyn.Sport.AddSportActivity;
-import com.furkankarademir.voyn.Sport.SportActivity;
-import com.furkankarademir.voyn.Sport.SportAdapter;
-import com.furkankarademir.voyn.databinding.ActivitySportBinding;
+import com.furkankarademir.voyn.databinding.ActivitySportsBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,16 +22,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class SportActivity extends AppCompatActivity {
+public class SportsActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private ArrayList<HashMap<String, Object>> sportActivities;
     private SportAdapter sportAdapter;
-    private ActivitySportBinding binding;
+    private ActivitySportsBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySportBinding.inflate(getLayoutInflater());
+        binding = ActivitySportsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -43,7 +40,7 @@ public class SportActivity extends AppCompatActivity {
         sportActivities = new ArrayList<>();
 
 
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(SportActivity.this));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(SportsActivity.this));
         sportAdapter= new SportAdapter(sportActivities, 0);
         binding.recyclerView.setAdapter(sportAdapter);
 
@@ -94,7 +91,7 @@ public class SportActivity extends AppCompatActivity {
         });
     }
     public void addSportButton(View view) {
-        Intent intent = new Intent(this, AddSportActivity.class);
+        Intent intent = new Intent(this, AddSportsActivity.class);
         startActivity(intent);
     }
 
