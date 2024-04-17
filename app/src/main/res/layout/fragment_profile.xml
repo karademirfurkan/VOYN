@@ -186,6 +186,181 @@
                 tools:layout_editor_absoluteY="253dp" />
 
         </LinearLayout>
+        <LinearLayout
+
+            android:id="@+id/linearLayout5"
+
+            android:layout_width="430dp"
+
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="2dp"
+
+            android:orientation="horizontal"
+
+            android:rotation="180"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <TextView
+
+                android:id="@+id/textView16"
+
+                android:layout_width="25dp"
+
+                android:layout_height="80dp"
+
+                android:layout_weight="1"
+
+                android:background="#B3DEFF" />
+
+
+            <TextView
+
+                android:id="@+id/textView17"
+
+                android:layout_width="25dp"
+
+                android:layout_height="68dp"
+
+                android:layout_weight="1"
+
+                android:background="#8BCFFF" />
+
+
+            <TextView
+
+                android:id="@+id/textView18"
+
+                android:layout_width="25dp"
+
+                android:layout_height="55dp"
+
+                android:layout_weight="1"
+
+                android:background="#62B0FF" />
+
+
+            <TextView
+
+                android:id="@+id/textView19"
+
+                android:layout_width="25dp"
+
+                android:layout_height="43dp"
+
+                android:layout_weight="1"
+
+                android:background="#46B0FF" />
+
+
+            <TextView
+
+                android:id="@+id/textView20"
+
+                android:layout_width="25dp"
+
+                android:layout_height="55dp"
+
+                android:layout_weight="1"
+
+                android:background="#33BEFF" />
+
+
+            <TextView
+
+                android:id="@+id/textView21"
+
+                android:layout_width="25dp"
+
+                android:layout_height="62dp"
+
+                android:layout_weight="1"
+
+                android:background="#438AF8" />
+
+
+            <TextView
+
+                android:id="@+id/textView22"
+
+                android:layout_width="25dp"
+
+                android:layout_height="37dp"
+
+                android:layout_weight="1"
+
+                android:background="#6486FF" />
+
+
+            <TextView
+
+                android:id="@+id/textView23"
+
+                android:layout_width="25dp"
+
+                android:layout_height="25dp"
+
+                android:layout_weight="1"
+
+                android:background="#4094CD" />
+
+
+            <TextView
+
+                android:id="@+id/textView24"
+
+                android:layout_width="25dp"
+
+                android:layout_height="55dp"
+
+                android:layout_weight="1"
+
+                android:background="#4979B0" />
+
+
+            <TextView
+
+                android:id="@+id/textView25"
+
+                android:layout_width="25dp"
+
+                android:layout_height="65dp"
+
+                android:layout_weight="1"
+
+                android:background="#6993BD" />
+
+
+            <TextView
+
+                android:id="@+id/textView26"
+
+                android:layout_width="25dp"
+
+                android:layout_height="72dp"
+
+                android:layout_weight="1"
+
+                android:background="#739DE8" />
+
+
+            <TextView
+
+                android:id="@+id/textView27"
+
+                android:layout_width="25dp"
+
+                android:layout_height="34dp"
+
+                android:layout_weight="1"
+
+                android:background="#275583" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
