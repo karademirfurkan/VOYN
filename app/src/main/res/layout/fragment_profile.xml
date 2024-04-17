@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,14 +8,174 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".myactivitiesclasses.profilePageForOtherUsers">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="113dp"
-            android:layout_height="50dp"
-            android:text="Profile Fragment"
-            tools:layout_editor_absoluteX="149dp"
-            tools:layout_editor_absoluteY="171dp" />
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                tools:layout_editor_absoluteX="131dp"
+                tools:layout_editor_absoluteY="42dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="name"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="253dp" />
+                <TextView
+                    android:id="@+id/textView130"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="qwerty@xmail.com"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="253dp" />
+
+                <Button
+                    style="@style/Edit_Profile"
+                    android:layout_width="180dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="EDIT PROFILE"
+                    android:textSize="12sp"
+                    app:strokeColor="#76DE99"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="253dp" />
+
+
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="229dp"
+                android:layout_height="72dp"
+                android:src="@drawable/img" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BIO  :"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="253dp" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bio"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="253dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView55"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GENDER    :"
+                    tools:layout_editor_absoluteX="21dp"
+                    tools:layout_editor_absoluteY="288dp" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="gender"
+                    tools:layout_editor_absoluteX="21dp"
+                    tools:layout_editor_absoluteY="288dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AGE    :"
+                    tools:layout_editor_absoluteX="21dp"
+                    tools:layout_editor_absoluteY="288dp" />
+
+                <TextView
+                    android:id="@+id/textView101"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="age"
+                    tools:layout_editor_absoluteX="21dp"
+                    tools:layout_editor_absoluteY="288dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView111"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DEPARTMENT    ::"
+                    tools:layout_editor_absoluteX="21dp"
+                    tools:layout_editor_absoluteY="288dp" />
+
+                <TextView
+                    android:id="@+id/textView110"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="department"
+                    tools:layout_editor_absoluteX="21dp"
+                    tools:layout_editor_absoluteY="288dp" />
+
+            </LinearLayout>
+            <Button
+                style="@style/Log_Out"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:text="LOG OUT"
+                android:textSize="12sp"
+                app:strokeColor="#76DE99"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="253dp" />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
