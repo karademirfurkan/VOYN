@@ -19,10 +19,11 @@ import java.util.Map;
 public class Sport extends Activity {
 
     private String place;
+    private String type;
 
     private int numberOfPlayers;
      public Sport(String name, String surname, String mail, String date, String time, String place,
-                  int numberOfPlayers, String extraNote, String creatorUserID){
+                  int numberOfPlayers, String extraNote, String creatorUserID, String type){
          super(name,surname, mail, date, time, extraNote, creatorUserID);
          this.place = place;
          this.numberOfPlayers = numberOfPlayers;
@@ -35,6 +36,7 @@ public class Sport extends Activity {
 
         System.out.println(sport.get("name"));
 
+        sport.put("type",getType());
         sport.put("surname", getSurname());
         sport.put("mail", getMail());
         sport.put("creatorUserID", getCreatorUserID());
@@ -83,5 +85,13 @@ public class Sport extends Activity {
 
     public void setNumberOfPlayers(int numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

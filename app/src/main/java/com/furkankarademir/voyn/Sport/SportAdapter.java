@@ -45,11 +45,13 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportHolder>
         String place = (String) sportActivities.get(position).get("place");
         String date = (String) sportActivities.get(position).get("date");
         String personLimit = sportActivities.get(position).get("numberOfPlayers").toString();
+        String typeInfo = (String) sportActivities.get(position).get("type");
 
         holder.binding.time.setText(time);
         holder.binding.date.setText(date);
         holder.binding.place.setText(place);
         holder.binding.personLimit.setText(personLimit);
+        holder.binding.typeInfo.setText(typeInfo);
 
 
         if(sportAdapterOption == 0)

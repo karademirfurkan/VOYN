@@ -64,6 +64,7 @@ public abstract class Activity implements Serializable {
         return creatorUserID;
     }
 
+
     public void addParticipant(String participantId)
     {
         participantsId.add(participantId);
