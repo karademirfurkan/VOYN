@@ -46,7 +46,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AccomodationHolder holder, int position)
+    public void onBindViewHolder(@NonNull AccomodationHolder holder, @SuppressLint("RecyclerView") int position)
     {
         String gender = (String) accomodationActivities.get(position).get("gender");
         String type = (String) accomodationActivities.get(position).get("type");
@@ -66,7 +66,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
-                    intent.putExtra("transportation", accomodationActivities.get(position));
+                    intent.putExtra("accommodations", accomodationActivities.get(position));
                     holder.itemView.getContext().startActivity(intent);
                 }
             });
