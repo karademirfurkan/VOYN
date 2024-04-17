@@ -91,12 +91,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Button sports = view.findViewById(R.id.button7);
+        Button sports = view.findViewById(R.id.sportsButton);
         sports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), SportsActivity.class);
-                intent.putExtra("userID", userID);
+                Intent intent = new Intent(view.getContext(), com.furkankarademir.voyn.Sport.SportsActivity.class);
                 startActivity(intent);
             }
         });
@@ -110,14 +109,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Button incomingInvitations = view.findViewById(R.id.button9);
-        sports.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(view.getContext(), inComingInvitationsList.class);
-                //startActivity(intent);
-            }
-        });
+
 
 
         //for animation
