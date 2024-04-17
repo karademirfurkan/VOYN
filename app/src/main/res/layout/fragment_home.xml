@@ -154,7 +154,7 @@
 
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/sportsButton"
                 style="@style/Activities_Page_Buttons_View"
                 android:layout_width="310dp"
                 android:layout_height="75dp"

@@ -6,15 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".myactivitiesclasses.myActivities">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="101dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="5dp"
+                android:text="MY ACTIVITIES"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textView4355"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="5dp"
+                android:textAlignment="center"
+                android:text="CLICK ON YOUR ACTIVITY TO SEE INCOMING INVITATIONS"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:id="@+id/textView59"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:background="#818783" />
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="5dp"
+                android:text="Past"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:background="#FCFF5B" />
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="5dp"
+                android:text="Selected"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:background="#76DE99" />
+
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="5dp"
+                android:text="Created"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
         android:layout_width="410dp"
         android:layout_height="538dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="101dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
