@@ -1,6 +1,5 @@
 package com.furkankarademir.voyn.Sport;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +39,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportHolder>
         return new SportAdapter.SportHolder(sportRowBinding);
     }
     @Override
-    public void onBindViewHolder(@NonNull SportAdapter.SportHolder holder, @SuppressLint("RecyclerView") int position)
+    public void onBindViewHolder(@NonNull SportAdapter.SportHolder holder, int position)
     {
         String time = (String) sportActivities.get(position).get("time");
         String place = (String) sportActivities.get(position).get("place");
