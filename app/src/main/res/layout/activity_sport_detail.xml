@@ -403,7 +403,7 @@
             android:orientation="vertical">
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView46"
                 android:layout_width="38dp"
                 android:layout_height="22dp"
@@ -413,7 +413,7 @@
                 tools:layout_editor_absoluteY="138dp" />
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/timeInfo"
                 android:layout_width="75dp"
                 android:layout_height="26dp"
@@ -428,7 +428,7 @@
             android:orientation="vertical">
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView47"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -439,7 +439,7 @@
 
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/placeInfo"
                 android:layout_width="88dp"
                 android:layout_height="25dp"
@@ -454,6 +454,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView48"
                 android:layout_width="84dp"
                 android:layout_height="21dp"
@@ -463,7 +464,7 @@
                 tools:layout_editor_absoluteY="107dp" />
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/numberOfPlayersInfo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
