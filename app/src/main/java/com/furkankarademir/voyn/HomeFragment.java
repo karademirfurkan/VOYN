@@ -14,7 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.furkankarademir.voyn.Accomodation.AccomodationActivity;
+//import com.furkankarademir.voyn.Accomodation.AccomodationActivity;
+import com.furkankarademir.voyn.Accomodation.AccommodationActivity;
 import com.furkankarademir.voyn.Sport.SportsActivity;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
 
