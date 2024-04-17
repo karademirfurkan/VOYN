@@ -27,6 +27,7 @@ public class Sport extends Activity {
          super(name,surname, mail, date, time, extraNote, creatorUserID);
          this.place = place;
          this.numberOfPlayers = numberOfPlayers;
+         this.type = type;
      }
     public void addActivityToDatabase(FireStoreCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
