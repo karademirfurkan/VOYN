@@ -38,13 +38,13 @@ public class ChatInBetweenAdapter extends RecyclerView.Adapter<ChatInBetweenAdap
         if (messages.get(position).getSenderId().equals(auth.getUid())) {
             holder.binding.leftChatLayout.setVisibility(View.GONE);
             holder.binding.rightChatLayout.setVisibility(View.VISIBLE);
-            holder.binding.myMessage.setText(messages.get(position).getMessageText());
+            holder.binding.myMessage.setText(messages.get(position).getMessageText() + "    " + messages.get(position).getTime());
             System.out.println("ben");
         } else {
             System.out.println("sen");
             holder.binding.rightChatLayout.setVisibility(View.GONE);
             holder.binding.leftChatLayout.setVisibility(View.VISIBLE);
-            holder.binding.otherMessage.setText(messages.get(position).getMessageText());
+            holder.binding.otherMessage.setText(messages.get(position).getMessageText() + "    " + messages.get(position).getTime());
         }
 
 

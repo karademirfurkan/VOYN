@@ -32,8 +32,10 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
@@ -144,10 +146,15 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
 
     public void sendMessageButtonClicked(View view) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        String currentTime = dateFormat.format(calendar.getTime());
+
         String messageText = binding.messageText.getText().toString().trim();
 
         if (!TextUtils.isEmpty(messageText)) {
             Message newMessage = new Message(messageText, auth.getUid(), otherUserId);
+            newMessage.setTime(currentTime);
 
             chatDocumentRef.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
