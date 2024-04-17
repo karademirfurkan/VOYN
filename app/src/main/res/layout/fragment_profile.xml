@@ -21,17 +21,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="80dp"
-                tools:layout_editor_absoluteX="131dp"
-                tools:layout_editor_absoluteY="42dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginLeft="80dp"
+                    tools:layout_editor_absoluteX="131dp"
+                    tools:layout_editor_absoluteY="42dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="78dp"
+                    android:layout_height="72dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="95dp"
+                    android:src="@drawable/img" />
+
+            </LinearLayout>
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
@@ -62,12 +76,8 @@
                     tools:layout_editor_absoluteY="253dp" />
 
 
+
             </LinearLayout>
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="229dp"
-                android:layout_height="72dp"
-                android:src="@drawable/img" />
 
             <LinearLayout
                 android:layout_width="match_parent"
