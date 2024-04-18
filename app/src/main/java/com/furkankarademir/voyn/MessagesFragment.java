@@ -78,7 +78,7 @@ public class MessagesFragment extends Fragment {
                     String surname = snapshot.getString("surname");
                     String id = snapshot.getString("id");
 
-                    User user = new User(name, surname, id);
+                    User user = new User(name, surname, id,"","");
 
                     db.collection("Chat")
                             .whereIn ("firstUserId", Arrays.asList(auth.getUid().toString(), user.getId()))
