@@ -318,6 +318,7 @@
                 android:id="@+id/textView300020"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:text="qwert@xmail.com"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="253dp" />
@@ -343,6 +344,7 @@
                 android:id="@+id/textView348480"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:text="*******"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="253dp" />
