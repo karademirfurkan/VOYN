@@ -26,6 +26,9 @@ public class User implements Serializable{
     private String mail;
     private String password;
 
+    private  String age;
+
+    private  String department;
     private String id;
 
     private Profile userProfile;
@@ -46,16 +49,34 @@ public class User implements Serializable{
         this.id = id;
     }
 
-    public User  (String name, String surname, String id)
+    public User  (String name, String surname, String id, String age, String department)
     {
         this.name = name;
         this.surname = surname;
         this.id = id;
+        this.age = age;
+        this.department = department;
         myActivities = new ArrayList<String>();
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public void setName(String name) {
@@ -88,7 +109,7 @@ public class User implements Serializable{
 
     public Profile getProfile()
     {
-        userProfile = new Profile(name, surname, mail,"department"); // replace "department" with the actual department
+        userProfile = new Profile(name, surname, mail,"department", "gender"); // replace "department" with the actual department
         return userProfile;
     }
 
