@@ -234,6 +234,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp"
                     android:text="name"
+                    android:fontFamily="@font/jockey_one"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="253dp" />
 
@@ -242,7 +243,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
                     android:text="qwerty@xmail.com"
+                    android:fontFamily="@font/jockey_one"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="253dp" />
 
@@ -252,10 +255,12 @@
                     android:layout_width="180dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
                     android:text="EDIT PROFILE"
                     android:drawableRight="@drawable/img_1"
                     android:textSize="12sp"
                     app:strokeColor="#76DE99"
+                    android:fontFamily="@font/jockey_one"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="253dp" />
 
@@ -273,6 +278,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BIO  :"
+                    android:fontFamily="@font/jockey_one"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="253dp" />
 
@@ -296,6 +302,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AGE    :"
+                    android:fontFamily="@font/jockey_one"
                     tools:layout_editor_absoluteX="21dp"
                     tools:layout_editor_absoluteY="288dp" />
 
@@ -320,6 +327,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DEPARTMENT    ::"
+                    android:fontFamily="@font/jockey_one"
                     tools:layout_editor_absoluteX="21dp"
                     tools:layout_editor_absoluteY="288dp" />
 
@@ -343,6 +351,7 @@
                 android:drawableRight="@drawable/img_2"
                 android:textSize="12sp"
                 app:strokeColor="#76DE99"
+                android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="253dp" />
 
