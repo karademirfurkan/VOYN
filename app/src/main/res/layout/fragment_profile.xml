@@ -283,7 +283,7 @@
                     tools:layout_editor_absoluteY="253dp" />
 
                 <TextView
-                    android:id="@+id/textView30"
+                    android:id="@+id/biography"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="bio"
@@ -307,7 +307,7 @@
                     tools:layout_editor_absoluteY="288dp" />
 
                 <TextView
-                    android:id="@+id/textView101"
+                    android:id="@+id/ageInProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="age"
@@ -332,7 +332,7 @@
                     tools:layout_editor_absoluteY="288dp" />
 
                 <TextView
-                    android:id="@+id/textView110"
+                    android:id="@+id/departmentInProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="department"
