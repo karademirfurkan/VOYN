@@ -259,7 +259,7 @@
 
             <TextView
 
-                android:id="@+id/textView20"
+                android:id="@+id/textViewBug"
 
                 android:layout_width="25dp"
 
