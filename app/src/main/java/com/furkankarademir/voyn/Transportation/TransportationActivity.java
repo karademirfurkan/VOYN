@@ -46,6 +46,14 @@ public class TransportationActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         transportationActivities = new ArrayList<>();
 
+        binding.filterIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start your filter activity here
+                Intent intent = new Intent(TransportationActivity.this, TransportationFilter.class);
+                startActivityForResult(intent, 1);
+            }
+        });
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(TransportationActivity.this));
         transportationAdapter= new TransportationAdapter(transportationActivities, 0);
@@ -104,5 +112,8 @@ public class TransportationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddTransportationActivity.class);
         startActivity(intent);
     }
+
+
+
 
 }
