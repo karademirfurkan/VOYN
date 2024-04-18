@@ -45,6 +45,8 @@ public class SignUpPage extends AppCompatActivity {
         String eMail = binding.mail.getText().toString();
         String password = binding.password.getText().toString();
         String approvePassword = binding.approvePassword.getText().toString();
+        String department = binding.department.getText().toString();
+        String age = binding.age.getText().toString();
 
         if (name.equals("") || surname.equals("") || eMail.equals("") || password.equals("") || approvePassword.equals(""))
         {
@@ -57,7 +59,7 @@ public class SignUpPage extends AppCompatActivity {
                 auth.createUserWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        User newUser = new User(name, surname, null);
+                        User newUser = new User(name, surname, null, age, department);
                         newUser.setMail(eMail);
                         newUser.setPassword(password);
                         newUser.setId(auth.getUid().toString());

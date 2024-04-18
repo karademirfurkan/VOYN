@@ -5,12 +5,16 @@ public class Profile {
     private String surname;
     private String email;
     private String department;
+    private String age;
 
-    public Profile(String name, String surname, String email, String department) {
+
+
+    public Profile(String name, String surname, String email, String department, String age) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.department = department;
+        this.age = age;
     }
 
     public String getName() {

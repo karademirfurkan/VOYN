@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.furkankarademir.voyn.databinding.ActivitySignUpPageBinding;
+
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {
         // Required empty public constructor
