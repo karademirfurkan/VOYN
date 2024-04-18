@@ -181,6 +181,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
+            <Button
+
+                android:id="@+id/button3"
+                style="@style/BACK"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="52dp"
+                android:onClick="cancelButtonClicked"
+                app:icon="@drawable/arrow_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -190,7 +202,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
@@ -200,7 +211,7 @@
                         android:id="@+id/imageView11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
+                        android:layout_marginLeft="90dp"
                         android:layout_marginTop="80dp"
                         tools:layout_editor_absoluteX="131dp"
                         tools:layout_editor_absoluteY="42dp"
@@ -235,12 +246,14 @@
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="253dp" />
 
+
                 <Button
                     style="@style/Edit_Profile"
                     android:layout_width="180dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center_horizontal"
                     android:text="EDIT PROFILE"
+                    android:drawableRight="@drawable/img_1"
                     android:textSize="12sp"
                     app:strokeColor="#76DE99"
                     tools:layout_editor_absoluteX="16dp"
@@ -252,7 +265,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -270,30 +283,6 @@
                     android:text="bio"
                     tools:layout_editor_absoluteX="16dp"
                     tools:layout_editor_absoluteY="253dp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView55"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="GENDER    :"
-                    tools:layout_editor_absoluteX="21dp"
-                    tools:layout_editor_absoluteY="288dp" />
-
-                <TextView
-                    android:id="@+id/textView40"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="gender"
-                    tools:layout_editor_absoluteX="21dp"
-                    tools:layout_editor_absoluteY="288dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -351,6 +340,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
                 android:text="LOG OUT"
+                android:drawableRight="@drawable/img_2"
                 android:textSize="12sp"
                 app:strokeColor="#76DE99"
                 tools:layout_editor_absoluteX="16dp"
