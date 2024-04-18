@@ -46,6 +46,16 @@ public class TransportationActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         transportationActivities = new ArrayList<>();
 
+        binding.filterIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start your filter activity here
+                Intent intent = new Intent(TransportationActivity.this, TransportationFilter.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
+
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(TransportationActivity.this));
         transportationAdapter= new TransportationAdapter(transportationActivities, 0);
@@ -104,5 +114,43 @@ public class TransportationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddTransportationActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                String departure = data.getStringExtra("departure");
+                String destination = data.getStringExtra("destination");
+                String time = data.getStringExtra("time");
+                boolean availability = data.getBooleanExtra("availability", false);
+                boolean locked = data.getBooleanExtra("locked", false);
+                long calendar = data.getLongExtra("calendar", 0);
+
+                transportationActivities.removeIf(transportation -> {
+                    if(departure != null && !departure.equals("") && !departure.equals(transportation.get("departure")))
+                        return true;
+                    if(destination != null && !destination.equals("") && !destination.equals(transportation.get("destination")))
+                        return true;
+                    if(time != null && !time.equals("") && !time.equals(transportation.get("time")))
+                        return true;
+                    // Bunlar zor oldugu icin commentledim ve sadece departure time destination uzerinden filtreleme yaptım
+                    //if(availability != (boolean) transportation.get("availability"))
+                    //    return false;
+                    //if(locked != (boolean) transportation.get("locked"))
+                    //    return false;
+                    //if(calendar != 0 && calendar != (long) transportation.get("calendar"))
+                    //    return false;
+                    return false;
+                });
+                transportationAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+
+
 
 }

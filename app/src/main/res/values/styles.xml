@@ -31,6 +31,19 @@
         <item name="strokeWidth">3dp</item>
         <item name="strokeColor">#FFFFFF</item>
     </style>
+    <style name="Edit_Profile">
+        <item name="backgroundTint">#76DE99</item>
+        <item name="cornerRadius">30dp</item>
+        <item name="strokeWidth">3dp</item>
+        <item name="strokeColor">#FFFFFF</item>
+    </style>
+    <style name="Log_Out">
+        <item name="backgroundTint">#FF2121</item>
+        <item name="cornerRadius">30dp</item>
+        <item name="strokeWidth">3dp</item>
+        <item name="strokeColor">#FFFFFF</item>
+    </style>
+
 
     <style name="Transportation_Page_Buttons_View">
         <item name="backgroundTint">#00FFFFFF</item>
