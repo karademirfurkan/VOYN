@@ -9,45 +9,47 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRv"
         android:layout_width="match_parent"
-        android:layout_height="630dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="10dp"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/messageText"
             android:layout_width="270dp"
-            android:layout_weight="1"
             android:layout_height="50dp"
-            android:background="@drawable/message_box_view"
-            android:hint="typing..."
-            android:paddingLeft="10dp"
-            android:inputType="text"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/message_box_view"
+            android:hint="typing..."
+            android:inputType="text"
+            android:paddingLeft="10dp"
 
             />
 
         <Button
             android:id="@+id/sendButton"
-            android:layout_weight="1"
             style="@style/Add_Button_View"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:drawableEnd="@drawable/chat_add_icon"
             android:onClick="sendMessageButtonClicked"
-            app:iconPadding="0dp"
-            android:layout_marginRight="5dp"/>
+            app:iconPadding="0dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

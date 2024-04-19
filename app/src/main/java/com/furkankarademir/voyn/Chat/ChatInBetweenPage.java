@@ -75,8 +75,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
             transportationMap = (HashMap<String, Object>) intent2.getSerializableExtra("transportation");
             otherUserId = (String) transportationMap.get("creatorUserID");
         }
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        
 
 
 
