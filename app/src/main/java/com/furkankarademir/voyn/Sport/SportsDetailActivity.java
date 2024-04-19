@@ -54,7 +54,7 @@ public class SportsDetailActivity extends AppCompatActivity {
         binding.placeInfo.setText((String) sportMap.get("place"));
         binding.dateInfo.setText((String) sportMap.get("date"));
         binding.timeInfo.setText((String) sportMap.get("time"));
-        binding.numberOfPlayersInfo.setText(sportMap.get("seats").toString());
+        binding.numberOfPlayersInfo.setText(sportMap.get("numberOfPlayers").toString());
         ArrayList<String> invited = (ArrayList<String>) sportMap.get("invited");
         if (invited != null) {
             // binding.deneme.setText(invited.toString());
