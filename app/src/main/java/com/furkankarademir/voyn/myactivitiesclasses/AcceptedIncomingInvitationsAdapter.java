@@ -1,6 +1,7 @@
 package com.furkankarademir.voyn.myactivitiesclasses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -66,6 +67,13 @@ public class AcceptedIncomingInvitationsAdapter extends RecyclerView.Adapter<Acc
             public void onFailure(@NonNull Exception e) {
                 System.out.println("olmadı");
             }
+        });
+        holder.itemView.setOnClickListener(v ->
+        {
+            // Go to the user's profile
+            Intent intent = new Intent(holder.context, profilePageForOtherUsers.class);
+            intent.putExtra("userId", acceptedInvitations.get(position));
+            holder.context.startActivity(intent);
         });
     }
 
