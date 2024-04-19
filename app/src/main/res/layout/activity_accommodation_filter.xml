@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Date"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="44dp" />
+        app:layout_constraintBottom_toTopOf="@+id/calendar"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <CalendarView
         android:id="@+id/calendar"
@@ -32,54 +32,38 @@
         android:id="@+id/textView68"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="52dp"
         android:text="Place"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/calendar"
-        app:layout_constraintTop_toBottomOf="@+id/calendar"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/departure"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:ems="10"
-        android:hint="Type Departure Point"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView68" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar" />
 
     <Switch
         android:id="@+id/switchAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:text="Available"
-        app:layout_constraintStart_toStartOf="@+id/departure"
-        app:layout_constraintTop_toBottomOf="@+id/departure" />
+        app:layout_constraintTop_toBottomOf="@+id/textView68"
+        tools:layout_editor_absoluteX="34dp" />
 
     <Switch
         android:id="@+id/switchLocked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="216dp"
         android:layout_marginBottom="116dp"
         android:text="Locked"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/departure" />
+        tools:layout_editor_absoluteX="246dp" />
 
     <Button
         android:id="@+id/filterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
         android:layout_marginBottom="32dp"
         android:text="Apply Filter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/departure" />
+        tools:layout_editor_absoluteX="142dp" />
 
     <EditText
         android:id="@+id/placeFilter"

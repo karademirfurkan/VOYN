@@ -49,7 +49,6 @@ public class TransportationActivity extends AppCompatActivity {
         binding.filterIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start your filter activity here
                 Intent intent = new Intent(TransportationActivity.this, TransportationFilter.class);
                 startActivityForResult(intent, 1);
             }

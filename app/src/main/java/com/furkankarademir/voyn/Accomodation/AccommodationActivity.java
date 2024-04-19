@@ -48,6 +48,14 @@ public class AccommodationActivity extends AppCompatActivity {
         accomodationAdapter = new AccomodationAdapter(accommodationActivities, 0);
         binding.recyclerView5.setAdapter(accomodationAdapter);
 
+        binding.filterIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AccommodationActivity.this, AccommodationFilter.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
         makeArrayList();
 
     }
@@ -90,6 +98,31 @@ public class AccommodationActivity extends AppCompatActivity {
                 Toast.makeText(AccommodationActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String place = data.getStringExtra("place");
+                String calendar = data.getStringExtra("calendar");
+                boolean availablity = data.getBooleanExtra("availablity", false);
+                boolean locked = data.getBooleanExtra("locked", false);
+                accommodationActivities.removeIf(accomodation -> {
+                    if(place != null && !place.equals(accomodation.get("place")))
+                        return true;
+                    //if(calendar != null && !calendar.equals(accomodation.get("calendar")))
+                      //  return true;
+                    //if(availablity && (boolean) accomodation.get("availablity"))
+                        //return true;
+                    //if(locked && (boolean) accomodation.get("locked"))
+                      //  return true;
+                    return false;
+                        });
+
+                accomodationAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     public void addAccomodationButton(View view) {
