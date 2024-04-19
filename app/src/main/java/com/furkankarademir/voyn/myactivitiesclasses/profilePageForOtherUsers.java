@@ -28,6 +28,9 @@ public class profilePageForOtherUsers extends AppCompatActivity
     private String userID;
     private String profilePhoto;
 
+    private String age;
+    private String department;
+
     private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,7 +63,11 @@ public class profilePageForOtherUsers extends AppCompatActivity
                     mail = documentSnapshot.getString("mail");
 
                     thisUser = documentSnapshot.toObject(User.class);
+                    age = documentSnapshot.getString("age");
+                    department = documentSnapshot.getString("department");
                     binding.nameInProfile.setText(name + " " + surname);
+                    binding.ageInProfile.setText(age);
+                    binding.departmentInProfile.setText(department);
                 }
                 else
                 {
