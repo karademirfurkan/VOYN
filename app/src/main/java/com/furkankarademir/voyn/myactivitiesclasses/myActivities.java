@@ -157,6 +157,7 @@ public class myActivities extends AppCompatActivity {
                                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                     HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
                                                     mySportActivities.add(data);
+                                                    System.out.println(mySportActivities);
                                                     sportAdapter.notifyDataSetChanged();
                                                 }
                                             })
@@ -177,7 +178,8 @@ public class myActivities extends AppCompatActivity {
                 }
             });
         }
-        System.out.println(myTransportationActivities);
+
+        System.out.println(mySportActivities2);
     }
 
     public void makeMyAccommodationArrayList() {
@@ -220,5 +222,6 @@ public class myActivities extends AppCompatActivity {
                 }
             });
         }
+        System.out.println(myAccommodationActivities2);
     }
 }

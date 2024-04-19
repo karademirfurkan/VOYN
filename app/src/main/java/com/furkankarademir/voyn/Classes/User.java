@@ -209,8 +209,24 @@ public class User implements Serializable{
         return myActivities;
     }
 
+    public ArrayList<String> getMySportActivities() {
+        return mySportActivities;
+    }
+
+    public ArrayList<String> getMyAccommodationActivities() {
+        return myAccommodationActivities;
+    }
+
     public void setMyActivities(ArrayList<String> myActivities) {
         this.myActivities = myActivities;
+    }
+
+    public void setMySportActivities(ArrayList<String> mySportActivities) {
+        this.mySportActivities = mySportActivities;
+    }
+
+    public void setMyAccommodationActivities(ArrayList<String> myAccommodationActivities) {
+        this.myAccommodationActivities = myAccommodationActivities;
     }
 
 }
