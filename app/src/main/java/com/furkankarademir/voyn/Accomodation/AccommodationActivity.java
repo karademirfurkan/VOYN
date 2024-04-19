@@ -109,7 +109,7 @@ public class AccommodationActivity extends AppCompatActivity {
                 boolean availablity = data.getBooleanExtra("availablity", false);
                 boolean locked = data.getBooleanExtra("locked", false);
                 accommodationActivities.removeIf(accomodation -> {
-                    if(place != null && !place.equals(accomodation.get("place")))
+                    if(place != null && !place.equals("") && !place.equals(accomodation.get("place")))
                         return true;
                     //if(calendar != null && !calendar.equals(accomodation.get("calendar")))
                       //  return true;
