@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class User implements Serializable{
@@ -35,9 +36,15 @@ public class User implements Serializable{
 
     private ArrayList<String> myActivities;
 
+    private ArrayList<String> mySportActivities;
+
+    private ArrayList<String> myAccommodationActivities;
+
     public User()
     {
-
+        myActivities = new ArrayList<String>();
+        mySportActivities = new ArrayList<String>();
+        myAccommodationActivities = new ArrayList<String>();
     }
 
 
@@ -57,6 +64,8 @@ public class User implements Serializable{
         this.age = age;
         this.department = department;
         myActivities = new ArrayList<String>();
+        mySportActivities = new ArrayList<String>();
+        myAccommodationActivities = new ArrayList<String>();
     }
 
     public String getName() {
@@ -137,6 +146,59 @@ public class User implements Serializable{
                 });
     }
 
+    public void addSportsActivity(String activity)
+    {
+        mySportActivities.add(activity);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
+        DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+
+        userDocRef.update("mySportActivities", FieldValue.arrayUnion(activity))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
+                    }
+                });
+    }
+
+    public void removeSportsActivity(String activity)
+    {
+        mySportActivities.remove(activity);
+    }
+
+    public void addAccommodationActivity(String activity)
+    {
+        myAccommodationActivities.add(activity);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
+        DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+
+        userDocRef.update("myAccommodationActivities", FieldValue.arrayUnion(activity))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
+                    }
+                });
+    }
+
 
     public void removeActivity(String activity)
     {
@@ -147,8 +209,24 @@ public class User implements Serializable{
         return myActivities;
     }
 
+    public ArrayList<String> getMySportActivities() {
+        return mySportActivities;
+    }
+
+    public ArrayList<String> getMyAccommodationActivities() {
+        return myAccommodationActivities;
+    }
+
     public void setMyActivities(ArrayList<String> myActivities) {
         this.myActivities = myActivities;
+    }
+
+    public void setMySportActivities(ArrayList<String> mySportActivities) {
+        this.mySportActivities = mySportActivities;
+    }
+
+    public void setMyAccommodationActivities(ArrayList<String> myAccommodationActivities) {
+        this.myAccommodationActivities = myAccommodationActivities;
     }
 
 }

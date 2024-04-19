@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.furkankarademir.voyn.Accomodation.AccomodationAdapter;
 import com.furkankarademir.voyn.R;
+import com.furkankarademir.voyn.Sport.SportAdapter;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
 import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.furkankarademir.voyn.databinding.ActivityMyActivitiesBinding;
@@ -35,9 +37,23 @@ public class myActivities extends AppCompatActivity {
 
     private ArrayList<String> myActivities;
 
+    private ArrayList<String> mySportActivities2;
+
+    private ArrayList<String> myAccommodationActivities2;
+
+
+
     private TransportationAdapter transportationAdapter;
 
+    private SportAdapter sportAdapter;
+
+    private AccomodationAdapter accommodationAdapter;
+
     private ArrayList<HashMap<String, Object>> myTransportationActivities;
+
+    private ArrayList<HashMap<String, Object>> myAccommodationActivities;
+
+    private ArrayList<HashMap<String, Object>> mySportActivities;
 
     private FirebaseFirestore db;
     private FirebaseAuth auth;
@@ -53,12 +69,27 @@ public class myActivities extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
         myTransportationActivities = new ArrayList<>();
+        myAccommodationActivities = new ArrayList<>();
+        mySportActivities = new ArrayList<>();
+
 
         binding.recyclerView2.setLayoutManager(new LinearLayoutManager(myActivities.this));
         transportationAdapter = new TransportationAdapter(myTransportationActivities, 1);
         binding.recyclerView2.setAdapter(transportationAdapter);
 
+        binding.recyclerView6.setLayoutManager(new LinearLayoutManager(myActivities.this));
+        accommodationAdapter = new AccomodationAdapter(myAccommodationActivities, 1);
+        binding.recyclerView6.setAdapter(accommodationAdapter);
+
+        binding.recyclerView7.setLayoutManager(new LinearLayoutManager(myActivities.this));
+        sportAdapter = new SportAdapter(mySportActivities, 1);
+        binding.recyclerView7.setAdapter(sportAdapter);
+
+
         makeMyTransportationArrayList();
+        makeMyAccommodationArrayList();
+        makeMySportArrayList();
+
 
 
     }
@@ -74,26 +105,72 @@ public class myActivities extends AppCompatActivity {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             myActivities = (ArrayList<String>) document.get("myActivities");
-                            for (String activityId : myActivities) {
-                                db.collection("transportations").document(activityId)
-                                        .get()
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
-                                                myTransportationActivities.add(data);
-                                                transportationAdapter.notifyDataSetChanged();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.w(TAG, "Error getting document", e);
-                                            }
-                                        });
+                            if ( myActivities != null) {
+                                for (String activityId : myActivities) {
+                                    db.collection("transportations").document(activityId)
+                                            .get()
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                    myTransportationActivities.add(data);
+                                                    transportationAdapter.notifyDataSetChanged();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error getting document", e);
+                                                }
+                                            });
+                                }
+                            } else {
+                                Log.d(TAG, "No such document");
                             }
                         } else {
-                            Log.d(TAG, "No such document");
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                }
+            });
+        }
+        System.out.println(myTransportationActivities);
+    }
+
+    public void makeMySportArrayList() {
+        if (currentUser != null) {
+            DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+
+            userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            mySportActivities2 = (ArrayList<String>) document.get("mySportActivities");
+                            if (mySportActivities2 != null) {
+                                for (String activityId : mySportActivities2) {
+                                    db.collection("sports").document(activityId)
+                                            .get()
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                    mySportActivities.add(data);
+                                                    System.out.println(mySportActivities);
+                                                    sportAdapter.notifyDataSetChanged();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error getting document", e);
+                                                }
+                                            });
+                                }
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
                         }
                     } else {
                         Log.d(TAG, "get failed with ", task.getException());
@@ -101,7 +178,50 @@ public class myActivities extends AppCompatActivity {
                 }
             });
         }
-        System.out.println(myTransportationActivities);
 
+        System.out.println(mySportActivities2);
+    }
+
+    public void makeMyAccommodationArrayList() {
+        if (currentUser != null) {
+            DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+
+            userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            myAccommodationActivities2 = (ArrayList<String>) document.get("myAccommodationActivities");
+                            if (myAccommodationActivities2 != null) {
+                                for (String activityId : myAccommodationActivities2) {
+                                    db.collection("accomodations").document(activityId)
+                                            .get()
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                    myAccommodationActivities.add(data);
+                                                    accommodationAdapter.notifyDataSetChanged();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error getting document", e);
+                                                }
+                                            });
+                                }
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        }
+                    } else {
+                        Log.d(TAG, "get failed with ", task.getException());
+                    }
+                }
+            });
+        }
+        System.out.println(myAccommodationActivities2);
     }
 }

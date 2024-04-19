@@ -50,6 +50,11 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
     @Override
     public void onBindViewHolder(@NonNull TransportationHolder holder, int position)
     {
+        HashMap<String, Object> currentActivity = transportationActivities.get(position);
+        if(currentActivity == null)
+        {
+            return;
+        }
         String time = (String) transportationActivities.get(position).get("time");
         String departure = (String) transportationActivities.get(position).get("departure");
         String date = (String) transportationActivities.get(position).get("date");

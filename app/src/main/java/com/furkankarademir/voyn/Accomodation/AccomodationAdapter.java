@@ -48,6 +48,11 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
     @Override
     public void onBindViewHolder(@NonNull AccomodationHolder holder, @SuppressLint("RecyclerView") int position)
     {
+        HashMap<String, Object> currentActivity = accomodationActivities.get(position);
+        if(currentActivity == null)
+        {
+            return;
+        }
         String gender = (String) accomodationActivities.get(position).get("gender");
         String type = (String) accomodationActivities.get(position).get("type");
         String date = (String) accomodationActivities.get(position).get("date");
