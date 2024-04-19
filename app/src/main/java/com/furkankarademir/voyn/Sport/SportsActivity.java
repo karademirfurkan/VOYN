@@ -44,6 +44,14 @@ public class SportsActivity extends AppCompatActivity {
         sportAdapter= new SportAdapter(sportActivities, 0);
         binding.recyclerView.setAdapter(sportAdapter);
 
+        binding.filterIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SportsActivity.this, SportsFilter.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
         makeArrayList();
     }
     public void makeArrayList()
@@ -89,6 +97,36 @@ public class SportsActivity extends AppCompatActivity {
                 System.out.println("Olmadı beeee");
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String time = data.getStringExtra("time");
+                String place = data.getStringExtra("place");
+                String type = data.getStringExtra("type");
+                boolean availability = data.getBooleanExtra("availability", false);
+                boolean locked = data.getBooleanExtra("locked", false);
+                long calendar = data.getLongExtra("calendar", 0);
+                sportActivities.removeIf(sport -> {
+                    if (time != null && !time.equals("") && !time.equals(sport.get("time")))
+                        return true;
+                    if (place != null && !place.equals("") &&!place.equals(sport.get("place")))
+                        return true;
+                    if (type != null && !type.equals("") && !type.equals(sport.get("type")))
+                        return true;
+                    //if (availability && !(boolean) sport.get("availability"))
+                      //  return true;
+                    //if (locked && !(boolean) sport.get("locked"))
+                      //  return true;
+                    //if (calendar != 0 && calendar != (long) sport.get("calendar"))
+                      //  return true;
+                    return false;
+                });
+                sportAdapter.notifyDataSetChanged();
+            }
+        }
     }
     public void addSportButton(View view) {
         Intent intent = new Intent(this, AddSportsActivity.class);

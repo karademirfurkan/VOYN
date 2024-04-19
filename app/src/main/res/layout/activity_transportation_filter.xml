@@ -51,42 +51,32 @@
         android:id="@+id/textView68"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="8dp"
         android:text="Where From"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/calendar" />
-
-    <EditText
-        android:id="@+id/departure"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
-        android:ems="10"
-        android:hint="Type Departure Point"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/destination"
-        app:layout_constraintEnd_toStartOf="@+id/destination"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView68" />
+        app:layout_constraintBottom_toTopOf="@+id/departure"
+        app:layout_constraintEnd_toStartOf="@+id/textView69"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView69"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
-        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="2dp"
         android:hint="Where To"
-        app:layout_constraintEnd_toEndOf="@+id/calendar"
+        app:layout_constraintBottom_toTopOf="@+id/destination"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/destination"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/destination"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="39dp"
         android:layout_marginTop="513dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="51dp"
@@ -95,42 +85,47 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/filterButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/departure"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/switchAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="47dp"
         android:text="Available"
-        app:layout_constraintStart_toStartOf="@+id/departure"
-        app:layout_constraintTop_toBottomOf="@+id/departure" />
+        app:layout_constraintBottom_toBottomOf="@+id/filterButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Switch
         android:id="@+id/switchLocked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="51dp"
         android:text="Locked"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/destination"
-        app:layout_constraintStart_toEndOf="@+id/departure" />
+        app:layout_constraintBottom_toTopOf="@+id/filterButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@+id/switchAvailable" />
 
     <Button
         android:id="@+id/filterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
         android:layout_marginEnd="129dp"
         android:layout_marginBottom="3dp"
         android:text="Apply Filter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/destination"
-        app:layout_constraintStart_toStartOf="@+id/departure"
         app:layout_constraintTop_toBottomOf="@+id/destination" />
+
+    <EditText
+        android:id="@+id/departure"
+        android:layout_width="188dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="2dp"
+        android:ems="10"
+        android:hint="Type Departure Point..."
+        android:inputType="text"
+        app:layout_constraintBaseline_toBaselineOf="@+id/destination"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
