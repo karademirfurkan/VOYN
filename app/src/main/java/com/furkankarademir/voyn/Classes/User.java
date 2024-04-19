@@ -42,7 +42,9 @@ public class User implements Serializable{
 
     public User()
     {
-
+        myActivities = new ArrayList<String>();
+        mySportActivities = new ArrayList<String>();
+        myAccommodationActivities = new ArrayList<String>();
     }
 
 

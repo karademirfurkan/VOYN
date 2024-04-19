@@ -79,11 +79,11 @@ public class myActivities extends AppCompatActivity {
 
         binding.recyclerView6.setLayoutManager(new LinearLayoutManager(myActivities.this));
         accommodationAdapter = new AccomodationAdapter(myAccommodationActivities, 1);
-        binding.recyclerView6.setAdapter(sportAdapter);
+        binding.recyclerView6.setAdapter(accommodationAdapter);
 
         binding.recyclerView7.setLayoutManager(new LinearLayoutManager(myActivities.this));
         sportAdapter = new SportAdapter(mySportActivities, 1);
-        binding.recyclerView7.setAdapter(accommodationAdapter);
+        binding.recyclerView7.setAdapter(sportAdapter);
 
 
         makeMyTransportationArrayList();
