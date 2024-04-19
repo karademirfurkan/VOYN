@@ -256,6 +256,7 @@
 
 
                 <Button
+                    android:id="@+id/editProfileButton"
                     style="@style/Edit_Profile"
                     android:layout_width="170dp"
                     android:layout_height="40dp"
@@ -263,6 +264,7 @@
                     android:layout_marginTop="5dp"
                     android:drawableRight="@drawable/img_1"
                     android:fontFamily="@font/jockey_one"
+                    android:onClick="editProfileButtonIsClicked"
                     android:text="EDIT PROFILE"
                     android:textSize="12sp"
                     app:strokeColor="#76DE99"
@@ -360,6 +362,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/logOutButton"
                 style="@style/Log_Out"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
