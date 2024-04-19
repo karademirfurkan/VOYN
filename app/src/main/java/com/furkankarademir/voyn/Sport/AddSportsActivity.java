@@ -93,7 +93,7 @@ public class AddSportsActivity extends AppCompatActivity {
                 @Override
                 public void onCallback(String id) {
                     if(thisUser != null) {
-                        thisUser.addActivity(id);
+                        thisUser.addSportsActivity(id);
                         docRef.set(thisUser);
                     }
                 }

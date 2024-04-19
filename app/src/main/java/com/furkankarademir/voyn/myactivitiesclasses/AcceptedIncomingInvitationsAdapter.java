@@ -70,7 +70,6 @@ public class AcceptedIncomingInvitationsAdapter extends RecyclerView.Adapter<Acc
         });
         holder.itemView.setOnClickListener(v ->
         {
-            // Go to the user's profile
             Intent intent = new Intent(holder.context, profilePageForOtherUsers.class);
             intent.putExtra("userId", acceptedInvitations.get(position));
             holder.context.startActivity(intent);

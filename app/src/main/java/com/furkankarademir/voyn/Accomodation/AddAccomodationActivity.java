@@ -126,7 +126,7 @@ public class AddAccomodationActivity extends AppCompatActivity {
                                     @Override
                                     public void onCallback(String id) {
                                         if(thisUser != null) {
-                                            thisUser.addActivity(id);
+                                            thisUser.addAccommodationActivity(id);
                                             docRef.set(thisUser);
                                         }
                                     }

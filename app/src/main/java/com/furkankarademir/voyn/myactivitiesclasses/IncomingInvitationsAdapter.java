@@ -42,9 +42,6 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
         this.incomingInvitations = incomingInvitations;
         this.transportationId = transportationId;
     }
-    {
-        this.incomingInvitations = incomingInvitations;
-    }
     @NonNull
     @Override
     public IncomingInvitationsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
