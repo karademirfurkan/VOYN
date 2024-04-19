@@ -9,21 +9,17 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="540dp"
-        android:layout_marginLeft="21dp"
+        android:layout_height="545dp"
         android:layout_marginTop="4dp"
-        android:layout_marginRight="21dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView33"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/button4"
         style="@style/Add_Button_View"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="16dp"
         android:onClick="addSportButton"
         android:text="+"
         android:textAlignment="gravity"
@@ -31,24 +27,8 @@
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="18dp"
-        android:layout_height="400dp"
-        android:background="#2058A8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
-
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="18dp"
-        android:layout_height="400dp"
-        android:background="#2058A8"
-        app:layout_constraintBottom_toTopOf="@+id/textView35"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView34"
@@ -65,26 +45,14 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Sport" />
 
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#2058A8"
-        android:fontFamily="@font/jacques_francois"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="101dp"
         android:layout_marginTop="1dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView34">
 
         <LinearLayout
@@ -134,11 +102,6 @@
                 android:text="Insufficient star" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/seperator_icon" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

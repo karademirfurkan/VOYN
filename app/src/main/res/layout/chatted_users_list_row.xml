@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@drawable/transportation_activity_list_row_view">
+    >
 
     <LinearLayout
+        android:background="@drawable/chatted_user_list_row_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/jockey_one"
+            android:paddingLeft="10dp"
             android:text="name" />
 
         <TextView
@@ -30,6 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/jockey_one"
+            android:paddingLeft="10dp"
             android:text="surname" />
 
         <TextView
@@ -37,6 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/jockey_one"
+            android:paddingLeft="10dp"
             android:text="password" />
 
         <TextView
@@ -44,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/jockey_one"
+            android:paddingLeft="10dp"
             android:text="mail" />
     </LinearLayout>
 </LinearLayout>

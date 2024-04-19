@@ -148,7 +148,7 @@
                 android:layout_marginBottom="11dp"
                 android:drawableLeft="@drawable/home_icon"
                 android:fontFamily="@font/jockey_one"
-                android:text="HOME AND DORM"
+                android:text="ACCOMODATION"
                 android:textColor="#000000"
                 android:textSize="23sp" />
 
@@ -165,37 +165,21 @@
                 android:textColor="#000000"
                 android:textSize="23sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+
 
                 <Button
                     android:id="@+id/button8"
                     style="@style/Activities_Page_Buttons_View2"
-                    android:layout_width="138dp"
+                    android:layout_width="310dp"
                     android:layout_height="75dp"
-                    android:layout_marginRight="22dp"
                     android:layout_marginBottom="11dp"
                     android:fontFamily="@font/jockey_one"
                     android:text="MY ACTIVITIES"
                     android:textColor="#000000"
                     android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/button9"
-                    style="@style/Activities_Page_Buttons_View2"
-                    android:layout_width="138dp"
-                    android:layout_height="75dp"
-                    android:layout_marginBottom="11dp"
-                    android:fontFamily="@font/jockey_one"
-                    android:text="INCOMING INVITATIONS"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
 
 
-            </LinearLayout>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

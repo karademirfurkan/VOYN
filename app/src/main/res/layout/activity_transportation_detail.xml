@@ -25,7 +25,6 @@
         android:id="@+id/linearLayout4"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:fontFamily="@font/jockey_one"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +37,7 @@
 
             android:id="@+id/textView5"
             android:layout_width="25dp"
-            android:layout_height="68dp"
+            android:layout_height="58dp"
             android:layout_weight="1"
             android:background="#8BCFFF" />
 
@@ -46,7 +45,7 @@
         <TextView
 
             android:id="@+id/textView6"
-            android:layout_width="25dp"
+            android:layout_width="15dp"
             android:layout_height="55dp"
             android:layout_weight="1"
             android:background="#62B0FF" />
@@ -56,7 +55,7 @@
 
             android:id="@+id/textView10"
             android:layout_width="25dp"
-            android:layout_height="43dp"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:background="#46B0FF" />
 
@@ -65,7 +64,7 @@
 
             android:id="@+id/textView7"
             android:layout_width="25dp"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:background="#33BEFF" />
 
@@ -76,7 +75,7 @@
 
             android:layout_width="25dp"
 
-            android:layout_height="62dp"
+            android:layout_height="52dp"
 
             android:layout_weight="1"
 
@@ -89,7 +88,7 @@
 
             android:layout_width="31dp"
 
-            android:layout_height="37dp"
+            android:layout_height="27dp"
 
             android:layout_weight="1"
 
@@ -102,7 +101,7 @@
 
             android:layout_width="25dp"
 
-            android:layout_height="25dp"
+            android:layout_height="15dp"
 
             android:layout_weight="1"
 
@@ -115,7 +114,7 @@
 
             android:layout_width="25dp"
 
-            android:layout_height="55dp"
+            android:layout_height="45dp"
 
             android:layout_weight="1"
 
@@ -128,7 +127,7 @@
 
             android:layout_width="25dp"
 
-            android:layout_height="65dp"
+            android:layout_height="55dp"
 
             android:layout_weight="1"
 
@@ -141,7 +140,7 @@
 
             android:layout_width="25dp"
 
-            android:layout_height="72dp"
+            android:layout_height="62dp"
 
             android:layout_weight="1"
 
@@ -154,7 +153,7 @@
 
             android:layout_width="25dp"
 
-            android:layout_height="34dp"
+            android:layout_height="24dp"
 
             android:layout_weight="1"
 
@@ -221,6 +220,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:paddingLeft="5dp"
                 android:id="@+id/textView32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -230,6 +230,7 @@
                 tools:layout_editor_absoluteY="331dp" />
 
             <TextView
+                android:paddingLeft="7dp"
                 android:id="@+id/nameInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -238,6 +239,7 @@
                 tools:layout_editor_absoluteY="331dp" />
 
             <TextView
+                android:paddingLeft="7dp"
                 android:id="@+id/surnameInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -252,6 +254,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:paddingLeft="5dp"
                 android:id="@+id/textView36"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -261,7 +264,7 @@
                 tools:layout_editor_absoluteY="371dp" />
 
             <TextView
-
+                android:paddingLeft="7dp"
                 android:id="@+id/ageInfo"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
@@ -277,7 +280,7 @@
             android:orientation="horizontal">
 
             <TextView
-
+                android:paddingLeft="5dp"
                 android:id="@+id/textView42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -287,7 +290,7 @@
                 tools:layout_editor_absoluteY="415dp" />
 
             <TextView
-
+                android:paddingLeft="7dp"
                 android:id="@+id/genderInfo"
                 android:layout_width="87dp"
                 android:layout_height="wrap_content"
@@ -301,7 +304,7 @@
             android:orientation="horizontal">
 
             <TextView
-
+                android:paddingLeft="5dp"
                 android:id="@+id/textView43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -312,7 +315,7 @@
 
 
             <TextView
-
+                android:paddingLeft="7dp"
                 android:id="@+id/bioInfo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -331,7 +334,7 @@
                 android:id="@+id/sendInvitation"
                 style="@style/Transportation_Activity_Detail_View"
                 android:layout_width="251dp"
-                android:layout_height="37dp"
+                android:layout_height="45dp"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="sendInvitationButtonClicked"
                 android:text="Send Invitation to Join"
@@ -341,7 +344,7 @@
                 android:id="@+id/sendMessage"
                 style="@style/Transportation_Activity_Detail_View"
                 android:layout_width="254dp"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="sendMessageButtonClicked"
                 android:text="Send Message to Talk Details"
@@ -353,12 +356,12 @@
     </LinearLayout>
 
     <TextView
-
         android:id="@+id/dateInfo"
         android:layout_width="117dp"
         android:layout_height="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/jockey_one"
-        android:layout_marginRight="20dp"
         app:layout_constraintBottom_toTopOf="@+id/time_layout"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -377,12 +380,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginRight="50dp">
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView46"
-                android:layout_width="38dp"
+                android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Time:"
@@ -390,9 +394,9 @@
                 tools:layout_editor_absoluteY="138dp" />
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/timeInfo"
-                android:layout_width="75dp"
+                android:layout_width="wrap_content"
                 android:layout_height="26dp"
                 android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="16dp"
@@ -402,10 +406,11 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginRight="50dp">
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView47"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -415,18 +420,18 @@
                 tools:layout_editor_absoluteY="140dp" />
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/departureInfo"
-                android:layout_width="88dp"
+                android:layout_width="wrap_content"
                 android:layout_height="26dp"
                 android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="202dp"
                 tools:layout_editor_absoluteY="159dp" />
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/destinationInfo"
-                android:layout_width="88dp"
+                android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="102dp"
@@ -439,8 +444,9 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView48"
-                android:layout_width="84dp"
+                android:layout_width="wrap_content"
                 android:layout_height="21dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Person Limit:"
@@ -448,9 +454,9 @@
                 tools:layout_editor_absoluteY="107dp" />
 
             <TextView
-
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/seatsInfo"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="331dp"
@@ -465,8 +471,8 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/time_layout"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time_layout">
 
         <TextView
             android:id="@+id/textView56"
@@ -491,10 +497,11 @@
 
         android:id="@+id/button3"
         style="@style/BACK"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="50dp"
         android:onClick="cancelButtonClicked"
-        app:icon="@drawable/arrow_icon"
+        app:icon="@drawable/arrow"
         app:layout_constraintBottom_toTopOf="@+id/time_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -512,84 +519,84 @@
         <TextView
             android:id="@+id/textView16"
             android:layout_width="25dp"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:background="#B3DEFF" />
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="25dp"
-            android:layout_height="68dp"
+            android:layout_height="58dp"
             android:layout_weight="1"
             android:background="#8BCFFF" />
 
         <TextView
             android:id="@+id/textView18"
             android:layout_width="25dp"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:background="#62B0FF" />
 
         <TextView
             android:id="@+id/textView19"
             android:layout_width="25dp"
-            android:layout_height="43dp"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:background="#46B0FF" />
 
         <TextView
             android:id="@+id/textView20"
             android:layout_width="25dp"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:background="#33BEFF" />
 
         <TextView
             android:id="@+id/textView21"
             android:layout_width="25dp"
-            android:layout_height="62dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:background="#438AF8" />
 
         <TextView
             android:id="@+id/textView22"
             android:layout_width="25dp"
-            android:layout_height="37dp"
+            android:layout_height="27dp"
             android:layout_weight="1"
             android:background="#6486FF" />
 
         <TextView
             android:id="@+id/textView23"
             android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_height="15dp"
             android:layout_weight="1"
             android:background="#4094CD" />
 
         <TextView
             android:id="@+id/textView24"
             android:layout_width="25dp"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
             android:background="#4979B0" />
 
         <TextView
             android:id="@+id/textView25"
             android:layout_width="25dp"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:layout_weight="1"
             android:background="#6993BD" />
 
         <TextView
             android:id="@+id/textView26"
             android:layout_width="25dp"
-            android:layout_height="72dp"
+            android:layout_height="62dp"
             android:layout_weight="1"
             android:background="#739DE8" />
 
         <TextView
             android:id="@+id/textView27"
             android:layout_width="25dp"
-            android:layout_height="34dp"
+            android:layout_height="24dp"
             android:layout_weight="1"
             android:background="#275583" />
     </LinearLayout>

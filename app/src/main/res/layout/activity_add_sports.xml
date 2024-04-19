@@ -270,10 +270,10 @@
             <Button
                 android:id="@+id/addActivity"
                 style="@style/Transportation_Page_Buttons_View"
-                android:layout_width="159dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginLeft="3dp"
-                android:layout_marginRight="50dp"
+                android:layout_weight="1"
                 android:drawableRight="@drawable/t_three"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="addSportActivityButtonClicked"
@@ -284,11 +284,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
             <Button
+                android:layout_marginLeft="20dp"
                 android:id="@+id/button6"
                 style="@style/Transportation_Page_Buttons_View2"
                 android:layout_width="159dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:layout_marginRight="3dp"
                 android:drawableRight="@drawable/t_two"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="cancelSportActivityButtonClicked"

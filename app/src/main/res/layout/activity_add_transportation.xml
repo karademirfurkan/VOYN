@@ -269,10 +269,10 @@
             <Button
                 android:id="@+id/addActivity"
                 style="@style/Transportation_Page_Buttons_View"
-                android:layout_width="159dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="50dp"
                 android:layout_marginLeft="3dp"
-                android:layout_marginRight="50dp"
                 android:drawableRight="@drawable/t_three"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="addTransportationActivityButtonClicked"
@@ -284,8 +284,10 @@
 
             <Button
                 android:id="@+id/button6"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
                 style="@style/Transportation_Page_Buttons_View2"
-                android:layout_width="159dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:drawableRight="@drawable/t_two"

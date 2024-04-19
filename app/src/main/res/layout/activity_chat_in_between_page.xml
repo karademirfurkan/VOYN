@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Chat.ChatInBetweenPage">
 
-    <EditText
-        android:id="@+id/messageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:hint="typing..."
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sendButton" />
-
-    <Button
-        android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="sendMessageButtonClicked"
-        android:text="send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRv"
         android:layout_width="match_parent"
@@ -36,4 +13,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp"
+        >
+
+        <EditText
+            android:id="@+id/messageText"
+            android:layout_width="270dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@drawable/message_box_view"
+            android:hint="typing..."
+            android:paddingLeft="10dp"
+            android:inputType="text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+
+            />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_weight="1"
+            style="@style/Add_Button_View"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:drawableEnd="@drawable/chat_add_icon"
+            android:onClick="sendMessageButtonClicked"
+            app:iconPadding="0dp"
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

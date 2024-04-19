@@ -9,10 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
+        android:layout_height="540dp"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="21dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
@@ -22,29 +20,15 @@
         style="@style/Add_Button_View"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:onClick="addAccomodationButton"
         android:text="+"
         android:textAlignment="gravity"
         android:textSize="43sp"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView35"
-        app:layout_constraintEnd_toStartOf="@+id/textView33" />
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="18dp"
-        android:layout_height="400dp"
-        android:background="#2058A8"
-        app:layout_constraintStart_toStartOf="@+id/textView34"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
-
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="18dp"
-        android:layout_height="400dp"
-        android:background="#2058A8"
-        app:layout_constraintBottom_toTopOf="@+id/textView35"
-        app:layout_constraintEnd_toEndOf="@+id/textView35" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView34"
@@ -61,27 +45,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Accommodation" />
 
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#2058A8"
-        android:fontFamily="@font/jacques_francois"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="101dp"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="1dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView31"
         app:layout_constraintTop_toBottomOf="@+id/textView34">
 
         <LinearLayout

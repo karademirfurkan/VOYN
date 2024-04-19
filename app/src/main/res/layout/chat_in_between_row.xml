@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/transportation_activity_list_row_view"
+                android:background="@drawable/chat_left_row_view"
                 android:padding="10dp"
                 android:fontFamily="@font/jockey_one"
                 android:shadowRadius="30"
