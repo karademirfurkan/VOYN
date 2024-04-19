@@ -209,7 +209,11 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
 
     @Override
     public int getItemCount() {
-        return incomingInvitations.size();
+        if (incomingInvitations != null && !incomingInvitations.isEmpty()) {
+            return incomingInvitations.size();
+        } else {
+            return 0;
+        }
     }
 
     public class IncomingInvitationsHolder extends RecyclerView.ViewHolder
