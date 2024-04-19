@@ -55,7 +55,7 @@ public class Accomodation extends Activity
         accomodation.put("numberOfInhabitants", numberOfInhabitants);
 
 
-        db.collection("accomodation")
+        db.collection("accommodations")
                 .add(accomodation)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

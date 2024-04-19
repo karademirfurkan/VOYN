@@ -195,7 +195,7 @@ public class myActivities extends AppCompatActivity {
                             myAccommodationActivities2 = (ArrayList<String>) document.get("myAccommodationActivities");
                             if (myAccommodationActivities2 != null) {
                                 for (String activityId : myAccommodationActivities2) {
-                                    db.collection("accomodations").document(activityId)
+                                    db.collection("accommodations").document(activityId)
                                             .get()
                                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                                 @Override
