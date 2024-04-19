@@ -402,7 +402,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         <TextView
 
-            android:id="@+id/textView20"
+            android:id="@+id/nameInProfile"
 
             android:layout_width="25dp"
 
