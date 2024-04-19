@@ -44,6 +44,14 @@ public class SportsActivity extends AppCompatActivity {
         sportAdapter= new SportAdapter(sportActivities, 0);
         binding.recyclerView.setAdapter(sportAdapter);
 
+        binding.filterIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SportsActivity.this, SportsFilter.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
         makeArrayList();
     }
     public void makeArrayList()

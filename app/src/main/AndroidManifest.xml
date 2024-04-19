@@ -13,6 +13,9 @@
         android:theme="@style/Theme.VOYN"
         tools:targetApi="31">
         <activity
+            android:name=".Sport.SportsFilter"
+            android:exported="false" />
+        <activity
             android:name=".Accomodation.AccommodationFilter"
             android:exported="false" />
         <activity
@@ -97,7 +100,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
