@@ -110,11 +110,11 @@ public class SportsActivity extends AppCompatActivity {
                 boolean locked = data.getBooleanExtra("locked", false);
                 long calendar = data.getLongExtra("calendar", 0);
                 sportActivities.removeIf(sport -> {
-                    if (time != null && !time.equals(sport.get("time")))
+                    if (time != null && !time.equals("") && !time.equals(sport.get("time")))
                         return true;
-                    if (place != null && !place.equals(sport.get("place")))
+                    if (place != null && !place.equals("") &&!place.equals(sport.get("place")))
                         return true;
-                    if (type != null && !type.equals(sport.get("type")))
+                    if (type != null && !type.equals("") && !type.equals(sport.get("type")))
                         return true;
                     //if (availability && !(boolean) sport.get("availability"))
                       //  return true;
