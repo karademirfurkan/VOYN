@@ -195,32 +195,83 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView47"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:fontFamily="@font/jockey_one"
-                android:text="NUMBER OF AVAILABLE SEATS"
-                android:textSize="19sp" />
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:fontFamily="@font/jockey_one"
+                        android:text="NUMBER OF AVAILABLE SEATS"
+                        android:textSize="19sp" />
+                </LinearLayout>
 
 
+                <EditText
+                    android:id="@+id/seatsNumberEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/transportation_edittext_shape"
+                    android:hint="Enter the number of available seats"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="7dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView100"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:fontFamily="@font/jockey_one"
+                        android:text="MINIMUM STARS"
+                        android:textSize="19sp" />
+                </LinearLayout>
+
+
+                <EditText
+                    android:id="@+id/seatsNumberEdit101"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/transportation_edittext_shape"
+                    android:hint="Min stars"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="7dp" />
+
+            </LinearLayout>
         </LinearLayout>
 
-
-        <EditText
-            android:id="@+id/seatsNumberEdit"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/transportation_edittext_shape"
-            android:hint="Enter the number of available seats"
-            android:inputType="text"
-            android:paddingLeft="10dp"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="7dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
