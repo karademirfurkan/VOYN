@@ -256,18 +256,18 @@
 
 
                 <EditText
-                    android:id="@+id/seatsNumberEdit101"
+                    android:id="@+id/minStar"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="7dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/transportation_edittext_shape"
                     android:hint="Min stars"
                     android:inputType="text"
                     android:paddingLeft="10dp"
                     android:textSize="12sp"
-                    android:textStyle="italic"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="7dp" />
+                    android:textStyle="italic" />
 
             </LinearLayout>
         </LinearLayout>

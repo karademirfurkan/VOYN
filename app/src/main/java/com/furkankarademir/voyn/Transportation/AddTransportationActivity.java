@@ -119,7 +119,8 @@ public class AddTransportationActivity extends AppCompatActivity {
         } else {
             Transportation transportation = new Transportation(name, surname, mail, binding.dateEdit.getText().toString(),
                     binding.timeEdit.getText().toString(), binding.departureEdit.getText().toString(), binding.destinationEdit.getText().toString(),
-                    Integer.parseInt(binding.seatsNumberEdit.getText().toString()), binding.notesEdit.getText().toString(), userID);
+                    Integer.parseInt(binding.seatsNumberEdit.getText().toString()), binding.notesEdit.getText().toString(), userID
+                    ,Double.parseDouble(binding.minStar.getText().toString()));
             DocumentReference docRef = db.collection("Users").document(userID);
 
             transportation.addActivityToDatabase(new FireStoreCallback() {

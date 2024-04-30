@@ -31,17 +31,18 @@ public class Transportation extends Activity{
     private String destination;
 
     private int seats;
+    private double minStar;
 
 
     public Transportation(String name, String surname, String mail, String date, String time, String departure, String destination,
-                          int seats, String extraNote, String creatorUserID)
+                          int seats, String extraNote, String creatorUserID, double minStar)
     {
         super(name,surname, mail, date, time, extraNote, creatorUserID);
         this.departure = departure;
         this.destination = destination;
         this.seats = seats;
+        this.minStar = minStar;
     }
-
 
 
     public void addActivityToDatabase(FireStoreCallback callback) {
@@ -63,6 +64,7 @@ public class Transportation extends Activity{
         transportation.put("extraNote", getExtraNote());
         transportation.put("participantsId", getParticipantsId());
         transportation.put("invitedId", getInvitedId());
+        transportation.put("minStar", getMinStar());
 
 
         db.collection("transportations")
@@ -111,5 +113,13 @@ public class Transportation extends Activity{
 
     public void setSeats(int seats) {
         this.seats = seats;
+    }
+
+    public double getMinStar() {
+        return minStar;
+    }
+
+    public void setMinStar(double minStar) {
+        this.minStar = minStar;
     }
 }
