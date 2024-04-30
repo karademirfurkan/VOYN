@@ -3,7 +3,31 @@
   <component name="deploymentTargetDropDown">
     <value>
       <entry key="app">
-        <State />
+        <State>
+          <multipleDevicesSelectedInDropDown value="true" />
+          <runningDeviceTargetsSelectedWithDialog>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="adb-RFCT31M1NLV-0mCz4A._adb-tls-connect._tcp" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetsSelectedWithDialog>
+          <targetsSelectedWithDialog>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\YOGA\.android\avd\Pixel_3a_XL_API_28.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetsSelectedWithDialog>
+        </State>
       </entry>
     </value>
   </component>
