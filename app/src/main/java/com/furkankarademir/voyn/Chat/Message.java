@@ -6,7 +6,7 @@ public class Message
     private String senderId;
     private String senderName;
     private String senderSurname;
-    private boolean isMine;
+    //private boolean isMine;
 
     private String receiverId;
 
@@ -69,6 +69,7 @@ public class Message
         this.senderSurname = senderSurname;
     }
 
+    /*
     public boolean isMine() {
         return isMine;
     }
@@ -76,4 +77,6 @@ public class Message
     public void setMine(boolean mine) {
         isMine = mine;
     }
+
+     */
 }

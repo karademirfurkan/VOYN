@@ -88,6 +88,16 @@
         <item name="strokeColor">#2058A8</item>
     </style>
 
+    <style name="Evaluation_Page_Buttons_View">
+        <item name="cornerRadius">20dp</item>
+        <item name="backgroundTint">#FF2121</item>
+    </style>
+
+    <style name="Evaluation_Page_Buttons_View2">
+        <item name="cornerRadius">20dp</item>
+        <item name="backgroundTint">#76DE99</item>
+    </style>
+
 
 
 

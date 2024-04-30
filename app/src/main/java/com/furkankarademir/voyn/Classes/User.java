@@ -22,6 +22,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class User implements Serializable{
+    private double star;
     private String name;
     private String surname;
     private String mail;
@@ -120,6 +121,14 @@ public class User implements Serializable{
     {
         userProfile = new Profile(name, surname, mail,"department", "gender"); // replace "department" with the actual department
         return userProfile;
+    }
+
+    public double getStar() {
+        return star;
+    }
+
+    public void setStar(double star) {
+        this.star = star;
     }
 
     public void addActivity(String activity)
