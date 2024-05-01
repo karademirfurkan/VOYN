@@ -3,6 +3,7 @@ package com.furkankarademir.voyn;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,17 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.furkankarademir.voyn.Chat.ChatInBetweenAdapter;
 import com.furkankarademir.voyn.Chat.Message;
 import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
 import com.furkankarademir.voyn.databinding.ChatInBetweenRowBinding;
 import com.furkankarademir.voyn.databinding.EvaluatingUsersRowBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
 public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<EvaluationPageUserListAdapter.EvaluationPageUserListHolder>
 {
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
     private ArrayList<String> users;
     public EvaluationPageUserListAdapter(ArrayList<String> users)
     {
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         this.users = users;
     }
     @NonNull
@@ -33,8 +44,25 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
     @Override
     public void onBindViewHolder(@NonNull EvaluationPageUserListAdapter.EvaluationPageUserListHolder holder, int position)
     {
-        String name = users.get(position);
-        holder.binding.nameSurname.setText("id: " + name);
+        DocumentReference docRef = db.collection("Users").document(users.get(position));
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    User thisUser = documentSnapshot.toObject(User.class);
+
+                    String name = thisUser.getName();
+                    String surname = thisUser.getSurname();
+                    holder.binding.nameSurname.setText(name + " " + surname);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
         holder.binding.star1.setOnClickListener(new View.OnClickListener() {
             @Override
