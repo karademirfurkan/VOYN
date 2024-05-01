@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -20,10 +22,15 @@ import android.widget.Toast;
 
 //import com.furkankarademir.voyn.Accomodation.AccomodationActivity;
 import com.furkankarademir.voyn.Accomodation.AccommodationActivity;
+import com.furkankarademir.voyn.Chat.ChatInBetweenAdapter;
+import com.furkankarademir.voyn.Chat.ChatInBetweenPage;
+import com.furkankarademir.voyn.Chat.ChatUserListAdapter;
 import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.Sport.SportsActivity;
 import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
+import com.furkankarademir.voyn.Transportation.Transportation;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
+import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,19 +40,23 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private String userID;
+    private ArrayList<String> usersId;
 
     private ImageView imageView;
     private ImageView imageView2;
@@ -193,36 +204,47 @@ public class HomeFragment extends Fragment {
 
                         if (currentYear > activityYear)
                         {
+                            makeUserArray(attendedActivities.get(i).substring(15));
+                            System.out.println(usersId + "qqqqqqqqqqqhahhahah");
                             Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                             startActivity(intent);
+                            break;
                         }
                         else if (currentYear == activityYear)
                         {
                             if (currentMonth > activityMonth)
                             {
+                                makeUserArray(attendedActivities.get(i).substring(15));
                                 Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                                 startActivity(intent);
+                                break;
                             }
                             else if (currentMonth == activityMonth)
                             {
                                 if (currentDay > activityDay)
                                 {
+                                    makeUserArray(attendedActivities.get(i).substring(15));
                                     Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                                     startActivity(intent);
+                                    break;
                                 }
                                 else if (currentDay == activityDay)
                                 {
                                     if (currentHour > activityHour)
                                     {
+                                        makeUserArray(attendedActivities.get(i).substring(15));
                                         Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                                         startActivity(intent);
+                                        break;
                                     }
                                     else if (currentHour == activityHour)
                                     {
                                         if (currentMinute > activityMinute)
                                         {
+                                            makeUserArray(attendedActivities.get(i).substring(15));
                                             Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                                             startActivity(intent);
+                                            break;
                                         }
                                     }
                                 }
@@ -239,4 +261,27 @@ public class HomeFragment extends Fragment {
         });
     }
 
-}
+    public void makeUserArray(String id)
+    {
+        System.out.println("wwwwwwwwwwwwwwww1");
+        db.collection("transportations").
+                document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists())
+                        {
+                            System.out.println("wwwwwwwwwwwwwwww2");
+                            HashMap<String, Object> transportation = (HashMap<String, Object>) documentSnapshot.getData();
+                            System.out.println("wwwwwwwwwwwwwwww3");
+                            usersId = (ArrayList<String>) transportation.get("participantsId");
+                            System.out.println(usersId + "hahaqqqqqqqqqqqhahhahah");
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+
+    }}
