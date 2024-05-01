@@ -243,7 +243,7 @@
                     tools:layout_editor_absoluteY="253dp" />
 
                 <TextView
-                    android:id="@+id/textView130"
+                    android:id="@+id/mailInProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
