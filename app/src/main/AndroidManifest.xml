@@ -93,6 +93,9 @@
             android:name=".Transportation.TransportationActivity"
             android:exported="false" />
         <activity
+            android:name=".ProfileClasses.ChangeProfilePicture"
+            android:exported="false" />
+        <activity
             android:name=".ForgetPasswordPage"
             android:exported="false" />
         <activity
