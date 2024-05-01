@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ProfileClasses.ChangeProfilePhoto">
 
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="246dp"
+        android:layout_height="285dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintBottom_toTopOf="@+id/confirmButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.226"
+        app:srcCompat="@drawable/profile_photo" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        style="@style/Regular_Button_View"
+        android:layout_width="160dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="188dp"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
