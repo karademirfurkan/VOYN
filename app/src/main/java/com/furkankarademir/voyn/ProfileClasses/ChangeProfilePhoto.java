@@ -4,20 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.furkankarademir.voyn.databinding.ChangeProfilePhotoBinding;
-
-
 import com.furkankarademir.voyn.R;
+import com.furkankarademir.voyn.databinding.ActivityChangeProfilePhotoBinding;
 
 public class ChangeProfilePhoto extends AppCompatActivity {
 
-    private binding ChangeProfilePhotoBinding;
+    private ActivityChangeProfilePhotoBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ChangeProfilePhotoBinding = ChangeProfilePhotoBinding.inflate(getLayoutInflater());
-        setContentView(ChangeProfilePhotoBinding.getRoot());
-
+        binding = ActivityChangeProfilePhotoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 }
