@@ -57,31 +57,36 @@
                         android:id="@+id/star1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off" />
+                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        android:onClick="b1"/>
 
                     <ImageView
                         android:id="@+id/star2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off" />
+                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        android:onClick="b2"/>
 
                     <ImageView
                         android:id="@+id/star3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off" />
+                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        android:onClick="b3"/>
 
                     <ImageView
                         android:id="@+id/star4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off" />
+                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        android:onClick="b4"/>
 
                     <ImageView
                         android:id="@+id/star5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off" />
+                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        android:onClick="b5"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -94,31 +99,36 @@
                         android:id="@+id/star6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@android:drawable/btn_star_big_on"
+                        android:onClick="d1"/>
 
                     <ImageView
                         android:id="@+id/star7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@android:drawable/btn_star_big_on"
+                        android:onClick="d2"/>
 
                     <ImageView
                         android:id="@+id/star8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@android:drawable/btn_star_big_on"
+                        android:onClick="d3"/>
 
                     <ImageView
                         android:id="@+id/star9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@android:drawable/btn_star_big_on"
+                        android:onClick="d4"/>
 
                     <ImageView
                         android:id="@+id/star10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+                        app:srcCompat="@android:drawable/btn_star_big_on"
+                        android:onClick="d5"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

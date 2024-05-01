@@ -35,6 +35,51 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
     {
         String name = users.get(position);
         holder.binding.nameSurname.setText("id: " + name);
+
+        holder.binding.star1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.binding.star1.setImageResource(R.drawable.stars);
+            }
+        });
+
+        holder.binding.star2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.binding.star1.setImageResource(R.drawable.stars);
+                holder.binding.star2.setImageResource(R.drawable.stars);
+            }
+        });
+
+        holder.binding.star3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.binding.star1.setImageResource(R.drawable.stars);
+                holder.binding.star2.setImageResource(R.drawable.stars);
+                holder.binding.star3.setImageResource(R.drawable.stars);
+            }
+        });
+
+        holder.binding.star4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.binding.star1.setImageResource(R.drawable.stars);
+                holder.binding.star2.setImageResource(R.drawable.stars);
+                holder.binding.star3.setImageResource(R.drawable.stars);
+                holder.binding.star4.setImageResource(R.drawable.stars);
+            }
+        });
+
+        holder.binding.star5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.binding.star1.setImageResource(R.drawable.stars);
+                holder.binding.star2.setImageResource(R.drawable.stars);
+                holder.binding.star3.setImageResource(R.drawable.stars);
+                holder.binding.star4.setImageResource(R.drawable.stars);
+                holder.binding.star5.setImageResource(R.drawable.stars);
+            }
+        });
     }
 
     @Override

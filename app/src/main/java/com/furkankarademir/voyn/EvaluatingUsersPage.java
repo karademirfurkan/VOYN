@@ -41,14 +41,4 @@ public class EvaluatingUsersPage extends AppCompatActivity {
         Intent intent = new Intent(EvaluatingUsersPage.this, HomeFragment.class);
         startActivity(intent);
     }
-
-    public void doNotAskAgainClicked(View view)
-    {
-
-    }
-
-    public void okClicked(View view)
-    {
-
-    }
 }
