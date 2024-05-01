@@ -77,7 +77,8 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         String departure = (String) transportationActivities.get(position).get("departure");
         String date = (String) transportationActivities.get(position).get("date");
         String destination = (String) transportationActivities.get(position).get("destination");
-        String personLimit = transportationActivities.get(position).get("seats").toString();
+        ArrayList<String> participantsList = (ArrayList<String>) transportationActivities.get(position).get("participantsId");
+        String personLimit = participantsList.size() + "/" + transportationActivities.get(position).get("seats").toString();
         double minStar = Double.parseDouble(transportationActivities.get(position).get("minStar").toString());
 
         holder.binding.time.setText(time);
@@ -94,35 +95,36 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
                 if(documentSnapshot.exists())
                 {
                     user = documentSnapshot.toObject(User.class);
-
-                    if (user.getStar() < minStar) {
-                        //holder.binding.bigLinearLayout.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.red));
-                        holder.binding.bigLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
-
-                    } else {
-                        if(transportationAdapterOption == 0)
+                    if(transportationAdapterOption == 0)
+                    {
+                        if (user.getStar() < minStar || participantsList.contains(auth.getUid()) || auth.getUid().equals(transportationActivities.get(position).get("creatorUserID").toString()))
                         {
-                            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(holder.itemView.getContext(), TransportationDetailActivity.class);
-                                    intent.putExtra("transportation", transportationActivities.get(position));
-                                    holder.itemView.getContext().startActivity(intent);
-                                }
-                            });
+                            holder.binding.bigLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
+
                         }
-                        else
-                        {
-                            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(holder.itemView.getContext(), myTransportationActivityDetails.class);
-                                    intent.putExtra("transportation", transportationActivities.get(position));
-                                    holder.itemView.getContext().startActivity(intent);
-                                }
-                            });
-                        }
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(holder.itemView.getContext(), TransportationDetailActivity.class);
+                                intent.putExtra("transportation", transportationActivities.get(position));
+                                boolean isRed = user.getStar() < minStar || participantsList.contains(auth.getUid()) || auth.getUid().equals(transportationActivities.get(position).get("creatorUserID").toString());
+                                intent.putExtra("isRed", isRed);
+                                holder.itemView.getContext().startActivity(intent);
+                            }
+                        });
                     }
+                    else
+                    {
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(holder.itemView.getContext(), myTransportationActivityDetails.class);
+                                intent.putExtra("transportation", transportationActivities.get(position));
+                                holder.itemView.getContext().startActivity(intent);
+                            }
+                        });
+                    }
+
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

@@ -62,6 +62,12 @@ public class TransportationDetailActivity extends AppCompatActivity {
         if (invited != null) {
             //binding.deneme.setText(invited.toString());
         }
+
+        boolean isRed = getIntent().getBooleanExtra("isRed", false);
+        if (isRed) {
+            binding.sendInvitation.setVisibility(View.GONE);
+            binding.sendMessage.setVisibility(View.GONE);
+        }
     }
 
     public void sendMessageButtonClicked(View view)
