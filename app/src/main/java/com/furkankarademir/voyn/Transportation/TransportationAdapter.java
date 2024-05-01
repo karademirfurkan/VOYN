@@ -100,7 +100,6 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
                         if (user.getStar() < minStar || participantsList.contains(auth.getUid()) || participantsList.size() == Integer.parseInt(transportationActivities.get(position).get("seats").toString()))
                         {
                             holder.binding.bigLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
-
                         }
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -124,7 +123,6 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
                             }
                         });
                     }
-
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

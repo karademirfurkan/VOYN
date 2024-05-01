@@ -40,12 +40,15 @@ public class User implements Serializable{
     private ArrayList<String> mySportActivities;
 
     private ArrayList<String> myAccommodationActivities;
+    private ArrayList<String> attendedActivities;
+
 
     public User()
     {
         myActivities = new ArrayList<String>();
         mySportActivities = new ArrayList<String>();
         myAccommodationActivities = new ArrayList<String>();
+        attendedActivities = new ArrayList<String>();
     }
 
 
@@ -67,6 +70,7 @@ public class User implements Serializable{
         myActivities = new ArrayList<String>();
         mySportActivities = new ArrayList<String>();
         myAccommodationActivities = new ArrayList<String>();
+        attendedActivities = new ArrayList<String>();
     }
 
     public String getName() {
@@ -129,6 +133,14 @@ public class User implements Serializable{
 
     public void setStar(double star) {
         this.star = star;
+    }
+
+    public ArrayList<String> getAttendedActivities() {
+        return attendedActivities;
+    }
+
+    public void setAttendedActivities(ArrayList<String> attendedActivities) {
+        this.attendedActivities = attendedActivities;
     }
 
     public void addActivity(String activity)
@@ -194,6 +206,30 @@ public class User implements Serializable{
         DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
 
         userDocRef.update("myAccommodationActivities", FieldValue.arrayUnion(activity))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
+                    }
+                });
+    }
+
+    public void addAttendedActivity(String activity)
+    {
+        attendedActivities.add(activity);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
+        DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+
+        userDocRef.update("attendedActivities", FieldValue.arrayUnion(activity))
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

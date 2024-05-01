@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        /*
         if (user != null)
         {
             Intent intent = new Intent(MainActivity.this, MenuPage.class);
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             Toast.makeText(MainActivity.this, "No problem, you are already signed in :)", Toast.LENGTH_LONG).show();
         }
+         */
 
     }
 
@@ -82,5 +84,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    
 
 }
