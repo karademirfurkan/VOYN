@@ -75,7 +75,7 @@ public class ProfileFragment extends Fragment {
                     TextView department = view.findViewById(R.id.departmentInProfile);
                     department.setText(user.getDepartment());
 
-                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img); // replace with your image
+                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img);
                     Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
 
                     Canvas canvas = new Canvas(mutableBitmap);
@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment {
                     String starText = String.valueOf(user.getStar());
                     canvas.drawText(starText, 200, 300, paint); // change position as needed
 
-                    ImageView imageView = view.findViewById(R.id.imageView14); // replace with your ImageView
+                    ImageView imageView = view.findViewById(R.id.imageView14); 
                     imageView.setImageBitmap(mutableBitmap);
                 }
             }

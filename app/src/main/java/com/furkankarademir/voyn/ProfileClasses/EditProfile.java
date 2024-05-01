@@ -29,7 +29,7 @@ public class EditProfile extends AppCompatActivity {
 
         binding.ChangeProfilPicture.setOnClickListener(v ->
         {
-            Intent intent = new Intent(EditProfile.this, ChangeProfilePicture.class);
+            Intent intent = new Intent(EditProfile.this, ChangeProfilePhoto.class);
             startActivity(intent);
         });
 

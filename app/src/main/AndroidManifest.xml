@@ -13,6 +13,9 @@
         android:theme="@style/Theme.VOYN"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileClasses.ChangeProfilePhoto"
+            android:exported="false" />
+        <activity
             android:name=".EvaluatingUsersPage"
             android:exported="false" />
         <activity
@@ -91,9 +94,6 @@
             android:exported="false" />
         <activity
             android:name=".Transportation.TransportationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileClasses.ChangeProfilePicture"
             android:exported="false" />
         <activity
             android:name=".ForgetPasswordPage"
