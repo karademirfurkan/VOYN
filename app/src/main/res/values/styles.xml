@@ -91,11 +91,15 @@
     <style name="Evaluation_Page_Buttons_View">
         <item name="cornerRadius">20dp</item>
         <item name="backgroundTint">#FF2121</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
     </style>
 
     <style name="Evaluation_Page_Buttons_View2">
         <item name="cornerRadius">20dp</item>
         <item name="backgroundTint">#76DE99</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
     </style>
 
 
