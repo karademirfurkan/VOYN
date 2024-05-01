@@ -22,6 +22,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class User implements Serializable{
+    private double evaluationCount;
+    private double totalStar;
     private double star;
     private String name;
     private String surname;
@@ -117,6 +119,19 @@ public class User implements Serializable{
         return password;
     }
 
+    public double getEvaluationCount() {
+        return evaluationCount;
+    }
+
+    public void setEvaluationCount(double evaluationCount) {
+        this.evaluationCount = evaluationCount;
+    }
+
+    public void increaseEvaluationCount()
+    {
+        this.evaluationCount++;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -137,6 +152,19 @@ public class User implements Serializable{
 
     public ArrayList<String> getAttendedActivities() {
         return attendedActivities;
+    }
+
+    public double getTotalStar() {
+        return totalStar;
+    }
+
+    public void setTotalStar(double totalStar) {
+        this.totalStar = totalStar;
+    }
+
+    public void increaseTotalStar()
+    {
+        this.totalStar++;
     }
 
     public void setAttendedActivities(ArrayList<String> attendedActivities) {

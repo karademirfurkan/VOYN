@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<EvaluationPageUserListAdapter.EvaluationPageUserListHolder>
 {
+    private User thisUser;
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private ArrayList<String> users;
@@ -50,11 +51,111 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists())
                 {
-                    User thisUser = documentSnapshot.toObject(User.class);
+                    thisUser = documentSnapshot.toObject(User.class);
 
                     String name = thisUser.getName();
                     String surname = thisUser.getSurname();
                     holder.binding.nameSurname.setText(name + " " + surname);
+
+                    holder.binding.star1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            holder.binding.star1.setImageResource(R.drawable.stars);
+
+                            double oldStar = thisUser.getTotalStar();
+                            double evaluationCount = thisUser.getEvaluationCount();
+
+                            double newStar = (oldStar + 1) / (evaluationCount + 1);
+
+                            thisUser.increaseTotalStar();
+                            thisUser.setStar(newStar);
+                            thisUser.increaseEvaluationCount();
+
+                            docRef.set(thisUser);
+                        }
+                    });
+
+                    holder.binding.star2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            holder.binding.star1.setImageResource(R.drawable.stars);
+                            holder.binding.star2.setImageResource(R.drawable.stars);
+
+                            double oldStar = thisUser.getTotalStar();
+                            double evaluationCount = thisUser.getEvaluationCount();
+
+                            double newStar = (oldStar + 2) / (evaluationCount + 2);
+
+                            thisUser.increaseTotalStar();
+                            thisUser.setStar(newStar);
+                            thisUser.increaseEvaluationCount();
+
+                            docRef.set(thisUser);
+                        }
+                    });
+
+                    holder.binding.star3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            holder.binding.star1.setImageResource(R.drawable.stars);
+                            holder.binding.star2.setImageResource(R.drawable.stars);
+                            holder.binding.star3.setImageResource(R.drawable.stars);
+
+                            double oldStar = thisUser.getTotalStar();
+                            double evaluationCount = thisUser.getEvaluationCount();
+
+                            double newStar = (oldStar + 3) / (evaluationCount + 3);
+
+                            thisUser.increaseTotalStar();
+                            thisUser.setStar(newStar);
+                            thisUser.increaseEvaluationCount();
+
+                            docRef.set(thisUser);
+                        }
+                    });
+
+                    holder.binding.star4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            holder.binding.star1.setImageResource(R.drawable.stars);
+                            holder.binding.star2.setImageResource(R.drawable.stars);
+                            holder.binding.star3.setImageResource(R.drawable.stars);
+                            holder.binding.star4.setImageResource(R.drawable.stars);
+
+                            double oldStar = thisUser.getTotalStar();
+                            double evaluationCount = thisUser.getEvaluationCount();
+
+                            double newStar = (oldStar + 4) / (evaluationCount + 4);
+
+                            thisUser.increaseTotalStar();
+                            thisUser.setStar(newStar);
+                            thisUser.increaseEvaluationCount();
+
+                            docRef.set(thisUser);
+                        }
+                    });
+
+                    holder.binding.star5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            holder.binding.star1.setImageResource(R.drawable.stars);
+                            holder.binding.star2.setImageResource(R.drawable.stars);
+                            holder.binding.star3.setImageResource(R.drawable.stars);
+                            holder.binding.star4.setImageResource(R.drawable.stars);
+                            holder.binding.star5.setImageResource(R.drawable.stars);
+
+                            double oldStar = thisUser.getTotalStar();
+                            double evaluationCount = thisUser.getEvaluationCount();
+
+                            double newStar = (oldStar + 5) / (evaluationCount + 5);
+
+                            thisUser.increaseTotalStar();
+                            thisUser.setStar(newStar);
+                            thisUser.increaseEvaluationCount();
+
+                            docRef.set(thisUser);
+                        }
+                    });
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -64,50 +165,7 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
             }
         });
 
-        holder.binding.star1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.binding.star1.setImageResource(R.drawable.stars);
-            }
-        });
 
-        holder.binding.star2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.binding.star1.setImageResource(R.drawable.stars);
-                holder.binding.star2.setImageResource(R.drawable.stars);
-            }
-        });
-
-        holder.binding.star3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.binding.star1.setImageResource(R.drawable.stars);
-                holder.binding.star2.setImageResource(R.drawable.stars);
-                holder.binding.star3.setImageResource(R.drawable.stars);
-            }
-        });
-
-        holder.binding.star4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.binding.star1.setImageResource(R.drawable.stars);
-                holder.binding.star2.setImageResource(R.drawable.stars);
-                holder.binding.star3.setImageResource(R.drawable.stars);
-                holder.binding.star4.setImageResource(R.drawable.stars);
-            }
-        });
-
-        holder.binding.star5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.binding.star1.setImageResource(R.drawable.stars);
-                holder.binding.star2.setImageResource(R.drawable.stars);
-                holder.binding.star3.setImageResource(R.drawable.stars);
-                holder.binding.star4.setImageResource(R.drawable.stars);
-                holder.binding.star5.setImageResource(R.drawable.stars);
-            }
-        });
     }
 
     @Override
