@@ -16,7 +16,7 @@ public class EvaluatingUsersPage extends AppCompatActivity {
 
     public void askMeLaterClicked(View view)
     {
-        
+
     }
 
     public void doNotAskAgainClicked(View view)

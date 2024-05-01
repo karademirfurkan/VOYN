@@ -174,12 +174,57 @@ public class HomeFragment extends Fragment {
                     ArrayList<String> attendedActivities = thisUser.getAttendedActivities();
 
                     Calendar calendar = Calendar.getInstance();
-                    int year = calendar.get(Calendar.YEAR);
+                    int currentYear = calendar.get(Calendar.YEAR);
+                    int currentMonth = calendar.get(Calendar.MONTH);
+                    int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+                    int currentHour = calendar.get(Calendar.HOUR);
+                    int currentMinute = calendar.get(Calendar.MINUTE);
 
-                    if (year > 2021)
+                    for (int i = 0; i < attendedActivities.size(); i++)
                     {
-                        Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                        startActivity(intent);
+                        int activityYear = Integer.parseInt(attendedActivities.get(i).substring(0,4));
+                        int activityMonth = Integer.parseInt(attendedActivities.get(i).substring(5,7));
+                        int activityDay = Integer.parseInt(attendedActivities.get(i).substring(8,10));
+                        int activityHour = Integer.parseInt(attendedActivities.get(i).substring(10,12));
+                        int activityMinute = Integer.parseInt(attendedActivities.get(i).substring(13,15));
+
+                        if (currentYear > activityYear)
+                        {
+                            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                            startActivity(intent);
+                        }
+                        else if (currentYear == activityYear)
+                        {
+                            if (currentMonth > activityMonth)
+                            {
+                                Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                startActivity(intent);
+                            }
+                            else if (currentMonth == activityMonth)
+                            {
+                                if (currentDay > activityDay)
+                                {
+                                    Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                    startActivity(intent);
+                                }
+                                else if (currentDay == activityDay)
+                                {
+                                    if (currentHour > activityHour)
+                                    {
+                                        Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                        startActivity(intent);
+                                    }
+                                    else if (currentHour == activityHour)
+                                    {
+                                        if (currentMinute > activityMinute)
+                                        {
+                                            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

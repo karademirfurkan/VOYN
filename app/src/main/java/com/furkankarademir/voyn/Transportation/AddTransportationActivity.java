@@ -128,7 +128,7 @@ public class AddTransportationActivity extends AppCompatActivity {
                 public void onCallback(String id) {
                     if(thisUser != null) {
                         thisUser.addActivity(id);
-                        thisUser.addAttendedActivity(id);
+                        thisUser.addAttendedActivity(transportation.getDate() + transportation.getTime() +id);
                         docRef.set(thisUser);
                     }
                 }
