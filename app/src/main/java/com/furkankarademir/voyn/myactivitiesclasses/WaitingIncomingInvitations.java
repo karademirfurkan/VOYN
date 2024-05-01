@@ -33,9 +33,16 @@ public class WaitingIncomingInvitations extends AppCompatActivity {
         HashMap<String, Object> transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
         transportation = transportationMap;
 
+        ArrayList<String> participants = (ArrayList<String>) transportation.get("participantsId");
+        boolean isFull = false;
+        if(participants.size() == Integer.parseInt(transportation.get("seats").toString()))
+        {
+            isFull = true;
+        }
+
         binding.recyclerView4.setLayoutManager(new LinearLayoutManager(WaitingIncomingInvitations.this));
         ArrayList<String> incomingInvitations = (ArrayList<String>) transportation.get("invited");
-        IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, transportation.get("documentId").toString());
+        IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, transportation.get("documentId").toString(), isFull);
         binding.recyclerView4.setAdapter(incomingInvitationsAdapter);
 
     }

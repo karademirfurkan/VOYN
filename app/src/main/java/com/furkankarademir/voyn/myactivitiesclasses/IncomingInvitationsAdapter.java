@@ -36,12 +36,15 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private String transportationId;
+    private boolean isFull;
 
-    public IncomingInvitationsAdapter(ArrayList<String> incomingInvitations, String transportationId)
+    public IncomingInvitationsAdapter(ArrayList<String> incomingInvitations, String transportationId, boolean isFull)
     {
         this.incomingInvitations = incomingInvitations;
         this.transportationId = transportationId;
+        this.isFull = isFull;
     }
+
     @NonNull
     @Override
     public IncomingInvitationsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,6 +55,12 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
     @Override
     public void onBindViewHolder(@NonNull IncomingInvitationsHolder holder, int position)
     {
+        if(isFull)
+        {
+            holder.binding.acceptButton.setEnabled(false);
+            holder.binding.declineButton.setEnabled(false);
+        }
+
         if (incomingInvitations != null && !incomingInvitations.isEmpty()) {
             String userId = incomingInvitations.get(position);
 

@@ -97,7 +97,7 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
                     user = documentSnapshot.toObject(User.class);
                     if(transportationAdapterOption == 0)
                     {
-                        if (user.getStar() < minStar || participantsList.contains(auth.getUid()) || auth.getUid().equals(transportationActivities.get(position).get("creatorUserID").toString()))
+                        if (user.getStar() < minStar || participantsList.contains(auth.getUid()) || participantsList.size() == Integer.parseInt(transportationActivities.get(position).get("seats").toString()))
                         {
                             holder.binding.bigLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
 
