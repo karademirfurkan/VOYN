@@ -1,5 +1,6 @@
 package com.furkankarademir.voyn;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,14 +14,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 //import com.furkankarademir.voyn.Accomodation.AccomodationActivity;
 import com.furkankarademir.voyn.Accomodation.AccommodationActivity;
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.Sport.SportsActivity;
+import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
     private String userID;
 
     private ImageView imageView;
@@ -40,10 +62,16 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
         if (getArguments() != null) {
             userID = (String) getArguments().getSerializable("UserID");
         }
 
+        //------------------
+        shouldEvaluate();
+        //------------------
     }
 
     /*
@@ -133,4 +161,34 @@ public class HomeFragment extends Fragment {
 
         handler.post(runnable);
     }
+
+
+    public void shouldEvaluate() {
+        DocumentReference docRef = db.collection("Users").document(auth.getUid());
+        docRef.get().addOnSuccessListener((Activity) getContext(), new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    User thisUser = documentSnapshot.toObject(User.class);
+
+                    ArrayList<String> attendedActivities = thisUser.getAttendedActivities();
+
+                    Calendar calendar = Calendar.getInstance();
+                    int year = calendar.get(Calendar.YEAR);
+
+                    if (year > 2021)
+                    {
+                        Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                        startActivity(intent);
+                    }
+                }
+            }
+        }).addOnFailureListener((Activity) getContext(), new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 }

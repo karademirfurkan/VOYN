@@ -2,6 +2,7 @@ package com.furkankarademir.voyn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,7 +16,7 @@ public class EvaluatingUsersPage extends AppCompatActivity {
 
     public void askMeLaterClicked(View view)
     {
-
+        
     }
 
     public void doNotAskAgainClicked(View view)
