@@ -206,8 +206,6 @@ public class HomeFragment extends Fragment {
                         {
                             makeUserArray(attendedActivities.get(i).substring(15));
                             System.out.println(usersId + "qqqqqqqqqqqhahhahah");
-                            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                            startActivity(intent);
                             break;
                         }
                         else if (currentYear == activityYear)
@@ -215,8 +213,6 @@ public class HomeFragment extends Fragment {
                             if (currentMonth > activityMonth)
                             {
                                 makeUserArray(attendedActivities.get(i).substring(15));
-                                Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                                startActivity(intent);
                                 break;
                             }
                             else if (currentMonth == activityMonth)
@@ -224,8 +220,6 @@ public class HomeFragment extends Fragment {
                                 if (currentDay > activityDay)
                                 {
                                     makeUserArray(attendedActivities.get(i).substring(15));
-                                    Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                                    startActivity(intent);
                                     break;
                                 }
                                 else if (currentDay == activityDay)
@@ -233,8 +227,6 @@ public class HomeFragment extends Fragment {
                                     if (currentHour > activityHour)
                                     {
                                         makeUserArray(attendedActivities.get(i).substring(15));
-                                        Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                                        startActivity(intent);
                                         break;
                                     }
                                     else if (currentHour == activityHour)
@@ -242,8 +234,6 @@ public class HomeFragment extends Fragment {
                                         if (currentMinute > activityMinute)
                                         {
                                             makeUserArray(attendedActivities.get(i).substring(15));
-                                            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                                            startActivity(intent);
                                             break;
                                         }
                                     }
@@ -274,6 +264,9 @@ public class HomeFragment extends Fragment {
                             HashMap<String, Object> transportation = (HashMap<String, Object>) documentSnapshot.getData();
                             System.out.println("wwwwwwwwwwwwwwww3");
                             usersId = (ArrayList<String>) transportation.get("participantsId");
+                            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                            intent.putExtra("participants", usersId);
+                            startActivity(intent);
                             System.out.println(usersId + "hahaqqqqqqqqqqqhahhahah");
                         }
                     }

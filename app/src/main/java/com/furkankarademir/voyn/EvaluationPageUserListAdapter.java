@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<EvaluationPageUserListAdapter.EvaluationPageUserListHolder>
 {
-    private ArrayList<User> users;
-    public EvaluationPageUserListAdapter(ArrayList<User> users)
+    private ArrayList<String> users;
+    public EvaluationPageUserListAdapter(ArrayList<String> users)
     {
         this.users = users;
     }
@@ -31,8 +31,10 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EvaluationPageUserListAdapter.EvaluationPageUserListHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull EvaluationPageUserListAdapter.EvaluationPageUserListHolder holder, int position)
+    {
+        String name = users.get(position);
+        holder.binding.nameSurname.setText("id: " + name);
     }
 
     @Override
