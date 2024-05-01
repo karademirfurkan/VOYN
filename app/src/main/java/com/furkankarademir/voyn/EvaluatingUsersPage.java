@@ -16,7 +16,8 @@ public class EvaluatingUsersPage extends AppCompatActivity {
 
     public void askMeLaterClicked(View view)
     {
-
+        Intent intent = new Intent(EvaluatingUsersPage.this, HomeFragment.class);
+        startActivity(intent);
     }
 
     public void doNotAskAgainClicked(View view)

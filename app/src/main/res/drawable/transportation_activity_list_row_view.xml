@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#76DE99" /> <!-- Fill color (green in this case) -->
+    <solid android:color="#76A6DE" /> <!-- Fill color (green in this case) -->
     <stroke
         android:color="@color/black"
         android:width="2dp"></stroke>

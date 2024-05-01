@@ -5,14 +5,14 @@
     </style>
 
     <style name="Activities_Page_Buttons_View">
-        <item name="backgroundTint">#76DE99</item>
+        <item name="backgroundTint">#8FBFEC</item>
         <item name="cornerRadius">20dp</item>
         <item name="strokeWidth">2dp</item>
         <item name="strokeColor">@color/black</item>
     </style>
 
     <style name="Activities_Page_Buttons_View2">
-        <item name="backgroundTint">#599CDE</item>
+        <item name="backgroundTint">#4587C8</item>
         <item name="cornerRadius">20dp</item>
         <item name="strokeWidth">2dp</item>
         <item name="strokeColor">@color/black</item>

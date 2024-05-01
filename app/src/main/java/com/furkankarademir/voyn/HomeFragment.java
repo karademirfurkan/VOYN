@@ -1,5 +1,7 @@
 package com.furkankarademir.voyn;
 
+import static android.content.Intent.getIntent;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,10 +50,11 @@ public class HomeFragment extends Fragment {
     private ImageView imageView;
     private ImageView imageView2;
     private int currentImageIndex = 0;
-    private int[] images = {R.drawable.advitisement_1, R.drawable.advertisement_2, R.drawable.advertisement_3};
+    private int[] images = {R.drawable.bes, R.drawable.advitisement_1, R.drawable.advertisement_2, R.drawable.advertisement_3};
     private int[] images2 = {R.drawable.first_order_icon, R.drawable.second_order_icon, R.drawable.third_order_icon};
     private Handler handler;
     private Runnable runnable;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -150,12 +153,12 @@ public class HomeFragment extends Fragment {
         runnable = new Runnable() {
             @Override
             public void run() {
-                imageView.setImageResource(images[currentImageIndex % 3]);
+                imageView.setImageResource(images[currentImageIndex % 4]);
                 imageView2.setImageResource(images2[currentImageIndex % 3]);
 
                 currentImageIndex++;
 
-                handler.postDelayed(this, 2500);
+                handler.postDelayed(this, 3500);
             }
         };
 
