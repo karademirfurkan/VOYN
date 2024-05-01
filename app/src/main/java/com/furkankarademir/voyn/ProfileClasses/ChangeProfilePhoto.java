@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.View;
 
 
@@ -44,7 +45,7 @@ public class ChangeProfilePhoto extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         registerLauncher();
-        binding.profilePicture.setOnClickListener(new View.OnClickListener() {
+        /*binding.profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(ContextCompat.checkSelfPermission(ChangeProfilePhoto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
@@ -69,7 +70,59 @@ public class ChangeProfilePhoto extends AppCompatActivity {
 
                 }
             }
+
+        });*/
+        binding.profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ContextCompat.checkSelfPermission(ChangeProfilePhoto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                {
+                    if(ActivityCompat.shouldShowRequestPermissionRationale(ChangeProfilePhoto.this, Manifest.permission.READ_EXTERNAL_STORAGE))
+                    {
+                        Snackbar.make(v, "Permission needed for gallery", Snackbar.LENGTH_INDEFINITE)
+                                .setAction("Give Permission", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+                                    }
+                                }).show();
+                    }
+                    else {
+                        // Direct the user to the app settings
+                        Snackbar.make(v, "Permission needed for gallery", Snackbar.LENGTH_INDEFINITE)
+                                .setAction("Settings", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent();
+                                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                        intent.setData(uri);
+                                        startActivity(intent);
+                                    }
+                                }).show();
+                    }
+                }
+                else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    activityResultLauncher.launch(intent);
+                }
+            }
         });
+
+        /*binding.profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ContextCompat.checkSelfPermission(ChangeProfilePhoto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                {
+                    permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+                }
+                else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    activityResultLauncher.launch(intent);
+                }
+            }
+        });*/
+
         /*binding.profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,9 +192,17 @@ public class ChangeProfilePhoto extends AppCompatActivity {
                 }
                 else {
                     Snackbar.make(binding.getRoot(), "Permission needed for gallery", Snackbar.LENGTH_SHORT).show();
+
+
                 }
             }
         });
     }
+
+    private void confirmButtonClicked(View view)
+    {
+
+    }
+
 
 }
