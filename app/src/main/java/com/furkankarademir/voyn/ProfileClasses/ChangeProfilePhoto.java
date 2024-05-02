@@ -241,6 +241,19 @@ public class ChangeProfilePhoto extends AppCompatActivity {
             storageReference.child("ProfilePhotos").child(auth.getUid()).putFile(imageData).addOnSuccessListener(taskSnapshot -> {
 
                 Snackbar.make(view, "Profile photo uploaded", Snackbar.LENGTH_SHORT).show();
+                // Get the download url of the image
+                storageReference = storage.getReference();
+
+                storageReference.child("ProfilePhotos").child(auth.getUid()).getDownloadUrl().addOnSuccessListener(uri -> {
+                    firestore.collection("Users").document(auth.getUid()).update("profilePhotoUrl", uri.toString()).addOnSuccessListener(aVoid -> {
+                        Snackbar.make(view, "Profile photo uploaded to user information", Snackbar.LENGTH_SHORT).show();
+                    }).addOnFailureListener(e -> {
+                        Snackbar.make(view, e.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
+                    });
+                    
+                }).addOnFailureListener(e -> {
+                    Snackbar.make(view, e.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
+                });
             }).addOnFailureListener(e -> {
                 Snackbar.make(view, e.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
             });

@@ -19,6 +19,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class User implements Serializable{
@@ -44,6 +46,8 @@ public class User implements Serializable{
     private ArrayList<String> myAccommodationActivities;
     private ArrayList<String> attendedActivities;
 
+    private String profilePhotoUrl;
+
 
     public User()
     {
@@ -62,6 +66,14 @@ public class User implements Serializable{
         this.id = id;
     }
 
+    public void setProfilePhotoUrl(String profilePhotoUrl) {
+        this.profilePhotoUrl = profilePhotoUrl;
+    }
+
+    public String getProfilePhotoUrl() {
+        return profilePhotoUrl;
+    }
+
     public User  (String name, String surname, String id, String age, String department)
     {
         this.name = name;
@@ -73,6 +85,9 @@ public class User implements Serializable{
         mySportActivities = new ArrayList<String>();
         myAccommodationActivities = new ArrayList<String>();
         attendedActivities = new ArrayList<String>();
+
+        profilePhotoUrl = (getClass().getClassLoader().getResource("profile_photo.png").toString());
+
     }
 
     public String getName() {

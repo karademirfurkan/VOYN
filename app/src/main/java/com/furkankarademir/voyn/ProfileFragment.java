@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.ProfileClasses.EditProfile;
 import com.furkankarademir.voyn.databinding.ActivitySignUpPageBinding;
@@ -56,8 +57,27 @@ public class ProfileFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // Get profile photo url from firebase and set it to profile picture
+        ImageView profilePicture = view.findViewById(R.id.imageView11);
 
         DocumentReference docRef = db.collection("Users").document(auth.getUid());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    user = documentSnapshot.toObject(User.class);
+                    if (user.getProfilePhotoUrl() != null && !user.getProfilePhotoUrl().isEmpty()) {
+                        Glide.with(ProfileFragment.this)
+                                .load(user.getProfilePhotoUrl())
+                                .into(profilePicture);
+                    } else {
+                        profilePicture.setImageResource(R.drawable.profile_photo);
+                    }
+                }
+            }
+        });
+
+
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
