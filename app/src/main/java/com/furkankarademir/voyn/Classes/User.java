@@ -71,7 +71,7 @@ public class User implements Serializable{
     }
 
     public String getProfilePhotoUrl() {
-        return profilePhotoUrl;
+        return (profilePhotoUrl != null) ? profilePhotoUrl.toString() : null;
     }
 
     public User  (String name, String surname, String id, String age, String department)
@@ -86,8 +86,9 @@ public class User implements Serializable{
         myAccommodationActivities = new ArrayList<String>();
         attendedActivities = new ArrayList<String>();
 
-        profilePhotoUrl = (getClass().getClassLoader().getResource("profile_photo.png").toString());
-
+        
+        URL url = getClass().getClassLoader().getResource("profile_photo.png");
+        profilePhotoUrl = (url != null) ? url.toString() : null;
     }
 
     public String getName() {

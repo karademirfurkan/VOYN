@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.ProfileFragment;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
 import com.furkankarademir.voyn.databinding.ActivityProfilePageForOtherUsersBinding;
@@ -26,12 +29,14 @@ public class profilePageForOtherUsers extends AppCompatActivity
     private String surname;
     private String mail;
     private String userID;
-    private String profilePhoto;
 
     private String age;
     private String department;
 
     private FirebaseFirestore db;
+
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -46,6 +51,23 @@ public class profilePageForOtherUsers extends AppCompatActivity
         db = FirebaseFirestore.getInstance();
         getUserFromFirebase();
 
+        ImageView profilePhoto = binding.imageView11;
+        DocumentReference docRef = db.collection("Users").document(userID);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()){
+                    user = documentSnapshot.toObject(User.class);
+                    if (user.getProfilePhotoUrl() != null && !user.getProfilePhotoUrl().isEmpty()) {
+                        Glide.with(profilePageForOtherUsers.this)
+                                .load(user.getProfilePhotoUrl())
+                                .into(profilePhoto);
+                    } else {
+                        profilePhoto.setImageResource(R.drawable.profile_photo);
+                    }
+                }
+            }
+        });
 
 
     }
