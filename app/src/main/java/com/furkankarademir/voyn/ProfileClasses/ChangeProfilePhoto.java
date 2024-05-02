@@ -23,6 +23,10 @@ import android.view.View;
 
 import com.furkankarademir.voyn.databinding.ActivityChangeProfilePhotoBinding;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 
@@ -38,11 +42,24 @@ public class ChangeProfilePhoto extends AppCompatActivity {
 
     private ActivityResultLauncher<String> permissionLauncher;
 
+    private FirebaseStorage storage;
+
+    private FirebaseAuth auth;
+
+    private FirebaseFirestore firestore;
+
+    private StorageReference storageReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityChangeProfilePhotoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        storage = FirebaseStorage.getInstance();
+        auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        storageReference = storage.getReference();
 
         registerLauncher();
         /*binding.profilePicture.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +88,19 @@ public class ChangeProfilePhoto extends AppCompatActivity {
                 }
             }
 
+        });*/
+        /*binding.profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ContextCompat.checkSelfPermission(ChangeProfilePhoto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                {
+                    ActivityCompat.requestPermissions(ChangeProfilePhoto.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                }
+                else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    activityResultLauncher.launch(intent);
+                }
+            }
         });*/
         binding.profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +133,9 @@ public class ChangeProfilePhoto extends AppCompatActivity {
                     }
                 }
                 else {
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+                    intent.setType("image/*");
                     activityResultLauncher.launch(intent);
                 }
             }
@@ -140,6 +172,7 @@ public class ChangeProfilePhoto extends AppCompatActivity {
 
     private void registerLauncher()
     {
+
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult o) {
@@ -165,10 +198,11 @@ public class ChangeProfilePhoto extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-
                 }
             }
         });
+
+
         /*permissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
             @Override
             public void onActivityResult(Boolean result) {
@@ -201,8 +235,31 @@ public class ChangeProfilePhoto extends AppCompatActivity {
 
     private void confirmButtonClicked(View view)
     {
+        if(imageData != null)
+        {
+            storageReference.child("ProfilePhotos").child(auth.getUid()).putFile(imageData).addOnSuccessListener(taskSnapshot -> {
+
+                Snackbar.make(view, "Profile photo uploaded", Snackbar.LENGTH_SHORT).show();
+            }).addOnFailureListener(e -> {
+                Snackbar.make(view, e.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
+            });
+
+        }
 
     }
+    /*
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                activityResultLauncher.launch(intent);
+            } else {
+                Snackbar.make(binding.getRoot(), "Permission needed for gallery", Snackbar.LENGTH_SHORT).show();
+            }
+        }
+    }*/
 
 
 }
