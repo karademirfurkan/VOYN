@@ -105,15 +105,15 @@ public class ChangeProfilePhoto extends AppCompatActivity {
         binding.profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ContextCompat.checkSelfPermission(ChangeProfilePhoto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                if(ContextCompat.checkSelfPermission(ChangeProfilePhoto.this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED)
                 {
-                    if(ActivityCompat.shouldShowRequestPermissionRationale(ChangeProfilePhoto.this, Manifest.permission.READ_EXTERNAL_STORAGE))
+                    if(ActivityCompat.shouldShowRequestPermissionRationale(ChangeProfilePhoto.this, Manifest.permission.READ_MEDIA_IMAGES))
                     {
                         Snackbar.make(v, "Permission needed for gallery", Snackbar.LENGTH_INDEFINITE)
                                 .setAction("Give Permission", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+                                        permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES);
                                     }
                                 }).show();
                     }
@@ -140,6 +140,7 @@ public class ChangeProfilePhoto extends AppCompatActivity {
                 }
             }
         });
+
 
         /*binding.profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
