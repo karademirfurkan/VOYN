@@ -234,7 +234,7 @@ public class ChangeProfilePhoto extends AppCompatActivity {
         });
     }
 
-    private void confirmButtonClicked(View view)
+    public void confirmButtonClicked(View view)
     {
         if(imageData != null)
         {
