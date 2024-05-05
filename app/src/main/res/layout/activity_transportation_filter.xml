@@ -6,126 +6,213 @@
     android:layout_height="match_parent"
     tools:context=".Transportation.TransportationFilter">
 
-    <TextView
-        android:id="@+id/textView65"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
-        android:text="Time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/timeFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Type Time..."
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/textView65"
-        app:layout_constraintTop_toBottomOf="@+id/textView65" />
+        <TextView
+            android:id="@+id/textView10324"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jockey_one"
+            android:text="TRANSPORTATION FILTER"
 
-    <TextView
-        android:id="@+id/textView67"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="44dp"
-        android:text="Date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeFilter" />
+            android:textAlignment="center"
+            android:textSize="23sp"
+            android:layout_marginTop="10dp"/>
 
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="0dp"
-        android:layout_height="327dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView10234"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/bar" />
 
-    <TextView
-        android:id="@+id/textView68"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="152dp"
-        android:layout_marginBottom="8dp"
-        android:text="Where From"
-        app:layout_constraintBottom_toTopOf="@+id/departure"
-        app:layout_constraintEnd_toStartOf="@+id/textView69"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView67"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/jockey_one"
+            android:text="DATE:"
+            android:textSize="19sp" />
 
-    <TextView
-        android:id="@+id/textView69"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginBottom="2dp"
-        android:hint="Where To"
-        app:layout_constraintBottom_toTopOf="@+id/destination"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/destination"
-        app:layout_constraintTop_toBottomOf="@+id/calendar"
-        app:layout_constraintVertical_bias="1.0" />
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="166dp" />
 
-    <EditText
-        android:id="@+id/destination"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="513dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="51dp"
-        android:ems="10"
-        android:hint="Type Destination point"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/filterButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-    <Switch
-        android:id="@+id/switchAvailable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="47dp"
-        android:text="Available"
-        app:layout_constraintBottom_toBottomOf="@+id/filterButton"
-        app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="19dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="TIME:"
+                android:textSize="19sp" />
 
-    <Switch
-        android:id="@+id/switchLocked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Locked"
-        app:layout_constraintBottom_toTopOf="@+id/filterButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@+id/switchAvailable" />
+            <EditText
+                android:id="@+id/timeFilter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Enter the time..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/filterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="3dp"
-        android:text="Apply Filter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/destination"
-        app:layout_constraintTop_toBottomOf="@+id/destination" />
 
-    <EditText
-        android:id="@+id/departure"
-        android:layout_width="188dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="2dp"
-        android:ems="10"
-        android:hint="Type Departure Point..."
-        android:inputType="text"
-        app:layout_constraintBaseline_toBaselineOf="@+id/destination"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
 
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="17dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="FROM:"
+                android:textSize="19sp"/>
+
+            <EditText
+                android:id="@+id/departure"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Type departure point..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/textView69"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="34dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="TO:"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/destination"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Type destination point..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <Switch
+                android:id="@+id/switchAvailable"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+
+                android:background="@drawable/transportation_edittext_shape"
+                android:fontFamily="@font/jockey_one"
+                android:text="AVAILABLE"
+                android:textSize="15dp"
+                android:paddingLeft="15dp"
+                tools:layout_editor_absoluteX="35dp"
+                tools:layout_editor_absoluteY="515dp" />
+
+            <Switch
+                android:id="@+id/switchLocked"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:fontFamily="@font/jockey_one"
+                android:text="LOCKED"
+                android:paddingLeft="15dp"
+                android:textSize="15dp"
+                tools:layout_editor_absoluteX="246dp"
+                tools:layout_editor_absoluteY="515dp"/>
+        </LinearLayout>
+
+
+
+        <Button
+            style="@style/Transportation_Page_Buttons_View"
+            android:id="@+id/filterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:text="APPLY FILTER"
+            android:textColor="@color/black"
+            android:fontFamily="@font/jockey_one"
+            android:layout_gravity="center"
+            android:textIsSelectable="true"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="578dp"
+            android:drawableRight="@drawable/t_three" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
