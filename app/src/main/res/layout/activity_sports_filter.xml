@@ -6,120 +6,217 @@
     android:layout_height="match_parent"
     tools:context=".Transportation.TransportationFilter">
 
-    <TextView
-        android:id="@+id/textView65"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
-        android:text="Time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView105"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jockey_one"
+            android:text="SPORTS FILTER"
 
-    <EditText
-        android:id="@+id/timeFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Type Time..."
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/textView65"
-        app:layout_constraintTop_toBottomOf="@+id/textView65" />
+            android:textAlignment="center"
+            android:textSize="23sp"
+            android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/textView67"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:text="Date"
-        app:layout_constraintStart_toStartOf="@+id/calendar"
-        app:layout_constraintTop_toBottomOf="@+id/timeFilter" />
+        <ImageView
+            android:id="@+id/imageView108"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/bar" />
 
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="379dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView72"
-        app:layout_constraintEnd_toEndOf="@+id/sportPlace"
-        app:layout_constraintStart_toEndOf="@+id/sportPlace"
-        app:layout_constraintTop_toTopOf="@+id/textView67" />
+        <TextView
+            android:id="@+id/textView67"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/jockey_one"
+            android:text="DATE:"
+            android:textSize="19sp" />
 
-    <TextView
-        android:id="@+id/textView68"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="21dp"
-        android:text="Place"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="93dp"  />
 
-    <Switch
-        android:id="@+id/switchAvailable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginEnd="44dp"
-        android:text="Available"
-        app:layout_constraintBottom_toTopOf="@+id/filterButton"
-        app:layout_constraintEnd_toEndOf="@+id/sportPlace"
-        app:layout_constraintStart_toStartOf="@+id/calendar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-    <Switch
-        android:id="@+id/switchLocked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="53dp"
-        android:text="Locked"
-        app:layout_constraintBottom_toTopOf="@+id/filterButton"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="19dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="TIME:"
+                android:textSize="19sp" />
 
-    <Button
-        android:id="@+id/filterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="134dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginBottom="4dp"
-        android:text="Apply Filter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/calendar" />
+            <EditText
+                android:id="@+id/timeFilter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Enter the time..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp"/>
 
-    <TextView
-        android:id="@+id/textView72"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:text="Type of Sport"
-        app:layout_constraintBottom_toTopOf="@+id/sportType"
-        app:layout_constraintStart_toStartOf="@+id/sportType" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/sportPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:ems="10"
-        android:hint="Type Place..."
-        android:inputType="text"
-        app:layout_constraintBaseline_toBaselineOf="@+id/sportType"
-        app:layout_constraintEnd_toStartOf="@+id/sportType"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/sportType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:ems="10"
-        android:hint="Type Sport Type"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/switchLocked"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sportPlace" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="9dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="PLACE:"
+                android:textSize="19sp" />
+
+            <EditText
+                android:id="@+id/sportPlace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Enter the place..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/textView72"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="TYPE:"
+                android:layout_gravity="center"
+                android:textSize="19sp" />
+
+
+
+            <EditText
+                android:id="@+id/sportType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Enter the type..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <Switch
+                android:id="@+id/switchAvailable"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+
+                android:background="@drawable/transportation_edittext_shape"
+                android:fontFamily="@font/jockey_one"
+                android:text="AVAILABLE"
+                android:textSize="15dp"
+                android:paddingLeft="15dp"
+                tools:layout_editor_absoluteX="35dp"
+                tools:layout_editor_absoluteY="515dp"  />
+
+            <Switch
+                android:id="@+id/switchLocked"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:fontFamily="@font/jockey_one"
+                android:text="LOCKED"
+                android:paddingLeft="15dp"
+                android:textSize="15dp"
+                tools:layout_editor_absoluteX="246dp"
+                tools:layout_editor_absoluteY="515dp" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/filterButton"
+            style="@style/Transportation_Page_Buttons_View"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:text="APPLY FILTER"
+            android:textColor="@color/black"
+            android:fontFamily="@font/jockey_one"
+            android:layout_gravity="center"
+            android:textIsSelectable="true"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="578dp"
+            android:drawableRight="@drawable/t_three"/>
+
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
