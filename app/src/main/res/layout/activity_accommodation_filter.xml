@@ -6,75 +6,212 @@
     android:layout_height="match_parent"
     tools:context=".Transportation.TransportationFilter">
 
-    <TextView
-        android:id="@+id/textView67"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="Date"
-        app:layout_constraintBottom_toTopOf="@+id/calendar"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="0dp"
-        android:layout_height="327dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.21" />
+        <TextView
+            android:id="@+id/textView105"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jockey_one"
+            android:text="ACCOMMODATION FILTER"
 
-    <TextView
-        android:id="@+id/textView68"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="52dp"
-        android:text="Place"
-        app:layout_constraintStart_toStartOf="@+id/calendar"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+            android:textAlignment="center"
+            android:textSize="23sp"
+            android:layout_marginTop="10dp"/>
 
-    <Switch
-        android:id="@+id/switchAvailable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Available"
-        app:layout_constraintTop_toBottomOf="@+id/textView68"
-        tools:layout_editor_absoluteX="34dp" />
+        <ImageView
+            android:id="@+id/imageView108"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/bar" />
 
-    <Switch
-        android:id="@+id/switchLocked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
-        android:text="Locked"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="246dp" />
+        <TextView
+            android:id="@+id/textView74"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/jockey_one"
+            android:text="DATE:"
+            android:textSize="19sp"/>
 
-    <Button
-        android:id="@+id/filterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Apply Filter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="142dp" />
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="93dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-    <EditText
-        android:id="@+id/placeFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="Place"
-        android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/textView68"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+            <TextView
+                android:id="@+id/textView73"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="19dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="TYPE:"
+                android:textSize="19sp"/>
 
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Enter the type..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="11dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="PLACE:"
+                android:textSize="19sp"/>
+
+            <EditText
+                android:id="@+id/placeFilter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Enter the place..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="GENDER:"
+                android:layout_gravity="center"
+                android:textSize="19sp"/>
+
+            <EditText
+                android:id="@+id/editTextText2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:ems="10"
+                android:hint="Enter the type"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:text="Enter the gender..."
+                android:textSize="12sp"
+                android:textStyle="italic"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="408dp" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <Switch
+                android:id="@+id/switchAvailable"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+
+                android:background="@drawable/transportation_edittext_shape"
+                android:fontFamily="@font/jockey_one"
+                android:text="AVAILABLE"
+                android:textSize="15dp"
+                android:paddingLeft="15dp"
+                tools:layout_editor_absoluteX="35dp"
+                tools:layout_editor_absoluteY="515dp" />
+
+            <Switch
+                android:id="@+id/switchLocked"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/transportation_edittext_shape"
+                android:fontFamily="@font/jockey_one"
+                android:text="LOCKED"
+                android:paddingLeft="15dp"
+                android:textSize="15dp"
+                tools:layout_editor_absoluteX="246dp"
+                tools:layout_editor_absoluteY="515dp" />
+
+        </LinearLayout>
+
+        <Button
+
+            android:id="@+id/filterButton"
+            style="@style/Transportation_Page_Buttons_View"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:text="APPLY FILTER"
+            android:textColor="@color/black"
+            android:fontFamily="@font/jockey_one"
+            android:layout_gravity="center"
+            android:textIsSelectable="true"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="578dp"
+            android:drawableRight="@drawable/t_three"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
