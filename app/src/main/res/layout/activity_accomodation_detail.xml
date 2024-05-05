@@ -81,7 +81,7 @@ tools:context=".Transportation.TransportationDetailActivity">
     android:layout_height="26dp"
     android:fontFamily="@font/jockey_one"
     app:layout_constraintBottom_toBottomOf="@+id/destinationInfo"
-    app:layout_constraintEnd_toStartOf="@id/seatsInfo"
+    app:layout_constraintEnd_toStartOf="@id/inhabitantslimitInfo"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toEndOf="@+id/textView47" />
 
@@ -122,7 +122,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
 <TextView
 
-    android:id="@+id/seatsInfo"
+    android:id="@+id/inhabitantslimitInfo"
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_marginTop="4dp"
