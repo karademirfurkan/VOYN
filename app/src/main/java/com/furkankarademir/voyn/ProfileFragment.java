@@ -95,6 +95,10 @@ public class ProfileFragment extends Fragment {
                     TextView department = view.findViewById(R.id.departmentInProfile);
                     department.setText(user.getDepartment());
 
+                    TextView bio = view.findViewById(R.id.biography);
+                    bio.setText(user.getBio());
+
+
                     Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img);
                     Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
 

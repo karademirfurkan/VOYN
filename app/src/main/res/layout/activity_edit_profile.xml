@@ -244,18 +244,20 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BIO  :"
                 android:fontFamily="@font/jockey_one"
+                android:text="BIO  :"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="253dp" />
 
-            <TextView
-                android:id="@+id/textView30"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editBioInProfile"
+                android:layout_width="347dp"
                 android:layout_height="wrap_content"
-                android:text="bio"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="253dp" />
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Edit Your Bio..."
+                android:inputType="text" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -276,13 +278,15 @@
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="288dp" />
 
-            <TextView
-                android:id="@+id/textView101"
+            <EditText
+                android:id="@+id/ageEditInProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="age"
-                tools:layout_editor_absoluteX="21dp"
-                tools:layout_editor_absoluteY="288dp" />
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Change Age.."
+                android:inputType="text" />
+
         </LinearLayout>
 
         <TextView

@@ -8,11 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.MainActivity;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityEditProfileBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -21,6 +25,13 @@ import java.util.ArrayList;
 public class EditProfile extends AppCompatActivity {
 
     private ActivityEditProfileBinding binding;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseUser user = auth.getCurrentUser();
+
+    private DocumentReference documentReference = db.collection("Users").document(user.getUid());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +48,80 @@ public class EditProfile extends AppCompatActivity {
         {
             Intent intent = new Intent(EditProfile.this, ChangeEmailandPassword.class);
             startActivity(intent);
+        });
+
+        /*binding.Confirm.setOnClickListener(v ->
+        {
+
+            if(!binding.editBioInProfile.getText().toString().isEmpty())
+            {
+                String newBio = binding.editBioInProfile.getText().toString();
+                String userId = auth.getCurrentUser().getUid();
+
+                DocumentReference docRef = db.collection("Users").document(userId);
+                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            User user = documentSnapshot.toObject(User.class);
+                            user.setBio(newBio);
+
+                            docRef.set(user)
+                                    .addOnSuccessListener(aVoid -> System.out.println("DocumentSnapshot successfully updated!"))
+                                    .addOnFailureListener(aVoid -> System.out.println("Error updating document"));
+                        }
+                    }
+                });
+            }
+            if (!binding.ageEditInProfile.getText().toString().isEmpty()) {
+                String newAge = binding.ageEditInProfile.getText().toString();
+                String userId = auth.getCurrentUser().getUid();
+
+                DocumentReference docRef = db.collection("Users").document(userId);
+                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            User user = documentSnapshot.toObject(User.class);
+                            user.setAge(newAge);
+
+                            docRef.set(user)
+                                    .addOnSuccessListener(aVoid -> System.out.println("DocumentSnapshot successfully updated!"))
+                                    .addOnFailureListener(aVoid -> System.out.println("Error updating document"));
+                        }
+                    }
+                });
+            }
+
+            finish();
+        });*/
+        binding.Confirm.setOnClickListener(v -> {
+            String userId = auth.getCurrentUser().getUid();
+            DocumentReference docRef = db.collection("Users").document(userId);
+
+            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.exists()){
+                        User user = documentSnapshot.toObject(User.class);
+
+                        if(!binding.editBioInProfile.getText().toString().isEmpty()) {
+                            String newBio = binding.editBioInProfile.getText().toString();
+                            user.setBio(newBio);
+                        }
+
+                        if (!binding.ageEditInProfile.getText().toString().isEmpty()) {
+                            String newAge = binding.ageEditInProfile.getText().toString();
+                            user.setAge(newAge);
+                        }
+
+                        docRef.set(user)
+                                .addOnSuccessListener(aVoid -> System.out.println("DocumentSnapshot successfully updated!"))
+                                .addOnFailureListener(aVoid -> System.out.println("Error updating document"));
+                    }
+                }
+            });
+            finish();
         });
 
         binding.DeleteProfile.setOnClickListener(v ->
@@ -68,6 +153,8 @@ public class EditProfile extends AppCompatActivity {
                         }
                         });
             }
+
+
 
             // Fetch all activities where the user is an attendee
             db.collection("Activities")

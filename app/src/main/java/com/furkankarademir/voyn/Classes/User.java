@@ -48,6 +48,8 @@ public class User implements Serializable{
 
     private String profilePhotoUrl;
 
+    private String bio;
+
 
     public User()
     {
@@ -61,6 +63,15 @@ public class User implements Serializable{
     public String getId() {
         return id;
     }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
 
     public void setId(String id) {
         this.id = id;
