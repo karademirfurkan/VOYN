@@ -9,19 +9,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.furkankarademir.voyn.Chat.Chat;
 import com.furkankarademir.voyn.Chat.ChatInBetweenPage;
 import com.furkankarademir.voyn.Chat.Message;
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.Sport.SportsDetailActivity;
+import com.furkankarademir.voyn.Transportation.TransportationDetailActivity;
 import com.furkankarademir.voyn.databinding.ActivityAccomodationDetailBinding;
 import com.furkankarademir.voyn.databinding.ActivitySportsDetailBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -50,19 +55,43 @@ public class AccomodationDetailActivity extends AppCompatActivity {
         HashMap<String, Object> accommodationMap = (HashMap<String, Object>) intent.getSerializableExtra("accommodation");
         accommodation = accommodationMap;
 
-        System.out.println(accommodation.get("creatorUserID"));
+        DocumentReference docRef = db.collection("Users").document(accommodation.get("creatorUserID").toString());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    String name = documentSnapshot.getString("name");
+                    String surname = documentSnapshot.getString("surname");
+                    String nameSurname = name + " " + surname;
+                    binding.nameInfo.setText(nameSurname);
+                    binding.bioInfo.setText(documentSnapshot.getString("bio"));
+                    binding.ageInfo.setText(documentSnapshot.getString("age"));
+                    ImageView profilePicture = findViewById(R.id.profile);
 
-        String name = (String) accommodationMap.get("name");
-        binding.nameInfo.setText(name);
+                    User user = documentSnapshot.toObject(User.class);
+                    if (user.getProfilePhotoUrl() != null && !user.getProfilePhotoUrl().isEmpty()) {
+                        Glide.with(AccomodationDetailActivity.this)
+                                .load(user.getProfilePhotoUrl())
+                                .into(profilePicture);
+                    } else {
+                        profilePicture.setImageResource(R.drawable.profile_photo);
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Error getting user document", e);
+            }
+        });
+
         binding.genderInfo.setText((String) accommodationMap.get("gender"));//it has written wrong in the xml part
         binding.timeInfo.setText((String) accommodationMap.get("place")); //it has written wrong in the xml part
         binding.dateInfo.setText((String) accommodationMap.get("date"));
         binding.timeInfo.setText((String) accommodationMap.get("time"));
-        binding.inhabitantslimitInfo.setText(accommodationMap.get("numberOfPlayers").toString());
+        binding.inhabitantslimitInfo.setText(accommodationMap.get("numberOfInhabitants").toString());
         ArrayList<String> invited = (ArrayList<String>) accommodationMap.get("invited");
-        if (invited != null) {
-            // binding.deneme.setText(invited.toString());
-        }
     }
     public void sendMessageButtonClicked(View view)
     {
