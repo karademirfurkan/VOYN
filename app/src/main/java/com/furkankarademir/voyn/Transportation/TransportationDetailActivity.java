@@ -6,19 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.furkankarademir.voyn.Chat.Chat;
 import com.furkankarademir.voyn.Chat.ChatInBetweenPage;
 import com.furkankarademir.voyn.Chat.Message;
+import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.ProfileFragment;
+import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivityTransportationDetailBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -46,11 +52,52 @@ public class TransportationDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         HashMap<String, Object> transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
         transportation = transportationMap;
+        System.out.println("buuuuuuuuuuu" + transportation);
+        if (transportation.get("creatorUserID") != null) {
+            DocumentReference docRef = db.collection("Users").document(transportation.get("creatorUserID").toString());
+            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if(documentSnapshot.exists())
+                    {
+                        String name = documentSnapshot.getString("name");
+                        String surname = documentSnapshot.getString("surname");
+                        String nameSurname = name + " " + surname;
+                        binding.nameInfo.setText(nameSurname);
+                        binding.bioInfo.setText(documentSnapshot.getString("bio"));
+                        binding.ageInfo.setText(documentSnapshot.getString("age"));
+                        ImageView profilePicture = findViewById(R.id.profile);
 
-        System.out.println(transportation.get("creatorUserID"));
+                        User user = documentSnapshot.toObject(User.class);
+                        if (user.getProfilePhotoUrl() != null && !user.getProfilePhotoUrl().isEmpty()) {
+                            Glide.with(TransportationDetailActivity.this)
+                                    .load(user.getProfilePhotoUrl())
+                                    .into(profilePicture);
+                        } else {
+                            profilePicture.setImageResource(R.drawable.profile_photo);
+                        }
+
+                    }
+
+
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e(TAG, "Error getting user document", e);
+                }
+            });
+        }
+
+
+
+
 
         String name = (String) transportationMap.get("name");
-        binding.nameInfo.setText(name);
+        String surname = (String) transportationMap.get("surname");
+        String nameSurname = name + " " + surname;
+        binding.nameInfo.setText(nameSurname);
         //binding.surnameInfo.setText((String) transportationMap.get("surname"));
         //binding.mailInfo.setText((String) transportationMap.get("mail"));
         binding.departureInfo.setText((String) transportationMap.get("departure"));
@@ -59,6 +106,7 @@ public class TransportationDetailActivity extends AppCompatActivity {
         binding.timeInfo.setText((String) transportationMap.get("time"));
         binding.seatsInfo.setText(transportationMap.get("seats").toString());
         ArrayList<String> invited = (ArrayList<String>) transportationMap.get("invited");
+
         if (invited != null) {
             //binding.deneme.setText(invited.toString());
         }

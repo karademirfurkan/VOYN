@@ -32,6 +32,8 @@ public class Transportation extends Activity{
 
     private int seats;
     private double minStar;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
 
 
     public Transportation(String name, String surname, String mail, String date, String time, String departure, String destination,
@@ -56,7 +58,7 @@ public class Transportation extends Activity{
 
         transportation.put("surname", getSurname());
         transportation.put("mail", getMail());
-        transportation.put("creatorUserID", getCreatorUserID());
+        transportation.put("creatorUserID", auth.getCurrentUser().getUid());
         transportation.put("time", getTime());
         transportation.put("departure", departure);
         transportation.put("destination", destination);
