@@ -20,13 +20,14 @@
         app:srcCompat="@drawable/profile_photo" />
 
     <Button
+        style="@style/Edit_Profile"
         android:id="@+id/confirmButton"
-        style="@style/Regular_Button_View"
         android:layout_width="160dp"
         android:layout_height="56dp"
         android:layout_marginBottom="188dp"
         android:onClick="confirmButtonClicked"
         android:text="Confirm"
+        app:strokeColor="#76DE99"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

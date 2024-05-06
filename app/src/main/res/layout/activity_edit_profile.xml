@@ -224,6 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="45dp"
+                    style="@style/Edit_Profile"
                     android:text="CHANGE PROFILE PICTURE"
                     android:textColorHighlight="#76DE99"
                     android:textColorLink="#76DE99"
@@ -358,6 +359,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="2dp"
             android:text="CHANGE MAIL AND PASSWORD"
+            style="@style/Edit_Profile"
             android:textColorHighlight="#76DE99"
             android:textSize="12sp"
             app:strokeColor="#76DE99" />
@@ -376,6 +378,7 @@
             android:layout_marginTop="10dp"
             android:text="CONFIRM"
             android:textColorHighlight="#76DE99"
+            style="@style/Edit_Profile"
             android:textSize="12sp"
             app:strokeColor="#76DE99" />
         <Button

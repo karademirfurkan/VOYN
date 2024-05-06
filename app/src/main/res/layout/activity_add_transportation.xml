@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/jockey_one"
             android:text="OPENING A TRANSPORTATION ACTIVITY"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textSize="23sp" />
 
         <ImageView
