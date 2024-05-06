@@ -91,6 +91,7 @@ public class AccommodationActivity extends AppCompatActivity {
                         return 0;
                     }
                 });
+                accomodationAdapter.notifyDataSetChanged();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
