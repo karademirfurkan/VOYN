@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/jockey_one"
             android:text="ACCEPTED PEOPLE FOR THIS ACTIVITY"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="23sp"
             android:layout_marginTop="10dp"/>
@@ -54,6 +55,7 @@
                     android:fontFamily="@font/jockey_one"
                     android:gravity="center_horizontal"
                     android:text="Date"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <TextView
@@ -62,6 +64,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/jockey_one"
                     android:gravity="center_horizontal"
+                    android:textColor="@color/black"
                     android:text="01.01.2024"
                     android:textSize="20sp" />
 
@@ -77,6 +80,7 @@
                         android:fontFamily="@font/jockey_one"
                         android:gravity="center_horizontal"
                         android:textSize="15sp"
+                        android:textColor="@color/black"
                         android:text="Gender:" />
 
                     <TextView
@@ -86,6 +90,7 @@
                         android:fontFamily="@font/jockey_one"
                         android:gravity="center_horizontal"
                         android:textSize="15sp"
+                        android:textColor="@color/black"
                         android:text="Male" />
                 </LinearLayout>
 
@@ -100,12 +105,14 @@
                     android:id="@+id/textView64"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/jockey_one"
                     android:gravity="center_horizontal"
                     android:text="Place"
                     android:textSize="20sp" />
 
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/placeForMyActivities"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -122,6 +129,7 @@
 
                 <TextView
                     android:id="@+id/textView66"
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:fontFamily="@font/jockey_one"
@@ -131,6 +139,7 @@
 
                 <TextView
                     android:id="@+id/personLimitForMyActivities"
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:fontFamily="@font/jockey_one"
@@ -145,6 +154,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:outlineSpotShadowColor="@color/black"
+            android:outlineAmbientShadowColor="@color/black"
             app:srcCompat="@drawable/img_3" />
 
         <Button
@@ -166,6 +177,7 @@
             android:layout_height="wrap_content"
             android:text="CLICK ON INVITATION TO SEE THE DETAILS OF PROFILE"
             android:fontFamily="@font/jockey_one"
+            android:textColor="@color/black"
             android:textAlignment="center"/>
 
         <ImageView
@@ -173,7 +185,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            app:srcCompat="@drawable/img_3" />
+            app:srcCompat="@drawable/img_3"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView3"

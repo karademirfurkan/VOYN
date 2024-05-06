@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jockey_one"
+            android:textColor="@color/black"
             android:text="ACCEPTED PEOPLE FOR THIS ACTIVITY"
             android:textAlignment="center"
             android:textSize="23sp"
@@ -190,6 +191,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
             app:srcCompat="@drawable/img_3" />
 
         <Button
@@ -210,6 +213,7 @@
             android:id="@+id/textView6344"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="CLICK ON INVITATION TO SEE THE DETAILS OF PROFILE"
             android:fontFamily="@font/jockey_one"
             android:textAlignment="center"/>
@@ -218,6 +222,7 @@
             android:id="@+id/imageView123332"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:outlineAmbientShadowColor="@color/black"
             android:layout_marginBottom="5dp"
             app:srcCompat="@drawable/img_3" />
 
