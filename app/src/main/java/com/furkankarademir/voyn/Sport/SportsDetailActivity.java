@@ -6,19 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.furkankarademir.voyn.Accomodation.AccomodationDetailActivity;
 import com.furkankarademir.voyn.Chat.Chat;
 import com.furkankarademir.voyn.Chat.ChatInBetweenPage;
 import com.furkankarademir.voyn.Chat.Message;
+import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.ActivitySportsDetailBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -46,10 +52,37 @@ public class SportsDetailActivity extends AppCompatActivity {
         HashMap<String, Object> sportMap = (HashMap<String, Object>) intent.getSerializableExtra("sport");
         sport = sportMap;
 
-        System.out.println(sport.get("creatorUserID"));
+        DocumentReference docRef = db.collection("Users").document(sport.get("creatorUserID").toString());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    String name = documentSnapshot.getString("name");
+                    String surname = documentSnapshot.getString("surname");
+                    String nameSurname = name + " " + surname;
+                    binding.nameInfo.setText(nameSurname);
+                    binding.bioInfo.setText(documentSnapshot.getString("bio"));
+                    binding.ageInfo.setText(documentSnapshot.getString("age"));
+                    ImageView profilePicture = findViewById(R.id.profile);
 
-        String name = (String) sportMap.get("name");
-        binding.nameInfo.setText(name);
+                    User user = documentSnapshot.toObject(User.class);
+                    if (user.getProfilePhotoUrl() != null && !user.getProfilePhotoUrl().isEmpty()) {
+                        Glide.with(SportsDetailActivity.this)
+                                .load(user.getProfilePhotoUrl())
+                                .into(profilePicture);
+                    } else {
+                        profilePicture.setImageResource(R.drawable.profile_photo);
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Error getting user document", e);
+            }
+        });
+
         binding.surnameInfo.setText((String) sportMap.get("surname"));
         binding.placeInfo.setText((String) sportMap.get("place"));
         binding.dateInfo.setText((String) sportMap.get("date"));

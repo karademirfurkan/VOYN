@@ -10,6 +10,7 @@ import com.furkankarademir.voyn.ParentClassesForActivity.Activity;
 import com.furkankarademir.voyn.ParentClassesForActivity.FireStoreCallback;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -22,6 +23,8 @@ public class Sport extends Activity {
     private String type;
 
     private int numberOfPlayers;
+
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
      public Sport(String name, String surname, String mail, String date, String time, String place,
                   int numberOfPlayers, String extraNote, String creatorUserID, String type){
          super(name,surname, mail, date, time, extraNote, creatorUserID);
@@ -40,7 +43,7 @@ public class Sport extends Activity {
         sport.put("type",getType());
         sport.put("surname", getSurname());
         sport.put("mail", getMail());
-        sport.put("creatorUserID", getCreatorUserID());
+        sport.put("creatorUserID", auth.getCurrentUser().getUid());
         sport.put("time", getTime());
         sport.put("place", getPlace());
         sport.put("numberOfPlayers", getNumberOfPlayers());

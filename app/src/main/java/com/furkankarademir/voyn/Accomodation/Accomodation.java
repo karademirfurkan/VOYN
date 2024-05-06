@@ -10,6 +10,7 @@ import com.furkankarademir.voyn.ParentClassesForActivity.Activity;
 import com.furkankarademir.voyn.ParentClassesForActivity.FireStoreCallback;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -22,6 +23,8 @@ public class Accomodation extends Activity
     private String place;
     private String gender;
     private int numberOfInhabitants;
+
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public Accomodation(String name, String surname, String mail, String date, String time,
                         String extraNote, String creatorUserID, String type, String place,
@@ -45,7 +48,7 @@ public class Accomodation extends Activity
         accomodation.put("date", getDate());
         accomodation.put("time", getTime());
         accomodation.put("extraNote", getExtraNote());
-        accomodation.put("creatorUserID", getCreatorUserID());
+        accomodation.put("creatorUserID", auth.getCurrentUser().getUid());
         accomodation.put("participantsId", getParticipantsId());
         accomodation.put("invitedId", getInvitedId());
 
