@@ -194,47 +194,42 @@ public class HomeFragment extends Fragment {
                     int currentHour = calendar.get(Calendar.HOUR);
                     int currentMinute = calendar.get(Calendar.MINUTE);
 
-                    for (int i = 0; i < attendedActivities.size(); i++)
-                    {
-                        int activityYear = Integer.parseInt(attendedActivities.get(i).substring(0,4));
-                        int activityMonth = Integer.parseInt(attendedActivities.get(i).substring(5,7));
-                        int activityDay = Integer.parseInt(attendedActivities.get(i).substring(8,10));
-                        int activityHour = Integer.parseInt(attendedActivities.get(i).substring(10,12));
-                        int activityMinute = Integer.parseInt(attendedActivities.get(i).substring(13,15));
+                    for (int i = 0; i < attendedActivities.size(); i++) {
 
-                        if (currentYear > activityYear)
-                        {
-                            makeUserArray(attendedActivities.get(i).substring(15));
-                            System.out.println(usersId + "qqqqqqqqqqqhahhahah");
-                            break;
-                        }
-                        else if (currentYear == activityYear)
-                        {
-                            if (currentMonth > activityMonth)
-                            {
+                        String yearString = attendedActivities.get(i).substring(0, 4);
+                        String monthString = attendedActivities.get(i).substring(5, 7);
+                        String dayString = attendedActivities.get(i).substring(8, 10);
+                        String hourString = attendedActivities.get(i).substring(10, 12);
+                        String minuteString = attendedActivities.get(i).substring(13, 15);
+
+                        if (isNumeric(yearString) && isNumeric(monthString) && isNumeric(dayString) && isNumeric(hourString) && isNumeric(minuteString)) {
+                            int activityYear = Integer.parseInt(yearString);
+                            int activityMonth = Integer.parseInt(monthString);
+                            int activityDay = Integer.parseInt(dayString);
+                            int activityHour = Integer.parseInt(hourString);
+                            int activityMinute = Integer.parseInt(minuteString);
+
+                            if (currentYear > activityYear) {
                                 makeUserArray(attendedActivities.get(i).substring(15));
+                                System.out.println(usersId + "qqqqqqqqqqqhahhahah");
                                 break;
-                            }
-                            else if (currentMonth == activityMonth)
-                            {
-                                if (currentDay > activityDay)
-                                {
+                            } else if (currentYear == activityYear) {
+                                if (currentMonth > activityMonth) {
                                     makeUserArray(attendedActivities.get(i).substring(15));
                                     break;
-                                }
-                                else if (currentDay == activityDay)
-                                {
-                                    if (currentHour > activityHour)
-                                    {
+                                } else if (currentMonth == activityMonth) {
+                                    if (currentDay > activityDay) {
                                         makeUserArray(attendedActivities.get(i).substring(15));
                                         break;
-                                    }
-                                    else if (currentHour == activityHour)
-                                    {
-                                        if (currentMinute > activityMinute)
-                                        {
+                                    } else if (currentDay == activityDay) {
+                                        if (currentHour > activityHour) {
                                             makeUserArray(attendedActivities.get(i).substring(15));
                                             break;
+                                        } else if (currentHour == activityHour) {
+                                            if (currentMinute > activityMinute) {
+                                                makeUserArray(attendedActivities.get(i).substring(15));
+                                                break;
+                                            }
                                         }
                                     }
                                 }
@@ -243,12 +238,22 @@ public class HomeFragment extends Fragment {
                     }
                 }
             }
+
         }).addOnFailureListener((Activity) getContext(), new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 e.printStackTrace();
             }
         });
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 
     public void makeUserArray(String id)
