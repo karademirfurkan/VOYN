@@ -175,7 +175,7 @@
             android:id="@+id/textView63"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CLICK ON INVITATION TO SEE THE DETAILS OF PROFILE"
+            android:text="CLICK ON REQUEST TO SEE THE DETAILS OF PROFILE"
             android:fontFamily="@font/jockey_one"
             android:textColor="@color/black"
             android:textAlignment="center"/>
