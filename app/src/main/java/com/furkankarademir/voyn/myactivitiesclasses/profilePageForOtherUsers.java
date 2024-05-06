@@ -52,6 +52,7 @@ public class profilePageForOtherUsers extends AppCompatActivity
         getUserFromFirebase();
 
         ImageView profilePhoto = binding.imageView11;
+        profilePhoto.setScaleType(ImageView.ScaleType.FIT_XY);
         DocumentReference docRef = db.collection("Users").document(userID);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
