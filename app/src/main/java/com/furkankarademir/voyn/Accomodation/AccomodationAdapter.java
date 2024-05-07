@@ -9,11 +9,19 @@ import android.view.ViewGroup;
 
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.furkankarademir.voyn.Classes.User;
+import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.RecyclerAccomodationRowBinding;
 import com.furkankarademir.voyn.myactivitiesclasses.myAccommodationActivityDetails;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +29,14 @@ import java.util.HashMap;
 public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapter.AccomodationHolder> {
 
     private ArrayList<HashMap<String, Object>> accomodationActivities;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
+    private User user;
+
+
 
     private int accommodationAdapterOption;
     public  AccomodationAdapter(ArrayList<HashMap<String, Object>> accomodationActivities, int i)
@@ -59,37 +75,67 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
         String place = (String) accomodationActivities.get(position).get("place");
         ArrayList<String> participants = (ArrayList<String>) accomodationActivities.get(position).get("participantsId");
         String numberOfInhabitants = participants.size() + "/" + accomodationActivities.get(position).get("numberOfInhabitants").toString();
+        ArrayList<String> invitedList = (ArrayList<String>) accomodationActivities.get(position).get("invitedId");
+        double minStar;
+        if (accomodationActivities.get(position).get("minStar") == null)
+        {
+            minStar = 0;
+        }
+        else
+        {
+            minStar = Double.parseDouble(accomodationActivities.get(position).get("minStar").toString());
+        }
+
 
 
         holder.binding.AccomodationDateID.setText(date);
         holder.binding.placeID.setText(place);
         holder.binding.personLimitID.setText(numberOfInhabitants);
         holder.binding.genderID.setText(gender);
+        
 
+        DocumentReference docRef = db.collection("Users").document(auth.getCurrentUser().getUid());
 
-        if(accommodationAdapterOption == 0)
-        {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
-                    intent.putExtra("accommodation", accomodationActivities.get(position));
-                    holder.itemView.getContext().startActivity(intent);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    user = documentSnapshot.toObject(User.class);
+                    if(accommodationAdapterOption == 0)
+                    {
+                        if (user.getStar() < minStar || participants.contains(auth.getUid()) || participants.size() == Integer.parseInt(accomodationActivities.get(position).get("seats").toString()))
+                        {
+                            holder.binding.accommodationLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
+                        }
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
+                                intent.putExtra("accommodation", accomodationActivities.get(position));
+                                boolean isRed = user.getStar() < minStar || participants.contains(auth.getUid()) || participants.size() == Integer.parseInt(accomodationActivities.get(position).get("seats").toString());
+                                intent.putExtra("isRed", isRed);
+                                holder.itemView.getContext().startActivity(intent);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(holder.itemView.getContext(), myAccommodationActivityDetails.class);
+                                intent.putExtra("accommodation", accomodationActivities.get(position));
+                                holder.itemView.getContext().startActivity(intent);
+                            }
+                        });
+                    }
                 }
-            });
-        }
-        else
-        {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(holder.itemView.getContext(), myAccommodationActivityDetails.class);
-                    intent.putExtra("accommodation", accomodationActivities.get(position));
-                    holder.itemView.getContext().startActivity(intent);
-                }
-            });
-        }
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
