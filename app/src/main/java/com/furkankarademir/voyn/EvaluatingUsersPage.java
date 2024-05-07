@@ -1,7 +1,9 @@
 package com.furkankarademir.voyn;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
@@ -19,13 +21,22 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class EvaluatingUsersPage extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -66,35 +77,50 @@ public class EvaluatingUsersPage extends AppCompatActivity {
 
     public void okClicked(View view)
     {
+
         handleGivingStar();
+
+
         Toast.makeText(EvaluatingUsersPage.this, "oldu", Toast.LENGTH_LONG).show();
-        
-        Intent intent = new Intent(EvaluatingUsersPage.this, HomeFragment.class);
+
+
+        Intent intent = new Intent(EvaluatingUsersPage.this, TransportationActivity.class );
         startActivity(intent);
+        
     }
 
     public void handleGivingStar()
     {
         db.collection("Users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots)
-                {
-                    User user = snapshot.toObject(User.class);
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            User user = documentSnapshot.toObject(User.class);
 
-                    double expectedStar = user.getExpectedStar();
+                            user.setStar(user.getExpectedStar());
 
-                    user.setStar(expectedStar);
+                            db.collection("Users").document(documentSnapshot.getId()).set(user)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
 
-                    //snapshot.getReference().set(user);
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
 
-            }
-        });
+                                        }
+                                    });
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 
 }
