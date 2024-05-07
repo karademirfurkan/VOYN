@@ -73,7 +73,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
-                    intent.putExtra("accommodations", accomodationActivities.get(position));
+                    intent.putExtra("accommodation", accomodationActivities.get(position));
                     holder.itemView.getContext().startActivity(intent);
                 }
             });
