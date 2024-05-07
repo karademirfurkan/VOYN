@@ -71,7 +71,6 @@ public class AddTransportationActivity extends AppCompatActivity {
                 {
                     Toast.makeText(AddTransportationActivity.this, "oldu", Toast.LENGTH_LONG).show();
                     name = documentSnapshot.getString("name");
-                    System.out.println("bunun ismi" + name);
                     surname = documentSnapshot.getString("surname");
                     mail = documentSnapshot.getString("mail");
 
@@ -79,7 +78,6 @@ public class AddTransportationActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    System.out.println("olmadı");
                     Toast.makeText(AddTransportationActivity.this, "olmadı", Toast.LENGTH_LONG).show();
                 }
             }

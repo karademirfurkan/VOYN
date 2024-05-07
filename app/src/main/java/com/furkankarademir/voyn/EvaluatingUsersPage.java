@@ -30,6 +30,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 
+import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -96,6 +97,8 @@ public class EvaluatingUsersPage extends AppCompatActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             User user = documentSnapshot.toObject(User.class);
+
+                            System.out.println(user.getEvaluatedActivities().size() + "tattatat");
 
                             user.setStar(user.getExpectedStar());
 
