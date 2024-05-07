@@ -79,6 +79,7 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
         String destination = (String) transportationActivities.get(position).get("destination");
         ArrayList<String> participantsList = (ArrayList<String>) transportationActivities.get(position).get("participantsId");
         String personLimit = participantsList.size() + "/" + transportationActivities.get(position).get("seats").toString();
+        ArrayList<String> invitedList = (ArrayList<String>) transportationActivities.get(position).get("invitedId");
         double minStar = Double.parseDouble(transportationActivities.get(position).get("minStar").toString());
 
         holder.binding.time.setText(time);
@@ -106,7 +107,7 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
                             public void onClick(View v) {
                                 Intent intent = new Intent(holder.itemView.getContext(), TransportationDetailActivity.class);
                                 intent.putExtra("transportation", transportationActivities.get(position));
-                                boolean isRed = user.getStar() < minStar || participantsList.contains(auth.getUid()) || auth.getUid().equals(transportationActivities.get(position).get("creatorUserID").toString());
+                                boolean isRed = user.getStar() < minStar || participantsList.contains(auth.getUid()) || invitedList.contains(auth.getCurrentUser().getUid()) || participantsList.size() == Integer.parseInt(transportationActivities.get(position).get("seats").toString());
                                 intent.putExtra("isRed", isRed);
                                 holder.itemView.getContext().startActivity(intent);
                             }

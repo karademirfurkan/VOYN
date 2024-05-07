@@ -57,7 +57,9 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
         String type = (String) accomodationActivities.get(position).get("type");
         String date = (String) accomodationActivities.get(position).get("date");
         String place = (String) accomodationActivities.get(position).get("place");
-        String numberOfInhabitants = accomodationActivities.get(position).get("numberOfInhabitants").toString();
+        ArrayList<String> participants = (ArrayList<String>) accomodationActivities.get(position).get("participantsId");
+        String numberOfInhabitants = participants.size() + "/" + accomodationActivities.get(position).get("numberOfInhabitants").toString();
+
 
         holder.binding.AccomodationDateID.setText(date);
         holder.binding.placeID.setText(place);

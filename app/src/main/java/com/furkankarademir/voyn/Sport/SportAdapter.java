@@ -49,7 +49,8 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportHolder>
         String time = (String) sportActivities.get(position).get("time");
         String place = (String) sportActivities.get(position).get("place");
         String date = (String) sportActivities.get(position).get("date");
-        String personLimit = sportActivities.get(position).get("numberOfPlayers").toString();
+        ArrayList<String> participants = (ArrayList<String>) sportActivities.get(position).get("participantsId");
+        String personLimit = participants.size() + "/" + sportActivities.get(position).get("numberOfPlayers").toString();
         String typeInfo = (String) sportActivities.get(position).get("type");
 
         holder.binding.time.setText(time);
