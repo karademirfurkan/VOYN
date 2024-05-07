@@ -57,7 +57,9 @@ public class HomeFragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private String userID;
-    private ArrayList<String> usersId;
+    private ArrayList<String> transportationUsersId;
+    private ArrayList<String> accommodationsUsersId;
+    private ArrayList<String> sportsUsersId;
 
     private ImageView imageView;
     private ImageView imageView2;
@@ -79,7 +81,10 @@ public class HomeFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        usersId = new ArrayList<String>();
+        transportationUsersId = new ArrayList<String>();
+        accommodationsUsersId = new ArrayList<>();
+        sportsUsersId = new ArrayList<>();
+
 
         if (getArguments() != null) {
             userID = (String) getArguments().getSerializable("UserID");
@@ -210,7 +215,6 @@ public class HomeFragment extends Fragment {
 
                             if (currentYear > activityYear) {
                                 makeUserArray(attendedActivities.get(i).substring(15));
-                                System.out.println(usersId + "qqqqqqqqqqqhahhahah");
                                 break;
                             } else if (currentYear == activityYear) {
                                 if (currentMonth > activityMonth) {
@@ -265,15 +269,12 @@ public class HomeFragment extends Fragment {
                         if (documentSnapshot.exists()) {
                             HashMap<String, Object> transportation = (HashMap<String, Object>) documentSnapshot.getData();
 
-                            ArrayList<String> newUsersId = (ArrayList<String>) transportation.get("participantsId");
+                            transportationUsersId = (ArrayList<String>) transportation.get("participantsId");
 
-
-                            for (int i = 0; i < newUsersId.size(); i++) {
-                                usersId.add(newUsersId.get(i));
-                            }
-
-                            if (queryCounter.incrementAndGet() == 1) {
-                                startEvaluatingUsersPage(usersId);
+                            if (transportationUsersId.size() > 0) {
+                                Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                intent.putExtra("participants", transportationUsersId);
+                                startActivity(intent);
                             }
                         }
                     }
@@ -291,16 +292,17 @@ public class HomeFragment extends Fragment {
                         if (documentSnapshot.exists()) {
                             HashMap<String, Object> accomodations = (HashMap<String, Object>) documentSnapshot.getData();
 
-                            ArrayList<String> newUsersId = (ArrayList<String>) accomodations.get("participantsId");
+                            accommodationsUsersId = (ArrayList<String>) accomodations.get("participantsId");
 
 
-                            for (int i = 0; i < newUsersId.size(); i++) {
-                                usersId.add(newUsersId.get(i));
+                            if (accommodationsUsersId.size() > 0) {
+                                Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                intent.putExtra("participants", accommodationsUsersId);
+                                startActivity(intent);
                             }
 
-                            if (queryCounter.incrementAndGet() == 1) {
-                                startEvaluatingUsersPage(usersId);
-                            }
+
+
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -317,16 +319,15 @@ public class HomeFragment extends Fragment {
                         if (documentSnapshot.exists()) {
                             HashMap<String, Object> sports = (HashMap<String, Object>) documentSnapshot.getData();
 
-                            ArrayList<String> newUsersId = (ArrayList<String>) sports.get("participantsId");
+                            sportsUsersId = (ArrayList<String>) sports.get("participantsId");
 
 
-                            for (int i = 0; i < newUsersId.size(); i++) {
-                                usersId.add(newUsersId.get(i));
+                            if (sportsUsersId.size() > 0) {
+                                Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                intent.putExtra("participants", sportsUsersId);
+                                startActivity(intent);
                             }
 
-                            if (queryCounter.incrementAndGet() == 1) {
-                                startEvaluatingUsersPage(usersId);
-                            }
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -337,11 +338,4 @@ public class HomeFragment extends Fragment {
                 });
     }
 
-    public void startEvaluatingUsersPage(ArrayList<String> usersId) {
-        if (usersId.size() > 0) {
-            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-            intent.putExtra("participants", usersId);
-            startActivity(intent);
-        }
-    }
 }
