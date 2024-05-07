@@ -50,6 +50,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class HomeFragment extends Fragment {
 
@@ -78,6 +79,7 @@ public class HomeFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        usersId = new ArrayList<String>();
 
         if (getArguments() != null) {
             userID = (String) getArguments().getSerializable("UserID");
@@ -96,7 +98,6 @@ public class HomeFragment extends Fragment {
         handler.removeCallbacks(runnable);
     }
      */
-
 
 
     @Override
@@ -151,8 +152,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
 
 
         //for animation
@@ -251,32 +250,31 @@ public class HomeFragment extends Fragment {
         try {
             Integer.parseInt(str);
             return true;
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
 
-    public void makeUserArray(String id)
-    {
-        System.out.println("wwwwwwwwwwwwwwww1");
+    public void makeUserArray(String id) {
+        AtomicInteger queryCounter = new AtomicInteger(0);
+
         db.collection("transportations").
                 document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists())
-                        {
-                            System.out.println("wwwwwwwwwwwwwwww2");
+                        if (documentSnapshot.exists()) {
                             HashMap<String, Object> transportation = (HashMap<String, Object>) documentSnapshot.getData();
-                            System.out.println("wwwwwwwwwwwwwwww3");
-                            usersId = (ArrayList<String>) transportation.get("participantsId");
 
-                            if (usersId.size() > 0) {
-                                Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                                intent.putExtra("participants", usersId);
-                                startActivity(intent);
+                            ArrayList<String> newUsersId = (ArrayList<String>) transportation.get("participantsId");
+
+
+                            for (int i = 0; i < newUsersId.size(); i++) {
+                                usersId.add(newUsersId.get(i));
                             }
 
-                            System.out.println(usersId + "hahaqqqqqqqqqqqhahhahah");
+                            if (queryCounter.incrementAndGet() == 1) {
+                                startEvaluatingUsersPage(usersId);
+                            }
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -286,4 +284,64 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-    }}
+        db.collection("accommodations").
+                document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            HashMap<String, Object> accomodations = (HashMap<String, Object>) documentSnapshot.getData();
+
+                            ArrayList<String> newUsersId = (ArrayList<String>) accomodations.get("participantsId");
+
+
+                            for (int i = 0; i < newUsersId.size(); i++) {
+                                usersId.add(newUsersId.get(i));
+                            }
+
+                            if (queryCounter.incrementAndGet() == 1) {
+                                startEvaluatingUsersPage(usersId);
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+
+        db.collection("sports").
+                document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            HashMap<String, Object> sports = (HashMap<String, Object>) documentSnapshot.getData();
+
+                            ArrayList<String> newUsersId = (ArrayList<String>) sports.get("participantsId");
+
+
+                            for (int i = 0; i < newUsersId.size(); i++) {
+                                usersId.add(newUsersId.get(i));
+                            }
+
+                            if (queryCounter.incrementAndGet() == 1) {
+                                startEvaluatingUsersPage(usersId);
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+    }
+
+    public void startEvaluatingUsersPage(ArrayList<String> usersId) {
+        if (usersId.size() > 0) {
+            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+            intent.putExtra("participants", usersId);
+            startActivity(intent);
+        }
+    }
+}
