@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class User implements Serializable{
+    private double expectedStar;
     private double evaluationCount;
     private double totalStar;
     private double star;
@@ -57,6 +58,8 @@ public class User implements Serializable{
         mySportActivities = new ArrayList<String>();
         myAccommodationActivities = new ArrayList<String>();
         attendedActivities = new ArrayList<String>();
+        evaluationCount = 1;
+        expectedStar = 0;
     }
 
 
@@ -96,6 +99,8 @@ public class User implements Serializable{
         mySportActivities = new ArrayList<String>();
         myAccommodationActivities = new ArrayList<String>();
         attendedActivities = new ArrayList<String>();
+        evaluationCount = 1;
+        expectedStar = 0;
 
         
         URL url = getClass().getClassLoader().getResource("profile_photo.png");
@@ -128,6 +133,14 @@ public class User implements Serializable{
 
     public String getSurname() {
         return surname;
+    }
+
+    public double getExpectedStar() {
+        return expectedStar;
+    }
+
+    public void setExpectedStar(double expectedStar) {
+        this.expectedStar = expectedStar;
     }
 
     public void setSurname(String surname) {
@@ -189,9 +202,9 @@ public class User implements Serializable{
         this.totalStar = totalStar;
     }
 
-    public void increaseTotalStar()
+    public void increaseTotalStar(double star)
     {
-        this.totalStar++;
+        this.totalStar += star;
     }
 
     public void setAttendedActivities(ArrayList<String> attendedActivities) {

@@ -21,7 +21,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
 
 public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<EvaluationPageUserListAdapter.EvaluationPageUserListHolder>
 {
@@ -67,11 +69,15 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
 
                             double newStar = (oldStar + 1) / (evaluationCount + 1);
 
-                            thisUser.increaseTotalStar();
-                            thisUser.setStar(newStar);
+                            String id = thisUser.getId();
+
+                            thisUser.setExpectedStar(newStar);
+                            thisUser.increaseTotalStar(1);
                             thisUser.increaseEvaluationCount();
 
                             docRef.set(thisUser);
+
+                            System.out.println(thisUser.getStar());
                         }
                     });
 
@@ -86,11 +92,15 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
 
                             double newStar = (oldStar + 2) / (evaluationCount + 2);
 
-                            thisUser.increaseTotalStar();
-                            thisUser.setStar(newStar);
+                            String id = thisUser.getId();
+
+                            thisUser.setExpectedStar(newStar);
+                            thisUser.increaseTotalStar(2);
                             thisUser.increaseEvaluationCount();
 
                             docRef.set(thisUser);
+
+                            System.out.println(thisUser.getStar());
                         }
                     });
 
@@ -106,11 +116,15 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
 
                             double newStar = (oldStar + 3) / (evaluationCount + 3);
 
-                            thisUser.increaseTotalStar();
-                            thisUser.setStar(newStar);
+                            String id = thisUser.getId();
+
+                            thisUser.setExpectedStar(newStar);
+                            thisUser.increaseTotalStar(3);
                             thisUser.increaseEvaluationCount();
 
                             docRef.set(thisUser);
+
+                            System.out.println(thisUser.getStar());
                         }
                     });
 
@@ -127,11 +141,15 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
 
                             double newStar = (oldStar + 4) / (evaluationCount + 4);
 
-                            thisUser.increaseTotalStar();
-                            thisUser.setStar(newStar);
+                            String id = thisUser.getId();
+
+                            thisUser.setExpectedStar(newStar);
+                            thisUser.increaseTotalStar(4);
                             thisUser.increaseEvaluationCount();
 
                             docRef.set(thisUser);
+
+                            System.out.println(thisUser.getStar());
                         }
                     });
 
@@ -149,11 +167,24 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
 
                             double newStar = (oldStar + 5) / (evaluationCount + 5);
 
+                            String id = thisUser.getId();
+
+                            thisUser.setExpectedStar(newStar);
+                            thisUser.increaseTotalStar(5);
+                            thisUser.increaseEvaluationCount();
+
+                            docRef.set(thisUser);
+
+                            System.out.println(thisUser.getStar());
+
+                            /*
                             thisUser.increaseTotalStar();
                             thisUser.setStar(newStar);
                             thisUser.increaseEvaluationCount();
 
                             docRef.set(thisUser);
+
+                             */
                         }
                     });
                 }
@@ -164,8 +195,6 @@ public class EvaluationPageUserListAdapter extends RecyclerView.Adapter<Evaluati
 
             }
         });
-
-
     }
 
     @Override

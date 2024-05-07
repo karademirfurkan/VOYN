@@ -58,35 +58,35 @@
                         android:id="@+id/star1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        app:srcCompat="@drawable/beyazstar"
                         android:onClick="b1"/>
 
                     <ImageView
                         android:id="@+id/star2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        app:srcCompat="@drawable/beyazstar"
                         android:onClick="b2"/>
 
                     <ImageView
                         android:id="@+id/star3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        app:srcCompat="@drawable/beyazstar"
                         android:onClick="b3"/>
 
                     <ImageView
                         android:id="@+id/star4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        app:srcCompat="@drawable/beyazstar"
                         android:onClick="b4"/>
 
                     <ImageView
                         android:id="@+id/star5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/btn_star_big_off"
+                        app:srcCompat="@drawable/beyazstar"
                         android:onClick="b5"/>
                 </LinearLayout>
 

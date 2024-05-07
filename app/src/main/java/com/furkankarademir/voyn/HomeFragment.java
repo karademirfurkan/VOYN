@@ -269,9 +269,13 @@ public class HomeFragment extends Fragment {
                             HashMap<String, Object> transportation = (HashMap<String, Object>) documentSnapshot.getData();
                             System.out.println("wwwwwwwwwwwwwwww3");
                             usersId = (ArrayList<String>) transportation.get("participantsId");
-                            Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
-                            intent.putExtra("participants", usersId);
-                            startActivity(intent);
+
+                            if (usersId.size() > 0) {
+                                Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
+                                intent.putExtra("participants", usersId);
+                                startActivity(intent);
+                            }
+
                             System.out.println(usersId + "hahaqqqqqqqqqqqhahhahah");
                         }
                     }
