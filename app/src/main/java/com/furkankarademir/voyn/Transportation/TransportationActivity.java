@@ -18,6 +18,8 @@ import com.furkankarademir.voyn.databinding.ActivityTransportationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -114,6 +116,7 @@ public class TransportationActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private User user;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -128,6 +131,17 @@ public class TransportationActivity extends AppCompatActivity {
                 boolean locked = data.getBooleanExtra("locked", false);
                 long calendar = data.getLongExtra("calendar", 0);
 
+                DocumentReference documentReference = db.collection("Users").document(auth.getCurrentUser().getUid());
+                documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+                            user = documentSnapshot.toObject(User.class);
+                        }
+                    }
+                });
+
                 transportationActivities.removeIf(transportation -> {
                     if(departure != null && !departure.equals("") && !departure.equals(transportation.get("departure")))
                         return true;
@@ -136,8 +150,17 @@ public class TransportationActivity extends AppCompatActivity {
                     if(time != null && !time.equals("") && !time.equals(transportation.get("time")))
                         return true;
                     // Bunlar zor oldugu icin commentledim ve sadece departure time destination uzerinden filtreleme yaptım
-                    //if(availability != (boolean) transportation.get("availability"))
-                    //    return false;
+                    if(availability)
+                    {
+                        ArrayList<String> participantsList = (ArrayList<String>) transportation.get("participantsId");
+                        if(participantsList.size() == Integer.parseInt(transportation.get("seats").toString()))
+                            return true;
+                        if (participantsList.contains(auth.getUid()))
+                            return true;
+                        if (user.getStar() < Double.parseDouble(transportation.get("minStar").toString()))
+                            return true;
+                    }
+
                     //if(locked != (boolean) transportation.get("locked"))
                     //    return false;
                     //if(calendar != 0 && calendar != (long) transportation.get("calendar"))
