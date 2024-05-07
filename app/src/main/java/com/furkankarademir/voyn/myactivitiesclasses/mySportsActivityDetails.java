@@ -42,7 +42,7 @@ public class mySportsActivityDetails extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        sportsMap = (HashMap<String, Object>) intent.getSerializableExtra("sports");
+        sportsMap = (HashMap<String, Object>) intent.getSerializableExtra("sport");
         sports = sportsMap;
 
         acceptedUserList = new ArrayList<>();
