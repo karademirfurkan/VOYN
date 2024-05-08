@@ -6,8 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.furkankarademir.voyn.Accomodation.AccomodationAdapter;
 import com.furkankarademir.voyn.R;
@@ -223,5 +225,11 @@ public class myActivities extends AppCompatActivity {
             });
         }
         System.out.println(myAccommodationActivities2);
+    }
+
+    public void participatedActivitiesButtonClicked(View view)
+    {
+        Intent intent = new Intent(myActivities.this, myParticipatedActivitiesPage.class);
+        startActivity(intent);
     }
 }
