@@ -64,7 +64,7 @@ public class User implements Serializable{
         expectedStar = 5;
         evaluatedActivities = new ArrayList<>();
         this.star = 5;
-
+        totalStar = 5;
     }
 
 
@@ -108,6 +108,7 @@ public class User implements Serializable{
         expectedStar = 5;
         evaluatedActivities = new ArrayList<>();
         this.star = 5;
+        totalStar = 5;
 
         
         URL url = getClass().getClassLoader().getResource("profile_photo.png");

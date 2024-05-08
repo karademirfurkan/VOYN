@@ -198,20 +198,23 @@ public class HomeFragment extends Fragment {
                     int currentHour = calendar.get(Calendar.HOUR);
                     int currentMinute = calendar.get(Calendar.MINUTE);
 
-                    boolean isTrue = true;
 
                     for (int i = 0; i < attendedActivities.size(); i++) {
 
                         ArrayList<Integer> evaluatedActivities = thisUser.getEvaluatedActivities();
+
+                        /*
                         for (int k = 0; k < evaluatedActivities.size(); k++)
                         {
-                            if (evaluatedActivities.get(k) == i) {
-                                isTrue = false;
+                            if (evaluatedActivities.get(k) != i) {
+                                break;
                             }
                         }
 
-                        if (isTrue == true) {
+                         */
 
+                        if (shouldCOntinue(i, evaluatedActivities) == false)
+                        {
                             String yearString = attendedActivities.get(i).substring(0, 4);
                             String monthString = attendedActivities.get(i).substring(5, 7);
                             String dayString = attendedActivities.get(i).substring(8, 10);
@@ -251,6 +254,7 @@ public class HomeFragment extends Fragment {
                                 }
                             }
                         }
+
                     }
                 }
             }
@@ -373,5 +377,20 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+    public boolean shouldCOntinue(int i, ArrayList<Integer> evaluatedActivities)
+    {
+        boolean isSame = false;
+
+        for (int k = 0; k < evaluatedActivities.size(); k++)
+        {
+            if (i == evaluatedActivities.get(k))
+            {
+                isSame = true;
+                return isSame;
+            }
+        }
+        return isSame;
     }
 }
