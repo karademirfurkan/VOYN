@@ -158,9 +158,8 @@ public class ChangeEmailandPassword extends AppCompatActivity {
                             AuthCredential credential = EmailAuthProvider.getCredential(user.getMail(), user.getPassword());
                             firebaseUser.reauthenticate(credential).addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    firebaseUser.updateEmail(newMail).addOnCompleteListener(task1 -> {
+                                    firebaseUser.verifyBeforeUpdateEmail(newMail).addOnCompleteListener(task1 -> {
                                         if (!task1.isSuccessful()) {
-                                            // Handle error
                                             System.out.println("Error updating email");
                                         } else {
                                             user.setMail(newMail);
