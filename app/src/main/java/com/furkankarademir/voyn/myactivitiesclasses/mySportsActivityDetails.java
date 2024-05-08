@@ -45,6 +45,12 @@ public class mySportsActivityDetails extends AppCompatActivity {
         sportsMap = (HashMap<String, Object>) intent.getSerializableExtra("sport");
         sports = sportsMap;
 
+        binding.typeForMySportActivities.setText(sports.get("type").toString());
+        binding.dateForMySportsActivities.setText(sports.get("date").toString());
+        binding.timeForMySportsActivities.setText(sports.get("time").toString());
+        binding.placeForMySportsActivities.setText(sports.get("place").toString());
+        binding.personLimitForMySportsActivities.setText(sports.get("numberOfPlayers").toString());
+
         acceptedUserList = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
