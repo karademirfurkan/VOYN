@@ -6,4 +6,62 @@
     android:layout_height="match_parent"
     tools:context=".myactivitiesclasses.myParticipatedActivitiesPage">
 
+
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="711dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/textView77"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:fontFamily="@font/jockey_one"
+            android:text="PARTICIPATED TRANSPORTATION ACTIVITIES"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transportation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/textView78"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:fontFamily="@font/jockey_one"
+            android:text="PARTICIPATED SPORT ACTIVITIES"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/textView79"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:fontFamily="@font/jockey_one"
+            android:text="PARTICIPATED ACCMODATION ACTIVITIES"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/accomodation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
