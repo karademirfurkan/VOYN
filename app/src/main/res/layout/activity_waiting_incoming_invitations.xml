@@ -6,14 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".myactivitiesclasses.WaitingIncomingInvitations">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="106dp"
-        android:layout_marginBottom="106dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/transportation_activity_list_row_view"
+        android:backgroundTint="#8BCFFF"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jockey_one"
+            android:text="WAITING INCOMING REQUESTS FOR THIS ACTIVITY"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/imageView123498"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/img_3" />
+
+        <TextView
+            android:id="@+id/textView63"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CLICK ON REQUEST TO SEE THE DETAILS OF PROFILE"
+            android:fontFamily="@font/jockey_one"
+            android:textColor="@color/black"
+            android:textAlignment="center"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="106dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
