@@ -17,10 +17,10 @@
 
         <ImageView
             android:id="@+id/imageView11"
-            android:layout_width="147dp"
-            android:layout_height="139dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="35dp"
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="42dp"
             tools:srcCompat="@tools:sample/avatars" />
@@ -30,22 +30,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="name"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/jockey_one"
+            android:text="NAME"
+            android:textSize="20dp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="253dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:background="@drawable/img_4"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BIO  :"
+                android:fontFamily="@font/jockey_one"
+                android:text="BIOGRAPHY"
+                android:layout_gravity="center"
+                android:textSize="20dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="253dp" />
 
@@ -54,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="bio"
+                android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="253dp" />
         </LinearLayout>
@@ -61,15 +68,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_height="45dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:background="@drawable/img_4"
+            android:backgroundTint="#E6F3FF">
 
             <TextView
                 android:id="@+id/textView55"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GENDER    :"
+                android:text="GENDER                :"
+                android:layout_gravity="center"
+                android:fontFamily="@font/jockey_one"
+                android:textSize="20dp"
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="288dp" />
 
@@ -78,21 +90,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="gender"
+                android:fontFamily="@font/jockey_one"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center"
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="288dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:background="@drawable/img_4">
 
             <TextView
                 android:id="@+id/textView100"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AGE    :"
+                android:text="AGE                          :"
+                android:layout_gravity="center"
+                android:fontFamily="@font/jockey_one"
+                android:textSize="20dp"
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="288dp" />
 
@@ -101,6 +119,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="age"
+                android:fontFamily="@font/jockey_one"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="288dp" />
         </LinearLayout>
@@ -108,15 +130,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_height="45dp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:background="@drawable/img_4"
+            android:backgroundTint="#E6F3FF">
 
             <TextView
                 android:id="@+id/textView111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DEPARTMENT    ::"
+                android:text="DEPARTMENT    :"
+                android:layout_gravity="center"
+                android:fontFamily="@font/jockey_one"
+                android:textSize="20dp"
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="288dp" />
 
@@ -125,6 +152,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="department"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/jockey_one"
+                android:layout_gravity="center"
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="288dp" />
 
@@ -133,12 +163,24 @@
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="160dp"
-        android:layout_height="137dp"
+        android:layout_width="133dp"
+        android:layout_height="104dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
         app:srcCompat="@drawable/img" />
+
+    <TextView
+        android:id="@+id/starTextInProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:textSize="25dp"
+        android:fontFamily="@font/jockey_one"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
