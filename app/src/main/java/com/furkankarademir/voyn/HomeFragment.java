@@ -212,9 +212,6 @@ public class HomeFragment extends Fragment {
 
                         if (isTrue == true) {
 
-                            thisUser.getEvaluatedActivities().add(i);
-                            docRef.set(thisUser);
-
                             String yearString = attendedActivities.get(i).substring(0, 4);
                             String monthString = attendedActivities.get(i).substring(5, 7);
                             String dayString = attendedActivities.get(i).substring(8, 10);
@@ -229,23 +226,23 @@ public class HomeFragment extends Fragment {
                                 int activityMinute = Integer.parseInt(minuteString);
 
                                 if (currentYear > activityYear) {
-                                    makeUserArray(attendedActivities.get(i).substring(15));
+                                    makeUserArray(attendedActivities.get(i).substring(15), i);
                                     break;
                                 } else if (currentYear == activityYear) {
                                     if (currentMonth > activityMonth) {
-                                        makeUserArray(attendedActivities.get(i).substring(15));
+                                        makeUserArray(attendedActivities.get(i).substring(15), i);
                                         break;
                                     } else if (currentMonth == activityMonth) {
                                         if (currentDay > activityDay) {
-                                            makeUserArray(attendedActivities.get(i).substring(15));
+                                            makeUserArray(attendedActivities.get(i).substring(15), i);
                                             break;
                                         } else if (currentDay == activityDay) {
                                             if (currentHour > activityHour) {
-                                                makeUserArray(attendedActivities.get(i).substring(15));
+                                                makeUserArray(attendedActivities.get(i).substring(15), i);
                                                 break;
                                             } else if (currentHour == activityHour) {
                                                 if (currentMinute > activityMinute) {
-                                                    makeUserArray(attendedActivities.get(i).substring(15));
+                                                    makeUserArray(attendedActivities.get(i).substring(15), i);
                                                     break;
                                                 }
                                             }
@@ -275,7 +272,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public void makeUserArray(String id) {
+    public void makeUserArray(String id, int i) {
         AtomicInteger queryCounter = new AtomicInteger(0);
 
         db.collection("transportations").
@@ -288,6 +285,7 @@ public class HomeFragment extends Fragment {
                             transportationUsersId = (ArrayList<String>) transportation.get("participantsId");
 
                             if (transportationUsersId.size() > 0) {
+                                changeUserEvaluatedActivities(i);
                                 Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                                 intent.putExtra("participants", transportationUsersId);
                                 startActivity(intent);
@@ -312,6 +310,7 @@ public class HomeFragment extends Fragment {
 
 
                             if (accommodationsUsersId.size() > 0) {
+                                changeUserEvaluatedActivities(i);
                                 Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                                 intent.putExtra("participants", accommodationsUsersId);
                                 startActivity(intent);
@@ -339,6 +338,7 @@ public class HomeFragment extends Fragment {
 
 
                             if (sportsUsersId.size() > 0) {
+                                changeUserEvaluatedActivities(i);
                                 Intent intent = new Intent(getContext(), EvaluatingUsersPage.class);
                                 intent.putExtra("participants", sportsUsersId);
                                 startActivity(intent);
@@ -354,4 +354,24 @@ public class HomeFragment extends Fragment {
                 });
     }
 
+    public void changeUserEvaluatedActivities(int i)
+    {
+        DocumentReference docRef = db.collection("Users").document(auth.getUid());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    User thisUser = documentSnapshot.toObject(User.class);
+                    thisUser.getEvaluatedActivities().add(i);
+                    docRef.set(thisUser);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }
 }

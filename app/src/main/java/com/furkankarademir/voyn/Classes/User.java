@@ -63,6 +63,7 @@ public class User implements Serializable{
         evaluationCount = 1;
         expectedStar = 0;
         evaluatedActivities = new ArrayList<>();
+        this.star = 5;
 
     }
 
@@ -106,6 +107,7 @@ public class User implements Serializable{
         evaluationCount = 1;
         expectedStar = 0;
         evaluatedActivities = new ArrayList<>();
+        this.star = 5;
 
         
         URL url = getClass().getClassLoader().getResource("profile_photo.png");
@@ -309,7 +311,7 @@ public class User implements Serializable{
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
 
-        DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+        DocumentReference userDocRef = db.collection("Users").document(auth.getUid());
 
         userDocRef.update("attendedActivities", FieldValue.arrayUnion(activity))
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
