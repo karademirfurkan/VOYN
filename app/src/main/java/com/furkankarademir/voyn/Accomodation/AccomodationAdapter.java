@@ -13,9 +13,15 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.RecyclerAccomodationRowBinding;
 import com.furkankarademir.voyn.myactivitiesclasses.myAccommodationActivityDetails;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,19 +97,20 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
         {
             for (int i = 0; i < type.length(); i++) {
                 if (    type.charAt(i) != Character.toLowerCase(home.charAt(i)) &&
-                        type.charAt(i) != Character.toUpperCase(home.charAt(i)))
-                {
+                        type.charAt(i) != Character.toUpperCase(home.charAt(i))) {
                     isHome = true;
                 }
+            }
+        }
         holder.binding.AccomodationDateID.setText(date);
         holder.binding.placeID.setText(place);
         holder.binding.personLimitID.setText(numberOfInhabitants);
         holder.binding.genderID.setText(gender);
         
         System.out.println("participants: " + participants);
-        DocumentReference docRef = db.collection("Users").document(auth.getCurrentUser().getUid());
+        DocumentReference docRef = db.collection("Users").document(auth.getUid());
 
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>()) {
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists())
@@ -139,7 +146,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
                     }
                 }
             }
-        }
+        });
 
         if(isHome == true)
         {
