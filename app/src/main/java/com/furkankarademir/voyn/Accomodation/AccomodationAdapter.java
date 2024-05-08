@@ -24,6 +24,13 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
 
     private ArrayList<HashMap<String, Object>> accomodationActivities;
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
+    private User user;
+
+
     private int accommodationAdapterOption;
     public  AccomodationAdapter(ArrayList<HashMap<String, Object>> accomodationActivities, int i)
     {
@@ -61,12 +68,16 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
         String place = (String) accomodationActivities.get(position).get("place");
         ArrayList<String> participants = (ArrayList<String>) accomodationActivities.get(position).get("participantsId");
         String numberOfInhabitants = participants.size() + "/" + accomodationActivities.get(position).get("numberOfInhabitants").toString();
-
-
-        holder.binding.AccomodationDateID.setText(date);
-        holder.binding.placeID.setText(place);
-        holder.binding.personLimitID.setText(numberOfInhabitants);
-        holder.binding.genderID.setText(gender);
+        ArrayList<String> invitedList = (ArrayList<String>) accomodationActivities.get(position).get("invitedId");
+        double minStar;
+        if (accomodationActivities.get(position).get("minStar") == null)
+        {
+            minStar = 0;
+        }
+        else
+        {
+            minStar = Double.parseDouble(accomodationActivities.get(position).get("minStar").toString());
+        }
 
 
         boolean isHome = true;
@@ -82,7 +93,50 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
                 if (    type.charAt(i) != Character.toLowerCase(home.charAt(i)) &&
                         type.charAt(i) != Character.toUpperCase(home.charAt(i)))
                 {
-                    isHome = false;
+                    isHome = true;
+                }
+        holder.binding.AccomodationDateID.setText(date);
+        holder.binding.placeID.setText(place);
+        holder.binding.personLimitID.setText(numberOfInhabitants);
+        holder.binding.genderID.setText(gender);
+        
+        System.out.println("participants: " + participants);
+        DocumentReference docRef = db.collection("Users").document(auth.getCurrentUser().getUid());
+
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>()) {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    user = documentSnapshot.toObject(User.class);
+                    if(accommodationAdapterOption == 0)
+                    {
+                        if (user.getStar() < minStar || participants.contains(auth.getUid()) || participants.size() == Integer.parseInt(accomodationActivities.get(position).get("numberOfInhabitants").toString()))
+                        {
+                            holder.binding.accommodationLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
+                        }// check merge conflict
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
+                                intent.putExtra("accommodation", accomodationActivities.get(position));
+                                boolean isRed = user.getStar() < minStar || participants.contains(auth.getUid()) || participants.size() == Integer.parseInt(accomodationActivities.get(position).get("numberOfInhabitants").toString());
+                                intent.putExtra("isRed", isRed);
+                                holder.itemView.getContext().startActivity(intent);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(holder.itemView.getContext(), myAccommodationActivityDetails.class);
+                                intent.putExtra("accommodation", accomodationActivities.get(position));
+                                holder.itemView.getContext().startActivity(intent);
+                            }
+                        });
+                    }
                 }
             }
         }
@@ -91,33 +145,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
         {
             holder.binding.accommodationLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.blu_row_view));
         }
-
-
-
-        if(accommodationAdapterOption == 0)
-        {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
-                    intent.putExtra("accommodation", accomodationActivities.get(position));
-                    holder.itemView.getContext().startActivity(intent);
-                }
-            });
-        }
-        else
-        {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(holder.itemView.getContext(), myAccommodationActivityDetails.class);
-                    intent.putExtra("accommodation", accomodationActivities.get(position));
-                    holder.itemView.getContext().startActivity(intent);
-                }
-            });
-        }
     }
-
     @Override
     public int getItemCount() {
         return accomodationActivities.size();
