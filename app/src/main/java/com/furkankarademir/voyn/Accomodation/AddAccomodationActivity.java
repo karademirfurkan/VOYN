@@ -119,7 +119,7 @@ public class AddAccomodationActivity extends AppCompatActivity {
                                 Accomodation accomodation = new Accomodation(name, surname, mail, binding.date.getText().toString(),
                                         "boş", binding.extraNotes.getText().toString(), auth.getUid().toString(),
                                         binding.type.getText().toString(), binding.place.getText().toString(), binding.gender.getText().toString(),
-                                        Integer.parseInt(binding.numberOfInhabitants.getText().toString()), Double.parseDouble(binding.minStarAcco.getText().toString()));
+                                        Integer.parseInt(binding.numberOfInhabitants.getText().toString()));
 
                                 DocumentReference docRef = db.collection("Users").document(userID);
                                 accomodation.addActivityToDatabase(new FireStoreCallback() {

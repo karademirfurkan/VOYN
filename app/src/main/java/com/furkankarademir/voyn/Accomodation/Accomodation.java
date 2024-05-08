@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,28 +24,17 @@ public class Accomodation extends Activity
     private String gender;
     private int numberOfInhabitants;
 
-    private double minStar;
-
     private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public Accomodation(String name, String surname, String mail, String date, String time,
                         String extraNote, String creatorUserID, String type, String place,
-                        String gender, int numberOfInhabitants, double minStar)
+                        String gender, int numberOfInhabitants)
     {
         super(name,surname, mail, date, time, extraNote, creatorUserID);
         this.type = type;
         this.place = place;
         this.gender = gender;
         this.numberOfInhabitants = numberOfInhabitants;
-        this.minStar = minStar;
-    }
-
-    public double getMinStar() {
-        return minStar;
-    }
-
-    public void setMinStar(double minStar) {
-        this.minStar = minStar;
     }
     
     @Override
@@ -63,7 +51,6 @@ public class Accomodation extends Activity
         accomodation.put("creatorUserID", auth.getCurrentUser().getUid());
         accomodation.put("participantsId", getParticipantsId());
         accomodation.put("invitedId", getInvitedId());
-        accomodation.put("minStar", getMinStar());
 
         accomodation.put("type", type);
         accomodation.put("place", place);
@@ -123,7 +110,4 @@ public class Accomodation extends Activity
     public void setNumberOfInhabitants(int numberOfInhabitants) {
         this.numberOfInhabitants = numberOfInhabitants;
     }
-
-
-
 }

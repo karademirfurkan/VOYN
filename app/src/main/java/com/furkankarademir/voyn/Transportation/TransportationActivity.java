@@ -157,15 +157,12 @@ public class TransportationActivity extends AppCompatActivity {
                             return true;
                         if (participantsList.contains(auth.getUid()))
                             return true;
-
-                    }
-
-                    if(locked)
-                    {
                         if (user.getStar() < Double.parseDouble(transportation.get("minStar").toString()))
                             return true;
                     }
 
+                    //if(locked != (boolean) transportation.get("locked"))
+                    //    return false;
                     //if(calendar != 0 && calendar != (long) transportation.get("calendar"))
                     //    return false;
                     return false;
