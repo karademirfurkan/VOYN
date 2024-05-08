@@ -48,6 +48,12 @@ public class myTransportationActivityDetails extends AppCompatActivity {
         transportationMap = (HashMap<String, Object>) intent.getSerializableExtra("transportation");
         transportation = transportationMap;
 
+        binding.timeForMyTransportationActivities.setText(transportation.get("time").toString());
+        binding.dateForMyTransportationActivities.setText(transportation.get("date").toString());
+        binding.availableSeatsForMyTransportationActivities.setText(transportation.get("seats").toString());
+        binding.whereFromForMyTransportationActivities.setText(transportation.get("departure").toString());
+        binding.whereToForMyTransportationActivities.setText(transportation.get("destination").toString());
+
         acceptedUserList = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
