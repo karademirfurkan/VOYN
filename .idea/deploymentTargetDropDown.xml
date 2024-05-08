@@ -9,13 +9,13 @@
               <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="R58M331AFXY" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\LENOVO\.android\avd\Medium_Phone_API_34.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-08T21:00:18.062294800Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-08T21:08:01.013947600Z" />
         </State>
       </entry>
     </value>
