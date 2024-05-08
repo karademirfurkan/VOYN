@@ -77,9 +77,9 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
 
                         User thisUser = documentSnapshot.toObject(User.class);
 
-                        //????--------------------------
-                        thisUser.addAttendedActivity(transportationId);
-                        //---------------------------
+                        //------!!!!!!DO NOT CHANGE COMMENT WITHOUT ASKING!!!!!!--------------------
+                        //thisUser.addAttendedActivity(transportationId);
+                        //-------------------------------------------------------------------------
 
                         // Set the user's name to the TextView
                         holder.binding.nameForInvitations.setText(name);
