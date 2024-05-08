@@ -147,25 +147,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#000000"
+            android:fontFamily="@font/jockey_one"
+            android:text="CREATED TRANSPORTATION ACTIVITIES"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textView75"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#000000"
+            android:fontFamily="@font/jockey_one"
+            android:text="CREATED SPORT ACTIVITIES"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView7"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"/>
+
+        <TextView
+            android:id="@+id/textView76"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#000000"
+            android:fontFamily="@font/jockey_one"
+            android:text="CREATED ACCOMODATION ACTIVITIES"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView6"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
