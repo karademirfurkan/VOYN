@@ -82,35 +82,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
                 if (    type.charAt(i) != Character.toLowerCase(home.charAt(i)) &&
                         type.charAt(i) != Character.toUpperCase(home.charAt(i)))
                 {
-                    user = documentSnapshot.toObject(User.class);
-                    if(accommodationAdapterOption == 0)
-                    {
-                        if (user.getStar() < minStar || participants.contains(auth.getUid()) || participants.size() == Integer.parseInt(accomodationActivities.get(position).get("numberOfInhabitants").toString()))
-                        {
-                            holder.binding.accommodationLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
-                        }// check
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(holder.itemView.getContext(), AccomodationDetailActivity.class);
-                                intent.putExtra("accommodation", accomodationActivities.get(position));
-                                boolean isRed = user.getStar() < minStar || participants.contains(auth.getUid()) || participants.size() == Integer.parseInt(accomodationActivities.get(position).get("numberOfInhabitants").toString());
-                                intent.putExtra("isRed", isRed);
-                                holder.itemView.getContext().startActivity(intent);
-                            }
-                        });
-                    }
-                    else
-                    {
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(holder.itemView.getContext(), myAccommodationActivityDetails.class);
-                                intent.putExtra("accommodation", accomodationActivities.get(position));
-                                holder.itemView.getContext().startActivity(intent);
-                            }
-                        });
-                    }
+                    isHome = false;
                 }
             }
         }
