@@ -65,7 +65,7 @@ public class SignUpPage extends AppCompatActivity {
                         newUser.setPassword(password);
                         newUser.setId(auth.getUid().toString());
                         newUser.setStar(5);
-                        newUser.setExpectedStar(0);
+                        newUser.setExpectedStar(5);
                         fireStore.collection("Users").document(auth.getUid()).set(newUser).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {

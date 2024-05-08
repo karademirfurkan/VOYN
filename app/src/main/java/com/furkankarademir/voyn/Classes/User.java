@@ -61,7 +61,7 @@ public class User implements Serializable{
         myAccommodationActivities = new ArrayList<String>();
         attendedActivities = new ArrayList<String>();
         evaluationCount = 1;
-        expectedStar = 0;
+        expectedStar = 5;
         evaluatedActivities = new ArrayList<>();
         this.star = 5;
 
@@ -105,7 +105,7 @@ public class User implements Serializable{
         myAccommodationActivities = new ArrayList<String>();
         attendedActivities = new ArrayList<String>();
         evaluationCount = 1;
-        expectedStar = 0;
+        expectedStar = 5;
         evaluatedActivities = new ArrayList<>();
         this.star = 5;
 
