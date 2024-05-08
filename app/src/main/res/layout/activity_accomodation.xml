@@ -89,7 +89,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center_vertical"
-                android:background="#FCFF5B" />
+                android:background="#C0D6FF" />
 
             <TextView
                 android:id="@+id/textView58"
@@ -105,7 +105,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center_vertical"
-                android:background="#76DE99" />
+                android:background="#76A6DE" />
 
             <TextView
                 android:id="@+id/textView55"

@@ -128,6 +128,7 @@ public class User implements Serializable{
         this.age = age;
     }
 
+
     public void setDepartment(String department) {
         this.department = department;
     }

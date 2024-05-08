@@ -66,13 +66,13 @@ public class EvaluatingUsersPage extends AppCompatActivity {
 
     public void askMeLaterClicked(View view)
     {
-        Intent intent = new Intent(EvaluatingUsersPage.this, HomeFragment.class);
+        Intent intent = new Intent(EvaluatingUsersPage.this, MenuPage.class);
         startActivity(intent);
     }
 
     public void doNotAskAgainClicked(View view)
     {
-        Intent intent = new Intent(EvaluatingUsersPage.this, HomeFragment.class);
+        Intent intent = new Intent(EvaluatingUsersPage.this, MenuPage.class);
         startActivity(intent);
     }
 
@@ -85,9 +85,8 @@ public class EvaluatingUsersPage extends AppCompatActivity {
         Toast.makeText(EvaluatingUsersPage.this, "oldu", Toast.LENGTH_LONG).show();
 
 
-        Intent intent = new Intent(EvaluatingUsersPage.this, TransportationActivity.class );
+        Intent intent = new Intent(EvaluatingUsersPage.this, MenuPage.class );
         startActivity(intent);
-        
     }
 
     public void handleGivingStar()

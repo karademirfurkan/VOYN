@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.databinding.RecyclerAccomodationRowBinding;
 import com.furkankarademir.voyn.myactivitiesclasses.myAccommodationActivityDetails;
 
@@ -65,6 +67,31 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
         holder.binding.placeID.setText(place);
         holder.binding.personLimitID.setText(numberOfInhabitants);
         holder.binding.genderID.setText(gender);
+
+
+        boolean isHome = true;
+        String home = "home";
+
+        if (home.length() != type.length())
+        {
+            isHome = false;
+        }
+        else
+        {
+            for (int i = 0; i < type.length(); i++) {
+                if (    type.charAt(i) != Character.toLowerCase(home.charAt(i)) &&
+                        type.charAt(i) != Character.toUpperCase(home.charAt(i)))
+                {
+                    isHome = false;
+                }
+            }
+        }
+
+        if(isHome == true)
+        {
+            holder.binding.accommodationLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.blu_row_view));
+        }
+
 
 
         if(accommodationAdapterOption == 0)
