@@ -113,6 +113,17 @@ public class TransportationAdapter extends RecyclerView.Adapter<TransportationAd
                             }
                         });
                     }
+                    else if  (transportationAdapterOption == 1)
+                    {
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(holder.itemView.getContext(), myTransportationActivityDetails.class);
+                                intent.putExtra("transportation", transportationActivities.get(position));
+                                holder.itemView.getContext().startActivity(intent);
+                            }
+                        });
+                    }
                     else
                     {
                         holder.itemView.setOnClickListener(new View.OnClickListener() {

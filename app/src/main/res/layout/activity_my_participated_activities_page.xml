@@ -28,9 +28,10 @@
             android:textColor="#FFFFFF" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="5dp"
             android:id="@+id/transportation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginBottom="20dp"/>
 
         <TextView
@@ -44,9 +45,10 @@
             android:textColor="#FFFFFF" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="5dp"
             android:id="@+id/sport"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginBottom="20dp"/>
 
         <TextView
@@ -60,8 +62,9 @@
             android:textColor="#FFFFFF" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="5dp"
             android:id="@+id/accomodation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="200dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
