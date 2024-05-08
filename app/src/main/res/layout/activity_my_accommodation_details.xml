@@ -59,7 +59,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/AccomodationDateForMyActivities"
+                    android:id="@+id/accomodationDateForMyActivities"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:fontFamily="@font/jockey_one"

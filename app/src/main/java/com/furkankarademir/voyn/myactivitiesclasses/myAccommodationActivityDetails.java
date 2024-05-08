@@ -45,6 +45,12 @@ public class myAccommodationActivityDetails extends AppCompatActivity {
         accommodationMap = (HashMap<String, Object>) intent.getSerializableExtra("accommodation");
         accommodation = accommodationMap;
 
+        binding.accomodationDateForMyActivities.setText(accommodation.get("date").toString());
+        binding.placeForMyActivities.setText(accommodation.get("place").toString());
+        binding.personLimitForMyActivities.setText(accommodation.get("numberOfInhabitants").toString());
+        binding.genderForMyActivities.setText(accommodation.get("gender").toString());
+
+
         acceptedUserList = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
