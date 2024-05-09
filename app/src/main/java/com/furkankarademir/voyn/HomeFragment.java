@@ -195,7 +195,7 @@ public class HomeFragment extends Fragment {
                     int currentYear = calendar.get(Calendar.YEAR);
                     int currentMonth = calendar.get(Calendar.MONTH);
                     int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-                    int currentHour = calendar.get(Calendar.HOUR);
+                    int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
                     int currentMinute = calendar.get(Calendar.MINUTE);
 
 
@@ -220,6 +220,15 @@ public class HomeFragment extends Fragment {
                             String dayString = attendedActivities.get(i).substring(8, 10);
                             String hourString = attendedActivities.get(i).substring(10, 12);
                             String minuteString = attendedActivities.get(i).substring(13, 15);
+
+                            /*
+                            System.out.println("hour     " + currentHour + "  " + hourString);
+                            System.out.println("day   " +currentDay + "   " + dayString);
+                            System.out.println("minute      " + currentMinute + "  " + minuteString);
+                            System.out.println("month      " + currentMonth + "   " + monthString);
+                            System.out.println("year         " + currentYear + "  " + yearString);
+
+                             */
 
                             if (isNumeric(yearString) && isNumeric(monthString) && isNumeric(dayString) && isNumeric(hourString) && isNumeric(minuteString)) {
                                 int activityYear = Integer.parseInt(yearString);
