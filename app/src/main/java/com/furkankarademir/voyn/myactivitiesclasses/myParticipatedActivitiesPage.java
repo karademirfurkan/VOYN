@@ -127,11 +127,87 @@ public class myParticipatedActivitiesPage extends AppCompatActivity {
 
     public void makeMyAccommodationArrayList()
     {
+        if (currentUser != null) {
+            DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
 
+            userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            myActivities = (ArrayList<String>) document.get("myActivities");
+                            if ( myActivities != null) {
+                                for (String activityId : myActivities) {
+                                    db.collection("attendedActivities").document(activityId)
+                                            .get()
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                    myParticipatedAccommodationActivities.add(data);
+                                                    accommodationAdapter.notifyDataSetChanged();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error getting document", e);
+                                                }
+                                            });
+                                }
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                }
+            });
+        }
     }
 
     public void makeMySportArrayList()
     {
+        if (currentUser != null) {
+            DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
 
+            userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            myActivities = (ArrayList<String>) document.get("myActivities");
+                            if ( myActivities != null) {
+                                for (String activityId : myActivities) {
+                                    db.collection("attendedActivities").document(activityId)
+                                            .get()
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                    HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                    myParticipatedSportActivities.add(data);
+                                                    sportAdapter.notifyDataSetChanged();
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error getting document", e);
+                                                }
+                                            });
+                                }
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                }
+            });
+        }
     }
 }
