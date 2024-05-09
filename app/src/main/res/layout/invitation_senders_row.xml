@@ -60,8 +60,8 @@
 
             <ImageView
                 android:id="@+id/imageView15"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="3dp"
                 android:layout_weight="1"
@@ -94,6 +94,7 @@
                 android:gravity="center"
                 android:text="Name"
                 android:textSize="25dp"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
