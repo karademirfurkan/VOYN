@@ -102,6 +102,31 @@
         <item name="strokeColor">@color/black</item>
     </style>
 
+    <style name="Accept_Users_View">
+
+        <item name="cornerRadius">2dp</item>
+        <item name="backgroundTint">#46E15F</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
+    </style>
+    <style name="Decline_Users_View">
+
+        <item name="cornerRadius">2dp</item>
+        <item name="backgroundTint">#D80D10</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
+    </style>
+
+    <style name="User_View_For_Requests">
+
+        <item name="cornerRadius">2dp</item>
+        <item name="backgroundTint">#8BCFFF</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/black</item>
+    </style>
+
+
+
 
 
 
