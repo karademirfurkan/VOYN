@@ -60,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="bio"
+                android:layout_marginLeft="5dp"
                 android:fontFamily="@font/jockey_one"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="253dp" />
