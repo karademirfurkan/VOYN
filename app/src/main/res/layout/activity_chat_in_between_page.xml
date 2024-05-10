@@ -9,12 +9,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRv"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="270dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView80" />
 
     <LinearLayout
         android:id="@+id/linearLayout9"
@@ -52,4 +51,19 @@
             android:onClick="sendMessageButtonClicked"
             app:iconPadding="0dp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/nameSurname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#4C7CF8"
+        android:fontFamily="@font/jockey_one"
+        android:paddingLeft="5dp"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="name surname" />
 </androidx.constraintlayout.widget.ConstraintLayout>

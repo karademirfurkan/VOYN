@@ -13,7 +13,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.furkankarademir.voyn.Accomodation.AddAccomodationActivity;
 import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.R;
 import com.furkankarademir.voyn.Transportation.TransportationActivity;
@@ -42,6 +44,7 @@ import java.util.List;
 
 public class ChatInBetweenPage extends AppCompatActivity {
     private ActivityChatInBetweenPageBinding binding;
+    private User otherUser2;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
 
@@ -70,6 +73,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
         User otherUser = (User) intent.getSerializableExtra("selectedUser");
         if (otherUser != null) {
             System.out.println("chatInbetw2");
+            binding.nameSurname.setText(otherUser.getName() + " " + otherUser.getSurname());
             otherUserId = otherUser.getId();
             System.out.println(otherUserId);
             System.out.println("chatInbetw3");
@@ -82,6 +86,8 @@ public class ChatInBetweenPage extends AppCompatActivity {
             {
                 transportationMap = (HashMap<String, Object>) intent2.getSerializableExtra("transportation");
                 otherUserId = (String) transportationMap.get("creatorUserID");
+                handleGetUser(otherUserId);
+
             }
 
 
@@ -89,8 +95,11 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
 
             Intent intent3 = getIntent();
-            sportMap = (HashMap<String, Object>) intent3.getSerializableExtra("sport");
-            otherUserId = (String) sportMap.get("creatorUserID");
+            if(intent3.hasExtra("sport")) {
+                sportMap = (HashMap<String, Object>) intent3.getSerializableExtra("sport");
+                otherUserId = (String) sportMap.get("creatorUserID");
+                handleGetUser(otherUserId);
+            }
 
             System.out.println("chatInBetween7");
         }
@@ -191,6 +200,27 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
             });
         }
+    }
+
+    public void handleGetUser(String id)
+    {
+        DocumentReference docRef = db.collection("Users").document(id);
+        docRef.get().addOnSuccessListener(this, new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                {
+                    otherUser2 = documentSnapshot.toObject(User.class);
+                    binding.nameSurname.setText(otherUser2.getName() + " " + otherUser2.getSurname());
+                }
+
+            }
+        }).addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
     }
 
 }
