@@ -7,51 +7,64 @@
     >
 
     <LinearLayout
-        android:background="@drawable/chatted_user_list_row_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:orientation="vertical"
+        android:background="@drawable/chatted_user_list_row_view"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:fontFamily="@font/jockey_one"
-            android:paddingLeft="10dp"
-            android:text="name" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/jockey_one"
-            android:paddingLeft="10dp"
-            android:text="surname" />
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                tools:srcCompat="@tools:sample/avatars" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="205dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:fontFamily="@font/jockey_one"
-            android:paddingLeft="10dp"
-            android:text="password" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/mail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/jockey_one"
-            android:paddingLeft="10dp"
-            android:text="mail" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="10dp"
+                android:text="name" />
+
+            <TextView
+                android:id="@+id/surname"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="10dp"
+                android:text="surname" />
+
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/jockey_one"
+                android:paddingLeft="10dp"
+                android:text="mail" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

@@ -66,6 +66,9 @@ public class profilePageForOtherUsers extends AppCompatActivity
                     } else {
                         profilePhoto.setImageResource(R.drawable.profile_photo);
                     }
+                    binding.starTextInProfile.setText(String.format("%.2f", user.getStar()));
+                    binding.biography.setText(user.getBio());
+                    binding.genderInProfile.setText("Male");
                 }
             }
         });
