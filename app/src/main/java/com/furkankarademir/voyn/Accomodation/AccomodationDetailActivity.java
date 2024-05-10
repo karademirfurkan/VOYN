@@ -67,6 +67,8 @@ public class AccomodationDetailActivity extends AppCompatActivity {
                     binding.nameInfo.setText(nameSurname);
                     binding.bioInfo.setText(documentSnapshot.getString("bio"));
                     binding.ageInfo.setText(documentSnapshot.getString("age"));
+                    binding.noteInfo.setText(documentSnapshot.getString("extraNote"));
+                    binding.starInfo.setText(documentSnapshot.getString("minStar"));
                     ImageView profilePicture = findViewById(R.id.profile);
 
                     User user = documentSnapshot.toObject(User.class);

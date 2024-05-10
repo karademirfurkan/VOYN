@@ -89,6 +89,10 @@ public class SportsDetailActivity extends AppCompatActivity implements Serializa
         binding.dateInfo.setText((String) sportMap.get("date"));
         binding.timeInfo.setText((String) sportMap.get("time"));
         binding.numberOfPlayersInfo.setText(sportMap.get("numberOfPlayers").toString());
+        binding.noteInfo.setText(sportMap.get("extraNote").toString());
+        binding.starInfo.setText(sportMap.get("minStar").toString());
+        binding.starInfo.setText(sportMap.get("minStar").toString());
+
         ArrayList<String> invited = (ArrayList<String>) sportMap.get("invited");
         if (invited != null) {
             // binding.deneme.setText(invited.toString());

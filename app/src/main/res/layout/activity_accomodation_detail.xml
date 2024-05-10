@@ -525,6 +525,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_marginStart="15dp"
         android:layout_marginTop="34dp"
         android:layout_marginBottom="34dp"
+        android:fontFamily="@font/jockey_one"
         app:layout_constraintBottom_toBottomOf="@+id/bioInfo"
         app:layout_constraintStart_toEndOf="@+id/textView42"
         app:layout_constraintTop_toTopOf="@+id/ageInfo" />
@@ -549,6 +550,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/jockey_one"
         app:layout_constraintStart_toEndOf="@+id/textView43"
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
 

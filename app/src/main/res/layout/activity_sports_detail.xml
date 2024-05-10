@@ -7,18 +7,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:foregroundTint="#FFFFFF"
     tools:context=".Sport.SportsDetailActivity">
 
     <View
         android:id="@+id/view"
-        android:background="@drawable/rounded_corner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="90dp"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="85dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="@drawable/rounded_corner" />
 
     <LinearLayout
 
@@ -196,10 +197,10 @@
             android:orientation="horizontal">
 
             <ImageView
-
                 android:id="@+id/profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
                 tools:layout_editor_absoluteX="21dp"
                 tools:layout_editor_absoluteY="231dp" />
 
@@ -216,13 +217,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:fontFamily="@font/jockey_one"
-                    android:text="Minimum required star for activity" />
+                    android:text="Minimum required star for activity"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
 
                 <TextView
                     android:id="@+id/starInfo"
                     android:layout_width="49dp"
-                    android:layout_height="33dp" />
+                    android:layout_height="33dp"
+                    android:fontFamily="@font/jockey_one"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -236,8 +242,11 @@
                 android:id="@+id/textView32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Name:"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 tools:layout_editor_absoluteX="17dp"
                 tools:layout_editor_absoluteY="331dp" />
 
@@ -246,6 +255,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/jockey_one"
+                android:textColor="#FFFFFF"
                 tools:layout_editor_absoluteX="62dp"
                 tools:layout_editor_absoluteY="331dp" />
 
@@ -254,6 +264,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/jockey_one"
+                android:textColor="#FFFFFF"
                 tools:layout_editor_absoluteX="137dp"
                 tools:layout_editor_absoluteY="331dp" />
         </LinearLayout>
@@ -267,17 +278,21 @@
                 android:id="@+id/textView36"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Age:"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
                 tools:layout_editor_absoluteX="25dp"
                 tools:layout_editor_absoluteY="371dp" />
 
             <TextView
-
                 android:id="@+id/ageInfo"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/jockey_one"
+                android:textColor="#FFFFFF"
                 tools:layout_editor_absoluteX="80dp"
                 tools:layout_editor_absoluteY="371dp" />
 
@@ -286,26 +301,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:id="@+id/textView42"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/jockey_one"
-                android:text="Gender:"
-                tools:layout_editor_absoluteX="25dp"
-                tools:layout_editor_absoluteY="415dp" />
-
-            <TextView
-
-                android:id="@+id/genderInfo"
-                android:layout_width="87dp"
-                android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="81dp"
-                tools:layout_editor_absoluteY="411dp" />
-        </LinearLayout>
+            android:orientation="horizontal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -313,12 +309,14 @@
             android:orientation="horizontal">
 
             <TextView
-
                 android:id="@+id/textView43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Biography:"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="450dp" />
 
@@ -328,6 +326,8 @@
                 android:id="@+id/bioInfo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/jockey_one"
+                android:textColor="#FFFFFF"
                 tools:layout_editor_absoluteX="83dp"
                 tools:layout_editor_absoluteY="450dp" />
         </LinearLayout>
@@ -343,7 +343,7 @@
                 android:id="@+id/sendInvitation"
                 style="@style/Transportation_Activity_Detail_View"
                 android:layout_width="251dp"
-                android:layout_height="37dp"
+                android:layout_height="40dp"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="sendInvitationButtonClicked"
                 android:text="Send Invitation to Join"
@@ -353,7 +353,7 @@
                 android:id="@+id/sendMessage"
                 style="@style/Transportation_Activity_Detail_View"
                 android:layout_width="254dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="sendMessageButtonClicked"
                 android:text="Send Message to Talk Details"
@@ -368,20 +368,23 @@
         android:id="@+id/typeInfo"
         android:layout_width="200dp"
         android:layout_height="28dp"
-        android:fontFamily="@font/jockey_one"
         android:layout_marginLeft="20dp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="95dp"
+        android:fontFamily="@font/jockey_one"
         app:layout_constraintBottom_toTopOf="@+id/time_layout"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="95dp" />
 
     <TextView
-
         android:id="@+id/dateInfo"
         android:layout_width="117dp"
         android:layout_height="28dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/time_layout"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -389,8 +392,8 @@
         android:id="@+id/time_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:backgroundTint="#FFFFFF"
+        android:foregroundTint="#FFFFFF"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -398,79 +401,87 @@
         tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView46"
                 android:layout_width="38dp"
                 android:layout_height="22dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Time:"
-                tools:layout_editor_absoluteX="37dp"
-                tools:layout_editor_absoluteY="138dp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                />
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/timeInfo"
-                android:layout_width="75dp"
-                android:layout_height="26dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/jockey_one"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="160dp" />
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView47"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Place"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
                 tools:layout_editor_absoluteX="160dp"
                 tools:layout_editor_absoluteY="140dp" />
 
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/placeInfo"
-                android:layout_width="88dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/jockey_one"
-                tools:layout_editor_absoluteX="102dp"
-                tools:layout_editor_absoluteY="160dp" />
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/textView48"
                 android:layout_width="84dp"
                 android:layout_height="21dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/jockey_one"
                 android:text="Person Limit:"
-                tools:layout_editor_absoluteX="310dp"
-                tools:layout_editor_absoluteY="107dp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+
+                />
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/numberOfPlayersInfo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/jockey_one"
-                tools:layout_editor_absoluteX="331dp"
-                tools:layout_editor_absoluteY="132dp" />
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
@@ -488,8 +499,12 @@
             android:id="@+id/textView56"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:fontFamily="@font/jockey_one"
+            android:paddingLeft="5dp"
             android:text="Extra Note:"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="194dp" />
 
@@ -497,6 +512,8 @@
             android:id="@+id/noteInfo"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/jockey_one"
+            android:textColor="#FFFFFF"
             tools:layout_editor_absoluteX="90dp"
             tools:layout_editor_absoluteY="198dp" />
 
@@ -609,8 +626,6 @@
             android:layout_weight="1"
             android:background="#275583" />
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

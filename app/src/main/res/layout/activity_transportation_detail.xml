@@ -209,7 +209,8 @@
                 <TextView
                     android:id="@+id/starInfo"
                     android:layout_width="49dp"
-                    android:layout_height="33dp" />
+                    android:layout_height="33dp"
+                    android:fontFamily="@font/jockey_one" />
             </LinearLayout>
         </LinearLayout>
 
@@ -254,6 +255,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_marginRight="10dp"
                 android:paddingLeft="5dp"
                 android:id="@+id/textView36"
                 android:layout_width="wrap_content"
@@ -281,6 +283,7 @@
 
             <TextView
                 android:paddingLeft="5dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/textView42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -304,6 +307,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_marginRight="10dp"
                 android:paddingLeft="5dp"
                 android:id="@+id/textView43"
                 android:layout_width="wrap_content"

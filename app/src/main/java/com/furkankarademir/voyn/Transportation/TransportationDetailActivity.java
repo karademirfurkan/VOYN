@@ -105,6 +105,8 @@ public class TransportationDetailActivity extends AppCompatActivity {
         binding.dateInfo.setText((String) transportationMap.get("date"));
         binding.timeInfo.setText((String) transportationMap.get("time"));
         binding.seatsInfo.setText(transportationMap.get("seats").toString());
+        binding.noteInfo.setText(transportationMap.get("extraNote").toString());
+        binding.starInfo.setText(transportationMap.get("minStar").toString());
         ArrayList<String> invited = (ArrayList<String>) transportationMap.get("invited");
 
         if (invited != null) {
