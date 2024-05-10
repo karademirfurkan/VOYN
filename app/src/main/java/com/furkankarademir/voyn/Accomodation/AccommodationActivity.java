@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.databinding.ActivityAccomodationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,6 +35,8 @@ public class AccommodationActivity extends AppCompatActivity {
     private ArrayList<HashMap<String, Object>> accommodationActivities;
 
     private AccomodationAdapter accomodationAdapter;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,15 +114,32 @@ public class AccommodationActivity extends AppCompatActivity {
                 boolean availablity = data.getBooleanExtra("availablity", false);
                 boolean locked = data.getBooleanExtra("locked", false);
                 long calendar = data.getLongExtra("calendar", 0);
+
+                DocumentReference documentReference = db.collection("Users").document(auth.getCurrentUser().getUid());
+                documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+                            user = documentSnapshot.toObject(User.class);
+                        }
+                    }
+                });
+
                 accommodationActivities.removeIf(accomodation -> {
-                    if(place != null && !place.equals("") && !place.equals(accomodation.get("place")))
+                    if (place != null && !place.equals("") && !place.equals(accomodation.get("place")))
                         return true;
-                    //if(availablity && (boolean) accomodation.get("availablity"))
-                        //return true;
-                    //if(locked && (boolean) accomodation.get("locked"))
-                      //  return true;
+                    if (availablity){
+                        ArrayList<String> participantsList = (ArrayList<String>) accomodation.get("participantsId");
+                        if (participantsList.size() == Integer.parseInt(accomodation.get("seats").toString()))
+                            return true;
+                        if (participantsList.contains(auth.getUid()))
+                            return true;
+                    }
+                    if(locked)
+                        if (user.getStar() < Double.parseDouble(accomodation.get("minStar").toString()))
+                            return true;
                     if(calendar != 0) {
-                        // Convert the calendar long value to Date
                         Date calendarDate = new Date(calendar);
 
 
