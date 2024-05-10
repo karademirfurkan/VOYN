@@ -121,7 +121,7 @@ public class AccomodationAdapter extends RecyclerView.Adapter<AccomodationAdapte
                         if (user.getStar() < minStar || participants.contains(auth.getUid()) || participants.size() == Integer.parseInt(accomodationActivities.get(position).get("numberOfInhabitants").toString()))
                         {
                             holder.binding.accommodationLinearLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.red_row_view));
-                        }// check merge conflict
+                        }
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
