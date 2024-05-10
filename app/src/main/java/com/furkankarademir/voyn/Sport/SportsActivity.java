@@ -122,46 +122,45 @@ public class SportsActivity extends AppCompatActivity {
                         if(documentSnapshot.exists())
                         {
                             user = documentSnapshot.toObject(User.class);
+                            sportActivities.removeIf(sport -> {
+                                if (time != null && !time.equals("") && !time.equals(sport.get("time")))
+                                    return true;
+                                if (place != null && !place.equals("") &&!place.equals(sport.get("place")))
+                                    return true;
+                                if (type != null && !type.equals("") && !type.equals(sport.get("type")))
+                                    return true;
+                                if(calendar != 0) {
+                                    // Convert the calendar long value to Date
+                                    Date calendarDate = new Date(calendar);
+
+
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+                                    String calendarDateString = format.format(calendarDate);
+
+
+                                    String activityDateString = (String) sport.get("date");
+                                    System.out.println("calendarDateString: " + calendarDateString);
+                                    System.out.println("activityDateString: " + activityDateString);
+                                    if (!calendarDateString.equals(activityDateString)) {
+                                        return true;
+                                    }
+                                }
+                                if (availability) {
+                                    ArrayList<String> participantsList = (ArrayList<String>) sport.get("participantsId");
+                                    if (participantsList.size() == Integer.parseInt(sport.get("numberOfPlayers").toString()))
+                                        return true;
+                                    if (participantsList.contains(auth.getUid()))
+                                        return true;
+                                }
+                                if (locked)
+                                    if (user.getStar() < Double.parseDouble(sport.get("minStar").toString()))
+                                        return true;
+                                return false;
+                            });
+                            sportAdapter.notifyDataSetChanged();
                         }
                     }
                 });
-
-                sportActivities.removeIf(sport -> {
-                    if (time != null && !time.equals("") && !time.equals(sport.get("time")))
-                        return true;
-                    if (place != null && !place.equals("") &&!place.equals(sport.get("place")))
-                        return true;
-                    if (type != null && !type.equals("") && !type.equals(sport.get("type")))
-                        return true;
-                    if(calendar != 0) {
-                        // Convert the calendar long value to Date
-                        Date calendarDate = new Date(calendar);
-
-
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-                        String calendarDateString = format.format(calendarDate);
-
-
-                        String activityDateString = (String) sport.get("date");
-                        System.out.println("calendarDateString: " + calendarDateString);
-                        System.out.println("activityDateString: " + activityDateString);
-                        if (!calendarDateString.equals(activityDateString)) {
-                            return true;
-                        }
-                    }
-                    if (availability) {
-                        ArrayList<String> participantsList = (ArrayList<String>) sport.get("participantsId");
-                        if (participantsList.size() == Integer.parseInt(sport.get("numberOfPlayers").toString()))
-                            return true;
-                        if (participantsList.contains(auth.getUid()))
-                            return true;
-                    }
-                    if (locked)
-                        if (user.getStar() < Double.parseDouble(sport.get("minStar").toString()))
-                            return true;
-                    return false;
-                });
-                sportAdapter.notifyDataSetChanged();
             }
         }
     }

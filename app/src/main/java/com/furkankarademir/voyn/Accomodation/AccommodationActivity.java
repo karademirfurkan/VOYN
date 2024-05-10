@@ -122,42 +122,41 @@ public class AccommodationActivity extends AppCompatActivity {
                         if(documentSnapshot.exists())
                         {
                             user = documentSnapshot.toObject(User.class);
+                            accommodationActivities.removeIf(accomodation -> {
+                                if (place != null && !place.equals("") && !place.equals(accomodation.get("place")))
+                                    return true;
+                                if (availability){
+                                    ArrayList<String> participantsList = (ArrayList<String>) accomodation.get("participantsId");
+                                    if (participantsList.size() == Integer.parseInt(accomodation.get("numberOfInhabitants").toString()))
+                                        return true;
+                                    if (participantsList.contains(auth.getUid()))
+                                        return true;
+                                }
+                                if(locked)
+                                    if (user.getStar() < Double.parseDouble(accomodation.get("minStar").toString()))
+                                        return true;
+                                if(calendar != 0) {
+                                    Date calendarDate = new Date(calendar);
+
+
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+                                    String calendarDateString = format.format(calendarDate);
+
+
+                                    String activityDateString = (String) accomodation.get("date");
+                                    System.out.println("calendarDateString: " + calendarDateString);
+                                    System.out.println("activityDateString: " + activityDateString);
+                                    if (!calendarDateString.equals(activityDateString)) {
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            });
+
+                            accomodationAdapter.notifyDataSetChanged();
                         }
                     }
                 });
-
-                accommodationActivities.removeIf(accomodation -> {
-                    if (place != null && !place.equals("") && !place.equals(accomodation.get("place")))
-                        return true;
-                    if (availability){
-                        ArrayList<String> participantsList = (ArrayList<String>) accomodation.get("participantsId");
-                        if (participantsList.size() == Integer.parseInt(accomodation.get("numberOfInhabitants").toString()))
-                            return true;
-                        if (participantsList.contains(auth.getUid()))
-                            return true;
-                    }
-                    if(locked)
-                        if (user.getStar() < Double.parseDouble(accomodation.get("minStar").toString()))
-                            return true;
-                    if(calendar != 0) {
-                        Date calendarDate = new Date(calendar);
-
-
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-                        String calendarDateString = format.format(calendarDate);
-
-
-                        String activityDateString = (String) accomodation.get("date");
-                        System.out.println("calendarDateString: " + calendarDateString);
-                        System.out.println("activityDateString: " + activityDateString);
-                        if (!calendarDateString.equals(activityDateString)) {
-                            return true;
-                        }
-                    }
-                    return false;
-                        });
-
-                accomodationAdapter.notifyDataSetChanged();
             }
         }
     }
