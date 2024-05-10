@@ -106,18 +106,32 @@ public class AccommodationActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 String place = data.getStringExtra("place");
-                String calendar = data.getStringExtra("calendar");
                 boolean availablity = data.getBooleanExtra("availablity", false);
                 boolean locked = data.getBooleanExtra("locked", false);
+                long calendar = data.getLongExtra("calendar", 0);
                 accommodationActivities.removeIf(accomodation -> {
                     if(place != null && !place.equals("") && !place.equals(accomodation.get("place")))
                         return true;
-                    //if(calendar != null && !calendar.equals(accomodation.get("calendar")))
-                      //  return true;
                     //if(availablity && (boolean) accomodation.get("availablity"))
                         //return true;
                     //if(locked && (boolean) accomodation.get("locked"))
                       //  return true;
+                    if(calendar != 0) {
+                        // Convert the calendar long value to Date
+                        Date calendarDate = new Date(calendar);
+
+
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+                        String calendarDateString = format.format(calendarDate);
+
+
+                        String activityDateString = (String) accomodation.get("date");
+                        System.out.println("calendarDateString: " + calendarDateString);
+                        System.out.println("activityDateString: " + activityDateString);
+                        if (!calendarDateString.equals(activityDateString)) {
+                            return true;
+                        }
+                    }
                     return false;
                         });
 

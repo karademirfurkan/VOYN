@@ -116,13 +116,27 @@ public class SportsActivity extends AppCompatActivity {
                         return true;
                     if (type != null && !type.equals("") && !type.equals(sport.get("type")))
                         return true;
+                    if(calendar != 0) {
+                        // Convert the calendar long value to Date
+                        Date calendarDate = new Date(calendar);
+
+
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+                        String calendarDateString = format.format(calendarDate);
+
+
+                        String activityDateString = (String) sport.get("date");
+                        System.out.println("calendarDateString: " + calendarDateString);
+                        System.out.println("activityDateString: " + activityDateString);
+                        if (!calendarDateString.equals(activityDateString)) {
+                            return true;
+                        }
+                    }
+                    return false;
                     //if (availability && !(boolean) sport.get("availability"))
                       //  return true;
                     //if (locked && !(boolean) sport.get("locked"))
                       //  return true;
-                    //if (calendar != 0 && calendar != (long) sport.get("calendar"))
-                      //  return true;
-                    return false;
                 });
                 sportAdapter.notifyDataSetChanged();
             }
