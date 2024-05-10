@@ -84,7 +84,7 @@ public class SportsDetailActivity extends AppCompatActivity implements Serializa
             }
         });
 
-        binding.surnameInfo.setText((String) sportMap.get("surname"));
+        //binding.surnameInfo.setText((String) sportMap.get("surname"));
         binding.placeInfo.setText((String) sportMap.get("place"));
         binding.dateInfo.setText((String) sportMap.get("date"));
         binding.timeInfo.setText((String) sportMap.get("time"));

@@ -9,17 +9,17 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".Transportation.TransportationDetailActivity">
 
-<View
-    android:id="@+id/view3"
-    android:layout_width="380dp"
-    android:layout_height="560dp"
-    android:background="@drawable/rounded_corner"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.521"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.48" />
+    <View
+        android:id="@+id/view3"
+        android:layout_width="340dp"
+        android:layout_height="550dp"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.466" />
 
     <TextView
         android:id="@+id/textView32"
@@ -155,6 +155,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:text="Send Message to Talk Details"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView43"
         app:layout_constraintVertical_bias="1.0" />
@@ -173,7 +174,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bioInfo"
-        app:layout_constraintVertical_bias="0.26999998" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
 
@@ -194,7 +195,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="80dp"
+        android:layout_height="70dp"
 
         android:layout_weight="1"
 
@@ -206,7 +207,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="68dp"
+        android:layout_height="58dp"
 
         android:layout_weight="1"
 
@@ -219,7 +220,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="55dp"
+        android:layout_height="45dp"
 
         android:layout_weight="1"
 
@@ -230,7 +231,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:id="@+id/textView10"
         android:layout_width="25dp"
-        android:layout_height="43dp"
+        android:layout_height="33dp"
         android:layout_weight="1"
         android:background="#46B0FF" />
 
@@ -241,7 +242,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="55dp"
+        android:layout_height="45dp"
 
         android:layout_weight="1"
 
@@ -254,7 +255,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="62dp"
+        android:layout_height="52dp"
 
         android:layout_weight="1"
 
@@ -267,7 +268,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="31dp"
 
-        android:layout_height="37dp"
+        android:layout_height="27dp"
 
         android:layout_weight="1"
 
@@ -280,7 +281,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="25dp"
+        android:layout_height="15dp"
 
         android:layout_weight="1"
 
@@ -293,7 +294,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="55dp"
+        android:layout_height="45dp"
 
         android:layout_weight="1"
 
@@ -306,7 +307,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="61dp"
+            android:layout_height="51dp"
 
             android:layout_weight="1"
 
@@ -319,7 +320,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="72dp"
+        android:layout_height="62dp"
 
         android:layout_weight="1"
 
@@ -332,7 +333,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
         android:layout_width="25dp"
 
-        android:layout_height="34dp"
+        android:layout_height="24dp"
 
         android:layout_weight="1"
 
@@ -378,7 +379,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="68dp"
+            android:layout_height="58dp"
 
             android:layout_weight="1"
 
@@ -391,7 +392,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="55dp"
+            android:layout_height="45dp"
 
             android:layout_weight="1"
 
@@ -404,7 +405,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="43dp"
+            android:layout_height="33dp"
 
             android:layout_weight="1"
 
@@ -417,7 +418,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="55dp"
+            android:layout_height="45dp"
 
             android:layout_weight="1"
 
@@ -430,7 +431,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="62dp"
+            android:layout_height="52dp"
 
             android:layout_weight="1"
 
@@ -443,7 +444,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="37dp"
+            android:layout_height="27dp"
 
             android:layout_weight="1"
 
@@ -456,7 +457,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="25dp"
+            android:layout_height="15dp"
 
             android:layout_weight="1"
 
@@ -469,7 +470,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="55dp"
+            android:layout_height="45dp"
 
             android:layout_weight="1"
 
@@ -482,7 +483,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="65dp"
+            android:layout_height="55dp"
 
             android:layout_weight="1"
 
@@ -495,7 +496,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="72dp"
+            android:layout_height="62dp"
 
             android:layout_weight="1"
 
@@ -508,7 +509,7 @@ tools:context=".Transportation.TransportationDetailActivity">
 
             android:layout_width="25dp"
 
-            android:layout_height="34dp"
+            android:layout_height="24dp"
 
             android:layout_weight="1"
 
@@ -708,7 +709,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_marginStart="12dp"
         android:layout_marginTop="52dp"
         android:onClick="cancelButtonClicked"
-        app:icon="@drawable/arrow_icon"
+        app:icon="@drawable/arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

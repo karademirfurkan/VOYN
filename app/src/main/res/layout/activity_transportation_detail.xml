@@ -456,7 +456,7 @@
             <TextView
                 android:id="@+id/textView48"
                 android:layout_width="wrap_content"
-                android:layout_height="21dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="@font/jockey_one"
                 android:text="Person Limit:"
@@ -485,7 +485,7 @@
         app:layout_constraintTop_toBottomOf="@+id/time_layout">
 
         <TextView
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="15dp"
             android:id="@+id/textView56"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
@@ -499,7 +499,7 @@
 
         <TextView
             android:id="@+id/noteInfo"
-            android:layout_width="270dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jockey_one"
             android:textColor="#FFFFFF"
