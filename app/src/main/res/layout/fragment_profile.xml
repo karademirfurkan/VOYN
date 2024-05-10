@@ -344,7 +344,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/jockey_one"
                     android:paddingLeft="10dp"
-                    android:text="DEPARTMENT    ::"
+                    android:text="DEPARTMENT    :"
                     android:textSize="25dp"
                     tools:layout_editor_absoluteX="21dp"
                     tools:layout_editor_absoluteY="288dp" />
