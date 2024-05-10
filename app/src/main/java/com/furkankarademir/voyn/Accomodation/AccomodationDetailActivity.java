@@ -92,6 +92,12 @@ public class AccomodationDetailActivity extends AppCompatActivity {
         binding.timeInfo.setText((String) accommodationMap.get("time"));
         binding.inhabitantslimitInfo.setText(accommodationMap.get("numberOfInhabitants").toString());
         ArrayList<String> invited = (ArrayList<String>) accommodationMap.get("invited");
+
+        boolean isRed = getIntent().getBooleanExtra("isRed", false);
+        if (isRed) {
+            binding.sendInvitation.setVisibility(View.GONE);
+            binding.sendMessage.setVisibility(View.GONE);
+        }
     }
     public void sendMessageButtonClicked(View view)
     {
