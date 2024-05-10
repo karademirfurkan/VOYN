@@ -76,6 +76,8 @@
             android:backgroundTint="#E6F3FF">
 
             <TextView
+                android:layout_marginRight="5dp"
+                android:paddingLeft="10dp"
                 android:id="@+id/textView55"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,6 +107,8 @@
             android:background="@drawable/img_4">
 
             <TextView
+                android:layout_marginRight="5dp"
+                android:paddingLeft="10dp"
                 android:id="@+id/textView100"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,6 +142,8 @@
             android:backgroundTint="#E6F3FF">
 
             <TextView
+                android:layout_marginRight="5dp"
+                android:paddingLeft="10dp"
                 android:id="@+id/textView111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -178,7 +184,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/jockey_one"
         android:text="5"
-        android:textSize="25dp"
+        android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView13"
         app:layout_constraintEnd_toEndOf="@+id/imageView13"
         app:layout_constraintStart_toStartOf="@+id/imageView13"

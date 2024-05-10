@@ -22,6 +22,7 @@ import com.furkankarademir.voyn.Transportation.TransportationActivity;
 import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.furkankarademir.voyn.databinding.ActivityChatInBetweenPageBinding;
 import com.furkankarademir.voyn.databinding.ActivityTransportationBinding;
+import com.furkankarademir.voyn.myactivitiesclasses.profilePageForOtherUsers;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Firebase;
@@ -221,6 +222,13 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void profileClicked(View view)
+    {
+        Intent intent = new Intent(ChatInBetweenPage.this, profilePageForOtherUsers.class);
+        intent.putExtra("idComing", otherUserId);
+        startActivity(intent);
     }
 
 }

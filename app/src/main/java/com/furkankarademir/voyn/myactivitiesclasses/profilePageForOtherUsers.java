@@ -45,7 +45,17 @@ public class profilePageForOtherUsers extends AppCompatActivity
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        userID = intent.getStringExtra("userId");
+        if(intent.hasExtra("userId")) {
+            userID = intent.getStringExtra("userId");
+        }
+
+        Intent intent2 = getIntent();
+        if(intent2.hasExtra("idComing"))
+        {
+            userID = intent.getStringExtra("idComing");
+        }
+
+
 
 
         db = FirebaseFirestore.getInstance();
