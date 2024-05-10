@@ -258,6 +258,10 @@ public class ChangeProfilePhoto extends AppCompatActivity {
                 Snackbar.make(view, e.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
             });
 
+            Intent intent = new Intent(ChangeProfilePhoto.this, EditProfile.class);
+            startActivity(intent);
+            finish();
+
         }
 
     }

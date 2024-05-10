@@ -87,6 +87,7 @@ public class EvaluatingUsersPage extends AppCompatActivity {
 
         Intent intent = new Intent(EvaluatingUsersPage.this, MenuPage.class );
         startActivity(intent);
+        finish();
     }
 
     public void handleGivingStar()

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/arkaplan"
     tools:context=".ProfileClasses.ChangeProfilePhoto">
 
     <ImageView
@@ -16,19 +17,35 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226"
+        app:layout_constraintVertical_bias="0.728"
         app:srcCompat="@drawable/profile_photo" />
 
     <Button
-        style="@style/Edit_Profile"
         android:id="@+id/confirmButton"
+        style="@style/Edit_Profile"
         android:layout_width="160dp"
         android:layout_height="56dp"
         android:layout_marginBottom="188dp"
+        android:fontFamily="@font/jockey_one"
         android:onClick="confirmButtonClicked"
         android:text="Confirm"
-        app:strokeColor="#76DE99"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#76DE99" />
+
+    <TextView
+        android:id="@+id/textView80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jockey_one"
+        android:padding="10dp"
+        android:text="CLICK ON PROFILE ICON TO SELECT YOUR PHOTO FROM GALLERY"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/profilePicture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
