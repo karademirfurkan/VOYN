@@ -47,7 +47,7 @@ public class WaitingIncomingInvitations extends AppCompatActivity {
 
             binding.recyclerView4.setLayoutManager(new LinearLayoutManager(WaitingIncomingInvitations.this));
             ArrayList<String> incomingInvitations = (ArrayList<String>) transportation.get("invited");
-            IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, transportation.get("documentId").toString(), isFull);
+            IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, transportation.get("documentId").toString(), isFull, 1);
             binding.recyclerView4.setAdapter(incomingInvitationsAdapter);
         }
         else if (intent.getSerializableExtra("accommodation") != null)
@@ -63,7 +63,7 @@ public class WaitingIncomingInvitations extends AppCompatActivity {
 
             binding.recyclerView4.setLayoutManager(new LinearLayoutManager(WaitingIncomingInvitations.this));
             ArrayList<String> incomingInvitations = (ArrayList<String>) accommodation.get("invited");
-            IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, accommodation.get("documentId").toString(), isFull);
+            IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, accommodation.get("documentId").toString(), isFull, 2);
             binding.recyclerView4.setAdapter(incomingInvitationsAdapter);
         }
         else if (intent.getSerializableExtra("sports") != null)
@@ -79,7 +79,7 @@ public class WaitingIncomingInvitations extends AppCompatActivity {
 
             binding.recyclerView4.setLayoutManager(new LinearLayoutManager(WaitingIncomingInvitations.this));
             ArrayList<String> incomingInvitations = (ArrayList<String>) sport.get("invited");
-            IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, sport.get("documentId").toString(), isFull);
+            IncomingInvitationsAdapter incomingInvitationsAdapter = new IncomingInvitationsAdapter(incomingInvitations, sport.get("documentId").toString(), isFull, 3);
             binding.recyclerView4.setAdapter(incomingInvitationsAdapter);
         }
 

@@ -35,14 +35,24 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    private String activityId;
+
     private String transportationId;
+
+    private String accommodationId;
+
+    private String sportId;
+
     private boolean isFull;
 
-    public IncomingInvitationsAdapter(ArrayList<String> incomingInvitations, String transportationId, boolean isFull)
+    private int invitationType;
+
+    public IncomingInvitationsAdapter(ArrayList<String> incomingInvitations, String activityId, boolean isFull, int invitationType)
     {
         this.incomingInvitations = incomingInvitations;
-        this.transportationId = transportationId;
+        this.activityId = activityId;
         this.isFull = isFull;
+        this.invitationType = invitationType;
     }
 
     @NonNull
@@ -98,110 +108,333 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
 
             holder.binding.acceptButton.setOnClickListener(v ->
             {
-                // Add the user to the attendId list
-                db.collection("transportations")
-                        .whereEqualTo("documentId", transportationId)
-                        .get()
-                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                if (!queryDocumentSnapshots.isEmpty()) {
-                                    // The document was found
-                                    DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
-                                    Map<String, Object> transportation = documentSnapshot.getData();
-                                    // Now you can use the transportation map
+                switch (invitationType) {
+                    case 1:
+                        transportationId = activityId;
+                        // Add the user to the attendId list
+                        db.collection("transportations")
+                                .whereEqualTo("documentId", transportationId)
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (!queryDocumentSnapshots.isEmpty()) {
+                                            // The document was found
+                                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                                            Map<String, Object> transportation = documentSnapshot.getData();
+                                            // Now you can use the transportation map
 
-                                    ArrayList<String> participantsId = (ArrayList<String>) transportation.get("participantsId");
-                                    if (participantsId == null) {
-                                        participantsId = new ArrayList<>();
+                                            ArrayList<String> participantsId = (ArrayList<String>) transportation.get("participantsId");
+                                            if (participantsId == null) {
+                                                participantsId = new ArrayList<>();
+                                            }
+                                            participantsId.add(userId);
+                                            transportation.put("participantsId", participantsId);
+                                            ArrayList<String> invited = (ArrayList<String>) transportation.get("invited");
+                                            invited.remove(userId);
+                                            transportation.put("invited", invited);
+
+                                            db.collection("transportations").document(transportation.get("documentId").toString())
+                                                    .set(transportation)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(holder.context, "User accepted", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
+                                                            Log.w(TAG, "Error updating document", e);
+                                                        }
+                                                    });
+                                        } else {
+                                            Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
+                                            // The document was not found
+                                            System.out.println("No such document");
+                                        }
                                     }
-                                    participantsId.add(userId);
-                                    transportation.put("participantsId", participantsId);
-                                    ArrayList<String> invited = (ArrayList<String>) transportation.get("invited");
-                                    invited.remove(userId);
-                                    transportation.put("invited", invited);
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Handle the error
+                                        System.out.println("Error getting document: " + e);
+                                    }
+                                });
+                        break;
+                    case 2:
+                        accommodationId = activityId;
+                        // Add the user to the attendId list
+                        db.collection("accommodation")
+                                .whereEqualTo("documentId", accommodationId)
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (!queryDocumentSnapshots.isEmpty()) {
+                                            // The document was found
+                                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                                            Map<String, Object> accommodation = documentSnapshot.getData();
+                                            // Now you can use the accommodation map
 
-                                    db.collection("transportations").document(transportation.get("documentId").toString())
-                                            .set(transportation)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(holder.context, "User accepted", Toast.LENGTH_SHORT).show();
-                                                    Log.d(TAG, "DocumentSnapshot successfully updated!");
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
-                                                    Log.w(TAG, "Error updating document", e);
-                                                }
-                                            });
-                                } else {
-                                    Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
-                                    // The document was not found
-                                    System.out.println("No such document");
-                                }
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // Handle the error
-                                System.out.println("Error getting document: " + e);
-                            }
-                        });
+                                            ArrayList<String> participantsId = (ArrayList<String>) accommodation.get("participantsId");
+                                            if (participantsId == null) {
+                                                participantsId = new ArrayList<>();
+                                            }
+                                            participantsId.add(userId);
+                                            accommodation.put("participantsId", participantsId);
+                                            ArrayList<String> invited = (ArrayList<String>) accommodation.get("invited");
+                                            invited.remove(userId);
+                                            accommodation.put("invited", invited);
+
+                                            db.collection("accommodations").document(accommodation.get("documentId").toString())
+                                                    .set(accommodation)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(holder.context, "User accepted", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
+                                                            Log.w(TAG, "Error updating document", e);
+                                                        }
+                                                    });
+                                        } else {
+                                            Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
+                                            // The document was not found
+                                            System.out.println("No such document");
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Handle the error
+                                        System.out.println("Error getting document: " + e);
+                                    }
+                                });
+                        break;
+                    case 3:
+                        sportId = activityId;
+                        // Add the user to the attendId list
+                        db.collection("sports")
+                                .whereEqualTo("documentId", sportId)
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (!queryDocumentSnapshots.isEmpty()) {
+                                            // The document was found
+                                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                                            Map<String, Object> sport = documentSnapshot.getData();
+                                            // Now you can use the sport map
+
+                                            ArrayList<String> participantsId = (ArrayList<String>) sport.get("participantsId");
+                                            if (participantsId == null) {
+                                                participantsId = new ArrayList<>();
+                                            }
+                                            participantsId.add(userId);
+                                            sport.put("participantsId", participantsId);
+                                            ArrayList<String> invited = (ArrayList<String>) sport.get("invited");
+                                            invited.remove(userId);
+                                            sport.put("invited", invited);
+
+                                            db.collection("sports").document(sport.get("documentId").toString())
+                                                    .set(sport)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(holder.context, "User accepted", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
+                                                            Log.w(TAG, "Error updating document", e);
+                                                        }
+                                                    });
+                                        } else {
+                                            Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
+                                            // The document was not found
+                                            System.out.println("No such document");
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Handle the error
+                                        System.out.println("Error getting document: " + e);
+                                    }
+                                });
+                        break;
+                }
+
             });
 
             holder.binding.declineButton.setOnClickListener(v ->
             {
-                // Remove the user from the invited list
-                db.collection("transportations")
-                        .whereEqualTo("documentId", transportationId)
-                        .get()
-                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                if (!queryDocumentSnapshots.isEmpty()) {
-                                    // The document was found
-                                    DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
-                                    Map<String, Object> transportation = documentSnapshot.getData();
-                                    // Now you can use the transportation map
+                switch (invitationType) {
+                    case 1:
+                        transportationId = activityId;
+                        // Remove the user from the invited list
+                        db.collection("transportations")
+                                .whereEqualTo("documentId", transportationId)
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (!queryDocumentSnapshots.isEmpty()) {
+                                            // The document was found
+                                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                                            Map<String, Object> transportation = documentSnapshot.getData();
+                                            // Now you can use the transportation map
 
-                                    ArrayList<String> invited = (ArrayList<String>) transportation.get("invited");
-                                    invited.remove(userId);
-                                    transportation.put("invited", invited);
+                                            ArrayList<String> invited = (ArrayList<String>) transportation.get("invited");
+                                            invited.remove(userId);
+                                            transportation.put("invited", invited);
 
-                                    db.collection("transportations").document(transportation.get("documentId").toString())
-                                            .set(transportation)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(holder.context, "User declined", Toast.LENGTH_SHORT).show();
-                                                    Log.d(TAG, "DocumentSnapshot successfully updated!");
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
-                                                    Log.w(TAG, "Error updating document", e);
-                                                }
-                                            });
-                                } else {
-                                    Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
-                                    // The document was not found
-                                    System.out.println("No such document");
-                                }
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // Handle the error
-                                System.out.println("Error getting document: " + e);
-                            }
-                        });
+                                            db.collection("transportations").document(transportation.get("documentId").toString())
+                                                    .set(transportation)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(holder.context, "User declined", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
+                                                            Log.w(TAG, "Error updating document", e);
+                                                        }
+                                                    });
+                                        } else {
+                                            Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
+                                            // The document was not found
+                                            System.out.println("No such document");
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Handle the error
+                                        System.out.println("Error getting document: " + e);
+                                    }
+                                });
+                        break;
+                    case 2:
+                        accommodationId = activityId;
+                        db.collection("accommodation")
+                                .whereEqualTo("documentId", accommodationId)
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (!queryDocumentSnapshots.isEmpty()) {
+                                            // The document was found
+                                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                                            Map<String, Object> accommodation = documentSnapshot.getData();
+                                            // Now you can use the accommodation map
+
+                                            ArrayList<String> invited = (ArrayList<String>) accommodation.get("invited");
+                                            invited.remove(userId);
+                                            accommodation.put("invited", invited);
+
+                                            db.collection("accommodations").document(accommodation.get("documentId").toString())
+                                                    .set(accommodation)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(holder.context, "User declined", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
+                                                            Log.w(TAG, "Error updating document", e);
+                                                        }
+                                                    });
+                                        } else {
+                                            Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
+                                            // The document was not found
+                                            System.out.println("No such document");
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Handle the error
+                                        System.out.println("Error getting document: " + e);
+                                    }
+                                });
+                        break;
+                    case 3:
+                        sportId = activityId;
+                        // Remove the user from the invited list
+                        db.collection("sports")
+                                .whereEqualTo("documentId", sportId)
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (!queryDocumentSnapshots.isEmpty()) {
+                                            // The document was found
+                                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                                            Map<String, Object> sport = documentSnapshot.getData();
+                                            // Now you can use the sport map
+
+                                            ArrayList<String> invited = (ArrayList<String>) sport.get("invited");
+                                            invited.remove(userId);
+                                            sport.put("invited", invited);
+
+                                            db.collection("sports").document(sport.get("documentId").toString())
+                                                    .set(sport)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Toast.makeText(holder.context, "User declined", Toast.LENGTH_SHORT).show();
+                                                            Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(holder.context, "Error updating document", Toast.LENGTH_SHORT).show();
+                                                            Log.w(TAG, "Error updating document", e);
+                                                        }
+                                                    });
+                                        } else {
+                                            Toast.makeText(holder.context, "No such document", Toast.LENGTH_SHORT).show();
+                                            // The document was not found
+                                            System.out.println("No such document");
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Handle the error
+                                        System.out.println("Error getting document: " + e);
+                                    }
+                                });
+                        break;
+                }
+
             });
 
             holder.itemView.setOnClickListener(v ->
