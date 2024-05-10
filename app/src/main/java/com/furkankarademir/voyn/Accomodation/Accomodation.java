@@ -24,17 +24,20 @@ public class Accomodation extends Activity
     private String gender;
     private int numberOfInhabitants;
 
+    private double minStar;
+
     private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public Accomodation(String name, String surname, String mail, String date, String time,
                         String extraNote, String creatorUserID, String type, String place,
-                        String gender, int numberOfInhabitants)
+                        String gender, int numberOfInhabitants, double minStar)
     {
         super(name,surname, mail, date, time, extraNote, creatorUserID);
         this.type = type;
         this.place = place;
         this.gender = gender;
         this.numberOfInhabitants = numberOfInhabitants;
+        this.minStar = minStar;
     }
     
     @Override
@@ -56,6 +59,7 @@ public class Accomodation extends Activity
         accomodation.put("place", place);
         accomodation.put("gender", gender);
         accomodation.put("numberOfInhabitants", numberOfInhabitants);
+        accomodation.put("minStar", minStar);
 
 
         db.collection("accommodations")
@@ -109,5 +113,13 @@ public class Accomodation extends Activity
 
     public void setNumberOfInhabitants(int numberOfInhabitants) {
         this.numberOfInhabitants = numberOfInhabitants;
+    }
+
+    public double getMinStar() {
+        return minStar;
+    }
+
+    public void setMinStar(double minStar) {
+        this.minStar = minStar;
     }
 }

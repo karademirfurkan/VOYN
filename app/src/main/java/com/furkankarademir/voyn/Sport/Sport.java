@@ -22,15 +22,19 @@ public class Sport extends Activity {
     private String place;
     private String type;
 
+
     private int numberOfPlayers;
+
+    private double minStar;
 
     private FirebaseAuth auth = FirebaseAuth.getInstance();
      public Sport(String name, String surname, String mail, String date, String time, String place,
-                  int numberOfPlayers, String extraNote, String creatorUserID, String type){
+                  int numberOfPlayers, String extraNote, String creatorUserID, String type, double minStar){
          super(name,surname, mail, date, time, extraNote, creatorUserID);
          this.place = place;
          this.numberOfPlayers = numberOfPlayers;
          this.type = type;
+         this.minStar = minStar;
      }
     public void addActivityToDatabase(FireStoreCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -50,6 +54,7 @@ public class Sport extends Activity {
         sport.put("extraNote", getExtraNote());
         sport.put("participantsId", getParticipantsId());
         sport.put("invitedId", getInvitedId());
+        sport.put("minStar", minStar);
 
 
         db.collection("sports")
@@ -97,5 +102,13 @@ public class Sport extends Activity {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setMinStar(double minStar) {
+        this.minStar = minStar;
+    }
+
+    public double getMinStar() {
+        return minStar;
     }
 }

@@ -86,7 +86,8 @@ public class AddSportsActivity extends AppCompatActivity {
         } else {
             Sport sport = new Sport(name, surname, mail, binding.dateEdit.getText().toString(),
                     binding.timeEdit.getText().toString(), binding.placeEdit.getText().toString(),
-                    Integer.parseInt(binding.numberOfPlayersEdit.getText().toString()), binding.notesEdit.getText().toString(), userID, binding.typeEdit.getText().toString());
+                    Integer.parseInt(binding.numberOfPlayersEdit.getText().toString()), binding.notesEdit.getText().toString(), userID, binding.typeEdit.getText().toString(),
+                    Double.parseDouble(binding.minStarEdit.getText().toString()));
             DocumentReference docRef = db.collection("Users").document(userID);
 
             sport.addActivityToDatabase(new FireStoreCallback() {

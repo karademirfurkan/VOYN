@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/minStar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="openActivityButtonClicked"
@@ -138,15 +139,15 @@
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/transportation_edittext_shape"
             android:hint="Enter the date in the form Year/Month/Day"
             android:inputType="text"
             android:paddingLeft="10dp"
             android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_marginRight="7dp"
-            android:layout_marginLeft="3dp"/>
+            android:textStyle="italic" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -176,15 +177,15 @@
             android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/transportation_edittext_shape"
             android:hint="Enter the gender you want to live together..."
             android:inputType="text"
             android:paddingLeft="10dp"
             android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="7dp"/>
+            android:textStyle="italic" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -194,8 +195,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -219,22 +220,22 @@
                     android:id="@+id/numberOfInhabitants"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="7dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/transportation_edittext_shape"
                     android:hint="Enter the number of inhabitants..."
                     android:inputType="text"
                     android:paddingLeft="10dp"
                     android:textSize="12sp"
-                    android:textStyle="italic"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="7dp"/>
+                    android:textStyle="italic" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -255,18 +256,18 @@
 
 
                 <EditText
-                    android:id="@+id/numberOfInhabitants123"
+                    android:id="@+id/minStar2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="7dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/transportation_edittext_shape"
                     android:hint="Min stars"
                     android:inputType="text"
                     android:paddingLeft="10dp"
                     android:textSize="12sp"
-                    android:textStyle="italic"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="7dp"/>
+                    android:textStyle="italic" />
             </LinearLayout>
         </LinearLayout>
 
@@ -299,15 +300,15 @@
             android:id="@+id/extraNotes"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="7dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/transportation_edittext_shape"
             android:hint="You can add extra notes..."
             android:inputType="text"
             android:paddingLeft="10dp"
             android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="7dp"/>
+            android:textStyle="italic" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -331,13 +332,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
             <Button
-                android:layout_marginLeft="20dp"
                 android:id="@+id/button10"
                 style="@style/Transportation_Page_Buttons_View2"
                 android:layout_width="159dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="3dp"
+                android:layout_weight="1"
                 android:drawableRight="@drawable/t_two"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="cancelButtonClicked"

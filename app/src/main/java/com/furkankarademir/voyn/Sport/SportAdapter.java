@@ -51,6 +51,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.SportHolder>
         String date = (String) sportActivities.get(position).get("date");
         ArrayList<String> participants = (ArrayList<String>) sportActivities.get(position).get("participantsId");
         String personLimit = participants.size() + "/" + sportActivities.get(position).get("numberOfPlayers").toString();
+        ArrayList<String> invitedList = (ArrayList<String>) sportActivities.get(position).get("invitedId");
         String typeInfo = (String) sportActivities.get(position).get("type");
 
         holder.binding.time.setText(time);
