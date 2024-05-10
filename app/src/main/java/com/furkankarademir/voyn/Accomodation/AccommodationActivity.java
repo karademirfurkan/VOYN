@@ -111,7 +111,7 @@ public class AccommodationActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 String place = data.getStringExtra("place");
-                boolean availablity = data.getBooleanExtra("availablity", false);
+                boolean availability = data.getBooleanExtra("availability", false);
                 boolean locked = data.getBooleanExtra("locked", false);
                 long calendar = data.getLongExtra("calendar", 0);
 
@@ -129,9 +129,9 @@ public class AccommodationActivity extends AppCompatActivity {
                 accommodationActivities.removeIf(accomodation -> {
                     if (place != null && !place.equals("") && !place.equals(accomodation.get("place")))
                         return true;
-                    if (availablity){
+                    if (availability){
                         ArrayList<String> participantsList = (ArrayList<String>) accomodation.get("participantsId");
-                        if (participantsList.size() == Integer.parseInt(accomodation.get("seats").toString()))
+                        if (participantsList.size() == Integer.parseInt(accomodation.get("numberOfInhabitants").toString()))
                             return true;
                         if (participantsList.contains(auth.getUid()))
                             return true;

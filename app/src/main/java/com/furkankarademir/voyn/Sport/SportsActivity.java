@@ -151,7 +151,7 @@ public class SportsActivity extends AppCompatActivity {
                     }
                     if (availability) {
                         ArrayList<String> participantsList = (ArrayList<String>) sport.get("participantsId");
-                        if (participantsList.size() == Integer.parseInt(sport.get("seats").toString()))
+                        if (participantsList.size() == Integer.parseInt(sport.get("numberOfPlayers").toString()))
                             return true;
                         if (participantsList.contains(auth.getUid()))
                             return true;

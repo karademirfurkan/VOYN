@@ -42,7 +42,7 @@ public class SportsFilter extends AppCompatActivity {
                 resultIntent.putExtra("time", binding.timeFilter.getText().toString());
                 resultIntent.putExtra("place", binding.sportPlace.getText().toString());
                 resultIntent.putExtra("type", binding.sportType.getText().toString());
-                resultIntent.putExtra("availablity", binding.switchAvailable.isChecked());
+                resultIntent.putExtra("availability", binding.switchAvailable.isChecked());
                 resultIntent.putExtra("locked", binding.switchLocked.isChecked());
                 resultIntent.putExtra("calendar", selectedDateInMillis);
                 setResult(RESULT_OK, resultIntent);

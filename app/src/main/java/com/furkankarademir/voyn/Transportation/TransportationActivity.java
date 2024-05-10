@@ -130,6 +130,7 @@ public class TransportationActivity extends AppCompatActivity {
                 boolean availability = data.getBooleanExtra("availability", false);
                 boolean locked = data.getBooleanExtra("locked", false);
                 long calendar = data.getLongExtra("calendar", 0);
+                System.out.println(availability);
 
                 DocumentReference documentReference = db.collection("Users").document(auth.getCurrentUser().getUid());
                 documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -152,14 +153,32 @@ public class TransportationActivity extends AppCompatActivity {
                     if(availability)
                     {
                         ArrayList<String> participantsList = (ArrayList<String>) transportation.get("participantsId");
-                        if(participantsList.size() == Integer.parseInt(transportation.get("seats").toString()))
-                            return true;
-                        if (participantsList.contains(auth.getUid()))
-                            return true;
+                        System.out.println("participantsList: " + participantsList);
+
+                        String uid = auth.getUid();
+                        System.out.println("User ID: " + uid);
+
+                        if(participantsList != null && uid != null) {
+                            System.out.println("participantsList size: " + participantsList.size());
+
+                            String seats = transportation.get("seats").toString();
+                            System.out.println("Seats: " + seats);
+
+                            if(participantsList.size() == Integer.parseInt(seats)){
+                                return true;
+                            }
+                            if (participantsList.contains(uid)) {
+                                return true;
+                            }
+                        } else {
+                            System.out.println("participantsList or User ID is null");
+                        }
                     }
                     if(locked)
-                        if (user.getStar() < Double.parseDouble(transportation.get("minStar").toString()))
+                        if (user.getStar() < Double.parseDouble(transportation.get("minStar").toString())) {
+                            System.out.println(user.getStar() + " " + Double.parseDouble(transportation.get("minStar").toString()));
                             return true;
+                        }
                     if(calendar != 0) {
                         // Convert the calendar long value to Date
                         Date calendarDate = new Date(calendar);
