@@ -11,8 +11,8 @@ tools:context=".Transportation.TransportationDetailActivity">
 
 <View
     android:id="@+id/view3"
-    android:layout_width="376dp"
-    android:layout_height="554dp"
+    android:layout_width="380dp"
+    android:layout_height="560dp"
     android:background="@drawable/rounded_corner"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -21,150 +21,161 @@ tools:context=".Transportation.TransportationDetailActivity">
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.48" />
 
-<TextView
-    android:id="@+id/textView32"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="26dp"
-    android:layout_marginEnd="25dp"
-    android:fontFamily="@font/jockey_one"
-    android:text="Name:"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/textView43"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="@+id/timeInfo"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.518" />
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/jockey_one"
+        android:text="Name:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView43"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/timeInfo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518" />
 
-<TextView
-    android:id="@+id/nameInfo"
-    android:layout_width="75dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="23dp"
-    android:fontFamily="@font/jockey_one"
-    app:layout_constraintBaseline_toBaselineOf="@+id/textView32"
-    app:layout_constraintEnd_toEndOf="@+id/ageInfo"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toStartOf="@+id/textView32" />
+    <TextView
+        android:id="@+id/nameInfo"
+        android:layout_width="73dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView32"
+        app:layout_constraintStart_toEndOf="@+id/textView32" />
 
-<TextView
-    android:id="@+id/textView36"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/jockey_one"
-    android:text="Age:"
-    app:layout_constraintBaseline_toBaselineOf="@+id/ageInfo"
-    app:layout_constraintStart_toStartOf="@+id/textView32" />
-
-
-<TextView
-
-    android:id="@+id/ageInfo"
-    android:layout_width="80dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="40dp"
-    android:layout_marginBottom="42dp"
-    android:fontFamily="@font/jockey_one"
-    app:layout_constraintBottom_toTopOf="@+id/textView43"
-    app:layout_constraintEnd_toEndOf="@+id/genderInfo"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="@+id/sendInvitation"
-    app:layout_constraintTop_toTopOf="@+id/nameInfo"
-    app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/jockey_one"
+        android:text="Age:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/ageInfo"
+        app:layout_constraintStart_toStartOf="@+id/textView32" />
 
 
-<TextView
+    <TextView
 
-    android:id="@+id/departureInfo"
-    android:layout_width="88dp"
-    android:layout_height="26dp"
-    android:fontFamily="@font/jockey_one"
-    app:layout_constraintBottom_toBottomOf="@+id/destinationInfo"
-    app:layout_constraintEnd_toStartOf="@id/inhabitantslimitInfo"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toEndOf="@+id/textView47" />
-
-<TextView
-
-    android:id="@+id/destinationInfo"
-    android:layout_width="88dp"
-    android:layout_height="25dp"
-    android:layout_marginTop="48dp"
-    android:layout_marginEnd="12dp"
-    android:fontFamily="@font/jockey_one"
-    app:layout_constraintEnd_toStartOf="@+id/departureInfo"
-    app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-<TextView
-
-    android:id="@+id/dateInfo"
-    android:layout_width="117dp"
-    android:layout_height="28dp"
-    android:fontFamily="@font/jockey_one"
-    app:layout_constraintBottom_toTopOf="@+id/textView48"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.891"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="1.0" />
-
-<TextView
-
-    android:id="@+id/timeInfo"
-    android:layout_width="75dp"
-    android:layout_height="26dp"
-    android:fontFamily="@font/jockey_one"
-    app:layout_constraintEnd_toStartOf="@+id/destinationInfo"
-    app:layout_constraintHorizontal_bias="0.585"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/destinationInfo" />
-
-<TextView
-
-    android:id="@+id/inhabitantslimitInfo"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginEnd="12dp"
-    android:fontFamily="@font/jockey_one"
-    app:layout_constraintEnd_toEndOf="@+id/textView48"
-    app:layout_constraintHorizontal_bias="0.992"
-    app:layout_constraintStart_toEndOf="@+id/textView47"
-    app:layout_constraintTop_toBottomOf="@+id/textView48" />
-
-<Button
-    android:id="@+id/sendMessage"
-    style="@style/Transportation_Activity_Detail_View"
-    android:layout_width="254dp"
-    android:layout_height="35dp"
-    android:layout_marginTop="44dp"
-    android:layout_marginBottom="46dp"
-    android:fontFamily="@font/jockey_one"
-    android:onClick="sendMessageButtonClicked"
-    android:text="Send Message to Talk Details"
-    app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView43" />
-
-<Button
-    android:id="@+id/sendInvitation"
-    style="@style/Transportation_Activity_Detail_View"
-    android:layout_width="251dp"
-    android:layout_height="35dp"
-    android:layout_marginTop="96dp"
-    android:layout_marginBottom="94dp"
-    android:fontFamily="@font/jockey_one"
-    android:onClick="sendInvitationButtonClicked"
-    android:text="Send Invitation to Join"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/bioInfo" />
+        android:id="@+id/ageInfo"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="42dp"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/textView43"
+        app:layout_constraintEnd_toEndOf="@+id/genderInfo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sendInvitation"
+        app:layout_constraintTop_toTopOf="@+id/nameInfo"
+        app:layout_constraintVertical_bias="0.0" />
 
 
-<LinearLayout
+    <TextView
+
+        android:id="@+id/departureInfo"
+        android:layout_width="88dp"
+        android:layout_height="26dp"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/destinationInfo"
+        app:layout_constraintEnd_toStartOf="@id/inhabitantslimitInfo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView47" />
+
+    <TextView
+
+        android:id="@+id/destinationInfo"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/departureInfo"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/dateInfo"
+        android:layout_width="117dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView48"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+
+        android:id="@+id/timeInfo"
+        android:layout_width="75dp"
+        android:layout_height="26dp"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/destinationInfo"
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/destinationInfo" />
+
+    <TextView
+
+        android:id="@+id/inhabitantslimitInfo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/textView48"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toEndOf="@+id/textView47"
+        app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+
+    <Button
+        android:id="@+id/sendMessage"
+        style="@style/Transportation_Activity_Detail_View"
+        android:layout_width="254dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="46dp"
+        android:fontFamily="@font/jockey_one"
+        android:onClick="sendMessageButtonClicked"
+        android:text="Send Message to Talk Details"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView43"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/sendInvitation"
+        style="@style/Transportation_Activity_Detail_View"
+        android:layout_width="251dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="94dp"
+        android:fontFamily="@font/jockey_one"
+        android:onClick="sendInvitationButtonClicked"
+        android:text="Send Invitation to Join"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bioInfo"
+        app:layout_constraintVertical_bias="0.26999998" />
+
+    <LinearLayout
 
     android:id="@+id/linearLayout4"
     android:layout_width="0dp"
@@ -289,17 +300,17 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:background="#4979B0" />
 
 
-    <TextView
+        <TextView
 
-        android:id="@+id/textView12"
+            android:id="@+id/textView12"
 
-        android:layout_width="25dp"
+            android:layout_width="25dp"
 
-        android:layout_height="65dp"
+            android:layout_height="61dp"
 
-        android:layout_weight="1"
+            android:layout_weight="1"
 
-        android:background="#6993BD" />
+            android:background="#6993BD" />
 
 
     <TextView
@@ -514,6 +525,8 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_marginTop="64dp"
         android:fontFamily="@font/jockey_one"
         android:text="Gender:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView36"
         app:layout_constraintTop_toBottomOf="@+id/nameInfo" />
 
@@ -526,6 +539,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_marginTop="34dp"
         android:layout_marginBottom="34dp"
         android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/bioInfo"
         app:layout_constraintStart_toEndOf="@+id/textView42"
         app:layout_constraintTop_toTopOf="@+id/ageInfo" />
@@ -538,10 +552,12 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_height="wrap_content"
         android:fontFamily="@font/jockey_one"
         android:text="Biography:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/bioInfo"
         app:layout_constraintEnd_toEndOf="@+id/timeInfo"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <TextView
 
@@ -551,6 +567,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/jockey_one"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView43"
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
@@ -563,17 +580,18 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView32"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <TextView
 
         android:id="@+id/textView46"
-        android:layout_width="38dp"
+        android:layout_width="wrap_content"
         android:layout_height="22dp"
         android:fontFamily="@font/jockey_one"
         android:text="Place:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/timeInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
@@ -589,6 +607,8 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_height="wrap_content"
         android:fontFamily="@font/jockey_one"
         android:text="Gender"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/destinationInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.289"
@@ -598,10 +618,12 @@ tools:context=".Transportation.TransportationDetailActivity">
 
     <TextView
         android:id="@+id/textView48"
-        android:layout_width="84dp"
-        android:layout_height="21dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/jockey_one"
         android:text="Person Limit:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -615,6 +637,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_height="33dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="4dp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/textView52"
         app:layout_constraintTop_toBottomOf="@+id/textView52" />
 
@@ -647,6 +670,8 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_marginTop="8dp"
         android:fontFamily="@font/jockey_one"
         android:text="Extra Note:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/timeInfo"
         app:layout_constraintTop_toBottomOf="@+id/timeInfo" />
 
@@ -656,6 +681,7 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView56"
         app:layout_constraintTop_toBottomOf="@+id/timeInfo" />
 
@@ -663,10 +689,13 @@ tools:context=".Transportation.TransportationDetailActivity">
         android:id="@+id/textView52"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/jockey_one"
         android:text="Minimum required star for activity"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/profile"
         app:layout_constraintTop_toTopOf="@+id/profile" />
 
