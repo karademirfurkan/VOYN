@@ -218,6 +218,7 @@
                     android:layout_height="40dp"
                     android:fontFamily="@font/jockey_one"
                     android:text="Minimum required star for activity"
+                    android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 
@@ -343,7 +344,7 @@
                 android:id="@+id/sendInvitation"
                 style="@style/Transportation_Activity_Detail_View"
                 android:layout_width="251dp"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="sendInvitationButtonClicked"
                 android:text="Send Invitation to Join"
@@ -353,7 +354,7 @@
                 android:id="@+id/sendMessage"
                 style="@style/Transportation_Activity_Detail_View"
                 android:layout_width="254dp"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:fontFamily="@font/jockey_one"
                 android:onClick="sendMessageButtonClicked"
                 android:text="Send Message to Talk Details"
