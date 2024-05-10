@@ -149,7 +149,6 @@ public class TransportationActivity extends AppCompatActivity {
                         return true;
                     if(time != null && !time.equals("") && !time.equals(transportation.get("time")))
                         return true;
-                    // Bunlar zor oldugu icin commentledim ve sadece departure time destination uzerinden filtreleme yaptım
                     if(availability)
                     {
                         ArrayList<String> participantsList = (ArrayList<String>) transportation.get("participantsId");
@@ -157,14 +156,26 @@ public class TransportationActivity extends AppCompatActivity {
                             return true;
                         if (participantsList.contains(auth.getUid()))
                             return true;
+                    }
+                    if(locked)
                         if (user.getStar() < Double.parseDouble(transportation.get("minStar").toString()))
                             return true;
-                    }
+                    if(calendar != 0) {
+                        // Convert the calendar long value to Date
+                        Date calendarDate = new Date(calendar);
 
-                    //if(locked != (boolean) transportation.get("locked"))
-                    //    return false;
-                    //if(calendar != 0 && calendar != (long) transportation.get("calendar"))
-                    //    return false;
+
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+                        String calendarDateString = format.format(calendarDate);
+
+
+                        String activityDateString = (String) transportation.get("date");
+                        System.out.println("calendarDateString: " + calendarDateString);
+                        System.out.println("activityDateString: " + activityDateString);
+                        if (!calendarDateString.equals(activityDateString)) {
+                            return true;
+                        }
+                    }
                     return false;
                 });
                 transportationAdapter.notifyDataSetChanged();
