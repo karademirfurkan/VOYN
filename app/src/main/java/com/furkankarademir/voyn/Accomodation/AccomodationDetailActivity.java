@@ -126,7 +126,7 @@ public class AccomodationDetailActivity extends AppCompatActivity {
                         }
 
                         Intent intent = new Intent(AccomodationDetailActivity.this, ChatInBetweenPage.class);
-                        intent.putExtra("sport", accommodation);
+                        intent.putExtra("accommodation", accommodation);
                         startActivity(intent);
                     }
                 })
@@ -152,7 +152,7 @@ public class AccomodationDetailActivity extends AppCompatActivity {
 
         accommodation.put("invited", invited);
 
-        db.collection("accommodation").document(accommodation.get("documentId").toString())
+        db.collection("accommodations").document(accommodation.get("documentId").toString())
                 .set(accommodation)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
