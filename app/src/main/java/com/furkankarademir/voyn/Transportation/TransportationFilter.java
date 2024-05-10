@@ -44,7 +44,8 @@ public class TransportationFilter extends AppCompatActivity {
                 resultIntent.putExtra("departure", binding.departure.getText().toString());
                 resultIntent.putExtra("destination", binding.destination.getText().toString());
                 resultIntent.putExtra("time", binding.timeFilter.getText().toString());
-                resultIntent.putExtra("availablity", binding.switchAvailable.isChecked());
+                resultIntent.putExtra("availability", binding.switchAvailable.isChecked());
+                System.out.println(binding.switchAvailable.isChecked());
                 resultIntent.putExtra("locked", binding.switchLocked.isChecked());
                 resultIntent.putExtra("calendar", selectedDateInMillis);
                 setResult(RESULT_OK, resultIntent);

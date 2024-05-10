@@ -8,10 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.databinding.ActivitySportsBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -28,6 +31,8 @@ public class SportsActivity extends AppCompatActivity {
     private ArrayList<HashMap<String, Object>> sportActivities;
     private SportAdapter sportAdapter;
     private ActivitySportsBinding binding;
+
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,36 +114,53 @@ public class SportsActivity extends AppCompatActivity {
                 boolean availability = data.getBooleanExtra("availability", false);
                 boolean locked = data.getBooleanExtra("locked", false);
                 long calendar = data.getLongExtra("calendar", 0);
-                sportActivities.removeIf(sport -> {
-                    if (time != null && !time.equals("") && !time.equals(sport.get("time")))
-                        return true;
-                    if (place != null && !place.equals("") &&!place.equals(sport.get("place")))
-                        return true;
-                    if (type != null && !type.equals("") && !type.equals(sport.get("type")))
-                        return true;
-                    if(calendar != 0) {
-                        // Convert the calendar long value to Date
-                        Date calendarDate = new Date(calendar);
+
+                DocumentReference documentReference = db.collection("Users").document(auth.getCurrentUser().getUid());
+                documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+                            user = documentSnapshot.toObject(User.class);
+                            sportActivities.removeIf(sport -> {
+                                if (time != null && !time.equals("") && !time.equals(sport.get("time")))
+                                    return true;
+                                if (place != null && !place.equals("") &&!place.equals(sport.get("place")))
+                                    return true;
+                                if (type != null && !type.equals("") && !type.equals(sport.get("type")))
+                                    return true;
+                                if(calendar != 0) {
+                                    // Convert the calendar long value to Date
+                                    Date calendarDate = new Date(calendar);
 
 
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-                        String calendarDateString = format.format(calendarDate);
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+                                    String calendarDateString = format.format(calendarDate);
 
 
-                        String activityDateString = (String) sport.get("date");
-                        System.out.println("calendarDateString: " + calendarDateString);
-                        System.out.println("activityDateString: " + activityDateString);
-                        if (!calendarDateString.equals(activityDateString)) {
-                            return true;
+                                    String activityDateString = (String) sport.get("date");
+                                    System.out.println("calendarDateString: " + calendarDateString);
+                                    System.out.println("activityDateString: " + activityDateString);
+                                    if (!calendarDateString.equals(activityDateString)) {
+                                        return true;
+                                    }
+                                }
+                                if (availability) {
+                                    ArrayList<String> participantsList = (ArrayList<String>) sport.get("participantsId");
+                                    if (participantsList.size() == Integer.parseInt(sport.get("numberOfPlayers").toString()))
+                                        return true;
+                                    if (participantsList.contains(auth.getUid()))
+                                        return true;
+                                }
+                                if (locked)
+                                    if (user.getStar() < Double.parseDouble(sport.get("minStar").toString()))
+                                        return true;
+                                return false;
+                            });
+                            sportAdapter.notifyDataSetChanged();
                         }
                     }
-                    return false;
-                    //if (availability && !(boolean) sport.get("availability"))
-                      //  return true;
-                    //if (locked && !(boolean) sport.get("locked"))
-                      //  return true;
                 });
-                sportAdapter.notifyDataSetChanged();
             }
         }
     }

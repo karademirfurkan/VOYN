@@ -44,7 +44,7 @@ public class AccommodationFilter extends AppCompatActivity {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("place", binding.placeFilter.getText().toString());
                 resultIntent.putExtra("calendar", selectedDateInMillis);
-                resultIntent.putExtra("availablity", binding.switchAvailable.isChecked());
+                resultIntent.putExtra("availability", binding.switchAvailable.isChecked());
                 resultIntent.putExtra("locked", binding.switchLocked.isChecked());
                 setResult(RESULT_OK, resultIntent);
                 finish();
