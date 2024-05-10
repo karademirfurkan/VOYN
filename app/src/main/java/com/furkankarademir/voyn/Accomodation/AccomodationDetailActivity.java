@@ -101,6 +101,7 @@ public class AccomodationDetailActivity extends AppCompatActivity {
     }
     public void sendMessageButtonClicked(View view)
     {
+        System.out.println("send1");
         db.collection("Chat")
                 .whereEqualTo("firstUserId", auth.getUid())
                 .whereEqualTo("secondUserId", accommodation.get("creatorUserID").toString())
@@ -109,31 +110,38 @@ public class AccomodationDetailActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots)
                     {
+                        System.out.println("send2");
                         if (queryDocumentSnapshots.isEmpty()) {
-                            // Chat doesn't exist, create a new chat
+                            System.out.println("send3");
                             ArrayList<Message> messagesInBetween = new ArrayList<>();
                             Chat newChat = new Chat(auth.getUid().toString(),accommodation.get("creatorUserID").toString(),messagesInBetween);
+                            System.out.println("send4");
                             db.collection("Chat").add(newChat).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
+                                    System.out.println("send5");
                                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                     Toast.makeText(AccomodationDetailActivity.this, "new chat added", Toast.LENGTH_LONG).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    System.out.println("send6");
                                     Log.w(TAG, "Error adding document", e);
                                 }
                             });
                         }
                         else
                         {
+                            System.out.println("send7");
                             Toast.makeText(AccomodationDetailActivity.this, "same chat", Toast.LENGTH_LONG).show();
                         }
 
+                        System.out.println("send8");
                         Intent intent = new Intent(AccomodationDetailActivity.this, ChatInBetweenPage.class);
                         intent.putExtra("accommodation", accommodation);
                         startActivity(intent);
+                        System.out.println("send9");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -47,6 +47,7 @@ public class ChatInBetweenPage extends AppCompatActivity {
 
     private ArrayList<Message> messages;
     private HashMap<String, Object> transportationMap;
+    private HashMap<String, Object> sportMap;
 
     private ChatInBetweenAdapter chatInBetweenAdapter;
     private DocumentReference chatDocumentRef;
@@ -60,20 +61,38 @@ public class ChatInBetweenPage extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        System.out.println("chatInBetween1");
+
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
         Intent intent = getIntent();
         User otherUser = (User) intent.getSerializableExtra("selectedUser");
         if (otherUser != null) {
-            System.out.println("chatInbetw1");
+            System.out.println("chatInbetw2");
             otherUserId = otherUser.getId();
             System.out.println(otherUserId);
-            System.out.println("chatInbetw2");
+            System.out.println("chatInbetw3");
         } else {
+            System.out.println("chatInBetween4");
+
             Intent intent2 = getIntent();
-            transportationMap = (HashMap<String, Object>) intent2.getSerializableExtra("transportation");
-            otherUserId = (String) transportationMap.get("creatorUserID");
+
+            if(intent2.hasExtra("transportation"))
+            {
+                transportationMap = (HashMap<String, Object>) intent2.getSerializableExtra("transportation");
+                otherUserId = (String) transportationMap.get("creatorUserID");
+            }
+
+
+
+
+
+            Intent intent3 = getIntent();
+            sportMap = (HashMap<String, Object>) intent3.getSerializableExtra("sport");
+            otherUserId = (String) sportMap.get("creatorUserID");
+
+            System.out.println("chatInBetween7");
         }
         
 

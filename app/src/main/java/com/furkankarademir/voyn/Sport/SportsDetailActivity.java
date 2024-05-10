@@ -28,10 +28,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SportsDetailActivity extends AppCompatActivity {
+public class SportsDetailActivity extends AppCompatActivity implements Serializable {
     private ActivitySportsDetailBinding binding;
 
     private HashMap<String, Object> sport;
@@ -101,6 +102,7 @@ public class SportsDetailActivity extends AppCompatActivity {
     }
     public void sendMessageButtonClicked(View view)
     {
+        System.out.println("sportSend1");
         db.collection("Chat")
                 .whereEqualTo("firstUserId", auth.getUid())
                 .whereEqualTo("secondUserId", sport.get("creatorUserID").toString())
@@ -109,31 +111,39 @@ public class SportsDetailActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots)
                     {
+                        System.out.println("sportSend2");
                         if (queryDocumentSnapshots.isEmpty()) {
                             // Chat doesn't exist, create a new chat
+                            System.out.println("sportSend3");
                             ArrayList<Message> messagesInBetween = new ArrayList<>();
                             Chat newChat = new Chat(auth.getUid().toString(),sport.get("creatorUserID").toString(),messagesInBetween);
+
+                            System.out.println("sportSend4");
                             db.collection("Chat").add(newChat).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                    Toast.makeText(SportsDetailActivity.this, "new chat added", Toast.LENGTH_LONG).show();
+                                    System.out.println("sportSend5");
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.w(TAG, "Error adding document", e);
+                                    System.out.println("sportSend6");
                                 }
                             });
                         }
                         else
                         {
+                            System.out.println("sportSend7");
                             Toast.makeText(SportsDetailActivity.this, "same chat", Toast.LENGTH_LONG).show();
                         }
 
+                        System.out.println("sportSend8");
                         Intent intent = new Intent(SportsDetailActivity.this, ChatInBetweenPage.class);
+
                         intent.putExtra("sport", sport);
+                        System.out.println("sportSend9");
                         startActivity(intent);
+                        System.out.println("sportSend10");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
