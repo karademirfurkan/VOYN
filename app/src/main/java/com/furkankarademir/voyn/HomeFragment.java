@@ -193,7 +193,7 @@ public class HomeFragment extends Fragment {
 
                     Calendar calendar = Calendar.getInstance();
                     int currentYear = calendar.get(Calendar.YEAR);
-                    int currentMonth = calendar.get(Calendar.MONTH);
+                    int currentMonth = calendar.get(Calendar.MONTH) + 1;
                     int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
                     int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
                     int currentMinute = calendar.get(Calendar.MINUTE);
@@ -227,8 +227,9 @@ public class HomeFragment extends Fragment {
                             System.out.println("minute      " + currentMinute + "  " + minuteString);
                             System.out.println("month      " + currentMonth + "   " + monthString);
                             System.out.println("year         " + currentYear + "  " + yearString);
-
                              */
+
+
 
                             if (isNumeric(yearString) && isNumeric(monthString) && isNumeric(dayString) && isNumeric(hourString) && isNumeric(minuteString)) {
                                 int activityYear = Integer.parseInt(yearString);
@@ -237,6 +238,29 @@ public class HomeFragment extends Fragment {
                                 int activityHour = Integer.parseInt(hourString);
                                 int activityMinute = Integer.parseInt(minuteString);
 
+                                if (currentYear > activityYear) {
+                                    makeUserArray(attendedActivities.get(i).substring(15), i);
+                                    break;
+                                } else if (currentYear == activityYear && currentMonth > activityMonth) {
+                                    makeUserArray(attendedActivities.get(i).substring(15), i);
+                                    break;
+                                } else if (currentYear == activityYear && currentMonth == activityMonth &&
+                                        currentDay > activityDay) {
+                                    makeUserArray(attendedActivities.get(i).substring(15), i);
+                                    break;
+                                } else if (currentYear == activityYear && currentMonth == activityMonth &&
+                                        currentDay == activityDay && currentHour > activityHour) {
+                                    makeUserArray(attendedActivities.get(i).substring(15), i);
+                                    break;
+                                } else if (currentYear == activityYear && currentMonth == activityMonth &&
+                                        currentDay == activityDay && currentHour == activityHour &&
+                                        currentMinute > activityMinute) {
+                                    makeUserArray(attendedActivities.get(i).substring(15), i);
+                                    break;
+                                }
+
+
+                                /*
                                 if (currentYear > activityYear) {
                                     makeUserArray(attendedActivities.get(i).substring(15), i);
                                     break;
@@ -261,6 +285,7 @@ public class HomeFragment extends Fragment {
                                         }
                                     }
                                 }
+                                */
                             }
                         }
 
