@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +51,7 @@ public class myParticipatedActivitiesPage extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseAuth auth;
 
-    private FirebaseUser currentUser;
+    private String currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class myParticipatedActivitiesPage extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
-        currentUser = auth.getCurrentUser();
+        currentUser = auth.getCurrentUser().getUid();
 
         myParticipatedTransportationActivities = new ArrayList<>();
         myParticipatedAccommodationActivities = new ArrayList<>();
@@ -76,59 +78,174 @@ public class myParticipatedActivitiesPage extends AppCompatActivity {
         binding.accomodation.setLayoutManager(new LinearLayoutManager(myParticipatedActivitiesPage.this));
         sportAdapter = new SportAdapter(myParticipatedSportActivities, 2);
         binding.accomodation.setAdapter(sportAdapter);
-
+        System.out.println("buraya girdi");
         makeMyTransportationArrayList();
         makeMyAccommodationArrayList();
         makeMySportArrayList();
     }
 
-    public void makeMyTransportationArrayList()
+    /*public void makeMyTransportationArrayList()
     {
+        System.out.println("buraya girdi2");
         if (currentUser != null) {
-            DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+            myActivities = new ArrayList<>();
+            db.collection("transportations")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ArrayList<String> participantsId = (ArrayList<String>) document.get("participantsId");
+                                    if (participantsId != null && participantsId.contains(currentUser)) {
 
-            userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            myActivities = (ArrayList<String>) document.get("myActivities");
-                            if ( myActivities != null) {
-                                for (String activityId : myActivities) {
-                                    db.collection("attendedActivities").document(activityId)
-                                            .get()
-                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                                @Override
-                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                    HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
-                                                    myParticipatedTransportationActivities.add(data);
-                                                    transportationAdapter.notifyDataSetChanged();
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.w(TAG, "Error getting document", e);
-                                                }
-                                            });
+                                        myActivities.add(document.getId());
+                                    }
+                                    if (!myActivities.isEmpty() && myActivities != null) {
+                                        for (String activityId : myActivities) {
+                                            db.collection("transportations").document(activityId)
+                                                    .get()
+                                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                            HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                            myParticipatedTransportationActivities.add(data);
+                                                            transportationAdapter.notifyDataSetChanged();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            System.out.println("transportation alamıyor");
+                                                        }
+                                                    });
+                                        }
+                                    } else {
+                                        System.out.println("No such document my activity yok");
+                                    }
+                                }
                                 }
                             } else {
-                                Log.d(TAG, "No such document");
+                                System.out.println("Error getting documents: transportationlara tek tek bakamıyor" );
                             }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
                         }
-                    }
-                }
-            });
+                    });
+
+
+        else {
+            System.out.println("get failed with user yok");
+        }
+    }*/
+    /*public void makeMyTransportationArrayList() {
+        System.out.println("buraya girdi2");
+        if (currentUser != null) {
+            myActivities = new ArrayList<>();
+            db.collection("transportations")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            myActivities.clear();
+                            myParticipatedTransportationActivities.clear();
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ArrayList<String> participantsId = (ArrayList<String>) document.get("participantsId");
+                                    if (participantsId != null && participantsId.contains(currentUser)) {
+                                        if (!myActivities.contains(document.getId())) {
+                                            myActivities.add(document.getId());
+                                        }
+                                    }
+                                    if (!myActivities.isEmpty() && myActivities != null) {
+                                        for (String activityId : myActivities) {
+                                            db.collection("transportations").document(activityId)
+                                                    .get()
+                                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                            HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                            myParticipatedTransportationActivities.add(data);
+                                                            transportationAdapter.notifyDataSetChanged();
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            System.out.println("transportation alamıyor");
+                                                        }
+                                                    });
+                                        }
+                                    } else {
+                                        System.out.println("No such document my activity yok");
+                                    }
+                                }
+                            } else {
+                                System.out.println("Error getting documents: transportationlara tek tek bakamıyor");
+                            }
+                        }
+                    });
+        } else {
+            System.out.println("get failed with user yok");
+        }
+    }*/
+    public void makeMyTransportationArrayList() {
+        System.out.println("buraya girdi2");
+        if (currentUser != null) {
+            myActivities = new ArrayList<>();
+            db.collection("transportations")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            myActivities.clear();
+                            myParticipatedTransportationActivities.clear();
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ArrayList<String> participantsId = (ArrayList<String>) document.get("participantsId");
+                                    if (participantsId != null && participantsId.contains(currentUser)) {
+                                        if (!myActivities.contains(document.getId())) {
+                                            myActivities.add(document.getId());
+                                        }
+                                    }
+                                }
+                                if (!myActivities.isEmpty() && myActivities != null) {
+                                    for (String activityId : myActivities) {
+                                        db.collection("transportations").document(activityId)
+                                                .get()
+                                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                        myParticipatedTransportationActivities.add(data);
+                                                        transportationAdapter.notifyDataSetChanged();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        System.out.println("transportation alamıyor");
+                                                    }
+                                                });
+                                    }
+                                } else {
+                                    System.out.println("No such document my activity yok");
+                                }
+                            } else {
+                                System.out.println("Error getting documents: transportationlara tek tek bakamıyor");
+                            }
+                        }
+                    });
+        } else {
+            System.out.println("get failed with user yok");
         }
     }
 
-    public void makeMyAccommodationArrayList()
+
+
+    /*public void makeMyAccommodationArrayList()
     {
+        myActivities = new ArrayList<>();
         if (currentUser != null) {
-            DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+            DocumentReference userDocRef = db.collection("Users").document(currentUser);
 
             userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -136,7 +253,6 @@ public class myParticipatedActivitiesPage extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            myActivities = (ArrayList<String>) document.get("myActivities");
                             if ( myActivities != null) {
                                 for (String activityId : myActivities) {
                                     db.collection("attendedActivities").document(activityId)
@@ -166,12 +282,114 @@ public class myParticipatedActivitiesPage extends AppCompatActivity {
                 }
             });
         }
-    }
-
-    public void makeMySportArrayList()
-    {
+    }*/
+    public void makeMyAccommodationArrayList() {
+        System.out.println("buraya girdi2");
         if (currentUser != null) {
-            DocumentReference userDocRef = db.collection("Users").document(currentUser.getUid());
+            myActivities = new ArrayList<>();
+            db.collection("accommodations")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            myActivities.clear();
+                            myParticipatedAccommodationActivities.clear();
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ArrayList<String> participantsId = (ArrayList<String>) document.get("participantsId");
+                                    if (participantsId != null && participantsId.contains(currentUser)) {
+                                        if (!myActivities.contains(document.getId())) {
+                                            myActivities.add(document.getId());
+                                        }
+                                    }
+                                }
+                                if (!myActivities.isEmpty() && myActivities != null) {
+                                    for (String activityId : myActivities) {
+                                        db.collection("accommodations").document(activityId)
+                                                .get()
+                                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                        myParticipatedAccommodationActivities.add(data);
+                                                        accommodationAdapter.notifyDataSetChanged();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        System.out.println("accommodation alamıyor");
+                                                    }
+                                                });
+                                    }
+                                } else {
+                                    System.out.println("No such document my activity yok");
+                                }
+                            } else {
+                                System.out.println("Error getting documents: accommodationslara tek tek bakamıyor");
+                            }
+                        }
+                    });
+        } else {
+            System.out.println("get failed with user yok");
+        }
+    }
+    public void makeMySportArrayList() {
+        System.out.println("buraya girdi2");
+        if (currentUser != null) {
+            myActivities = new ArrayList<>();
+            db.collection("sports")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            myActivities.clear();
+                            myParticipatedSportActivities.clear();
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    ArrayList<String> participantsId = (ArrayList<String>) document.get("participantsId");
+                                    if (participantsId != null && participantsId.contains(currentUser)) {
+                                        if (!myActivities.contains(document.getId())) {
+                                            myActivities.add(document.getId());
+                                        }
+                                    }
+                                }
+                                if (!myActivities.isEmpty() && myActivities != null) {
+                                    for (String activityId : myActivities) {
+                                        db.collection("sports").document(activityId)
+                                                .get()
+                                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        HashMap<String, Object> data = (HashMap<String, Object>) documentSnapshot.getData();
+                                                        myParticipatedSportActivities.add(data);
+                                                        sportAdapter.notifyDataSetChanged();
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        System.out.println("sport alamıyor");
+                                                    }
+                                                });
+                                    }
+                                } else {
+                                    System.out.println("No such document my activity yok");
+                                }
+                            } else {
+                                System.out.println("Error getting documents: sportlara tek tek bakamıyor");
+                            }
+                        }
+                    });
+        } else {
+            System.out.println("get failed with user yok");
+        }
+    }
+    /*public void makeMySportArrayList()
+    {
+        myActivities = new ArrayList<>();
+        if (currentUser != null) {
+            DocumentReference userDocRef = db.collection("Users").document(currentUser);
 
             userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -209,5 +427,5 @@ public class myParticipatedActivitiesPage extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 }
