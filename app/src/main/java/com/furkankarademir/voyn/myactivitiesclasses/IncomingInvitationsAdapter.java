@@ -176,7 +176,7 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
                     case 2:
                         accommodationId = activityId;
                         // Add the user to the attendId list
-                        db.collection("accommodation")
+                        db.collection("accommodations")
                                 .whereEqualTo("documentId", accommodationId)
                                 .get()
                                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -354,7 +354,7 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
                         break;
                     case 2:
                         accommodationId = activityId;
-                        db.collection("accommodation")
+                        db.collection("accommodations")
                                 .whereEqualTo("documentId", accommodationId)
                                 .get()
                                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
