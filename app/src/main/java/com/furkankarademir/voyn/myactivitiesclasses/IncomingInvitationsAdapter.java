@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.furkankarademir.voyn.Classes.User;
 import com.furkankarademir.voyn.Transportation.AddTransportationActivity;
+import com.furkankarademir.voyn.Transportation.Transportation;
 import com.furkankarademir.voyn.Transportation.TransportationAdapter;
 import com.furkankarademir.voyn.databinding.InvitationSendersRowBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Transaction;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -87,6 +89,7 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
 
                         User thisUser = documentSnapshot.toObject(User.class);
 
+
                         //------!!!!!!DO NOT CHANGE COMMENT WITHOUT ASKING!!!!!!--------------------
                         //thisUser.addAttendedActivity(transportationId);
                         //-------------------------------------------------------------------------
@@ -129,6 +132,11 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
                                                 participantsId = new ArrayList<>();
                                             }
                                             participantsId.add(userId);
+
+                                            //-------------------------
+                                            handleAttendedActivity(userId, transportation);
+                                            //-------------------------
+
                                             transportation.put("participantsId", participantsId);
                                             ArrayList<String> invited = (ArrayList<String>) transportation.get("invited");
                                             invited.remove(userId);
@@ -185,6 +193,11 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
                                                 participantsId = new ArrayList<>();
                                             }
                                             participantsId.add(userId);
+
+                                            //-------------------------
+                                            handleAttendedActivity(userId, accommodation);
+                                            //-------------------------
+
                                             accommodation.put("participantsId", participantsId);
                                             ArrayList<String> invited = (ArrayList<String>) accommodation.get("invited");
                                             invited.remove(userId);
@@ -241,6 +254,11 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
                                                 participantsId = new ArrayList<>();
                                             }
                                             participantsId.add(userId);
+
+                                            //-------------------------
+                                            handleAttendedActivity(userId, sport);
+                                            //-------------------------
+
                                             sport.put("participantsId", participantsId);
                                             ArrayList<String> invited = (ArrayList<String>) sport.get("invited");
                                             invited.remove(userId);
@@ -470,5 +488,29 @@ public class IncomingInvitationsAdapter extends RecyclerView.Adapter<IncomingInv
             this.binding = binding;
             this.context = context;
         }
+    }
+
+    public void handleAttendedActivity(String userID, Map<String, Object> activity)
+    {
+         DocumentReference docRef = db.collection("Users").document(userID);
+         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+             @Override
+             public void onSuccess(DocumentSnapshot documentSnapshot) {
+                 if(documentSnapshot.exists())
+                 {
+                     User thisUser = documentSnapshot.toObject(User.class);
+                     thisUser.addAttendedActivity(activity.get("date").toString()
+                                                 +activity.get("time").toString()
+                                                 +activityId);
+                     docRef.set(thisUser);
+                 }
+
+             }
+         }).addOnFailureListener(new OnFailureListener() {
+             @Override
+             public void onFailure(@NonNull Exception e) {
+
+             }
+         });
     }
 }
