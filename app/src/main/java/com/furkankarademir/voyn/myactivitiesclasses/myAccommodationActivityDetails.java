@@ -28,7 +28,7 @@ public class myAccommodationActivityDetails extends AppCompatActivity {
     private ArrayList<String> acceptedUserList;
 
     private FirebaseFirestore db;
-    private FirebaseAuth auth;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
     private FirebaseUser currentUser;
 
     private HashMap<String, Object> accommodationMap;
@@ -55,7 +55,13 @@ public class myAccommodationActivityDetails extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
-
+        if (accommodation != null && auth.getCurrentUser() != null) {
+            if (!accommodation.get("creatorUserID").equals(auth.getCurrentUser().getUid())) {
+                binding.button11.setVisibility(View.INVISIBLE);
+            }
+        } else {
+            // Handle the case where transportation or the current user is null
+        }
         acceptedUserList = (ArrayList<String>) accommodationMap.get("participantsId");
 
         binding.recyclerView3.setLayoutManager(new LinearLayoutManager(myAccommodationActivityDetails.this));

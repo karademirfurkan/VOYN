@@ -28,7 +28,7 @@ public class mySportsActivityDetails extends AppCompatActivity {
     private ArrayList<String> acceptedUserList;
 
     private FirebaseFirestore db;
-    private FirebaseAuth auth;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
     private FirebaseUser currentUser;
 
     private HashMap<String, Object> sportsMap;
@@ -57,6 +57,13 @@ public class mySportsActivityDetails extends AppCompatActivity {
         currentUser = auth.getCurrentUser();
 
         acceptedUserList = (ArrayList<String>) sportsMap.get("participantsId");
+        if (sports != null && auth.getCurrentUser() != null) {
+            if (!sports.get("creatorUserID").equals(auth.getCurrentUser().getUid())) {
+                binding.button11.setVisibility(View.INVISIBLE);
+            }
+        } else {
+            // Handle the case where transportation or the current user is null
+        }
 
         binding.recyclerView3.setLayoutManager(new LinearLayoutManager(mySportsActivityDetails.this));
         acceptedIncomingInvitationsAdapter = new AcceptedIncomingInvitationsAdapter(acceptedUserList);

@@ -31,7 +31,7 @@ public class myTransportationActivityDetails extends AppCompatActivity {
     private ArrayList<String> acceptedUserList;
 
     private FirebaseFirestore db;
-    private FirebaseAuth auth;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
     private FirebaseUser currentUser;
 
     private HashMap<String, Object> transportationMap;
@@ -54,6 +54,13 @@ public class myTransportationActivityDetails extends AppCompatActivity {
         binding.whereFromForMyTransportationActivities.setText(transportation.get("departure").toString());
         binding.whereToForMyTransportationActivities.setText(transportation.get("destination").toString());
 
+        if (transportation != null && auth.getCurrentUser() != null) {
+            if (!transportation.get("creatorUserID").equals(auth.getCurrentUser().getUid())) {
+                binding.button11.setVisibility(View.INVISIBLE);
+            }
+        } else {
+            // Handle the case where transportation or the current user is null
+        }
         acceptedUserList = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();

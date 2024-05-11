@@ -11,8 +11,8 @@ tools:context=".Transportation.TransportationDetailActivity">
 
     <View
         android:id="@+id/view3"
-        android:layout_width="340dp"
-        android:layout_height="550dp"
+        android:layout_width="380dp"
+        android:layout_height="546dp"
         android:background="@drawable/rounded_corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,15 +165,16 @@ tools:context=".Transportation.TransportationDetailActivity">
         style="@style/Transportation_Activity_Detail_View"
         android:layout_width="251dp"
         android:layout_height="45dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="47dp"
         android:layout_marginBottom="94dp"
         android:fontFamily="@font/jockey_one"
         android:onClick="sendInvitationButtonClicked"
         android:text="Send Invitation to Join"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bioInfo"
+        app:layout_constraintTop_toTopOf="@+id/sendMessage"
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
