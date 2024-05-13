@@ -1,17 +1,17 @@
 Project's Main Idea:
 
-	In our fast-paced world, it's not easy to connect with people who share our interests, passions,
+		In our fast-paced world, it's not easy to connect with people who share our interests, passions,
 	and goals. Despite the convenience of technology and social media, people often feel lonely
 	and isolated, and traditional social media platforms may not be the best places to find likeminded
 	individuals since it is still the user's responsibility to seek them out.
-	That's why we want to create VOYN, an Android application that simplifies the process of finding like-minded individuals.
+		That's why we want to create VOYN, an Android application that simplifies the process of finding like-minded individuals.
 	VOYN will match users based on three main categories: transportation, sports, and
 	accommodation.
-	As an example of its transportation benefits, individuals with similar routes
+		As an example of its transportation benefits, individuals with similar routes
 	can connect and split the cost of transportation while sharing the experience. Similarly, in
 	sports, people can come together to create teams and find partners with ease. Furthermore, individuals
 	with a desire to live in the same location can easily connect.
-	VOYN can help you connect with people who share your interests and goals, so you never have to feel alone again.
+		VOYN can help you connect with people who share your interests and goals, so you never have to feel alone again.
 
 Project Development:
   
