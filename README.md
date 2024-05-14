@@ -1,4 +1,4 @@
-Project's Main Idea:
+##Project's Main Idea:
 
 		In our fast-paced world, it's not easy to connect with people who share our interests, passions,
 	and goals. Despite the convenience of technology and social media, people often feel lonely
@@ -13,7 +13,7 @@ Project's Main Idea:
 	with a desire to live in the same location can easily connect.
 		VOYN can help you connect with people who share your interests and goals, so you never have to feel alone again.
 
-Project Development:
+##Project Development:
   
 	29 January-11 February: In first 2 weeks, we have decided our Project and detected essential knowledge we must know to complete our project like using Android Studio.
 	12 February-18 February: This week we have written the "Group/Project Selection Stage Report" as a group and started to learn Android Studio individually.
@@ -26,4 +26,9 @@ Project Development:
 	22 April - 28 April: We have written "UI Design Report v2", "Detailed Design Report v1"and continue to coding.
 	29 April - 5 May: We have completed the app.
 	6 May - 12 May: We have fixed bugs and errors that occurs and prepared Final Presentation and Demo.
- 
+ ## Contributors:
+ Muhammed Emir Eren https://github.com/MuhammedEmirEren
+ Furkan Karademir https://github.com/karademirfurkan
+ Selman Şahin
+ İzzet Yağızefe Sungurlu 
+ Alp Eren Köken
