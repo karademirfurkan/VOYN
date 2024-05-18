@@ -26,6 +26,7 @@
   
 ## Technologies Used
   Android Studio
+  
   Firebase
   
 ## Dependencies 
@@ -110,6 +111,9 @@ Alp Eren Köken:
   29 April - 5 May: Reports, changing mail and password implementation
   6 May - 12 May: Reports, creating xmls
   
+## How to Execute:
+ You can execute our app from Android Studio by clonning this repository. We are planning to upload our app to Google Play Store. The link to the play store page will be provided.
+ 
 ## Contributors:
  Muhammed Emir Eren [Link](https://github.com/MuhammedEmirEren) &nbsp;
  Furkan Karademir [Link](https://github.com/karademirfurkan) &nbsp;
