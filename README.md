@@ -117,6 +117,6 @@ Alp Eren Köken:
 ## Contributors:
  Muhammed Emir Eren [Link](https://github.com/MuhammedEmirEren) &nbsp;
  Furkan Karademir [Link](https://github.com/karademirfurkan) &nbsp;
- Selman Şahin &nbsp;
- İzzet Yağızefe Sungurlu &nbsp;
+ Selman Şahin [Link](https://github.com/SelmanSahin04) &nbsp;
+ İzzet Yağızefe Sungurlu [Link](https://github.com/yagizefesungurlu) &nbsp;
  Alp Eren Köken [Link](https://github.com/alpErenkoken) &nbsp;
